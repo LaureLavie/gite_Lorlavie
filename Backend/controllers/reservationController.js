@@ -1,5 +1,6 @@
 import Reservation from "../models/reservation.js";
 import Client from "../models/client.js";
+import { sendMail } from "../middlewares/mail.js";
 
 // Créer une réservation
 export const createReservation = async (req, res) => {
@@ -11,6 +12,11 @@ export const createReservation = async (req, res) => {
       ...reservationData,
       client: newHote._id,
     });
+    await sendMail(
+      client.email,
+      "Confirmation de votre réservation",
+      `<p>Bonjour ${client.nom},<br>Votre réservation est confirmée du ${reservationData.dateArrivee} au ${reservationData.dateDepart}.</p>`
+    );
     res.status(201).json(reservation);
   } catch (error) {
     res.status(400).json({ error: error.message });

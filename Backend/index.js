@@ -10,6 +10,7 @@ import reservationRoutes from "./routes/reservationRoutes.js";
 import clientRoutes from "./routes/clientRoute.js";
 import tarifRoutes from "./routes/tarifRoute.js";
 import authRoutes from "./routes/authRoute.js";
+import avisRoutes from "./routes/avisRoute.js";
 
 const app = express();
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use("/api/reservations", reservationRoutes);
 app.use("/api/clients", clientRoutes);
 app.use("/api/tarifs", tarifRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/avis", avisRoutes);
 
 mongoose
   .connect(process.env.MONGODB_URI, {})
