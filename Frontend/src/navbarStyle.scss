@@ -1,0 +1,118 @@
+$noir: #000000;
+$blanc: #ffffff;
+$gris-perle: #b7b7a4;
+$radius: 30px;
+$font-main: "Montserrat", Arial, sans-serif;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90vw;
+  height: 64px;
+  background: $noir;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem;
+  padding: 0 1.2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba($gris-perle, 0.08);
+
+  &__logo img {
+    height: 60px;
+    width: auto;
+    display: block;
+  }
+
+  &__burger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px;
+    outline: none;
+    span {
+      display: block;
+      width: 28px;
+      height: 4px;
+      background: $blanc;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    &.open span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+    &.open span:nth-child(2) {
+      opacity: 0;
+    }
+    &.open span:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+    &:hover span {
+      background: $gris-perle;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100vw;
+    background: $noir;
+    box-shadow: 0 2px 8px rgba($gris-perle, 0.08);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 1.2rem;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      li {
+        margin-bottom: 1.2rem;
+        a {
+          color: $blanc;
+          font-family: $font-main;
+          font-size: 1.2rem;
+          text-decoration: none;
+          &:hover {
+            color: $gris-perle;
+          }
+        }
+      }
+    }
+    &.open {
+      display: flex;
+    }
+  }
+}
+
+body {
+  padding-top: 64px;
+}
+
+@media (max-width: 500px) {
+  .navbar {
+    height: 54px;
+    padding: 0 0.7rem;
+    &__logo img {
+      height: 32px;
+    }
+    &__burger span {
+      width: 22px;
+      height: 3px;
+    }
+    &__menu {
+      top: 54px;
+      padding: 1rem 0.7rem;
+    }
+  }
+  body {
+    padding-top: 54px;
+  }
+}

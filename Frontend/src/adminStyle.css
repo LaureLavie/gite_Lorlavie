@@ -1,0 +1,120 @@
+body {
+  background: #000000;
+  color: #ffffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.logo {
+  width: 100%;
+  filter: brightness(1.2);
+}
+
+h1 {
+  font-family: "Allura", cursive;
+  color: #7a5c43;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.inputLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 1rem;
+  padding: 1rem 1.2rem;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  box-shadow: 4px 4px 0 #b7b7a4;
+}
+
+.inputLogin:focus {
+  box-shadow: 4px 4px 3px #b7b7a4;
+}
+
+.inputLogin-light {
+  background: #ffffff;
+  color: #7a5c43;
+  font-weight: 500;
+}
+
+.button-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 24px;
+  border-radius: 30px;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #b7b7a4;
+  color: #000000;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #b7b7a4;
+  min-height: 44px;
+  margin-top: 2rem;
+  background: #7a5c43;
+  color: #ffffff;
+}
+.button-dark:hover,
+.button-dark:focus {
+  background: #000000;
+  color: #ffffff;
+  outline: none;
+}
+
+.button-dark:hover,
+.button-dark:focus {
+  background: #b7b7a4;
+  color: #000000;
+}
+
+.vache {
+  width: 100%;
+  margin-top: 2rem;
+  filter: brightness(1.2);
+}
+
+@media (max-width: 500px) {
+  .logo {
+    width: 140px;
+  }
+
+  .vache {
+    width: 90px;
+  }
+
+  .login-form {
+    max-width: 100%;
+  }
+}

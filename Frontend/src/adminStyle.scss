@@ -1,0 +1,127 @@
+$noir: #000000;
+$blanc: #ffffff;
+$gris-perle: #b7b7a4;
+$brun-boise: #7a5c43;
+$radius: 30px;
+$shadow: 4px 4px 0 $gris-perle;
+$font-main: "Montserrat", Arial, sans-serif;
+$font-title: "Allura", cursive;
+
+// Mixins
+@mixin button-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 24px;
+  border-radius: $radius;
+  font-family: $font-main;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: $shadow;
+}
+
+body {
+  background: $noir;
+  color: $blanc;
+  font-family: $font-main;
+  min-height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.logo {
+  width: 100%;
+  filter: brightness(1.2);
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-family: $font-title;
+  color: $brun-boise;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.inputLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $blanc;
+  font-family: $font-main;
+  font-size: 1rem;
+  padding: 1rem 1.2rem;
+  border-radius: $radius;
+  border: none;
+  outline: none;
+  box-shadow: $shadow;
+  width: 100%;
+  &::placeholder {
+    color: $brun-boise;
+    opacity: 1;
+  }
+  &:focus {
+    box-shadow: 4px 4px 3px $gris-perle;
+  }
+}
+
+.inputLogin-light {
+  background: $blanc;
+  color: $brun-boise;
+  font-weight: 500;
+}
+
+.button-dark {
+  @include button-base;
+  margin-top: 2rem;
+  background: $brun-boise;
+  color: $blanc;
+  &:hover,
+  &:focus {
+    background: $gris-perle;
+    color: $noir;
+    outline: none;
+  }
+}
+
+.vache {
+  width: 100%;
+  margin-top: 2rem;
+  filter: brightness(1.2);
+}
+
+@media (max-width: 500px) {
+  .logo {
+    width: 140px;
+  }
+  .vache {
+    width: 90px;
+  }
+  .login-form {
+    max-width: 100%;
+  }
+}

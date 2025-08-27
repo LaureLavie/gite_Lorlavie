@@ -1,0 +1,62 @@
+body {
+  background: #000000;
+  color: #ffffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  min-height: 100vh; }
+
+nav .logo {
+  filter: brightness(1.2); }
+
+.vache {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+h1 {
+  font-family: "Allura", cursive;
+  color: #7a5c43;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center; }
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+.button-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 24px;
+  border-radius: 30px;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 4px 4px 0 #b7b7a4;
+  margin-top: 2rem;
+  background: #7a5c43;
+  color: #ffffff; }
+  .button-dark:hover, .button-dark:focus {
+    background: #b7b7a4;
+    color: #000000;
+    outline: none; }
+
+@media (max-width: 500px) {
+  .logo {
+    width: 140px; }
+
+  .vache {
+    width: 90px; }
+
+  .login-form {
+    max-width: 100%; } }
+
+/*# sourceMappingURL=dashboardStyle.css.map */
