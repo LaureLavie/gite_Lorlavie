@@ -1,0 +1,51 @@
+@import "variables";
+@import "mixins";
+
+.button-dark {
+  @include button-base;
+  margin-top: 2rem;
+  background: $brun-boise;
+  color: $blanc;
+  &:hover,
+  &:focus {
+    background: $gris-perle;
+    color: $noir;
+    outline: none;
+  }
+}
+
+.button-green {
+  @include button-base;
+  background: $vert;
+  color: $blanc;
+  &:hover,
+  &:focus {
+    background: darken($vert, 10%);
+    color: $blanc;
+    outline: none;
+  }
+}
+
+.button-brown {
+  @include button-base;
+  background: $brun-boise;
+  color: $blanc;
+  &:hover,
+  &:focus {
+    background: darken($brun-boise, 10%);
+    color: $blanc;
+    outline: none;
+  }
+}
+
+.button-red {
+  @include button-base;
+  background: $rouge;
+  color: $blanc;
+  &:hover,
+  &:focus {
+    background: darken($rouge, 10%);
+    color: $blanc;
+    outline: none;
+  }
+}

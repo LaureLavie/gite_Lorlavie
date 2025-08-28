@@ -1,37 +1,9 @@
-$noir: #000000;
-$blanc: #ffffff;
-$gris-perle: #b7b7a4;
-$brun-boise: #7a5c43;
-$radius: 30px;
-$shadow: 4px 4px 0 $gris-perle;
-$font-main: "Montserrat", Arial, sans-serif;
-$font-title: "Allura", cursive;
+@import "styles/variables";
+@import "styles/mixins";
+@import "styles/button";
+@import "styles/base";
 
-// Mixins
-@mixin button-base {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 0 24px;
-  border-radius: $radius;
-  font-family: $font-main;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  box-shadow: $shadow;
-}
-
-body {
-  background: $noir;
-  color: $blanc;
-  font-family: $font-main;
-  min-height: 100vh;
-}
-
+// Style spécifique login
 .login-container {
   display: flex;
   flex-direction: column;
@@ -93,19 +65,6 @@ h1 {
   background: $blanc;
   color: $brun-boise;
   font-weight: 500;
-}
-
-.button-dark {
-  @include button-base;
-  margin-top: 2rem;
-  background: $brun-boise;
-  color: $blanc;
-  &:hover,
-  &:focus {
-    background: $gris-perle;
-    color: $noir;
-    outline: none;
-  }
 }
 
 .vache {

@@ -1,0 +1,17 @@
+@mixin button-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  width: 340px;
+  padding: 0 24px;
+  border-radius: $radius;
+  font-family: $font-main;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: $shadow;
+}

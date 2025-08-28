@@ -1,9 +1,9 @@
-$noir: #000000;
-$blanc: #ffffff;
-$gris-perle: #b7b7a4;
-$radius: 30px;
-$font-main: "Montserrat", Arial, sans-serif;
+@import "styles/variables";
+@import "styles/mixins";
+@import "styles/button";
+@import "styles/base";
 
+// Style spécifique navbar
 .navbar {
   position: fixed;
   top: 0;
@@ -13,14 +13,14 @@ $font-main: "Montserrat", Arial, sans-serif;
   background: $noir;
   display: flex;
   align-items: center;
+  justify-items: center;
   justify-content: space-between;
-  margin: 1rem;
   padding: 0 1.2rem;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba($gris-perle, 0.08);
 
   &__logo img {
-    height: 60px;
+    height: 40px;
     width: auto;
     display: block;
   }
@@ -61,12 +61,12 @@ $font-main: "Montserrat", Arial, sans-serif;
     position: fixed;
     top: 64px;
     left: 0;
-    width: 100vw;
+    width: 90vw;
     background: $noir;
     box-shadow: 0 2px 8px rgba($gris-perle, 0.08);
     display: none;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: space-between;
     padding: 1.5rem 1.2rem;
     ul {
       list-style: none;

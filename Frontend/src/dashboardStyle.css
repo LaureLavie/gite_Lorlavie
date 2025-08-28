@@ -1,36 +1,9 @@
-body {
-  background: #000000;
-  color: #ffffff;
-  font-family: "Montserrat", Arial, sans-serif;
-  min-height: 100vh; }
-
-nav .logo {
-  filter: brightness(1.2); }
-
-.vache {
-  display: flex;
-  align-items: center;
-  justify-content: center; }
-
-h1 {
-  font-family: "Allura", cursive;
-  color: #7a5c43;
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center; }
-
-.dashboard-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
-
 .button-dark {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 44px;
+  width: 340px;
   padding: 0 24px;
   border-radius: 30px;
   font-family: "Montserrat", Arial, sans-serif;
@@ -49,6 +22,34 @@ h1 {
     color: #000000;
     outline: none; }
 
+body {
+  background: #000000;
+  color: #ffffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  min-height: 90vh; }
+
+nav .logo {
+  filter: brightness(1.2); }
+
+.vache {
+  width: 120px;
+  margin-bottom: 1rem;
+  filter: brightness(1.2); }
+
+h1 {
+  font-family: "Allura", cursive;
+  color: #7a5c43;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center; }
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
 @media (max-width: 500px) {
   .logo {
     width: 140px; }
@@ -56,7 +57,7 @@ h1 {
   .vache {
     width: 90px; }
 
-  .login-form {
+  .dashboard-container {
     max-width: 100%; } }
 
 /*# sourceMappingURL=dashboardStyle.css.map */

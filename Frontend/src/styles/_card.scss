@@ -1,0 +1,111 @@
+@import "variables";
+@import "mixins";
+
+.card {
+  background: $blanc;
+  border-radius: 32px;
+  box-shadow: 6px 6px 0 $gris-perle;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  margin: 2rem auto;
+  max-width: 370px;
+  min-height: 120px;
+  position: relative;
+  font-family: $font-main;
+  color: $noir;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  &--brown {
+    background: $brun-boise;
+    color: $blanc;
+    .card__badge {
+      background: $gris-perle;
+      color: $noir;
+    }
+    .card__content {
+      color: $blanc;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $gris-perle;
+    color: $noir;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 18px;
+    padding: 0.4rem 2rem;
+    box-shadow: 2px 2px 0 $gris-perle;
+    text-align: center;
+    min-width: 180px;
+    z-index: 2;
+  }
+
+  &__content {
+    margin-top: 1.8rem;
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: $noir;
+    .card__row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      font-weight: 400;
+      strong {
+        font-weight: 700;
+      }
+    }
+    .card__notes {
+      margin-top: 0.7rem;
+      font-size: 1rem;
+      font-style: $font-main;
+    }
+  }
+
+  &__stars {
+    margin: 1rem auto 0 auto;
+    text-align: center;
+    font-size: 1.5rem;
+    color: $brun-boise;
+    letter-spacing: 0.2rem;
+  }
+
+  &__icons {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    display: flex;
+    gap: 0.7rem;
+    font-size: 1.3rem;
+    color: $brun-boise;
+    cursor: pointer;
+    svg,
+    i {
+      vertical-align: middle;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .card {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    &__badge {
+      min-width: 120px;
+      font-size: 1rem;
+      padding: 0.3rem 1.2rem;
+    }
+    &__icons {
+      top: 0.7rem;
+      right: 0.7rem;
+      font-size: 1.1rem;
+    }
+  }
+}
