@@ -14,6 +14,19 @@
   }
 }
 
+.button-white {
+  @include button-base;
+  margin-top: 2rem;
+  background: $gris-perle;
+  color: $noir;
+  &:hover,
+  &focus {
+    background: darken($gris-perle, 20%);
+    color: $blanc;
+    outline: none;
+  }
+}
+
 .button-green {
   @include button-base;
   background: $vert;
@@ -48,4 +61,14 @@
     color: $blanc;
     outline: none;
   }
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }

@@ -3,28 +3,22 @@
 @import "styles/button";
 @import "styles/base";
 @import "styles/card";
-
-h1 {
-  font-family: $font-title;
-  color: $brun-boise;
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 2.5rem;
-  text-align: center;
-}
+@import "styles/responsive";
+@import "styles/navbar";
+@import "styles/footer";
 
 .card {
   background: $noir;
   box-shadow: none;
 }
 
-.reservation-form {
+.modification-form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   gap: 1.5rem;
-  width: 90%;
+  width: 80vw;
   margin-top: 1.2rem;
 }
 
@@ -36,7 +30,7 @@ label {
 }
 
 input[type="date"] {
-  width: 100%;
+  width: 90%;
   padding: 0.7rem 1rem;
   border-radius: $radius;
   border: none;
@@ -69,6 +63,7 @@ input[type="date"] {
 .number-night {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 2rem;
   label {
     min-width: 160px;
@@ -122,7 +117,7 @@ input[type="date"] {
 }
 
 .button-container {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -138,41 +133,38 @@ input[type="date"] {
   filter: brightness(1.2);
 }
 
-@media (max-width: 500px) {
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+.tarif-input,
+.option-nom,
+.option-tarif,
+.option-cond {
+  background: $gris-perle;
+  border: 2px solid $brun-boise;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-family: $font-main;
+  font-size: 1rem;
+  color: $noir;
+  margin-right: 0.5rem;
+  margin-bottom: 0.3rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 1px 1px 0 $gris-perle;
+  &:focus {
+    border-color: $vert;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($vert, 0.15);
   }
-  .card {
-    margin-bottom: 1.2rem;
-  }
-  .reservation-form {
-    gap: 1rem;
-    label {
-      font-size: 1rem;
-    }
-    .number-person,
-    .number-night {
-      gap: 0.7rem;
-      label {
-        min-width: 110px;
-        font-size: 0.95rem;
-      }
-      button {
-        width: 28px;
-        height: 28px;
-        font-size: 1.1rem;
-      }
-      span {
-        font-size: 1.1rem;
-        min-width: 22px;
-      }
-    }
-    .amount-final span {
-      font-size: 1.2rem;
-    }
-  }
-  .vache {
-    width: 80px;
-  }
+}
+
+.tarif-row,
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  font-weight: 500;
+  color: $brun-boise;
+  margin-right: 0.5rem;
 }

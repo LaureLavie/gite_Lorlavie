@@ -6,7 +6,7 @@
   border-radius: 32px;
   box-shadow: 6px 6px 0 $gris-perle;
   padding: 2rem 1.5rem 1.5rem 1.5rem;
-  margin: 2rem auto;
+  margin: 3rem;
   max-width: 370px;
   min-height: 120px;
   position: relative;
@@ -14,7 +14,21 @@
   color: $noir;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
+
+  &--white {
+    background: $gris-perle;
+    color: $noir;
+    box-shadow: 8px 8px 0 $brun-boise;
+    .card__badge {
+      background: $brun-boise;
+      color: $blanc;
+    }
+    .card__content {
+      color: $noir;
+    }
+  }
 
   &--brown {
     background: $brun-boise;
@@ -79,16 +93,19 @@
 
   &__icons {
     position: absolute;
-    top: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    top: 1.1rem;
     right: 1.2rem;
     display: flex;
-    gap: 0.7rem;
-    font-size: 1.3rem;
-    color: $brun-boise;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+    color: $noir;
     cursor: pointer;
     svg,
     i {
-      vertical-align: middle;
+      vertical-align: start;
+      color: $noir;
     }
   }
 }

@@ -1,0 +1,182 @@
+@import "styles/variables";
+@import "styles/mixins";
+@import "styles/button";
+@import "styles/base";
+@import "styles/card";
+@import "styles/responsive";
+@import "styles/navbar";
+@import "styles/footer";
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 400px;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  color: $blanc;
+}
+
+.calendar-arrow {
+  background: $brun-boise;
+  color: $noir;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 $gris-perle;
+  transition: background 0.2s;
+  &:hover {
+    background: $gris-perle;
+    color: $noir;
+  }
+}
+
+.calendar-month {
+  background: $brun-boise;
+  color: $blanc;
+  font-weight: normal;
+  font-size: 1.2rem;
+  border-radius: 18px;
+  padding: 0.4rem 2rem;
+  box-shadow: 2px 2px 0 $gris-perle;
+  text-align: center;
+  min-width: 180px;
+}
+
+.calendar-grid {
+  width: 100%;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  color: $brun-boise;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.calendar-dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4rem;
+}
+
+.calendar-date {
+  background: $noir;
+  color: $blanc;
+  border-radius: 10px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 $noir;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  border: 2px solid transparent;
+  user-select: none;
+
+  &.selected {
+    border: 2px solid $vert;
+  }
+  &.reserve {
+    background: $rouge;
+    color: $blanc;
+  }
+  &.dispo {
+    background: $vert;
+    color: $blanc;
+  }
+  &.ferme {
+    background: #b7b76a;
+    color: $noir;
+  }
+}
+
+.calendar-status {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1.2rem;
+  label {
+    color: $blanc;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+    display: block;
+  }
+  .status-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .status-btn.active {
+    background: $gris-perle;
+    color: $noir;
+    font-weight: bold;
+  }
+  .status-btn {
+    background: none;
+    border: none;
+    color: $blanc;
+    font-size: 1.1rem;
+    font-family: $font-main;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.2rem 0.7rem;
+    border-radius: 12px;
+    transition: background 0.2s;
+    &:hover {
+      background: $gris-perle;
+      color: $noir;
+    }
+  }
+  .status-flag {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    margin-right: 0.2rem;
+    &.status-reserve {
+      background: $rouge;
+    }
+    &.status-dispo {
+      background: $vert;
+    }
+    &.status-ferme {
+      background: #b7b76a;
+    }
+  }
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}

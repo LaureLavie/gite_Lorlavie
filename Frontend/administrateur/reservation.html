@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Réservations</title>
     <link rel="stylesheet" href="../src/reservationStyle.css" />
-    <link rel="stylesheet" href="../src/navbarStyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <script src="../script.js" defer></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
@@ -42,15 +45,44 @@
     </div>
 
     <div class="button-container">
-      <button class="button-green">Confirmer la réservation</button>
-      <button class="button-brown">Modifier la réservation</button>
-      <button class="button-red">Annuler la réservation</button>
+      <a class="button-red" href="modificationReservation.html">Annuler</a>
+      <a class="button-brown" href="modificationReservation.html">Modifier</a>
+      <a class="button-green" href="modificationReservation.html">Confirmer</a>
     </div>
 
+    <div class="card card--white">
+      <div class="card__badge">Wayne Bruce</div>
+      <div class="card__icons">
+        <a href="#" class="icon-modif" title="Modifier">
+          <i class="fa fa-pen"></i>
+        </a>
+        <a href="#" class="icon-mail" title="Envoyer un mail">
+          <i class="fa fa-envelope"></i>
+        </a>
+      </div>
+      <div class="card__content">
+        <div class="card__row">
+          <span>Date d'arrivée:</span> <strong>12/01/2026</strong>
+        </div>
+        <div class="card__row">
+          <span>Nombre de nuitées:</span> <strong>1</strong>
+        </div>
+        <div class="card__row">
+          <span>Nombre de personnes:</span> <strong>6</strong>
+        </div>
+        <div class="card__row">
+          <span>Montant total:</span> <strong>380 €</strong>
+        </div>
+        <div class="card__row">
+          <span>Mode de Paiement :</span> <strong> Espèce </strong>
+        </div>
+      </div>
+    </div>
     <img
       src="../img/dessin marmotte blanc.png"
-      alt="Illustration de marmottes"
+      alt="Illustration de marmotte"
       class="marmotte"
     />
+    <div id="footer"></div>
   </body>
 </html>

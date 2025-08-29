@@ -1,13 +1,10 @@
-@import "styles/variables";
-@import "styles/mixins";
-@import "styles/button";
-@import "styles/base";
+@import "variables";
+@import "base";
+@import "responsive";
 
-// Style spécifique navbar
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
   width: 90vw;
   height: 64px;
   background: $noir;
@@ -15,7 +12,7 @@
   align-items: center;
   justify-items: center;
   justify-content: space-between;
-  padding: 0 1.2rem;
+  padding: 1rem 1rem;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba($gris-perle, 0.08);
 
@@ -94,25 +91,4 @@
 
 body {
   padding-top: 64px;
-}
-
-@media (max-width: 500px) {
-  .navbar {
-    height: 54px;
-    padding: 0 0.7rem;
-    &__logo img {
-      height: 32px;
-    }
-    &__burger span {
-      width: 22px;
-      height: 3px;
-    }
-    &__menu {
-      top: 54px;
-      padding: 1rem 0.7rem;
-    }
-  }
-  body {
-    padding-top: 54px;
-  }
 }

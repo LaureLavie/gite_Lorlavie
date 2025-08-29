@@ -3,35 +3,13 @@
 @import "styles/button";
 @import "styles/base";
 @import "styles/card";
-
-h1 {
-  font-family: $font-title;
-  color: $brun-boise;
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
-  width: 100%;
-  gap: 1rem;
-}
+@import "styles/responsive";
+@import "styles/navbar";
+@import "styles/footer";
 
 .marmotte {
   display: block;
   margin: 2rem auto 0 auto;
   width: 120px;
   filter: brightness(1.2);
-}
-
-@media (max-width: 500px) {
-  .marmotte {
-    width: 80px;
-  }
 }

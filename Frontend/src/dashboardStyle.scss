@@ -2,42 +2,13 @@
 @import "styles/mixins";
 @import "styles/button";
 @import "styles/base";
-
-// Style spécifique dashboard
-nav .logo {
-  filter: brightness(1.2);
-}
-
-.vache {
-  width: 120px;
-  margin-bottom: 1rem;
-  filter: brightness(1.2);
-}
-
-h1 {
-  font-family: $font-title;
-  color: $brun-boise;
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
-}
+@import "styles/responsive";
+@import "styles/navbar";
+@import "styles/footer";
 
 .dashboard-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-@media (max-width: 500px) {
-  .logo {
-    width: 140px;
-  }
-  .vache {
-    width: 90px;
-  }
-  .dashboard-container {
-    max-width: 100%;
-  }
 }
