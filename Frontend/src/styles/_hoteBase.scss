@@ -1,8 +1,8 @@
 @import "variables";
 
 body {
-  background: $noir;
-  color: $blanc;
+  background: $gris-perle;
+  color: $noir;
   font-family: $font-main;
   min-height: 90vh;
   width: 90%;
@@ -12,17 +12,19 @@ body {
 
 h1 {
   font-family: $font-title;
-  color: $brun-boise;
+  color: $noir;
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 1rem;
   text-align: center;
 }
 
-.img_bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+p {
+  font-family: $font-main;
+  color: $noir;
+  font-size: 1rem;
+  font-weight: normal;
+  text-align: center;
 }
 
 .logo {
@@ -38,6 +40,12 @@ h1 {
 }
 
 .marmotte {
+  width: 30%;
+  margin-bottom: 2rem;
+  filter: brightness(1.2);
+}
+
+.montagne {
   width: 30%;
   margin-bottom: 2rem;
   filter: brightness(1.2);

@@ -1,0 +1,163 @@
+@import "../styles/variables";
+@import "../styles/mixins";
+@import "../styles/button";
+@import "../styles/base";
+@import "../styles/card";
+@import "../styles/responsive";
+@import "../styles/navbar";
+@import "../styles/footer";
+
+.card {
+  background: $blanc;
+  box-shadow: none;
+}
+
+.modification-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 80vw;
+  margin-top: 1.2rem;
+}
+
+label {
+  font-weight: 600;
+  color: $noir;
+  display: block;
+  font-size: 1rem;
+}
+
+input[type="date"] {
+  width: 90%;
+  padding: 0.7rem 1rem;
+  border-radius: $radius;
+  border: none;
+  font-family: $font-main;
+  font-size: 1rem;
+  background: $gris-perle;
+  color: $noir;
+}
+
+.type-payment {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  label {
+    font-weight: 500;
+    color: $blanc;
+    margin-bottom: 0;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  input[type="radio"] {
+    accent-color: $brun-boise;
+    margin-right: 0.2rem;
+  }
+}
+
+.number-person,
+.number-night {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  label {
+    min-width: 160px;
+    font-weight: 600;
+    color: $blanc;
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+  button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: $brun-boise;
+    color: $blanc;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 $gris-perle;
+    transition: background 0.2s;
+    &:hover {
+      background: $gris-perle;
+      color: $noir;
+    }
+  }
+  span {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: $blanc;
+    min-width: 28px;
+    text-align: center;
+    display: inline-block;
+  }
+}
+
+.amount-final {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  label {
+    font-weight: 600;
+    color: $blanc;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+  }
+  span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: $vert;
+  }
+}
+
+.button-container {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.tarif-input,
+.option-nom,
+.option-tarif,
+.option-cond {
+  background: $gris-perle;
+  border: 2px solid $brun-boise;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-family: $font-main;
+  font-size: 1rem;
+  color: $noir;
+  margin-right: 0.5rem;
+  margin-bottom: 0.3rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 1px 1px 0 $gris-perle;
+  &:focus {
+    border-color: $vert;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($vert, 0.15);
+  }
+}
+
+.tarif-row,
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  font-weight: 500;
+  color: $brun-boise;
+  margin-right: 0.5rem;
+}

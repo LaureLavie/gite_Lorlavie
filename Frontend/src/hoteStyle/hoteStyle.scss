@@ -1,0 +1,49 @@
+@import "../styles/hoteBase";
+@import "../styles/hoteNavbar";
+@import "../styles/hoteFooter";
+@import "../styles/responsive";
+@import "../styles/variables";
+@import "../styles/button";
+@import "../styles/card";
+@import "../styles/mixins";
+
+body {
+  background: $gris-perle !important;
+  color: $noir !important;
+  font-family: $font-main !important;
+}
+
+h1 {
+  font-family: $font-title !important;
+  color: $noir !important;
+}
+
+.img_bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 50%;
+  margin-bottom: 2rem;
+  filter: brightness(1.2);
+}
+
+.vache {
+  width: 40%;
+  margin-top: 2rem;
+  filter: brightness(1.2);
+}
+
+.marmotte {
+  width: 30%;
+  margin-bottom: 2rem;
+  filter: brightness(1.2);
+}
+
+.montagne {
+  width: 30%;
+  margin-bottom: 2rem;
+  filter: brightness(1.2);
+}

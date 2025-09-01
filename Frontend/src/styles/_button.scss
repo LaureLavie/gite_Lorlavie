@@ -16,7 +16,6 @@
 
 .button-white {
   @include button-base;
-  margin-top: 2rem;
   background: $gris-perle;
   color: $noir;
   &:hover,
@@ -58,6 +57,18 @@
   &:hover,
   &:focus {
     background: darken($rouge, 10%);
+    color: $blanc;
+    outline: none;
+  }
+}
+
+.button-grey {
+  @include button-base;
+  background: $gris;
+  color: $blanc;
+  &:hover,
+  &focus {
+    background: darken($gris, 20%);
     color: $blanc;
     outline: none;
   }

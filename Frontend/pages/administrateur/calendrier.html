@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendrier</title>
+    <link rel="stylesheet" href="../../src/adminStyle/calendrierStyle.css" />
+    <script src="../../script.js" defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <h1>Calendrier</h1>
+
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button class="calendar-arrow" id="prev-month">&#60;</button>
+        <div class="calendar-month" id="calendar-month">Janvier 2026</div>
+        <button class="calendar-arrow" id="next-month">&#62;</button>
+      </div>
+      <div class="calendar-grid">
+        <div class="calendar-days">
+          <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span
+          ><span>S</span><span>D</span>
+        </div>
+        <div class="calendar-dates" id="calendar-dates"></div>
+      </div>
+      <div class="calendar-status">
+        <label>Définir le statut des dates</label>
+        <div class="status-options">
+          <button class="status-btn status-reserve" data-status="reserve">
+            <span class="status-flag status-reserve"></span> Réservé
+          </button>
+          <button class="status-btn status-dispo" data-status="dispo">
+            <span class="status-flag status-dispo"></span> Disponible
+          </button>
+          <button class="status-btn status-ferme" data-status="ferme">
+            <span class="status-flag status-ferme"></span> Fermé
+          </button>
+        </div>
+      </div>
+      <div class="button-container">
+        <button class="button-brown">Annuler</button>
+        <button class="button-green">Valider</button>
+      </div>
+    </div>
+    <div id="footer"></div>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+@import "variables";
+@import "hoteBase";
+@import "responsive";
+
+.hoteNavbar {
+  position: fixed;
+  top: 0;
+  width: 90%;
+  height: 50px;
+  background: $gris-perle;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  z-index: 1000;
+  box-shadow: $shadow;
+  border-radius: $radius;
+
+  &__logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+  }
+
+  &__burger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px;
+    outline: none;
+    span {
+      display: block;
+      width: 28px;
+      height: 4px;
+      background: $noir;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    &.open span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+    &.open span:nth-child(2) {
+      opacity: 0;
+    }
+    &.open span:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+    &:hover span {
+      background: $noir;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 90%;
+    background: $gris-perle;
+    box-shadow: 0 2px 2px 2px $noir;
+    border-radius: $radius;
+    display: none;
+    flex-direction: column;
+    align-items: space-between;
+    padding: 1.5rem 1.2rem;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      li {
+        margin-bottom: 1.2rem;
+        a {
+          color: $brun-boise;
+          font-family: $font-main;
+          font-size: 1.2rem;
+          text-decoration: none;
+          &:hover {
+            color: $blanc;
+          }
+        }
+      }
+    }
+    &.open {
+      display: flex;
+    }
+  }
+}
+
+body {
+  padding-top: 50px;
+}

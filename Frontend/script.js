@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const placeholder = document.getElementById("navbar");
   if (placeholder) {
     // On récupère le HTML de la navbar
-    fetch("../composants/navbar.html")
+    fetch("../../composants/navbar.html")
       .then((response) => response.text())
       .then((html) => {
         placeholder.innerHTML = html;
@@ -24,10 +24,44 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const footer = document.getElementById("footer");
   if (footer) {
-    fetch("../composants/footer.html")
+    fetch("../../composants/footer.html")
       .then((res) => res.text())
       .then((html) => {
         footer.innerHTML = html;
+      });
+  }
+});
+
+// Au chargement de la page, on importe la hoteNavbar et active le menu burger
+document.addEventListener("DOMContentLoaded", () => {
+  const placeholder = document.getElementById("hoteNavbar");
+  if (placeholder) {
+    // On récupère le HTML de la navbar
+    fetch("../../composants/hoteNavbar.html")
+      .then((response) => response.text())
+      .then((html) => {
+        placeholder.innerHTML = html;
+
+        // On active l'ouverture/fermeture du menu burger Hote
+        const hoteBurgerBtn = document.getElementById("hoteNavbar-burger");
+        const hoteNavbarMenu = document.getElementById("hoteNavbar-menu");
+        if (hoteBurgerBtn && hoteNavbarMenu) {
+          hoteBurgerBtn.addEventListener("click", () => {
+            hoteBurgerBtn.classList.toggle("open");
+            hoteNavbarMenu.classList.toggle("open");
+          });
+        }
+      });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hoteFooter = document.getElementById("hoteFooter");
+  if (hoteFooter) {
+    fetch("../../composants/hoteFooter.html")
+      .then((res) => res.text())
+      .then((html) => {
+        hoteFooter.innerHTML = html;
       });
   }
 });
