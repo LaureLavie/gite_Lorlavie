@@ -1,6 +1,7 @@
 @import "variables";
 
 body {
+  box-sizing: border-box;
   background: $gris-perle;
   color: $noir;
   font-family: $font-main;

@@ -3,12 +3,13 @@
 
 .card {
   background: $blanc;
-  border-radius: 32px;
-  box-shadow: 6px 6px 0 $gris-perle;
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  border-radius: $radius;
+  box-shadow: 6px 6px 0 $noir;
+  padding: 2rem;
   margin: 3rem;
+  gap: 1.5rem;
+  width: 100%;
   max-width: 370px;
-  min-height: 120px;
   position: relative;
   font-family: $font-main;
   color: $noir;
@@ -38,7 +39,25 @@
       color: $noir;
     }
     .card__content {
-      color: $blanc;
+      color: $noir;
+    }
+  }
+
+  &--black {
+    background: $noir;
+    color: $gris-perle;
+    .card__badge {
+      background: $brun-boise;
+      color: $noir;
+      font-weight: normal;
+    }
+    .card__row {
+      p {
+        color: $blanc;
+      }
+    }
+    .card__stars {
+      color: $brun-boise;
     }
   }
 
@@ -106,23 +125,6 @@
     i {
       vertical-align: start;
       color: $noir;
-    }
-  }
-}
-
-@media (max-width: 500px) {
-  .card {
-    max-width: 98vw;
-    padding: 1.2rem 0.5rem 1rem 0.5rem;
-    &__badge {
-      min-width: 120px;
-      font-size: 1rem;
-      padding: 0.3rem 1.2rem;
-    }
-    &__icons {
-      top: 0.7rem;
-      right: 0.7rem;
-      font-size: 1.1rem;
     }
   }
 }

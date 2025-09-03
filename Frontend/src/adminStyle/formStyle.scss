@@ -1,36 +1,63 @@
-@import "../styles/variables";
-@import "../styles/mixins";
-@import "../styles/button";
 @import "../styles/base";
+@import "../styles/button";
 @import "../styles/card";
-@import "../styles/responsive";
-@import "../styles/navbar";
 @import "../styles/footer";
+@import "../styles/mixins";
+@import "../styles/navbar";
+@import "../styles/responsive";
+@import "../styles/variables";
 
-.card {
-  background: $blanc;
-  box-shadow: none;
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 2rem;
+  &:hover {
+    background: $gris-perle;
+    color: $noir;
+  }
 }
 
 .modification-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  width: 80vw;
+  gap: 2rem;
+  width: 80%;
   margin-top: 1.2rem;
 }
 
 label {
-  font-weight: 600;
+  font-weight: bold;
   color: $noir;
   display: block;
   font-size: 1rem;
 }
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  border: none;
+  font-family: $font-main;
+  font-size: 1.2rem;
+  color: $noir;
+}
 
 input[type="date"] {
-  width: 90%;
+  width: 100%;
   padding: 0.7rem 1rem;
   border-radius: $radius;
   border: none;
@@ -45,7 +72,7 @@ input[type="date"] {
   align-items: center;
   gap: 2rem;
   label {
-    font-weight: 500;
+    font-weight: bold;
     color: $blanc;
     margin-bottom: 0;
     font-size: 1rem;
@@ -116,16 +143,6 @@ input[type="date"] {
   }
 }
 
-.button-container {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  gap: 1rem;
-}
-
 .tarif-input,
 .option-nom,
 .option-tarif,
@@ -140,7 +157,7 @@ input[type="date"] {
   margin-right: 0.5rem;
   margin-bottom: 0.3rem;
   transition: border-color 0.2s, box-shadow 0.2s;
-  box-shadow: 1px 1px 0 $gris-perle;
+  box-shadow: 0 0 0 2px rgba($vert, 0.15);
   &:focus {
     border-color: $vert;
     outline: none;
@@ -154,10 +171,4 @@ input[type="date"] {
   align-items: center;
   gap: 0.7rem;
   margin-bottom: 0.5rem;
-}
-
-label {
-  font-weight: 500;
-  color: $brun-boise;
-  margin-right: 0.5rem;
 }

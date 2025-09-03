@@ -6,7 +6,7 @@
   position: fixed;
   top: 0;
   width: 90%;
-  height: 50px;
+  height: 3rem;
   background: $gris-perle;
   display: flex;
   align-items: center;
@@ -18,8 +18,7 @@
   border-radius: $radius;
 
   &__logo img {
-    height: 50px;
-    width: auto;
+    width: 15%;
     display: block;
   }
 
@@ -57,7 +56,7 @@
 
   &__menu {
     position: fixed;
-    top: 50px;
+    top: 3rem;
     left: 0;
     width: 90%;
     background: $gris-perle;
@@ -75,12 +74,13 @@
       li {
         margin-bottom: 1.2rem;
         a {
-          color: $brun-boise;
+          color: $blanc;
+          font-weight: bold;
           font-family: $font-main;
           font-size: 1.2rem;
           text-decoration: none;
           &:hover {
-            color: $blanc;
+            color: $brun-boise;
           }
         }
       }

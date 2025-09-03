@@ -1,13 +1,14 @@
 @import "variables";
 
 body {
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
   background: $noir;
   color: $blanc;
   font-family: $font-main;
   min-height: 90vh;
-  width: 90%;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
 }
 
 h1 {
@@ -16,6 +17,13 @@ h1 {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  text-align: center;
+}
+
+h2 {
+  font-family: $font-title;
+  color: $brun-boise;
+  font-size: 2rem;
   text-align: center;
 }
 

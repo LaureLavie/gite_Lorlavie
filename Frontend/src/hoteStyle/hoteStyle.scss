@@ -8,14 +8,248 @@
 @import "../styles/mixins";
 
 body {
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
   background: $gris-perle !important;
-  color: $noir !important;
-  font-family: $font-main !important;
+  color: $noir;
+  font-family: $font-main;
 }
 
 h1 {
-  font-family: $font-title !important;
-  color: $noir !important;
+  font-family: $font-title;
+  color: $noir;
+}
+h2 {
+  font-family: $font-title;
+  color: $brun-boise;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.slide-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  max-width: 90%;
+  overflow: hidden;
+  display: flex;
+  background: $gris-perle;
+  border-radius: $radius;
+}
+
+.slide {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.controls {
+  position: absoltute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 5px;
+  background-color: $brun-boise;
+  color: $noir;
+  cursor: pointer;
+}
+
+.prev {
+  left: 1rem;
+}
+
+.next {
+  right: 1rem;
+}
+
+.slide-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  accent-color: $brun-boise;
+}
+
+.rgpd-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+  background: none;
+  gap: 1rem;
+  margin: 1rem 0;
+  p {
+    font-size: 0.8rem;
+    text-align: left;
+    color: $noir;
+    margin: 0;
+  }
+}
+.info-box {
+  padding: 1rem;
+  border: 1px solid $brun-boise;
+  border-radius: $radius;
+  background: $blanc;
+  margin: 1rem 0;
+
+  p {
+    font-size: 0.8rem;
+    text-align: left;
+    color: $noir;
+  }
+}
+
+input[type="date"] {
+  width: 90%;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: $radius;
+  font-family: $font-main;
+  font-size: 1rem;
+  background: $blanc;
+  color: $noir;
+}
+
+.number-person,
+.number-night {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 2rem;
+  label {
+    min-width: 160px;
+    font-weight: bold;
+    color: $blanc;
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+  button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: $brun-boise;
+    color: $blanc;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: $shadow;
+    transition: background 0.2s;
+    &:hover {
+      background: $gris;
+      color: $noir;
+    }
+  }
+  span {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: $brun-boise;
+    min-width: 28px;
+    text-align: center;
+    display: inline-block;
+  }
+}
+
+.amount-final {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  label {
+    font-weight: 600;
+    color: $blanc;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+  }
+  span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: $noir;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+label {
+  font-weight: bold;
+  color: $noir;
+  display: block;
+  font-size: 1rem;
+}
+
+.modification-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid $gris;
+  font-family: $font-main;
+  font-size: 1.1rem;
+  color: $noir;
+  margin-bottom: 0.5rem;
+  &::placeholder {
+    color: $noir;
+    opacity: 0.8;
+  }
+}
+.marmotte-icon {
+  position: relative;
+  width: 30%;
+  top: 0;
+  right: 0;
+  filter: brightness(1.2);
 }
 
 .img_bottom {
@@ -43,7 +277,7 @@ h1 {
 }
 
 .montagne {
-  width: 30%;
-  margin-bottom: 2rem;
+  width: 40%;
+  margin-bottom: 1rem;
   filter: brightness(1.2);
 }

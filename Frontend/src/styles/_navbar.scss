@@ -6,7 +6,7 @@
   position: fixed;
   top: 0;
   width: 90vw;
-  height: 64px;
+  height: 3rem;
   background: $noir;
   display: flex;
   align-items: center;
@@ -17,8 +17,7 @@
   box-shadow: 0 2px 8px rgba($gris-perle, 0.08);
 
   &__logo img {
-    height: 40px;
-    width: auto;
+    width: 15%;
     display: block;
   }
 
@@ -56,7 +55,7 @@
 
   &__menu {
     position: fixed;
-    top: 64px;
+    top: 3rem;
     left: 0;
     width: 90vw;
     background: $noir;

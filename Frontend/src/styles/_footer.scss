@@ -5,7 +5,7 @@
 .footer {
   background: $noir;
   color: $blanc;
-  width: 90vw;
+  width: 100%;
   font-family: $font-main;
   box-shadow: 0 -2px 8px rgba($gris-perle, 0.08);
   gap: 2rem;
@@ -17,6 +17,19 @@
     align-items: center;
     text-align: center;
     gap: 2rem;
+  }
+  &__socials {
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    .footer__icon {
+      color: $brun-boise;
+      font-size: 1rem;
+      transition: color 0.2s;
+      &:hover {
+        color: $blanc;
+      }
+    }
   }
 
   &__logo img {
@@ -32,20 +45,6 @@
       text-decoration: none;
       margin-top: 0.5rem;
       font-weight: 500;
-    }
-  }
-
-  &__socials {
-    gap: 1.2rem;
-    display: flex;
-    justify-content: center;
-    .footer__icon {
-      color: $brun-boise;
-      font-size: 1.5rem;
-      transition: color 0.2s;
-      &:hover {
-        color: $blanc;
-      }
     }
   }
 }

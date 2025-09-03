@@ -5,7 +5,10 @@
 .footer {
   background: $gris-perle;
   color: $brun-boise;
-  width: 90vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   font-family: $font-main;
   box-shadow: 0 1px 0 $noir;
   border-radius: $radius;
@@ -17,7 +20,22 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 2rem;
+    gap: 1.1rem;
+  }
+  &__socials {
+    gap: 1.2rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    .footer__icon {
+      color: $noir;
+      font-size: 1.5rem;
+      transition: color 0.2s;
+      &:hover {
+        color: $brun-boise;
+      }
+    }
   }
 
   &__logo img {
@@ -33,20 +51,6 @@
       text-decoration: none;
       margin-top: 0.5rem;
       font-weight: 500;
-    }
-  }
-
-  &__socials {
-    gap: 1.2rem;
-    display: flex;
-    justify-content: center;
-    .footer__icon {
-      color: $noir;
-      font-size: 1.5rem;
-      transition: color 0.2s;
-      &:hover {
-        color: $brun-boise;
-      }
     }
   }
 }

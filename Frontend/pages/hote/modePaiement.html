@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendrier</title>
+    <link rel="stylesheet" href="../../src/hoteStyle/hoteStyle.css" />
+    <script type="module" src="../../script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="hoteNavbar"></div>
+    <h1>Mode de Paiement</h1>
+    <div class="modification-form">
+      <form class="modification-form">
+        <input
+          type="text"
+          id="nom"
+          name="hoteNom"
+          placeholder="*Votre Nom :"
+          required
+        />
+        <input
+          type="text"
+          id="prenom"
+          name="hotePrenom"
+          placeholder="*Votre Prénom :"
+          required
+        />
+        <input
+          type="text"
+          id="adresse"
+          name="hoteAdresse"
+          placeholder="*Votre Adresse :"
+          required
+        />
+        <input
+          type="text"
+          id="codePostal"
+          name="hoteCodePostal"
+          placeholder="*Votre Code Postal :"
+          required
+        />
+        <input
+          type="text"
+          id="ville"
+          name="hoteVille"
+          placeholder="*Votre Ville :"
+          required
+        />
+        <input
+          type="text"
+          id="pays"
+          name="hotePays"
+          placeholder="*Votre Pays :"
+          required
+        />
+        <input
+          type="tel"
+          id="telephone"
+          name="hoteTelephone"
+          placeholder="*Votre Numéro de Téléphone :"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          name="hoteEmail"
+          placeholder="*Votre Email :"
+          required
+        />
+        <div class="rgpd-container">
+          <input type="checkbox" id="rgpd" name="hoteRgpd" required />
+          <p>
+            En cochant cette case, vous acceptez notre politique de
+            confidentialité. Vos données personnelles seront traitées
+            conformément à cette politique.
+          </p>
+        </div>
+      </form>
+      <div class="switch-container">
+        <img
+          src="../../img/dessin marmotte noir.png"
+          alt="Marmotte"
+          class="marmotte-icon"
+        />
+        <div class="switch-header">
+          <span class="switch-title">Mode de paiement</span>
+          <div class="switch-options">
+            <button class="switch-btn">EN LIGNE</button>
+            <button class="switch-btn">ESPÈCE</button>
+            <button class="switch-btn">CARTE</button>
+          </div>
+        </div>
+      </div>
+      <h2>Informations Importantes</h2>
+      <div class="info-box">
+        <ul>
+          <li>Pas de paiement en ligne au moment de la réservation</li>
+          <li>Le propriétaire vous communiquera les modalités de paiement.</li>
+          <li>
+            Une confirmation vous sera envoyée par mail une fois votre
+            réservation validée.
+          </li>
+        </ul>
+      </div>
+
+      <div class="button-container">
+        <button class="button-brown">Annuler</button>
+        <button class="button-green">Valider</button>
+      </div>
+    </div>
+    <div id="hoteFooter"></div>
+  </body>
+</html>
