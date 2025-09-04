@@ -19,13 +19,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-/**
- * Fonction utilitaire pour envoyer un email
- * @param {string} to - Adresse email du destinataire
- * @param {string} subject - Sujet de l'email
- * @param {string} html - Contenu HTML du message
- * @returns {Promise<void>} - Résout si l'email est envoyé, rejette sinon
- */
 export const sendMail = async (to, subject, html) => {
   try {
     // Validation basique des paramètres

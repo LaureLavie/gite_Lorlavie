@@ -7,6 +7,7 @@
 import Admin from "../models/admin.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { sendMail } from "../middlewares/mail.js"; // Assure-toi d'importer ta fonction d'envoi de mail
 
 /**
  * Inscription d'un nouvel administrateur
@@ -25,6 +26,21 @@ export const registerAdmin = async (req, res) => {
     const hash = await bcrypt.hash(motDePasse, 12);
     // Création de l'admin
     const admin = await Admin.create({ email, motDePasseHash: hash });
+
+    // Envoi de l'email de confirmation
+    const dashboardUrl =
+      "http://localhost:3000/pages/administrateur/dashboard.html";
+    const html = `
+      <h2>Bienvenue sur Gîte Lorlavie !</h2>
+      <p>Votre compte administrateur a bien été créé.</p>
+      <p><strong>Email :</strong> ${email}</p>
+      <p>Pour accéder à votre espace administrateur, cliquez sur le lien ci-dessous :</p>
+      <a href="${dashboardUrl}">Accéder au dashboard admin</a>
+      <br><br>
+      <p>Merci et bonne gestion !</p>
+    `;
+    await sendMail(email, "Confirmation d'inscription administrateur", html);
+
     // On ne retourne pas le hash
     res
       .status(201)
