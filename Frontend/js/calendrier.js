@@ -1,8 +1,8 @@
 // Génère le calendrier
-let currentMonth = 0;
+let currentMonth = 0; // Janvier (0 = janvier, 11 = décembre)
 let currentYear = 2026;
-let selectedStatus = "reserve";
-let dateStatus = {};
+let selectedStatus = "dispo"; // Statut sélectionné par défaut
+let dateStatus = {}; // Stocke le statut de chaque date (ex: "2026-01-15": "reserve")
 
 const monthNames = [
   "Janvier",
@@ -21,16 +21,13 @@ const monthNames = [
 
 export function Calendrier() {
   const calendarMonth = document.getElementById("calendar-month");
+  const calendarDates = document.getElementById("calendar-dates");
   if (!calendarMonth || !calendarDates) return; // Stop si la page n'a pas le calendrier
 
   calendarMonth.textContent = `${monthNames[currentMonth]} ${currentYear}`;
-  document.getElementById(
-    "calendar-month"
-  ).textContent = `${monthNames[currentMonth]} ${currentYear}`;
 
   const firstDay = new Date(currentYear, currentMonth, 1).getDay(); // 0=dimanche
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-  const calendarDates = document.getElementById("calendar-dates");
   calendarDates.innerHTML = "";
 
   let start = firstDay === 0 ? 6 : firstDay - 1;

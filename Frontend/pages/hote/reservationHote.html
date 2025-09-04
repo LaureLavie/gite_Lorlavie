@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendrier</title>
+    <title>Réservation</title>
     <link rel="stylesheet" href="../../src/hoteStyle/hoteStyle.css" />
     <script type="module" src="../../script.js" defer></script>
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
@@ -19,49 +19,70 @@
     <div id="hoteNavbar"></div>
     <h1>Réservation</h1>
     <div class="modification-form">
-              <form class="modification-form">
-          <div class="date-container">
-            <label for="reservation-date">Date d'arrivée:</label>
-            <input
-              type="date"
-              id="reservation-date"
-              name="reservation-date"
-              required
-            />
-            <label for="reservation-date">Date de départ:</label>
-            <input
-              type="date"
-              id="reservation-date"
-              name="reservation-date"
-              required
-            />         
-          </div>
+      <form class="modification-form" id="modification-form">
+        <div class="date-container">
+          <label for="reservation-date-arrivee">Date d'arrivée:</label>
+          <input
+            type="date"
+            id="reservation-date-arrivee"
+            name="reservation-date-arrivee"
+            required
+          />
+          <label for="reservation-date-depart">Date de départ:</label>
+          <input
+            type="date"
+            id="reservation-date-depart"
+            name="reservation-date-depart"
+            required
+          />
+        </div>
 
+        <div class="number-night">
+          <label>Nombre de nuits</label>
+          <span id="nuits">1</span>
+        </div>
+        <div class="number-person">
+          <label>Nombre de personnes</label>
+          <button type="button" id="personnes-moins">−</button>
+          <span id="personnes">1</span>
+          <button type="button" id="personnes-plus">+</button>
+        </div>
+
+        <div class="options-container">
+          <label>Options supplémentaires :</label>
+          <div class="cocher-option">
+            <input type="checkbox" id="option-menage" />
+            <label for="option-menage">Ménage 20€</label>
+          </div>
           <div class="number-person">
-            <label>Nombre de personnes</label>
-            <button type="button" onclick="changer('personnes', -1)">−</button>
-            <span id="personnes">1</span>
-            <button type="button" onclick="changer('personnes', 1)">+</button>
+            <label>Nombre de personnes supplémentaires</label>
+            <button type="button" id="sup-moins">−</button>
+            <span id="sup-personnes">0</span>
+            <button type="button" id="sup-plus">+</button>
+            <span>30€/pers</span>
           </div>
+        </div>
 
-          <div class="number-night">
-            <label>Nombre de nuits</label>
-            <button type="button" onclick="changer('nuits', -1)">−</button>
-            <span id="nuits">1</span>
-            <button type="button" onclick="changer('nuits', 1)">+</button>
-          </div>
+        <div class="amount-final">
+          <label>Montant</label>
+          <span id="montant">65€</span>
+        </div>
 
-          <div class="amount-final">
-            <label>Montant</label>
-            <span id="montant">65€</span>
-          </div>
-        </form>
-      </div>
+        <div class="message-container">
+          <label for="message">Message pour le propriétaire :</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="3"
+            placeholder="Demande particulière, question..."
+          ></textarea>
+        </div>
 
-      <div class="button-container">
-        <button class="button-brown">Annuler</button>
-        <button class="button-green">Valider</button>
-      </div>
+        <div class="button-container">
+          <button class="button-brown" type="reset">Annuler</button>
+          <button class="button-green" type="submit">Valider</button>
+        </div>
+      </form>
     </div>
     <div id="hoteFooter"></div>
   </body>

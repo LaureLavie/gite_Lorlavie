@@ -5,6 +5,7 @@ import { HoteNavbar } from "./js/hoteNavbar.js";
 import { HoteFooter } from "./js/hoteFooter.js";
 import { Carroussel } from "./js/carroussel.js";
 import { Calendrier } from "./js/calendrier.js";
+import { Reservation } from "./js/reservation.js";
 
 // Initialisation des composants au chargement de la page
 document.addEventListener("DOMContentLoaded", () => {
@@ -20,4 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
   Carroussel();
   // Calendrier
   Calendrier();
+  // Réservation
+  Reservation();
 });
