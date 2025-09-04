@@ -7,30 +7,30 @@
   top: 0;
   width: 90%;
   height: 3rem;
-  background: $gris-perle;
   display: flex;
   align-items: center;
   justify-items: center;
   justify-content: space-between;
   padding: 1rem 1rem;
   z-index: 1000;
-  box-shadow: $shadow;
-  border-radius: $radius;
 
   &__logo img {
     width: 15%;
     display: block;
+    background: $gris-perle;
+    border-radius: 50%;
   }
 
   &__burger {
-    background: none;
+    background: $gris-perle;
+    border-radius: 50%;
     border: none;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 6px;
-    padding: 8px;
+    gap: 0.3rem;
+    padding: 1rem;
     outline: none;
     span {
       display: block;

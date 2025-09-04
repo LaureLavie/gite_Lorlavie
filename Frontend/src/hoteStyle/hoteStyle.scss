@@ -27,19 +27,36 @@ h2 {
   text-align: center;
 }
 
-.slide-container {
-  position: relative;
+form {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;
+}
+
+.modification-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.slide-container {
+  position: relative;
+  aspect-ratio: 16/9;
+  box-sizing: border-box;
+  width: 100vw;
   max-width: 90%;
   overflow: hidden;
   display: flex;
+  align-items: center;
+  justify-content: center;
   background: $gris-perle;
   border-radius: $radius;
+  margin-bottom: 2rem;
 }
-
 .slide {
   display: inline-block;
   position: absolute;
@@ -48,24 +65,20 @@ h2 {
   opacity: 0;
   transition: opacity 1s;
 }
-
 .slide.active {
   opacity: 1;
 }
-
 .slide img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
-
 .controls {
   position: absoltute;
   bottom: 0;
   width: 100%;
   height: 100%;
 }
-
 .prev,
 .next {
   position: absolute;
@@ -73,64 +86,43 @@ h2 {
   transform: translateY(-50%);
   font-size: 2rem;
   font-weight: bold;
-  padding: 5px;
+  padding: 0.2rem;
   background-color: $brun-boise;
   color: $noir;
   cursor: pointer;
 }
-
 .prev {
   left: 1rem;
 }
-
 .next {
   right: 1rem;
 }
 
-.slide-progress {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  position: absolute;
-  bottom: 1rem;
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea {
   width: 100%;
+  padding: 0.8rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid $gris;
+  font-family: $font-main;
+  font-size: 1.1rem;
+  color: $noir;
+  margin-bottom: 0.5rem;
+  &::placeholder {
+    color: $noir;
+    opacity: 0.8;
+  }
 }
 
 input[type="checkbox"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  accent-color: $brun-boise;
-}
-
-.rgpd-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: none;
-  background: none;
-  gap: 1rem;
-  margin: 1rem 0;
-  p {
-    font-size: 0.8rem;
-    text-align: left;
-    color: $noir;
-    margin: 0;
-  }
-}
-.info-box {
-  padding: 1rem;
-  border: 1px solid $brun-boise;
   border-radius: $radius;
-  background: $blanc;
-  margin: 1rem 0;
-
-  p {
-    font-size: 0.8rem;
-    text-align: left;
-    color: $noir;
-  }
+  accent-color: $brun-boise;
 }
 
 input[type="date"] {
@@ -144,13 +136,130 @@ input[type="date"] {
   color: $noir;
 }
 
+.date-container,
+.message-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  label {
+    font-weight: bold;
+    color: $blanc;
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+  textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid $gris;
+    font-family: $font-main;
+    font-size: 1rem;
+    color: $noir;
+    &::placeholder {
+      color: $noir;
+      opacity: 0.8;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: $brun-boise;
+    color: $blanc;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: $shadow;
+    transition: background 0.2s;
+    &:hover {
+      background: $gris;
+      color: $noir;
+    }
+  }
+}
+
+.rgpd-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+  background: none;
+  width: 90%;
+  gap: 1rem;
+  margin: 1rem 0;
+  p {
+    font-size: 0.8rem;
+    text-align: left;
+    color: $noir;
+    margin: 0;
+  }
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 90%;
+  gap: 1rem;
+  label {
+    min-width: 160px;
+    font-weight: bold;
+    color: $blanc;
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+  .cocher-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    label {
+      min-width: 160px;
+      font-weight: bold;
+      color: $noir;
+      font-size: 1rem;
+    }
+    .number-person {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      label {
+        font-size: 1rem;
+        color: $blanc;
+      }
+    }
+  }
+
+  .info-box {
+    padding: 1rem;
+    border: 1px solid $brun-boise;
+    border-radius: $radius;
+    background: $blanc;
+    margin: 1rem 0;
+
+    p {
+      font-size: 0.8rem;
+      text-align: left;
+      color: $noir;
+    }
+  }
+}
+
 .number-person,
 .number-night {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
-  gap: 2rem;
+  gap: 0.7rem;
   label {
     min-width: 160px;
     font-weight: bold;
@@ -204,46 +313,6 @@ input[type="date"] {
   }
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-label {
-  font-weight: bold;
-  color: $noir;
-  display: block;
-  font-size: 1rem;
-}
-
-.modification-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
-}
-
-input[type="text"],
-input[type="tel"],
-input[type="email"],
-textarea {
-  width: 100%;
-  padding: 0.8rem;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid $gris;
-  font-family: $font-main;
-  font-size: 1.1rem;
-  color: $noir;
-  margin-bottom: 0.5rem;
-  &::placeholder {
-    color: $noir;
-    opacity: 0.8;
-  }
-}
 .marmotte-icon {
   position: relative;
   width: 30%;
