@@ -7,7 +7,8 @@ import mongoose from "mongoose";
  * - Validation stricte des champs
  */
 const ClientSchema = new mongoose.Schema({
-  nom: { type: String, required: true }, // Nom du client
+  name: { type: String, required: true }, // Nom du client
+  surname: { type: String, required: true }, //Prénom du client
   email: { type: String, required: true }, // Email du client
   telephone: { type: String }, // Téléphone (optionnel)
   adresseComplete: {

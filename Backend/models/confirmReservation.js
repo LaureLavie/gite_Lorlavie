@@ -6,7 +6,13 @@ import mongoose from "mongoose";
  * - Validation stricte des dates et du nombre de personnes
  * - RGPD : lien vers client, pas de données sensibles
  */
-const ReservationSchema = new mongoose.Schema({
+const confirmReservationSchema = new mongoose.Schema({
+  numero: { type: String, unique: true, required: true },
+  client: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Client",
+    required: true,
+  },
   dateArrivee: { type: Date, required: true }, // Date d'arrivée
   dateDepart: { type: Date, required: true }, // Date de départ
   nombrePersonnes: { type: Number, required: true, min: 1, max: 6 }, // Nombre de personnes (1 à 6)
@@ -16,18 +22,6 @@ const ReservationSchema = new mongoose.Schema({
     enum: ["Confirmee", "En Attente", "Annulee"],
     default: "En Attente",
   }, // Statut de la réservation
-  client: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Client",
-    required: true,
-  }, // Référence au client
-  numeroId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "ConfirmReservation",
-    required: true,
-  }, // Référence à la confirmation de réservation
-  dateCreation: { type: Date, default: Date.now }, // Date de création
-  dateModification: { type: Date }, // Date de dernière modification
 });
 
-export default mongoose.model("Reservation", ReservationSchema);
+export default mongoose.model("ConfirmReservation", confirmReservationSchema);

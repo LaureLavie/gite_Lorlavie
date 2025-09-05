@@ -6,16 +6,19 @@
 
 import Reservation from "../models/reservation.js";
 import Client from "../models/client.js";
-import { sendMail } from "../middlewares/mail.js";
+import { sendMail, htmlReceiptTemplate } from "../middlewares/mail.js";
+import ConfirmReservation from "../models/confirmReservation.js";
+import { generateNumeroReservation } from "../controllers/confirmReservationController.js";
 
 /**
  * Créer une réservation
- * - Validation des champs requis (dates, nombrePersonnes, client)
+ * - Validation des champs requis (dates, nombre de personnes, client)
  * - Vérification cohérence des dates et du nombre de personnes
  * - Création du client et de la réservation en base MongoDB
  * - Envoi d'un email de confirmation
  * - Retourne la réservation créée
  */
+
 export const createReservation = async (req, res) => {
   try {
     const { client, dateArrivee, dateDepart, nombrePersonnes, prixTotal } =
@@ -24,7 +27,8 @@ export const createReservation = async (req, res) => {
     // Validation des champs obligatoires
     if (
       !client ||
-      !client.nom ||
+      !client.name ||
+      !client.surname ||
       !client.email ||
       !client.adresseComplete ||
       !dateArrivee ||
@@ -37,43 +41,64 @@ export const createReservation = async (req, res) => {
         .json({ error: "Tous les champs requis doivent être renseignés" });
     }
 
-    // Vérification cohérence des dates
-    const debut = new Date(dateArrivee);
-    const fin = new Date(dateDepart);
-    if (isNaN(debut) || isNaN(fin) || debut >= fin) {
-      return res.status(400).json({ error: "Dates de réservation invalides" });
-    }
-
-    // Vérification du nombre de personnes
-    if (
-      typeof nombrePersonnes !== "number" ||
-      nombrePersonnes < 1 ||
-      nombrePersonnes > 6
-    ) {
-      return res
-        .status(400)
-        .json({ error: "Nombre de personnes invalide (1 à 6)" });
-    }
-
     // Création du client
     const newClient = await Client.create(client);
-
-    // Création de la réservation
+    // Création de la réservation (sans numeroId)
     const reservation = await Reservation.create({
-      ...req.body,
+      dateArrivee,
+      dateDepart,
+      nombrePersonnes,
+      prixTotal,
       client: newClient._id,
+      statut: "En Attente",
     });
 
-    // Envoi d'un email de confirmation
-    await sendMail(
-      client.email,
-      "Confirmation de votre réservation",
-      `<p>Bonjour ${client.nom},<br>Votre réservation est confirmée du ${dateArrivee} au ${dateDepart}.</p>`
-    );
+    // Création de la confirmation
+    const numero = await generateNumeroReservation();
+    const newConfirmReservation = await ConfirmReservation.create({
+      numero,
+      client: newClient._id,
+      dateArrivee,
+      dateDepart,
+      nombrePersonnes,
+      prixTotal,
+      statut: "En Attente",
+    });
 
-    res.status(201).json(reservation);
+    // Mise à jour de la réservation avec la référence à la confirmation
+    reservation.numeroId = newConfirmReservation._id;
+    await reservation.save();
+
+    // Envoi d'un email de confirmation
+    const html = htmlReceiptTemplate(newConfirmReservation);
+    await sendMail(newClient.email, "Votre confirmation de réservation", html);
+
+    res.status(201).json({
+      message: "Nouvelle Réservation. Confirmation de Réservation envoyée",
+      reservation,
+    });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error("Erreur lors de la nouvelle réservation", error);
+    res.status(500).json({
+      message: "Erreur interne du serveur",
+      error: error.message,
+    });
+  }
+};
+
+// Récupérer une réservation avec les détails de la confirmation associée
+export const getReservationWithConfirmation = async (req, res) => {
+  try {
+    const reservation = await Reservation.findById(req.params.id)
+      .populate("numeroId") // relie la réservation à la confirmation
+      .populate("client"); // pour avoir aussi les infos client
+
+    if (!reservation) {
+      return res.status(404).json({ error: "Réservation non trouvée" });
+    }
+    res.json(reservation);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -139,6 +164,23 @@ export const deleteReservation = async (req, res) => {
     if (!reservation)
       return res.status(404).json({ error: "Réservation non trouvée" });
     res.json({ message: "Réservation supprimée" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const annulerReservation = async (req, res) => {
+  try {
+    // On met à jour le statut de la réservation
+    const reservation = await Reservation.findByIdAndUpdate(
+      req.params.id,
+      { statut: "Annulee" },
+      { new: true }
+    ).populate("client");
+
+    if (!reservation) {
+      return res.status(404).json({ error: "Réservation non trouvée" });
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

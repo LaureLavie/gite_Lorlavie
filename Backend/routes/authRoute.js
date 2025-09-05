@@ -8,6 +8,10 @@
 import express from "express";
 import {
   registerAdmin,
+  activateAccount,
+  forgotPassword,
+  resetPassword,
+  logoutAdmin,
   loginAdmin,
   getAdmins,
   getAdminById,
@@ -16,18 +20,24 @@ import {
 } from "../controllers/adminController.js";
 import { verifyAdmin } from "../middlewares/auth.js";
 
-const router = express.Router();
+const authRouter = express.Router();
 
 // Inscription d'un nouvel admin (public)
-router.post("/register", registerAdmin);
+authRouter.post("/register", registerAdmin);
 
 // Connexion admin (public)
-router.post("/login", loginAdmin);
+authRouter.post("/login", loginAdmin);
+
+//Activation du compte et Mot de passe oublié
+authRouter.get("/activate/:token", activateAccount);
+authRouter.post("/motdepasseoublie", forgotPassword);
+authRouter.post("/changerdemotdepasse/:token", resetPassword);
 
 // Gestion CRUD admin (routes protégées)
-router.get("/", verifyAdmin, getAdmins); // Liste des admins
-router.get("/:id", verifyAdmin, getAdminById); // Détail d'un admin
-router.put("/:id", verifyAdmin, updateAdmin); // Modification admin
-router.delete("/:id", verifyAdmin, deleteAdmin); // Suppression admin
+authRouter.get("/", verifyAdmin, getAdmins); // Liste des admins
+authRouter.get("/:id", verifyAdmin, getAdminById); // Détail d'un admin
+authRouter.put("/:id", verifyAdmin, updateAdmin); // Modification admin
+authRouter.delete("/:id", verifyAdmin, deleteAdmin); // Suppression admin
+authRouter.post("/logout", logoutAdmin); //Déconnexion admin
 
-export default router;
+export default authRouter;
