@@ -20,11 +20,10 @@ import cors from "cors";
 dotenv.config();
 
 // Import des routeurs (organisation MVC)
-import reservationRoutes from "./routes/reservationRoutes.js";
-import clientRoutes from "./routes/clientRoute.js";
-import tarifRoutes from "./routes/tarifRoute.js";
-import authRoutes from "./routes/authRoute.js";
-import avisRoutes from "./routes/avisRoute.js";
+import confirmationRouter from "./routes/confirmReservationRoute.js";
+import reservationRouter from "./routes/reservationRoute.js";
+import clientRouter from "./routes/clientRoute.js";
+import authRouter from "./routes/authRoute.js";
 
 // Initialisation de l'application Express
 const app = express();
@@ -36,11 +35,10 @@ app.use(express.json());
 app.use(cors());
 
 // Définition des routes principales de l'API
-app.use("/api/reservations", reservationRoutes); // Gestion des réservations
-app.use("/api/clients", clientRoutes); // Gestion des clients
-app.use("/api/tarifs", tarifRoutes); // Gestion des tarifs
-app.use("/api/auth", authRoutes); // Authentification admin
-app.use("/api/avis", avisRoutes); // Gestion des avis clients
+app.use("/api/confirmations", confirmationRouter); // Gestion des confirmations de réservation
+app.use("/api/reservations", reservationRouter); // Gestion des réservations
+app.use("/api/clients", clientRouter); // Gestion des clients
+app.use("/api/auth", authRouter); // Authentification admin
 
 // Connexion à la base MongoDB (sécurisée via .env)
 mongoose
