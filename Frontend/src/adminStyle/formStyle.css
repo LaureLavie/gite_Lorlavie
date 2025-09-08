@@ -16,6 +16,12 @@ h1 {
   margin-bottom: 1rem;
   text-align: center; }
 
+h2 {
+  font-family: "Allura", cursive;
+  color: #7a5c43;
+  font-size: 2rem;
+  text-align: center; }
+
 .img_bottom {
   display: flex;
   align-items: center;
@@ -23,17 +29,14 @@ h1 {
 
 .logo {
   width: 50%;
-  margin-bottom: 2rem;
   filter: brightness(1.2); }
 
 .vache {
   width: 40%;
-  margin-top: 2rem;
   filter: brightness(1.2); }
 
 .marmotte {
   width: 30%;
-  margin-bottom: 2rem;
   filter: brightness(1.2); }
 
 .button-dark {
@@ -356,6 +359,12 @@ h1 {
   margin-bottom: 1rem;
   text-align: center; }
 
+h2 {
+  font-family: "Allura", cursive;
+  color: #7a5c43;
+  font-size: 2rem;
+  text-align: center; }
+
 .img_bottom {
   display: flex;
   align-items: center;
@@ -363,17 +372,14 @@ h1 {
 
 .logo {
   width: 50%;
-  margin-bottom: 2rem;
   filter: brightness(1.2); }
 
 .vache {
   width: 40%;
-  margin-top: 2rem;
   filter: brightness(1.2); }
 
 .marmotte {
   width: 30%;
-  margin-bottom: 2rem;
   filter: brightness(1.2); }
 
 .footer {
@@ -430,6 +436,12 @@ h1 {
   margin-bottom: 1rem;
   text-align: center; }
 
+h2 {
+  font-family: "Allura", cursive;
+  color: #7a5c43;
+  font-size: 2rem;
+  text-align: center; }
+
 .img_bottom {
   display: flex;
   align-items: center;
@@ -437,17 +449,14 @@ h1 {
 
 .logo {
   width: 50%;
-  margin-bottom: 2rem;
   filter: brightness(1.2); }
 
 .vache {
   width: 40%;
-  margin-top: 2rem;
   filter: brightness(1.2); }
 
 .marmotte {
   width: 30%;
-  margin-bottom: 2rem;
   filter: brightness(1.2); }
 
 .navbar {
@@ -527,19 +536,33 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
   gap: 2rem; }
 
 .dashboard-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; }
+
+login-form {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
   gap: 2rem; }
-  .dashboard-container:hover {
-    background: #b7b7a4;
-    color: #000000; }
+
+register-form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 2rem; }
 
 .modification-form {
   display: flex;
@@ -556,7 +579,15 @@ label {
   display: block;
   font-size: 1rem; }
 
+a {
+  color: #7a5c43;
+  text-decoration: none;
+  font-weight: bold; }
+  a:hover {
+    text-decoration: underline; }
+
 input[type="email"],
+input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 1rem;

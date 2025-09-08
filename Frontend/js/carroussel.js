@@ -9,7 +9,9 @@ export function Carroussel(n = 0) {
   if (slideIndex < 0) slideIndex = slides.length - 1;
 
   slides.forEach((slide) => slide.classList.remove("active"));
-  slides[slideIndex].classList.add("active");
+  if (slides[slideIndex]) {
+    slides[slideIndex].classList.add("active");
+  }
 }
 
 // Initialisation des boutons et du carrousel auto

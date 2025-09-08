@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connexion Administrateur</title>
+    <title>Inscription Adminstrateur</title>
     <link rel="stylesheet" href="../../src/adminStyle/formStyle.css" />
     <script src="../../js/login.js" defer></script>
     <link
@@ -16,17 +16,28 @@
     />
   </head>
   <body>
-    <form class="dashboard-container" id="login-form">
+    <form class="dashboard-container" id="register-form">
       <img
         src="../../img/logo gite blanc.png"
         alt="Logo Gite Lorlavie"
         class="logo"
       />
-      <h1>Connexion</h1>
+      <h1>Inscription</h1>
       <div class="button-white">
+        <label for="name"></label>
+        <input type="text" name="name" placeholder="Nom" required />
+      </div>
+      <div class="button-white">
+        <label for="surname"></label>
+        <input type="text" name="surname" placeholder="Prénom" required />
+      </div>
+
+      <div class="button-white">
+        <label for="email"></label>
         <input type="email" name="email" placeholder="Email" required />
       </div>
       <div class="button-white">
+        <label for="password"></label>
         <input
           type="password"
           name="password"
@@ -35,15 +46,12 @@
         />
       </div>
       <div class="error-message" style="display: none">
-        Email ou mot de passe incorrect.
+        Erreur lors de l'inscription.
       </div>
-
-      <button class="button-dark" type="submit">Se connecter</button>
-
-      <button type="button" id="switch-to-register" class="button-white">
-        <a href="register.html">Créer un compte admin</a>
+      <button class="button-dark" type="submit">S'inscrire</button>
+      <button type="button" id="switch-to-login" class="button-white">
+        <a href="login.html">Déjà inscrit ? Se connecter</a>
       </button>
-
       <img
         src="../../img/dessin vache blanc.png"
         alt="Vache Bearnaise illustration"
