@@ -581,7 +581,9 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  gap: 1rem;
+  width: 90%; }
 
 .modification-form {
   display: flex;
@@ -589,7 +591,7 @@ form {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  width: 100%; }
+  width: 90%; }
 
 .slide-container {
   position: relative;
@@ -652,6 +654,7 @@ textarea {
   width: 100%;
   padding: 0.8rem;
   background: transparent;
+  background-color: transparent;
   border: none;
   border-bottom: 1px solid #858585;
   font-family: "Montserrat", sans-serif;
@@ -663,7 +666,7 @@ textarea {
   input[type="email"]::placeholder,
   textarea::placeholder {
     color: #000000;
-    opacity: 0.8; }
+    opacity: 0.9; }
 
 input[type="checkbox"] {
   display: flex;

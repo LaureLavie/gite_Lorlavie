@@ -15,6 +15,7 @@ form {
   justify-content: center;
   gap: 2rem;
   margin-bottom: 2rem;
+  width: 90%;
 }
 
 .dashboard-container {
@@ -25,6 +26,7 @@ form {
   justify-content: center;
   margin: 2rem;
   height: 90vh;
+  width: 90%;
 }
 
 login-form {
@@ -35,6 +37,7 @@ login-form {
   justify-content: center;
   margin-bottom: 2rem;
   gap: 2rem;
+  width: 80%;
 }
 
 register-form {
@@ -45,6 +48,7 @@ register-form {
   justify-content: center;
   margin-bottom: 2rem;
   gap: 2rem;
+  width: 80%;
 }
 
 .modification-form {
@@ -79,6 +83,7 @@ input[type="password"] {
   width: 100%;
   padding: 1rem;
   background: transparent;
+  background-color: transparent;
   border: none;
   font-family: $font-main;
   font-size: 1.2rem;
