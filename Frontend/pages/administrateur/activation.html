@@ -8,35 +8,72 @@
   </head>
   <body>
     <div class="dashboard-container">
+      <div class="logo">
+        <a href="../../index.html">
+          <img src="../../img/logo gite blanc.png" alt="Logo Gîte Lorlavie" />
+        </a>
+      </div>
       <h1>Activation de votre compte</h1>
-      <div id="activation-message"></div>
+      <div id="activation-message" class="message-container"></div>
+      <div id="loading-spinner" style="text-align: center; margin: 2rem 0">
+        <i
+          class="fas fa-spinner fa-spin"
+          style="font-size: 2rem; color: #7a5c43"
+        ></i>
+      </div>
     </div>
     <script>
       // Récupère le token dans l'URL
       const params = new URLSearchParams(window.location.search);
       const token = params.get("token");
+      const loadingSpinner = document.getElementById("loading-spinner");
       const messageDiv = document.getElementById("activation-message");
 
       if (token) {
         fetch(`http://localhost:3000/api/auth/activate/${token}`)
           .then((res) => res.json())
           .then((data) => {
-            if (data.message) {
-              messageDiv.textContent =
-                data.message + " Redirection vers la connexion...";
-              setTimeout(() => {
-                window.location.href = "../../login.html";
-              }, 2500);
+            loadingSpinner.style.display = "none";
+
+            if (data.message && data.message.includes("succès")) {
+              messageDiv.innerHTML = `
+                <p style="color:green;font-weight:bold;">${data.message}</p>
+                <p> Redirection vers la page de connexion dans <span id="countdown">3</span> secondes ...</p>
+              `;
+              // compte à rebours
+              let countdown = 3;
+              const countdownElement = document.getElementById("countdown");
+              const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                if (countdown <= 0) {
+                  clearInterval(countdownInterval);
+                  window.location.href = "../administrateur/login.html";
+                }
+              }, 1000);
             } else {
-              messageDiv.textContent =
-                data.error || "Erreur lors de l'activation.";
+              messageDiv.innerHTML = `
+                <p style="color:red;">${
+                  data.message || "Erreur lors de l'activation"
+                }</p>
+                <a href="../administrateur/login.html" class="button-dark" style="margin-top:1rem; display:inline-block;">Aller à la connexion</a>
+              `;
             }
           })
-          .catch(() => {
-            messageDiv.textContent = "Erreur lors de l'activation du compte.";
+          .catch((error) => {
+            console.error("Erreur", error);
+            loadingSpinner.style.display = "none";
+            messageDiv.innerHTML = `
+              <p style="color:red;">Erreur lors de l'activation du compte.</p>
+              <a href="../administrateur/login.html" class="button-dark" style="margin-top:1rem; display:inline-block;">Retour à la connexion</a>
+            `;
           });
       } else {
-        messageDiv.textContent = "Lien d'activation invalide.";
+        loadingSpinner.style.display = "none";
+        messageDiv.innerHTML = `
+          <p style="color:red;">Lien d'activation invalide.</p>
+          <a href="../administrateur/login.html" class="button-dark" style="margin-top:1rem; display:inline-block;">Aller à la connexion</a>
+        `;
       }
     </script>
   </body>

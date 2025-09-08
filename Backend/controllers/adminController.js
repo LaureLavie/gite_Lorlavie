@@ -165,43 +165,21 @@ export const forgotPassword = async (req, res) => {
     if (!admin) {
       return res.status(400).json({ message: "Administrateur non trouvé" });
     }
-    //Génère un token JWT pour la réinitialisation et envoie le mail associé
+
+    // CORRECTION : Générer un token JWT pour la réinitialisation et envoie le mail associé
     const resetToken = jwt.sign(
       { id: admin._id, email: admin.email },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
-    const resetLink = `${process.env.CLIENT_URL}/changerdemotdepasse/${resetToken}`;
-    const html = htmlResetPassword(admin.name, resetLink);
+
+    // CORRECTION : Lien vers la page de réinitialisation avec le token en paramètre
+    const resetLink = `${process.env.CLIENT_URL}/pages/administrateur/reset_password.html?token=${resetToken}`;
+    const html = htmlResetPassword(admin.surname, resetLink);
     await sendMail(email, "Réinitialisation de votre mot de passe", html);
     res.status(200).json({ message: "Email de réinitialisation envoyé" });
   } catch (error) {
     console.error("Forgot password error:", error);
-    res.status(500).json({ message: "Erreur interne du serveur" });
-  }
-};
-
-//Réinitialise le mot de passe administrateur via le token reçu par mail
-export const resetPassword = async (req, res) => {
-  const { token } = req.params;
-  const { password } = req.body;
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    if (!decoded) {
-      return res.status(400).json({
-        message: "Lien invalide ou expiré. Veuillez réitérer votre demande.",
-      });
-    }
-    const admin = await Admin.findById(decoded.id);
-    if (!admin) {
-      return res.status(400).json({ message: "Administrateur non trouvé" });
-    }
-    admin.password = await bcrypt.hash(password, 12);
-    admin.token = null;
-    await admin.save();
-    res.status(200).json({ message: "Mot de passe réinitialisé avec succès" });
-  } catch (error) {
-    console.error("Reset password error:", error);
     res.status(500).json({ message: "Erreur interne du serveur" });
   }
 };
