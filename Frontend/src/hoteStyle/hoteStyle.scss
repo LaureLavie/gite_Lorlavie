@@ -337,25 +337,29 @@ input[type="date"] {
 }
 
 .logo {
-  width: 50%;
-  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2);
 }
 
 .vache {
-  width: 40%;
-  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2);
 }
 
 .marmotte {
-  width: 30%;
-  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2);
 }
 
 .montagne {
-  width: 40%;
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2);
 }

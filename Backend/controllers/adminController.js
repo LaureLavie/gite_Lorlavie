@@ -46,7 +46,7 @@ export const registerAdmin = async (req, res) => {
     // Génère un token d'activation et envoie le mail associé
     const token = v4();
     newAdmin.token = token;
-    const link = `${process.env.CLIENT_URL}/activate/${token}`;
+    const link = `${process.env.CLIENT_URL}page/administrateur/activation.html?token=${token}`;
     const html = htmlActivateAccount(surname, link);
     await sendMail(email, "Activation de votre Compte Admin", html);
     await newAdmin.save();

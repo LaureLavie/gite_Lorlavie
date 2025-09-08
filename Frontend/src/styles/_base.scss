@@ -34,16 +34,22 @@ h2 {
 }
 
 .logo {
-  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2);
 }
 
 .vache {
-  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2);
 }
 
 .marmotte {
-  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2);
 }

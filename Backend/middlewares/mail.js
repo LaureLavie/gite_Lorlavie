@@ -28,7 +28,7 @@ export const htmlActivateAccount = (surname, link) => {
         <meta charset="UTF-8" />
         <title>Activation de compte</title>
       </head>
-      <body style="font-family: Montserrat, sans-serif; text-align: center; padding: 20px; background: #7A5C43;">
+      <body style="font-family: Montserrat, sans-serif; color: white; text-align: center; padding: 20px; background: #7A5C43;">
         <h1>Bienvenue ${surname} au Gîte Lorlavie !</h1>
         <p>Pour activer votre compte administrateur, veuillez cliquer sur le lien ci-dessous :</p>
         <a href="${link}" style="background-color: #EAE7DD; color: black; padding: 10px 20px; text-decoration: none; border-radius: 30px; display: inline-block; margin: 20px 0;">Activer mon compte</a>
@@ -47,7 +47,7 @@ export const htmlResetPassword = (surname, link) => {
         <meta charset="UTF-8" />
         <title>Réinitialisation du mot de passe</title>
       </head>
-      <body style="font-family: Montserrat, sans-serif; text-align: center; padding: 20px; background: #7A5C43;">
+      <body style="font-family: Montserrat, sans-serif; color: white; text-align: center; padding: 20px; background: #7A5C43;">
         <h1>Réinitialisation de votre mot de passe</h1>
         <p>Bonjour ${surname},</p>
         <p>Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien ci-dessous :</p>
@@ -67,7 +67,7 @@ export const htmlReceiptTemplate = (Confirmation) => {
         <meta charset="UTF-8" />
         <title>Votre confirmation de réservation</title>
       </head>
-      <body style="font-family: Montserrat, sans-serif; text-align: center; padding: 20px; background: #7A5C43;">
+      <body style="font-family: Montserrat, sans-serif; color: white;text-align: center; padding: 20px; background: #7A5C43;">
         <h2 style="color: #007BFF;">Confirmation de réservation – ${
           Confirmation.client
         }</h2>
