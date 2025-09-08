@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Réservations</title>
-    <link rel="stylesheet" href="../../src/adminStyle/formStyle.css" />
-    <script type="module" src="../../script.js" defer></script>
+    <link rel="stylesheet" href="./src/adminStyle/formStyle.css" />
+    <script type="module" src="./js/login.js" defer></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -17,21 +17,27 @@
   </head>
   <body>
     <h1>Bienvenue au Gîte Lorlavie</h1>
+    <img
+      src="./img/logo gite blanc.png"
+      alt="Logo Gite Lorlavie"
+      class="logo"
+    />
 
     <div class="button-container">
-      <a class="button-grey" href="login.html"
-        >Accéder à l'Espace Administrateur</a
+      <a class="button-brown" href="./pages/hote/accueil.html"
+        >Vous êtes visiteur</a
       >
-      <a class="button-brown" href="acceuil.html">Accéder au Site visiteur</a>
+      <a class="button-grey" href="./pages/administrateur/login.html"
+        >Vous êtes Administrateur</a
+      >
     </div>
 
     <div class="img_bottom">
       <img
-        src="../../img/dessin montagne noir.png"
+        src="./img/dessin montagne noir.png"
         alt="Illustration de montagne"
         class="montagne"
       />
     </div>
-    <div id="footer"></div>
   </body>
 </html>
