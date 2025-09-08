@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Activation du compte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../src/adminStyle/formStyle.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <h1>Activation de votre compte</h1>
+      <div id="activation-message"></div>
+    </div>
+    <script>
+      // Récupère le token dans l'URL
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get("token");
+      const messageDiv = document.getElementById("activation-message");
+
+      if (token) {
+        fetch(`http://localhost:3000/api/auth/activate/${token}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.message) {
+              messageDiv.textContent =
+                data.message + " Redirection vers la connexion...";
+              setTimeout(() => {
+                window.location.href = "../../login.html";
+              }, 2500);
+            } else {
+              messageDiv.textContent =
+                data.error || "Erreur lors de l'activation.";
+            }
+          })
+          .catch(() => {
+            messageDiv.textContent = "Erreur lors de l'activation du compte.";
+          });
+      } else {
+        messageDiv.textContent = "Lien d'activation invalide.";
+      }
+    </script>
+  </body>
+</html>

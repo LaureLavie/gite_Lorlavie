@@ -28,15 +28,21 @@ h2 {
   justify-content: center; }
 
 .logo {
-  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2); }
 
 .vache {
-  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2); }
 
 .marmotte {
-  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2); }
 
 .button-dark {
@@ -371,15 +377,21 @@ h2 {
   justify-content: center; }
 
 .logo {
-  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2); }
 
 .vache {
-  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2); }
 
 .marmotte {
-  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2); }
 
 .footer {
@@ -448,15 +460,21 @@ h2 {
   justify-content: center; }
 
 .logo {
-  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2); }
 
 .vache {
-  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2); }
 
 .marmotte {
-  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   filter: brightness(1.2); }
 
 .navbar {
@@ -532,11 +550,13 @@ body {
   padding-top: 64px; }
 
 form {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem; }
+  gap: 2rem;
+  margin-bottom: 2rem; }
 
 .dashboard-container {
   box-sizing: border-box;
@@ -544,7 +564,8 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; }
+  margin: 2rem;
+  height: 90vh; }
 
 login-form {
   box-sizing: border-box;
