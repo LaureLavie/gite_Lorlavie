@@ -25,7 +25,7 @@ if (loginForm) {
       if (res.ok && data.token) {
         localStorage.setItem("adminToken", data.token);
         alert("Connexion réussie !");
-        window.location.href = "/pages/administrateur/dashboard.html";
+        window.location.href = "./pages/administrateur/dashboard.html";
       } else {
         errorDiv.textContent =
           data.error || data.message || "Email ou mot de passe incorrect.";
@@ -75,7 +75,7 @@ if (registerForm) {
         alert(
           "Inscription réussie ! Un email de confirmation vous a été envoyé. Vous pouvez maintenant vous connecter."
         );
-        window.location.href = "/pages/administrateur/login.html";
+        window.location.href = "./pages/administrateur/dashboard.html";
       } else {
         errorDiv.textContent =
           data.message || data.error || "Erreur lors de l'inscription.";
