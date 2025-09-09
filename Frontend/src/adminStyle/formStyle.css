@@ -480,14 +480,14 @@ h2 {
 .navbar {
   position: fixed;
   top: 0;
-  width: 90vw;
+  width: 100%;
   height: 3rem;
   background: #000000;
   display: flex;
   align-items: center;
   justify-items: center;
   justify-content: space-between;
-  padding: 1rem 1rem;
+  padding: 1rem;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(183, 183, 164, 0.08); }
   .navbar__logo img {
@@ -501,7 +501,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     gap: 6px;
-    padding: 8px;
+    padding: 3rem;
     outline: none; }
     .navbar__burger span {
       display: block;
@@ -521,8 +521,7 @@ h2 {
   .navbar__menu {
     position: fixed;
     top: 3rem;
-    left: 0;
-    width: 90vw;
+    width: 90%;
     background: #000000;
     box-shadow: 0 2px 8px rgba(183, 183, 164, 0.08);
     display: none;
@@ -549,15 +548,20 @@ h2 {
 body {
   padding-top: 64px; }
 
+.logoGite {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 1rem; }
+
 form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  width: 90%; }
+  gap: 2rem; }
 
 .dashboard-container {
   box-sizing: border-box;
@@ -565,9 +569,7 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2rem;
-  height: 90vh;
-  width: 90%; }
+  margin-bottom: 2rem; }
 
 login-form {
   box-sizing: border-box;
@@ -575,9 +577,7 @@ login-form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
-  gap: 2rem;
-  width: 80%; }
+  gap: 2rem; }
 
 register-form {
   box-sizing: border-box;
@@ -585,17 +585,14 @@ register-form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
-  gap: 2rem;
-  width: 80%; }
+  gap: 2rem; }
 
-.modification-form {
+modification-form {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  width: 80%;
   margin-top: 1.2rem; }
 
 label {

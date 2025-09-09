@@ -19,6 +19,7 @@ body {
 h1 {
   font-family: $font-title;
   color: $noir;
+  text-align: center;
 }
 h2 {
   font-family: $font-title;
@@ -37,6 +38,7 @@ a {
 }
 
 form {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,6 +48,7 @@ form {
 }
 
 .modification-form {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;

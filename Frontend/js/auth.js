@@ -28,13 +28,13 @@ if (loginForm) {
       });
 
       const data = await res.json();
-      console.log("Response:", res.status, data); // Debug
+      console.log("Response:", res.status, data); 
 
       if (res.ok && data.token) {
         localStorage.setItem("adminToken", data.token);
         localStorage.setItem("adminData", JSON.stringify(data.admin));
 
-        //masquer l'erreur et achiffer succès
+        //masquer l'erreur et afficher succès
         errorDiv.style.display = "none";
 
         //Aficher message de succès temporaire
@@ -58,6 +58,50 @@ if (loginForm) {
       console.error("Erreur:", err);
       errorDiv.textContent = "Erreur de connexion au serveur.";
       errorDiv.style.display = "block";
+    }
+  });
+}
+
+const logoutBtn = document.getElementById("logout-btn");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    try {
+      // Appel à l'API de déconnexion
+      const res = await fetch("http://localhost:3000/api/auth/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
+        },
+      });
+
+      // Même si l'API échoue, on nettoie le localStorage
+      // (car la déconnexion est cruciale pour la sécurité)
+
+      // Supprimer les données d'authentification du localStorage
+      localStorage.removeItem("adminToken");
+      localStorage.removeItem("adminData");
+
+    
+      // Message de confirmation (optionnel)
+      if (res && res.ok) {
+        console.log("Déconnexion réussie");
+      }
+
+      // Redirection vers la page d'accueil
+      window.location.href = "../../index.html";
+    } catch (error) {
+      console.error("Erreur lors de la déconnexion:", error);
+
+      // Même en cas d'erreur, on déconnecte côté client
+      localStorage.removeItem("adminToken");
+      localStorage.removeItem("adminData");
+
+      // Redirection vers la page d'accueil
+      window.location.href = "../../index.html";
     }
   });
 }
