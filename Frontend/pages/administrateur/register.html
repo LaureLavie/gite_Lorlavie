@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Inscription Adminstrateur</title>
     <link rel="stylesheet" href="../../src/adminStyle/formStyle.css" />
-    <script src="../../js/login.js" defer></script>
+    <script src="../../js/auth.js" defer></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -45,11 +46,13 @@
           required
         />
       </div>
+
       <div class="error-message" style="display: none">
         Erreur lors de l'inscription.
       </div>
+
       <button class="button-dark" type="submit">S'inscrire</button>
-      <button type="button" id="switch-to-login" class="button-white">
+      <button type="button" class="button-white">
         <a href="login.html">Déjà inscrit ? Se connecter</a>
       </button>
       <img
