@@ -22,22 +22,20 @@ import { verifyAdmin } from "../middlewares/auth.js";
 
 const authRouter = express.Router();
 
-// Inscription d'un nouvel admin (public)
-authRouter.post("/register", registerAdmin);
-
 // Connexion admin (public)
+authRouter.post("/register", registerAdmin);
 authRouter.post("/login", loginAdmin);
+authRouter.post("/logout", logoutAdmin); //Déconnexion admin
 
 //Activation du compte et Mot de passe oublié
 authRouter.get("/activate/:token", activateAccount);
 authRouter.post("/motdepasseoublie", forgotPassword);
-authRouter.post("/changerdemotdepasse/:token", resetPassword);
+authRouter.post("/resetmotdepasse/:token", resetPassword);
 
 // Gestion CRUD admin (routes protégées)
 authRouter.get("/", verifyAdmin, getAdmins); // Liste des admins
 authRouter.get("/:id", verifyAdmin, getAdminById); // Détail d'un admin
 authRouter.put("/:id", verifyAdmin, updateAdmin); // Modification admin
 authRouter.delete("/:id", verifyAdmin, deleteAdmin); // Suppression admin
-authRouter.post("/logout", logoutAdmin); //Déconnexion admin
 
 export default authRouter;
