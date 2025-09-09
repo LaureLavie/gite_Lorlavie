@@ -5,7 +5,7 @@
 .hoteNavbar {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 90%;
   height: 3rem;
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 0.3rem;
-    padding: 1rem;
+    padding: 3rem;
     outline: none;
     span {
       display: block;

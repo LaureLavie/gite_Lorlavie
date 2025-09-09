@@ -8,12 +8,8 @@
 @import "../styles/mixins";
 
 body {
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: center;
   background: $gris-perle !important;
   color: $noir;
-  font-family: $font-main;
 }
 
 h1 {
@@ -44,7 +40,8 @@ form {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  width: 90%;
+  height: 90vh;
+  width: 100%;
 }
 
 .modification-form {
@@ -54,7 +51,7 @@ form {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  width: 90%;
+  width: 80vw;
 }
 
 .slide-container {
@@ -141,7 +138,7 @@ input[type="checkbox"] {
 }
 
 input[type="date"] {
-  width: 90%;
+  width: 100%;
   padding: 1rem;
   margin: 1rem;
   border-radius: $radius;
