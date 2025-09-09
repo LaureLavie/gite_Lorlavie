@@ -51,7 +51,7 @@ export const registerAdmin = async (req, res) => {
     await sendMail(email, "Activation de votre Compte Admin", html);
     await newAdmin.save();
 
-    // CORRECTION : Retourner l'admin créé pour que le frontend puisse vérifier data.admin
+    // Retourner l'admin créé pour que le frontend puisse vérifier data.admin
     res.status(201).json({
       message: "Administrateur créé avec succès",
       admin: {
@@ -91,7 +91,7 @@ export const activateAccount = async (req, res) => {
 };
 
 /**
- * Connexion administrateur - VERSION CORRIGÉE
+ * Connexion administrateur -
  * - Vérifie email et mot de passe
  * - Génère un token JWT sécurisé
  * - Met à jour la date de dernière connexion
@@ -100,7 +100,7 @@ export const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // CORRECTION : Validation des champs
+    // Validation des champs
     if (!email || !password) {
       return res.status(400).json({ error: "Email et mot de passe requis" });
     }
@@ -122,7 +122,7 @@ export const loginAdmin = async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    // CORRECTION : Retourner la réponse avec le token
+    // Retourner la réponse avec le token
     res.status(200).json({
       message: "Connexion réussie",
       token: token,
@@ -163,23 +163,57 @@ export const forgotPassword = async (req, res) => {
     }
     const admin = await Admin.findOne({ email });
     if (!admin) {
-      return res.status(400).json({ message: "Administrateur non trouvé" });
+      return res
+        .status(400)
+        .json({ message: "Aucun compte trouvé avec cet email" });
     }
 
-    // CORRECTION : Générer un token JWT pour la réinitialisation et envoie le mail associé
+    // Générer un token JWT pour la réinitialisation et envoie le mail associé
     const resetToken = jwt.sign(
       { id: admin._id, email: admin.email },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
 
-    // CORRECTION : Lien vers la page de réinitialisation avec le token en paramètre
-    const resetLink = `${process.env.CLIENT_URL}/pages/administrateur/reset_password.html?token=${resetToken}`;
+    // Lien vers la page de réinitialisation avec le token en paramètre
+    const resetLink = `${process.env.CLIENT_URL}/pages/administrateur/new_password.html?token=${resetToken}`;
     const html = htmlResetPassword(admin.surname, resetLink);
     await sendMail(email, "Réinitialisation de votre mot de passe", html);
-    res.status(200).json({ message: "Email de réinitialisation envoyé" });
+    res
+      .status(200)
+      .json({ message: "Email de réinitialisation envoyé avc succès" });
   } catch (error) {
     console.error("Forgot password error:", error);
+    res.status(500).json({ message: "Erreur interne du serveur" });
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  try {
+    const { token } = req.params;
+    const { password } = req.body;
+    if (!password) {
+      return res.status(400).json({ message: "Nouveau mot de passe requis" });
+    }
+    // vérifier le token JWT
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const admin = await Admin.findById(decoded.id);
+    if (!admin) {
+      return res.status(400).json({ message: "Administrateur non trouvé" });
+    }
+    //hasher le nouveau de passe
+    const hashedPassword = await bcrypt.hash(password, 12);
+    admin.password = hashedPassword;
+    await admin.save();
+    res.status(200).json({ message: "Mot de passe réinitialisé avec succès" });
+  } catch (error) {
+    console.error("Reset password error:", error);
+    if (
+      error.name === "JsonWebTokenError" ||
+      error.name === "TokenExpiredError"
+    ) {
+      return res.status(400).json({ message: "Token invalide ou expiré" });
+    }
     res.status(500).json({ message: "Erreur interne du serveur" });
   }
 };
