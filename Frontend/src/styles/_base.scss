@@ -7,7 +7,7 @@ body {
   background: $noir;
   color: $blanc;
   font-family: $font-main;
-  min-height: 90vh;
+  height: 90vh;
   width: 100%;
 }
 
@@ -31,6 +31,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  filter: brightness(1.2);
 }
 
 .logo {
@@ -38,6 +39,7 @@ h2 {
   align-items: center;
   justify-content: center;
   filter: brightness(1.2);
+  margin: 0;
 }
 
 .vache {

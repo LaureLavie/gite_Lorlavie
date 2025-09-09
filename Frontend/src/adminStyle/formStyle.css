@@ -5,7 +5,7 @@ body {
   background: #000000;
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
-  min-height: 90vh;
+  height: 90vh;
   width: 100%; }
 
 h1 {
@@ -25,13 +25,15 @@ h2 {
 .img_bottom {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  filter: brightness(1.2); }
 
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: brightness(1.2); }
+  filter: brightness(1.2);
+  margin: 0; }
 
 .vache {
   display: flex;
@@ -354,7 +356,7 @@ body {
   background: #000000;
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
-  min-height: 90vh;
+  height: 90vh;
   width: 100%; }
 
 h1 {
@@ -374,13 +376,15 @@ h2 {
 .img_bottom {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  filter: brightness(1.2); }
 
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: brightness(1.2); }
+  filter: brightness(1.2);
+  margin: 0; }
 
 .vache {
   display: flex;
@@ -437,7 +441,7 @@ body {
   background: #000000;
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
-  min-height: 90vh;
+  height: 90vh;
   width: 100%; }
 
 h1 {
@@ -457,13 +461,15 @@ h2 {
 .img_bottom {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  filter: brightness(1.2); }
 
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: brightness(1.2); }
+  filter: brightness(1.2);
+  margin: 0; }
 
 .vache {
   display: flex;
@@ -480,14 +486,14 @@ h2 {
 .navbar {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 90vw;
   height: 3rem;
   background: #000000;
   display: flex;
   align-items: center;
   justify-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 2rem;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(183, 183, 164, 0.08); }
   .navbar__logo img {
@@ -521,7 +527,7 @@ h2 {
   .navbar__menu {
     position: fixed;
     top: 3rem;
-    width: 90%;
+    width: 90vw;
     background: #000000;
     box-shadow: 0 2px 8px rgba(183, 183, 164, 0.08);
     display: none;
@@ -548,13 +554,6 @@ h2 {
 body {
   padding-top: 64px; }
 
-.logoGite {
-  width: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem; }
-
 form {
   box-sizing: border-box;
   display: flex;
@@ -571,7 +570,7 @@ form {
   justify-content: center;
   margin-bottom: 2rem; }
 
-login-form {
+.login-form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -579,7 +578,7 @@ login-form {
   justify-content: center;
   gap: 2rem; }
 
-register-form {
+.register-form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -587,13 +586,13 @@ register-form {
   justify-content: center;
   gap: 2rem; }
 
-modification-form {
+.modification-form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 1.2rem; }
+  margin-top: 1rem; }
 
 label {
   font-weight: bold;
@@ -611,7 +610,7 @@ a {
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  width: 100%;
+  width: 90%;
   padding: 1rem;
   background: transparent;
   background-color: transparent;
@@ -621,7 +620,7 @@ input[type="password"] {
   color: #000000; }
 
 input[type="date"] {
-  width: 100%;
+  width: 90%;
   padding: 0.7rem 1rem;
   border-radius: 50px;
   border: none;
