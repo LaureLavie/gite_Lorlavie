@@ -7,6 +7,13 @@
 @import "../styles/responsive";
 @import "../styles/variables";
 
+.logoGite{
+height: 2rem;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 1rem 1rem;
+}
 form {
   box-sizing: border-box;
   display: flex;
@@ -14,8 +21,6 @@ form {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  margin-bottom: 2rem;
-  width: 90%;
 }
 
 .dashboard-container {
@@ -24,9 +29,7 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2rem;
-  height: 90vh;
-  width: 90%;
+  margin-bottom: 2rem;
 }
 
 login-form {
@@ -35,9 +38,7 @@ login-form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
   gap: 2rem;
-  width: 80%;
 }
 
 register-form {
@@ -46,18 +47,15 @@ register-form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
   gap: 2rem;
-  width: 80%;
 }
 
-.modification-form {
+modification-form {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  width: 80%;
   margin-top: 1.2rem;
 }
 
