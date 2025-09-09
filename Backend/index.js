@@ -20,7 +20,6 @@ import cors from "cors";
 dotenv.config();
 
 // Import des routeurs (organisation MVC)
-import confirmationRouter from "./routes/confirmReservationRoute.js";
 import reservationRouter from "./routes/reservationRoute.js";
 import clientRouter from "./routes/clientRoute.js";
 import authRouter from "./routes/authRoute.js";
@@ -35,7 +34,7 @@ app.use(express.json());
 app.use(cors());
 
 // Définition des routes principales de l'API
-app.use("/api/confirmations", confirmationRouter); // Gestion des confirmations de réservation
+
 app.use("/api/reservations", reservationRouter); // Gestion des réservations
 app.use("/api/clients", clientRouter); // Gestion des clients
 app.use("/api/auth", authRouter); // Authentification admin

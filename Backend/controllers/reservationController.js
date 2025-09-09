@@ -5,13 +5,13 @@
 
 import Reservation from "../models/reservation.js";
 import Client from "../models/client.js";
-import CalendrierStatus from "../models.calendrier.js";
+import CalendrierStatus from "../models/calendrier.js";
 import {
   sendMail,
-  htmlReservationEnAttente,
-  htmlReservationConfirmee,
-  htmlReservationRefusee,
-  htmlReservationModifiee,
+  // htmlReservationEnAttente,
+  // htmlReservationConfirmee,
+  // htmlReservationRefusee,
+  // htmlReservationModifiee,
 } from "../middlewares/mail.js";
 
 /**

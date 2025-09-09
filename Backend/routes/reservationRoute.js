@@ -9,9 +9,9 @@ import {
   createReservation,
   getReservations,
   getReservationById,
-  updateReservation,
+  // updateReservation,
   deleteReservation,
-  annulerReservation,
+  // annulerReservation,
 } from "../controllers/reservationController.js";
 
 const reservationRouter = express.Router();
@@ -25,14 +25,14 @@ reservationRouter.get("/", getReservations);
 // Détail d'une réservation par ID
 reservationRouter.get("/:id", getReservationById);
 
-// Modification d'une réservation
-reservationRouter.put("/:id", updateReservation);
+// // Modification d'une réservation
+// reservationRouter.put("/:id", updateReservation);
 
 // Suppression d'une réservation
 reservationRouter.delete("/:id", deleteReservation);
 
-//Annuler une réservation
-// ...existing code...
-reservationRouter.put("/:id/annuler", annulerReservation);
+// //Annuler une réservation
+// // ...existing code...
+// reservationRouter.put("/:id/annuler", annulerReservation);
 
 export default reservationRouter;
