@@ -94,7 +94,6 @@ export const activateAccount = async (req, res) => {
  * Connexion administrateur -
  * - Vérifie email et mot de passe
  * - Génère un token JWT sécurisé
- * - Met à jour la date de dernière connexion
  */
 export const loginAdmin = async (req, res) => {
   try {
@@ -142,11 +141,12 @@ export const loginAdmin = async (req, res) => {
 // Déconnexion de l'administrateur en supprimant le cookie JWT
 export const logoutAdmin = async (req, res) => {
   try {
-    res.clearCookie("token", {
-      httpOnly: true,
-      secure: process.env.COOKIE_SECURE === "true",
-      sameSite: process.env.COOKIE_SAME_SITE,
-    });
+    const token = req.headers.authorization?.split(" ")[1];
+    if (token) {
+      // Décodage du token pour récupérer l'ID admin
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      console.log(`Admin ${decoded.id} s'est déconnecté`);
+    }
     res.status(200).json({ message: "Déconnexion réussie" });
   } catch (error) {
     console.error("Logout error :", error);

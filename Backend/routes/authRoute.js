@@ -1,8 +1,7 @@
 /**
  * Routeur Authentification Administrateur
- * - Gère l'inscription, la connexion et la gestion CRUD des comptes admin
+ * - Gère l'inscription, la connexion, la déconnexion et la gestion CRUD des comptes admin
  * - Protège les routes sensibles via le middleware verifyAdmin
- * - Conforme au cahier des charges : sécurité, clarté, organisation MVC
  */
 
 import express from "express";
@@ -25,12 +24,14 @@ const authRouter = express.Router();
 // Connexion admin (public)
 authRouter.post("/register", registerAdmin);
 authRouter.post("/login", loginAdmin);
-authRouter.post("/logout", logoutAdmin); //Déconnexion admin
 
 //Activation du compte et Mot de passe oublié
 authRouter.get("/activate/:token", activateAccount);
 authRouter.post("/motdepasseoublie", forgotPassword);
 authRouter.post("/resetmotdepasse/:token", resetPassword);
+
+//Deconnexion
+authRouter.post("/logout", verifyAdmin, logoutAdmin);
 
 // Gestion CRUD admin (routes protégées)
 authRouter.get("/", verifyAdmin, getAdmins); // Liste des admins
