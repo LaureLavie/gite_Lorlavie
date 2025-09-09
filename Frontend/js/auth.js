@@ -3,9 +3,17 @@ const loginForm = document.getElementById("login-form");
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const email = loginForm.querySelector('input[type="email"]').value;
     const password = loginForm.querySelector('input[type="password"]').value;
     const errorDiv = loginForm.querySelector(".error-message");
+
+    //Validation côté client
+    if (!email || !password) {
+      errorDiv.textContent = "Veuillez remplir tous les champs.";
+      errorDiv.style.display = "block";
+      return;
+    }
 
     // Debug : vérifier que les valeurs sont bien récupérées
     console.log("Email:", email, "Password:", password);
@@ -24,8 +32,23 @@ if (loginForm) {
 
       if (res.ok && data.token) {
         localStorage.setItem("adminToken", data.token);
-        alert("Connexion réussie !");
-        window.location.href = "../../pages/administrateur/dashboard.html";
+        localStorage.setItem("adminData", JSON.stringify(data.admin));
+
+        //masquer l'erreur et achiffer succès
+        errorDiv.style.display = "none";
+
+        //Aficher message de succès temporaire
+        const successDiv = document.createElement("div");
+        successDiv.style.color = "green";
+        successDiv.style.textAlign = "center";
+        successDiv.style.margin = "1rem";
+        successDiv.textContent = "Connexion réussie !";
+        loginForm.appendChild(successDiv);
+
+        //rediecryion vers le dashboard
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1500);
       } else {
         errorDiv.textContent =
           data.error || data.message || "Email ou mot de passe incorrect.";
@@ -39,7 +62,7 @@ if (loginForm) {
   });
 }
 
-// Inscription admin
+// Inscription administrateur
 const registerForm = document.getElementById("register-form");
 if (registerForm) {
   registerForm.addEventListener("submit", async (e) => {
@@ -72,10 +95,33 @@ if (registerForm) {
       console.log("Response:", res.status, data); // Debug
 
       if (res.ok && data.admin) {
-        alert(
-          "Inscription réussie ! Un email de confirmation vous a été envoyé. Vous pouvez maintenant vous connecter."
-        );
-        window.location.href = "../../pages/administrateur/login.html";
+        //masquer les erreurs
+        errorDiv.style.display = "none";
+
+        //Afficher message de succès
+        const successDiv = document.createElement("div");
+        successDiv.innerHTML = `div style="background:#d4edda; border:1px solid #c3e6cb; color:#155724; padding:10px; margin:10px 0; text-align:center;">
+        <strong>Inscription réussie !<strong><br>
+        <small>Un email de confirmation vous a été envoyé. ${email}<small><br>
+        <small>Redirection vers la page de connexion dans <span id="countdown">5</span> secondes...</small></div>`;
+        registerForm.appendChild(successDiv);
+
+        //désactiver le formulaire
+        const inputs = registerForm.querySelectorAll("input,button");
+        inputs.forEach((input) => (input.disabled = true));
+        registerForm.style.opacity = 0.7;
+
+        //compte à rebours avant redirection
+        let countdown = 5;
+        const countdownElement = document.getElementById("countdown");
+        const countdwonInterval = setInterval(() => {
+          countdown--;
+          countdownElement.textContent = countdwonInterval;
+          if (countdown <= 0) {
+            clearInterval(countdownInterval);
+            window.location.href = "../../pages/administrateur/login.html";
+          }
+        }, 1000);
       } else {
         errorDiv.textContent =
           data.message || data.error || "Erreur lors de l'inscription.";
