@@ -19,7 +19,7 @@ if (loginForm) {
     console.log("Email:", email, "Password:", password);
 
     try {
-      const res = await fetch("http://localhost:3000/api/auth/login", {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,7 +28,7 @@ if (loginForm) {
       });
 
       const data = await res.json();
-      console.log("Response:", res.status, data); 
+      console.log("Response:", res.status, data);
 
       if (res.ok && data.token) {
         localStorage.setItem("adminToken", data.token);
@@ -85,7 +85,6 @@ if (logoutBtn) {
       localStorage.removeItem("adminToken");
       localStorage.removeItem("adminData");
 
-    
       // Message de confirmation (optionnel)
       if (res && res.ok) {
         console.log("Déconnexion réussie");
