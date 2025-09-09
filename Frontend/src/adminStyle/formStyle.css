@@ -549,11 +549,11 @@ body {
   padding-top: 64px; }
 
 .logoGite {
-  height: 2rem;
+  width: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1rem 1rem; }
+  margin: 2rem; }
 
 form {
   box-sizing: border-box;
