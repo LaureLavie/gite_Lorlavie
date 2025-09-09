@@ -71,14 +71,20 @@ a {
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  width: 90%;
-  padding: 1rem;
+  width: 100%;
+  padding: 0.8rem;
   background: transparent;
   background-color: transparent;
   border: none;
+  border-bottom: 1px solid $gris;
   font-family: $font-main;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: $noir;
+  margin-bottom: 0.5rem;
+  &::placeholder {
+    color: $noir;
+    opacity: 0.9;
+  }
 }
 
 input[type="date"] {
