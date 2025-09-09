@@ -552,9 +552,14 @@ p {
       vertical-align: start;
       color: #000000; }
 
+* {
+  margin: 0;
+  padding: 0; }
+
 body {
   background: #b7b7a4 !important;
-  color: #000000; }
+  color: #000000;
+  width: 100%; }
 
 h1 {
   font-family: "Allura", cursive;
@@ -598,7 +603,6 @@ form {
   aspect-ratio: 16/9;
   box-sizing: border-box;
   width: 100vw;
-  max-width: 90%;
   overflow: hidden;
   display: flex;
   align-items: center;

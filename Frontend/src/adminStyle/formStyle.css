@@ -409,6 +409,9 @@ h2 {
 .footer {
   background: #000000;
   color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   font-family: "Montserrat", sans-serif;
   box-shadow: 0 -2px 8px rgba(183, 183, 164, 0.08);
@@ -435,7 +438,8 @@ h2 {
     filter: brightness(1.2); }
   .footer__infos {
     color: #b7b7a4;
-    font-size: 1rem; }
+    font-size: 1rem;
+    gap: 1rem; }
     .footer__infos .footer__mail {
       color: #ffffff;
       text-decoration: none;
@@ -622,14 +626,21 @@ a {
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  width: 90%;
-  padding: 1rem;
+  width: 100%;
+  padding: 0.8rem;
   background: transparent;
   background-color: transparent;
   border: none;
+  border-bottom: 1px solid #858585;
   font-family: "Montserrat", sans-serif;
-  font-size: 1.2rem;
-  color: #000000; }
+  font-size: 1.1rem;
+  color: #000000;
+  margin-bottom: 0.5rem; }
+  input[type="email"]::placeholder,
+  input[type="text"]::placeholder,
+  input[type="password"]::placeholder {
+    color: #000000;
+    opacity: 0.9; }
 
 input[type="date"] {
   width: 90%;
