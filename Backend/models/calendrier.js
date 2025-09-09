@@ -37,7 +37,6 @@ const CalendrierStatusSchema = new mongoose.Schema({
 });
 
 // Index pour optimiser les requêtes par date
-CalendrierStatusSchema.index({ date: 1 });
 CalendrierStatusSchema.index({ statut: 1, date: 1 });
 
 // Méthodes statiques utiles
