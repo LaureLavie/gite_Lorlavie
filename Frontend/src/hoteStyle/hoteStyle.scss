@@ -7,6 +7,12 @@
 @import "../styles/card";
 @import "../styles/mixins";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   box-sizing: border-box;
   align-items: center;

@@ -7,6 +7,12 @@
 @import "../styles/responsive";
 @import "../styles/variables";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .form {
   display: flex;
   flex-direction: column;

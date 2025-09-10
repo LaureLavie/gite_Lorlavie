@@ -16,24 +16,38 @@ h1 {
   margin-bottom: 1rem;
   text-align: center; }
 
+h2 {
+  font-family: "Allura", cursive;
+  color: #7a5c43;
+  font-size: 2rem;
+  text-align: center; }
+
 .img_bottom {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  width: 30%;
+  filter: brightness(1.2); }
 
 .logo {
-  width: 50%;
-  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .vache {
-  width: 40%;
-  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .marmotte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30%;
-  margin-bottom: 2rem;
   filter: brightness(1.2); }
 
 .button-dark {
@@ -356,24 +370,38 @@ h1 {
   margin-bottom: 1rem;
   text-align: center; }
 
+h2 {
+  font-family: "Allura", cursive;
+  color: #7a5c43;
+  font-size: 2rem;
+  text-align: center; }
+
 .img_bottom {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  width: 30%;
+  filter: brightness(1.2); }
 
 .logo {
-  width: 50%;
-  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .vache {
-  width: 40%;
-  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .marmotte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30%;
-  margin-bottom: 2rem;
   filter: brightness(1.2); }
 
 .footer {
@@ -430,24 +458,38 @@ h1 {
   margin-bottom: 1rem;
   text-align: center; }
 
+h2 {
+  font-family: "Allura", cursive;
+  color: #7a5c43;
+  font-size: 2rem;
+  text-align: center; }
+
 .img_bottom {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  width: 30%;
+  filter: brightness(1.2); }
 
 .logo {
-  width: 50%;
-  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .vache {
-  width: 40%;
-  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .marmotte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30%;
-  margin-bottom: 2rem;
   filter: brightness(1.2); }
 
 .navbar {
@@ -521,6 +563,11 @@ h1 {
 
 body {
   padding-top: 64px; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
 
 .calendar-container {
   display: flex;
