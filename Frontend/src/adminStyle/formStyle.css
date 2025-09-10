@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
 body {
   box-sizing: border-box;
   align-items: center;
@@ -25,17 +30,28 @@ h2 {
 .img_bottom {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  width: 30%;
+  filter: brightness(1.2); }
 
 .logo {
-  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .vache {
-  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .marmotte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30%;
   filter: brightness(1.2); }
 
@@ -365,6 +381,11 @@ h2 {
       vertical-align: start;
       color: #000000; }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
 body {
   box-sizing: border-box;
   align-items: center;
@@ -392,17 +413,28 @@ h2 {
 .img_bottom {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  width: 30%;
+  filter: brightness(1.2); }
 
 .logo {
-  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .vache {
-  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .marmotte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30%;
   filter: brightness(1.2); }
 
@@ -442,6 +474,11 @@ h2 {
       margin-top: 0.5rem;
       font-weight: 500; }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
 body {
   box-sizing: border-box;
   align-items: center;
@@ -469,17 +506,28 @@ h2 {
 .img_bottom {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  width: 30%;
+  filter: brightness(1.2); }
 
 .logo {
-  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .vache {
-  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2); }
 
 .marmotte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30%;
   filter: brightness(1.2); }
 
@@ -555,12 +603,7 @@ h2 {
 body {
   padding-top: 64px; }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0; }
-
-form {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -578,7 +621,7 @@ form {
   height: 100vh;
   margin-bottom: 2rem; }
 
-login-form {
+.login-form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -587,7 +630,7 @@ login-form {
   margin-bottom: 2rem;
   gap: 2rem; }
 
-register-form {
+.register-form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -604,7 +647,7 @@ register-form {
   gap: 1rem;
   width: 90%; }
 
-modification-form {
+.modification-form {
   display: flex;
   flex-direction: column;
   align-items: center;

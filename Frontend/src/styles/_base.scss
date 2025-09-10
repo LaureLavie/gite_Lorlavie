@@ -1,5 +1,11 @@
 @import "variables";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   box-sizing: border-box;
   align-items: center;
@@ -31,19 +37,30 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 30%;
+  filter: brightness(1.2);
 }
 
 .logo {
-  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2);
 }
 
 .vache {
-  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
   filter: brightness(1.2);
 }
 
 .marmotte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30%;
   filter: brightness(1.2);
 }
