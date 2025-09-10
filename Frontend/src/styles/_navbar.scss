@@ -17,12 +17,15 @@
   box-shadow: 0 2px 8px rgba($gris-perle, 0.08);
 
   &__logo img {
+    background: $noir;
+    border-radius: 50%;
     width: 15%;
     display: block;
   }
 
   &__burger {
-    background: none;
+    background: $noir;
+    border-radius: 50%;
     border: none;
     cursor: pointer;
     display: flex;
