@@ -513,17 +513,20 @@ h2 {
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(183, 183, 164, 0.08); }
   .navbar__logo img {
+    background: #000000;
+    border-radius: 50%;
     width: 15%;
     display: block; }
   .navbar__burger {
-    background: none;
+    background: #000000;
+    border-radius: 50%;
     border: none;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 6px;
-    padding: 3rem;
+    padding: 1rem;
     outline: none; }
     .navbar__burger span {
       display: block;
