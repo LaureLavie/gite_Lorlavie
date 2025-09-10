@@ -8,6 +8,7 @@
 @import "../styles/mixins";
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -22,24 +23,14 @@ h1 {
   font-family: $font-title;
   color: $noir;
   text-align: center;
-  width:100%;
+  width: 100%;
 }
 h2 {
   font-family: $font-title;
   color: $brun-boise;
   font-size: 2rem;
   text-align: center;
-  width:100%;
-}
-
-a {
-  color: $brun-boise;
-  text-decoration: none;
-  font-weight: bold;
-  width:100%;
-  &:hover {
-    text-decoration: underline;
-  }
+  width: 100%;
 }
 
 form {

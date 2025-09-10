@@ -20,22 +20,6 @@ const monthNames = [
 ];
 
 export function Calendrier() {
-  // Vérification du token admin
-  const token = localStorage.getItem("adminToken");
-  if (!token) {
-    window.location.href = "/pages/administrateur/login.html";
-    return;
-  }
-
-  // Exemple : récupérer les réservations pour bloquer les dates
-  fetch("http://localhost:3000/api/reservations", {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      // Utilise les données pour bloquer les dates dans le calendrier
-      // Par exemple : data.forEach(reservation => { ... });
-    });
 
   const calendarMonth = document.getElementById("calendar-month");
   const calendarDates = document.getElementById("calendar-dates");
