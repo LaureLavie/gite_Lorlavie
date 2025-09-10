@@ -19,51 +19,56 @@
     <div id="navbar"></div>
     <h1>Modification des Réservations</h1>
 
-    <div class="modification-form">
-      <div class="card__badge">Ibanez Txumin</div>
-      <form class="modification-form">
-        <label for="reservation-date">Date de la réservation:</label>
+    <form class="modification-form">
+      <div class="date-container">
+        <label for="reservation-date">Dates de la réservation:</label>
         <input
           type="date"
           id="reservation-date"
-          name="reservation-date"
+          name="reservation-date-arrivee"
           required
         />
+        <input
+          type="date"
+          id="reservation-date"
+          name="reservation-date-depart"
+          required
+        />
+      </div>
+      <div class="type-payment">
+        <label>Mode de Paiement</label>
+        <label
+          ><input type="radio" name="paiement" value="enligne" checked /> EN
+          LIGNE</label
+        >
+        <label
+          ><input type="radio" name="paiement" value="espece" /> ESPÈCE</label
+        >
+        <label
+          ><input type="radio" name="paiement" value="carte" /> CARTE</label
+        >
+      </div>
 
-        <div class="type-payment">
-          <label>Mode de Paiement</label>
-          <label
-            ><input type="radio" name="paiement" value="enligne" checked /> EN
-            LIGNE</label
-          >
-          <label
-            ><input type="radio" name="paiement" value="espece" /> ESPÈCE</label
-          >
-          <label
-            ><input type="radio" name="paiement" value="carte" /> CARTE</label
-          >
-        </div>
+      <div class="number-person">
+        <label>Nombre de personnes</label>
+        <button type="button" onclick="changer('personnes', -1)">−</button>
+        <span id="personnes">1</span>
+        <button type="button" onclick="changer('personnes', 1)">+</button>
+      </div>
 
-        <div class="number-person">
-          <label>Nombre de personnes</label>
-          <button type="button" onclick="changer('personnes', -1)">−</button>
-          <span id="personnes">1</span>
-          <button type="button" onclick="changer('personnes', 1)">+</button>
-        </div>
+      <div class="number-night">
+        <label>Nombre de nuits</label>
+        <button type="button" onclick="changer('nuits', -1)">−</button>
+        <span id="nuits">1</span>
+        <button type="button" onclick="changer('nuits', 1)">+</button>
+      </div>
 
-        <div class="number-night">
-          <label>Nombre de nuits</label>
-          <button type="button" onclick="changer('nuits', -1)">−</button>
-          <span id="nuits">1</span>
-          <button type="button" onclick="changer('nuits', 1)">+</button>
-        </div>
+      <div class="amount-final">
+        <label>Montant</label>
+        <span id="montant">65€</span>
+      </div>
+    </form>
 
-        <div class="amount-final">
-          <label>Montant</label>
-          <span id="montant">65€</span>
-        </div>
-      </form>
-    </div>
     <div class="button-container">
       <button class="button-red">Supprimer</button>
       <button class="button-brown">Annuler</button>

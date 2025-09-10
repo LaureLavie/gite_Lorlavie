@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="../../src/adminStyle/formStyle.css" />
     <script type="module" src="../../script.js" defer></script>
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
@@ -23,10 +23,20 @@
       <div class="card__badge">Grille tarifaire</div>
       <div class="number-person">
         <label for="max-personnes">Nombre maximum de personnes</label>
-        <button class="button-brown" id="decrease-personnes" type="button">-</button>
+        <button class="button-brown" id="decrease-personnes" type="button">
+          -
+        </button>
         <span id="max-personnes">6</span>
-        <input type="hidden" id="max-personnes-input" value="6" min="1" max="8" />
-        <button class="button-brown" id="increase-personnes" type="button">+</button>
+        <input
+          type="hidden"
+          id="max-personnes-input"
+          value="6"
+          min="1"
+          max="8"
+        />
+        <button class="button-brown" id="increase-personnes" type="button">
+          +
+        </button>
       </div>
       <div class="tarifs-section">
         <label>Tarifs par nombre de personnes :</label>
@@ -34,21 +44,21 @@
           <!-- Les inputs seront générés par JS -->
         </div>
       </div>
-      <div class="options-section">
+      <div class="options-container">
         <label>Options du gîte :</label>
         <div id="options-list">
           <!-- Les options seront générées par JS -->
         </div>
-          <div class="button-container">
-            <button type="button" id="del-option" class="button-red">
-              Supprimer une option
-            </button>
-            <button type="button" id="add-option" class="button-brown">
-              Ajouter une option
-            </button>
-          </div>
-        </div>
       </div>
+      <div class="button-container">
+        <button type="button" id="del-option" class="button-red">
+          Supprimer une option
+        </button>
+        <button type="button" id="add-option" class="button-brown">
+          Ajouter une option
+        </button>
+      </div>
+
       <div class="button-container">
         <button type="button" class="button-brown" id="cancel-btn">
           Annuler
@@ -57,11 +67,11 @@
       </div>
     </form>
     <div class="img_bottom">
-    <img
-      src="../../img/dessin vache blanc.png"
-      alt="Illustration de vache"
-      class="vache"
-    />
+      <img
+        src="../../img/dessin vache blanc.png"
+        alt="Illustration de vache"
+        class="vache"
+      />
     </div>
     <div id="footer"></div>
   </body>
