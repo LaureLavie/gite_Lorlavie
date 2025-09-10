@@ -9,10 +9,6 @@ import { Reservation } from "./js/reservation.js";
 
 // Initialisation des composants au chargement de la page
 document.addEventListener("DOMContentLoaded", () => {
-  // Navbar admin
-  Navbar();
-  // Footer admin
-  Footer();
   // Navbar visiteur
   HoteNavbar();
   // Footer visiteur
@@ -23,4 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
   Calendrier();
   // Réservation
   Reservation();
+    // Navbar admin
+    Navbar();
+    // Footer admin
+    Footer();   
 });
