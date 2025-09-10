@@ -6,13 +6,13 @@
   position: fixed;
   top: 0;
   width: 90vw;
-  height: 3rem;
-  background: $noir;
+  height: 2rem;
+  background: none;
   display: flex;
   align-items: center;
   justify-items: center;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1rem;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba($gris-perle, 0.08);
 
@@ -23,7 +23,6 @@
 
   &__burger {
     background: none;
-    position: absolute;
     border: none;
     cursor: pointer;
     display: flex;
@@ -56,7 +55,7 @@
 
   &__menu {
     position: fixed;
-    top: 3rem;
+    top: 4rem;
     width: 90vw;
     background: $noir;
     box-shadow: 0 2px 8px rgba($gris-perle, 0.08);
@@ -89,5 +88,5 @@
 }
 
 body {
-  padding-top: 64px;
+  padding-top: 2rem;
 }

@@ -564,18 +564,21 @@ body {
 h1 {
   font-family: "Allura", cursive;
   color: #000000;
-  text-align: center; }
+  text-align: center;
+  width: 100%; }
 
 h2 {
   font-family: "Allura", cursive;
   color: #7a5c43;
   font-size: 2rem;
-  text-align: center; }
+  text-align: center;
+  width: 100%; }
 
 a {
   color: #7a5c43;
   text-decoration: none;
-  font-weight: bold; }
+  font-weight: bold;
+  width: 100%; }
   a:hover {
     text-decoration: underline; }
 
@@ -596,13 +599,13 @@ form {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  width: 80vw; }
+  width: 90vw; }
 
 .slide-container {
   position: relative;
   aspect-ratio: 16/9;
   box-sizing: border-box;
-  width: 100vw;
+  width: 90vw;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -646,10 +649,10 @@ form {
   cursor: pointer; }
 
 .prev {
-  left: 1rem; }
+  left: 3rem; }
 
 .next {
-  right: 1rem; }
+  right: 3rem; }
 
 input[type="text"],
 input[type="tel"],
