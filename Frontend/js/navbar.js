@@ -16,13 +16,3 @@ export function Navbar() {
       });
   }
 }
-// Déconnexion admin
-const logoutBtn = document.getElementById("logout-admin");
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", () => {
-    // Supprime le token JWT
-    localStorage.removeItem("adminToken");
-    // Redirige vers la page visiteur ou login
-    window.location.href = "/index.html"; // ou la page d'accueil visiteur
-  });
-}
