@@ -14,19 +14,6 @@
   }
 }
 
-.button-light {
-  @include button-base;
-  margin-top: 2rem;
-  background: $beige-pierre;
-  color: $brun-boise;
-  &:hover,
-  &:focus {
-    background: $gris;
-    color: $blanc;
-    outline: none;
-  }
-}
-
 .button-white {
   @include button-base;
   background: $gris-perle;

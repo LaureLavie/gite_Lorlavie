@@ -79,30 +79,6 @@ h2 {
     color: #000000;
     outline: none; }
 
-.button-light {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  width: 340px;
-  padding: 0 24px;
-  border-radius: 50px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  box-shadow: 4px 4px 0 #b7b7a4;
-  margin-top: 2rem;
-  background: #eae7dd;
-  color: #7a5c43; }
-  .button-light:hover, .button-light:focus {
-    background: #858585;
-    color: #ffffff;
-    outline: none; }
-
 .button-white {
   display: flex;
   align-items: center;
