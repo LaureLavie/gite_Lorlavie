@@ -44,11 +44,6 @@ if (loginForm) {
         successDiv.style.margin = "1rem";
         successDiv.textContent = "Connexion réussie !";
         loginForm.appendChild(successDiv);
-
-        //rediecryion vers le dashboard
-        setTimeout(() => {
-          window.location.href = "dashboard.html";
-        }, 1500);
       } else {
         errorDiv.textContent =
           data.error || data.message || "Email ou mot de passe incorrect.";
@@ -153,18 +148,6 @@ if (registerForm) {
         const inputs = registerForm.querySelectorAll("input,button");
         inputs.forEach((input) => (input.disabled = true));
         registerForm.style.opacity = 0.7;
-
-        //compte à rebours avant redirection
-        let countdown = 5;
-        const countdownElement = document.getElementById("countdown");
-        const countdwonInterval = setInterval(() => {
-          countdown--;
-          countdownElement.textContent = countdwonInterval;
-          if (countdown <= 0) {
-            clearInterval(countdownInterval);
-            window.location.href = "../../pages/administrateur/login.html";
-          }
-        }, 1000);
       } else {
         errorDiv.textContent =
           data.message || data.error || "Erreur lors de l'inscription.";
