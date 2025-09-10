@@ -1,38 +1,25 @@
-/**
- * Routeur Réservation
- * - Gère toutes les opérations CRUD pour les réservations
- * - Conforme au cahier des charges : clarté, organisation MVC
- */
-
 import express from "express";
 import {
   createReservation,
   getReservations,
   getReservationById,
-  // updateReservation,
+  modifierReservation,
+  validerReservation,
+  refuserReservation,
   deleteReservation,
-  // annulerReservation,
 } from "../controllers/reservationController.js";
 
 const reservationRouter = express.Router();
 
-// Création d'une réservation
-reservationRouter.post("/", createReservation);
+// Routes publiques (visiteurs)
+reservationRouter.post("/", createReservation); // Créer une réservation
 
-// Liste de toutes les réservations
-reservationRouter.get("/", getReservations);
-
-// Détail d'une réservation par ID
-reservationRouter.get("/:id", getReservationById);
-
-// // Modification d'une réservation
-// reservationRouter.put("/:id", updateReservation);
-
-// Suppression d'une réservation
-reservationRouter.delete("/:id", deleteReservation);
-
-// //Annuler une réservation
-// // ...existing code...
-// reservationRouter.put("/:id/annuler", annulerReservation);
+// Routes admin
+reservationRouter.get("/", getReservations); // Liste des réservations
+reservationRouter.get("/:id", getReservationById); // Détail d'une réservation
+reservationRouter.put("/:id", modifierReservation); // Modifier une réservation
+reservationRouter.put("/:id/valider", validerReservation); // Valider une réservation
+reservationRouter.put("/:id/refuser", refuserReservation); // Refuser une réservation
+reservationRouter.delete("/:id", deleteReservation); // Supprimer une réservation
 
 export default reservationRouter;

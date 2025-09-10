@@ -19,10 +19,13 @@ import cors from "cors";
 // Chargement des variables d'environnement (.env)
 dotenv.config();
 
-// Import des routeurs (organisation MVC)
+// Import des routeurs
 import reservationRouter from "./routes/reservationRoute.js";
 import clientRouter from "./routes/clientRoute.js";
-import authRouter from "./routes/authRoute.js";
+import calendrierRouter from "./routes/calendrierRoute.js";
+
+// Middleware d'authentification
+import { verifyAdmin } from "./middlewares/auth.js";
 
 // Initialisation de l'application Express
 const app = express();
@@ -33,11 +36,14 @@ app.use(express.json());
 // Middleware CORS pour sécuriser les échanges entre frontend et backend
 app.use(cors());
 
-// Définition des routes principales de l'API
+// Routes publiques (visiteurs)
+app.use("/api/reservations", reservationRouter);
+app.use("/api/calendrier/disponibles", calendrierRouter);
 
-app.use("/api/reservations", reservationRouter); // Gestion des réservations
-app.use("/api/clients", clientRouter); // Gestion des clients
-app.use("/api/auth", authRouter); // Authentification admin
+// Routes privées (admin uniquement)
+app.use("/api/admin/reservations", verifyAdmin, reservationRouter);
+app.use("/api/admin/clients", verifyAdmin, clientRouter);
+app.use("/api/admin/calendrier", verifyAdmin, calendrierRouter);
 
 // Connexion à la base MongoDB (sécurisée via .env)
 mongoose
