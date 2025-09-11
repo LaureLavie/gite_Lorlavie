@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestion Administrateur</title>
+    <title>gestion des Administrateur</title>
     <link rel="stylesheet" href="../../src/adminStyle/formStyle.css" />
     <script type="module" src="../../script.js" defer></script>
     <link
@@ -19,31 +19,38 @@
     <div id="navbar"></div>
     <h1>Gestion des Administrateurs</h1>
     <div class="dashboard-container">
-      <div class="card card--brown">
-        <div class="card__badge">Laure</div>
+      <button class="button-dark" type="submit">Ajouter</button>
+      <div class="card card--white">
+        <div class="card__badge">LAURE</div>
         <div class="card__icons">
-          <a href="#" class="icon-delete" title="Supprimer">
-            <i class="fa fa-trash"></i>
-          </a>
           <a href="#" class="icon-modif" title="Modifier">
             <i class="fa fa-pen"></i>
           </a>
+          <a href="#" class="icon-delete" title="Supprimer">
+            <i class="fa fa-trash"></i>
+          </a>
         </div>
         <div class="card__content">
+          <div class="card__row"><span>Nom :</span> <strong>Lavie</strong></div>
           <div class="card__row">
-            <span>NOM :</span> <strong>Lavie</strong>
+            <span>Prénom :</span> <strong>Laure</strong>
           </div>
           <div class="card__row">
-            <span>PRENOM :</span> <strong>Laure</strong>
+            <span>Email :</span> <strong>laure.lavie@example.com</strong>
           </div>
           <div class="card__row">
-            <span>EMAIL :</span> <strong>laure.lavie@example.com</strong>
+            <span>Mot de Passe :</span> <strong> ***** </strong>
           </div>
-          <div class="card__row">
-            <span>MOT DE PASSE :</span> <strong>********</strong>
-          </div>
-                  </div>
+        </div>
       </div>
-      <div id="footer"></div>
+    </div>
+    <div class="img_bottom">
+      <img
+        src="../../img/dessin marmotte blanc.png"
+        alt="Illustration de marmotte"
+        class="marmotte"
+      />
+    </div>
+    <div id="footer"></div>
   </body>
-  </html>
+</html>
