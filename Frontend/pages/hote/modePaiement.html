@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendrier</title>
+    <title>Formulaire de Paiement</title>
     <link rel="stylesheet" href="../../src/hoteStyle/hoteStyle.css" />
     <script type="module" src="../../script.js" defer></script>
     <link
@@ -17,9 +17,9 @@
   </head>
   <body>
     <div id="hoteNavbar"></div>
-    <h1>Mode de Paiement</h1>
-    <div class="modification-form">
-      <form class="modification-form">
+    <h1>Formulaire de Paiement</h1>
+
+      <form class="form">
         <input
           type="text"
           id="nom"
@@ -85,38 +85,33 @@
           </p>
         </div>
       </form>
+      <form>
       <div class="switch-container">
         <img
-          src="../../img/dessin marmotte noir.png"
-          alt="Marmotte"
-          class="marmotte-icon"
+        src="../../img/dessin marmotte noir.png"
+        alt="Marmotte"
+        class="marmotte-icon"
         />
-        <div class="switch-header">
-          <span class="switch-title">Mode de paiement</span>
+        <h2 class="switch-title">Mode de paiement</h2>
           <div class="switch-options">
-            <button class="switch-btn">EN LIGNE</button>
-            <button class="switch-btn">ESPÈCE</button>
-            <button class="switch-btn">CARTE</button>
+            <btn class="switch-btn">EN LIGNE</btn>
+            <btn class="switch-btn">ESPÈCE</btn>
+            <btn class="switch-btn">CARTE</btn>
           </div>
-        </div>
       </div>
-      <h2>Informations Importantes</h2>
-      <div class="info-box">
-        <ul>
-          <li>Pas de paiement en ligne au moment de la réservation</li>
-          <li>Le propriétaire vous communiquera les modalités de paiement.</li>
-          <li>
-            Une confirmation vous sera envoyée par mail une fois votre
-            réservation validée.
-          </li>
-        </ul>
+    </form>
+      <div class="text-container">
+        <h2>Informations Importantes</h2>
+        <p>Pas de paiement en ligne au moment de la réservation</p>
+        <p>Le propriétaire vous communiquera les modalités de paiement.</p>
+        <p>Une confirmation vous sera envoyée par mail une fois votre réservation validée.</p>
       </div>
 
       <div class="button-container">
         <button class="button-brown">Annuler</button>
         <button class="button-green">Valider</button>
       </div>
-    </div>
+    
     <div id="hoteFooter"></div>
   </body>
 </html>
