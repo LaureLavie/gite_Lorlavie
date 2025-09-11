@@ -3,11 +3,9 @@
 
 .button-dark {
   @include button-base;
-  margin-top: 2rem;
   background: $brun-boise;
   color: $blanc;
-  &:hover,
-  &:focus {
+  &:hover{
     background: $gris-perle;
     color: $noir;
     outline: none;
@@ -16,11 +14,9 @@
 
 .button-white {
   @include button-base;
-  margin-top: 2rem;
   background: $gris-perle;
   color: $noir;
-  &:hover,
-  &focus {
+  &:hover{
     background: darken($gris-perle, 20%);
     color: $blanc;
     outline: none;
@@ -29,11 +25,9 @@
 
 .button-green {
   @include button-base;
-  margin-top: 2rem;
   background: $vert;
   color: $blanc;
-  &:hover,
-  &:focus {
+  &:hover{
     background: darken($vert, 10%);
     color: $blanc;
     outline: none;
@@ -42,11 +36,9 @@
 
 .button-brown {
   @include button-base;
-  margin-top: 2rem;
   background: $brun-boise;
   color: $blanc;
-  &:hover,
-  &:focus {
+  &:hover{
     background: darken($brun-boise, 10%);
     color: $blanc;
     outline: none;
@@ -55,11 +47,9 @@
 
 .button-red {
   @include button-base;
-  margin-top: 2rem;
   background: $rouge;
   color: $blanc;
-  &:hover,
-  &:focus {
+  &:hover{
     background: darken($rouge, 10%);
     color: $blanc;
     outline: none;
@@ -68,11 +58,9 @@
 
 .button-grey {
   @include button-base;
-  margin-top: 2rem;
   background: $gris;
   color: $blanc;
-  &:hover,
-  &focus {
+  &:hover {
     background: darken($gris, 20%);
     color: $blanc;
     outline: none;

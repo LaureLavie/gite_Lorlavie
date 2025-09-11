@@ -18,17 +18,22 @@
   <body>
     <div id="navbar"></div>
     <h1>Modification des Réservations</h1>
-
-    <div class="modification-form">
-      <div class="card__badge">Ibanez Txumin</div>
-      <form class="modification-form">
-        <label for="reservation-date">Date de la réservation:</label>
-        <input
-          type="date"
-          id="reservation-date"
-          name="reservation-date"
-          required
-        />
+   <form class="form">
+      <div class="card card--white">
+          <div class="card__badge">Ibanez Txumin</div>
+          <label for="date-container">Date de la réservation:</label>
+          <input
+            type="date"
+            id="date-arrivee"
+            name="date-arrivee"
+            required
+          />
+          <input
+            type="date"
+            id="date-depart"
+            name="date-depart"
+            required
+          />
 
         <div class="type-payment">
           <label>Mode de Paiement</label>
@@ -62,8 +67,9 @@
           <label>Montant</label>
           <span id="montant">65€</span>
         </div>
+      </div>
       </form>
-    </div>
+
     <div class="button-container">
       <button class="button-red">Supprimer</button>
       <button class="button-brown">Annuler</button>

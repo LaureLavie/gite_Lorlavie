@@ -71,10 +71,9 @@ h2 {
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   box-shadow: 4px 4px 0 #b7b7a4;
-  margin-top: 2rem;
   background: #7a5c43;
   color: #ffffff; }
-  .button-dark:hover, .button-dark:focus {
+  .button-dark:hover {
     background: #b7b7a4;
     color: #000000;
     outline: none; }
@@ -95,10 +94,9 @@ h2 {
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   box-shadow: 4px 4px 0 #b7b7a4;
-  margin-top: 2rem;
   background: #b7b7a4;
   color: #000000; }
-  .button-white:hover, .button-whitefocus {
+  .button-white:hover {
     background: #89896c;
     color: #ffffff;
     outline: none; }
@@ -119,10 +117,9 @@ h2 {
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   box-shadow: 4px 4px 0 #b7b7a4;
-  margin-top: 2rem;
   background: #218c1e;
   color: #ffffff; }
-  .button-green:hover, .button-green:focus {
+  .button-green:hover {
     background: #176215;
     color: #ffffff;
     outline: none; }
@@ -143,10 +140,9 @@ h2 {
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   box-shadow: 4px 4px 0 #b7b7a4;
-  margin-top: 2rem;
   background: #7a5c43;
   color: #ffffff; }
-  .button-brown:hover, .button-brown:focus {
+  .button-brown:hover {
     background: #594331;
     color: #ffffff;
     outline: none; }
@@ -167,10 +163,9 @@ h2 {
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   box-shadow: 4px 4px 0 #b7b7a4;
-  margin-top: 2rem;
   background: #7c1818;
   color: #ffffff; }
-  .button-red:hover, .button-red:focus {
+  .button-red:hover {
     background: #511010;
     color: #ffffff;
     outline: none; }
@@ -191,10 +186,9 @@ h2 {
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   box-shadow: 4px 4px 0 #b7b7a4;
-  margin-top: 2rem;
   background: #858585;
   color: #ffffff; }
-  .button-grey:hover, .button-greyfocus {
+  .button-grey:hover {
     background: #525252;
     color: #ffffff;
     outline: none; }
@@ -210,12 +204,13 @@ h2 {
 
 .switch-container {
   border-radius: 50px;
-  width: 100%;
+  width: 30%;
   padding: 1.5rem;
   box-shadow: 4px 4px 0 #b7b7a4;
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  margin: 0; }
 
 .switch-header {
   width: 100%;
@@ -227,7 +222,7 @@ h2 {
 .switch-title {
   background: #b7b7a4;
   color: #000000;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 1.2rem;
   border-radius: 50px;
   padding: 0.5rem 1.5rem;
@@ -241,8 +236,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0.3rem 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); }
+  padding: 1rem; }
 
 .switch-btn {
   background: none;
@@ -250,9 +244,9 @@ h2 {
   color: #000000;
   font-weight: bold;
   font-size: 1rem;
-  padding: 0.5rem 1.2rem;
   border-radius: 50px;
   cursor: pointer;
+  padding: 1rem;
   transition: background 0.2s; }
   .switch-btn:hover {
     background: #7a5c43;
@@ -592,45 +586,15 @@ h2 {
 body {
   padding-top: 4rem; }
 
-form {
+.form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem; }
-
-.dashboard-container {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem; }
-
-.login-form {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem; }
-
-.register-form {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem; }
-
-.modification-form {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem; }
+  width: 100%;
+  gap: 2rem;
+  padding: 2rem; }
 
 label {
   font-weight: bold;
@@ -645,34 +609,49 @@ a {
   a:hover {
     text-decoration: underline; }
 
+.date-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  padding: 1rem;
+  gap: 1rem;
+  background: #7a5c43;
+  border-radius: 50px;
+  margin: 0; }
+  .date-container label {
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 0;
+    font-size: 1rem; }
+
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  width: 100%;
-  padding: 0.8rem;
+  width: 90%;
+  border: none;
+  border-bottom: 1px solid #858585;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.1rem;
+  color: #000000;
+  padding: 1rem; }
+
+input[type="date"] {
+  width: 90%;
+  padding: 1rem;
   background: transparent;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #858585;
   font-family: "Montserrat", sans-serif;
   font-size: 1.1rem;
+  gap: 1rem;
   color: #000000;
-  margin-bottom: 0.5rem; }
-  input[type="email"]::placeholder,
-  input[type="text"]::placeholder,
-  input[type="password"]::placeholder {
+  margin: 0; }
+  input[type="date"]::placeholder {
     color: #000000;
     opacity: 0.9; }
-
-input[type="date"] {
-  width: 90%;
-  padding: 0.7rem 1rem;
-  border-radius: 50px;
-  border: none;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  background: #b7b7a4;
-  color: #000000; }
 
 .type-payment {
   display: flex;
@@ -716,10 +695,6 @@ input[type="date"] {
     cursor: pointer;
     box-shadow: 2px 2px 0 #b7b7a4;
     transition: background 0.2s; }
-    .number-person button:hover,
-    .number-night button:hover {
-      background: #b7b7a4;
-      color: #000000; }
   .number-person span,
   .number-night span {
     font-size: 1.3rem;

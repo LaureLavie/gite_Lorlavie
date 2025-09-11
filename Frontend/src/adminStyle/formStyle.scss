@@ -7,51 +7,16 @@
 @import "../styles/responsive";
 @import "../styles/variables";
 
-form {
+.form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width:100%;
   gap: 2rem;
+  padding:2rem;
 }
-
-.dashboard-container {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.login-form {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.register-form {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.modification-form {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
 label {
   font-weight: bold;
   color: $noir;
@@ -67,36 +32,53 @@ a {
     text-decoration: underline;
   }
 }
+.date-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  padding: 1rem;
+  gap: 1rem;
+  background: $brun-boise;
+  border-radius: $radius;
+  margin: 0;
+  label {
+    font-weight: bold;
+    color: $blanc;
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+  }
 
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  width: 100%;
-  padding: 0.8rem;
+  width: 90%;
+  border: none;
+  border-bottom: 1px solid $gris;
+  font-family: $font-main;
+  font-size: 1.1rem;
+  color: $noir;
+  padding:1rem;
+}
+
+input[type="date"] {
+  width: 90%;
+  padding: 1rem;
   background: transparent;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid $gris;
   font-family: $font-main;
   font-size: 1.1rem;
+  gap:1rem;
   color: $noir;
-  margin-bottom: 0.5rem;
- 
+  margin:0;
   &::placeholder {
     color: $noir;
     opacity: 0.9;
   }
-}
-
-input[type="date"] {
-  width: 90%;
-  padding: 0.7rem 1rem;
-  border-radius: $radius;
-  border: none;
-  font-family: $font-main;
-  font-size: 1rem;
-  background: $gris-perle;
-  color: $noir;
 }
 
 .type-payment {
@@ -142,11 +124,7 @@ input[type="date"] {
     font-weight: bold;
     cursor: pointer;
     box-shadow: 2px 2px 0 $gris-perle;
-    transition: background 0.2s;
-    &:hover {
-      background: $gris-perle;
-      color: $noir;
-    }
+    transition: background 0.2s;    
   }
   span {
     font-size: 1.3rem;
@@ -157,7 +135,6 @@ input[type="date"] {
     display: inline-block;
   }
 }
-
 .amount-final {
   display: flex;
   align-items: center;
