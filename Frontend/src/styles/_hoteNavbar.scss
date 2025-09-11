@@ -4,14 +4,14 @@
 
 .hoteNavbar {
   position: fixed;
-  top: 0;
-  width: 90%;
+  top: 1rem;
+  width: 100vw;
   height: 3rem;
   display: flex;
   align-items: center;
   justify-items: center;
   justify-content: space-between;
-  padding: 1rem 1rem;
+  padding: 1rem;
   z-index: 1000;
 
   &__logo img {
@@ -30,14 +30,14 @@
     flex-direction: column;
     justify-content: center;
     gap: 0.3rem;
-    padding: 3rem;
+    padding: 1.5rem;
     outline: none;
     span {
       display: block;
       width: 28px;
       height: 4px;
       background: $noir;
-      border-radius: 2px;
+      border-radius: 5%;
       transition: all 0.2s;
     }
     &.open span:nth-child(1) {
@@ -57,7 +57,7 @@
   &__menu {
     position: fixed;
     top: 3rem;
-    left: 0;
+    left: 3rem;
     width: 90%;
     background: $gris-perle;
     box-shadow: 0 2px 2px 2px $noir;
@@ -92,5 +92,5 @@
 }
 
 body {
-  padding-top: 50px;
+  padding-top: 4rem;
 }

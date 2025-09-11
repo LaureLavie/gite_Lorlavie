@@ -16,6 +16,7 @@
 
 .button-white {
   @include button-base;
+  margin-top: 2rem;
   background: $gris-perle;
   color: $noir;
   &:hover,
@@ -28,6 +29,7 @@
 
 .button-green {
   @include button-base;
+  margin-top: 2rem;
   background: $vert;
   color: $blanc;
   &:hover,
@@ -40,6 +42,7 @@
 
 .button-brown {
   @include button-base;
+  margin-top: 2rem;
   background: $brun-boise;
   color: $blanc;
   &:hover,
@@ -52,6 +55,7 @@
 
 .button-red {
   @include button-base;
+  margin-top: 2rem;
   background: $rouge;
   color: $blanc;
   &:hover,
@@ -64,6 +68,7 @@
 
 .button-grey {
   @include button-base;
+  margin-top: 2rem;
   background: $gris;
   color: $blanc;
   &:hover,
@@ -86,7 +91,7 @@
 
 .switch-container {
   border-radius: $radius;
-  max-width: 400px;
+  width: 100%;
   padding: 1.5rem;
   box-shadow: $shadow;
   display: flex;
@@ -115,12 +120,11 @@
 
 .switch-options {
   background: $blanc;
-  border-radius: 40px;
+  border-radius: $radius;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 320px;
   padding: 0.3rem 1rem;
   box-shadow: 0 4px 8px rgba($noir, 0.05);
 }
@@ -132,7 +136,7 @@
   font-weight: bold;
   font-size: 1rem;
   padding: 0.5rem 1.2rem;
-  border-radius: 20px;
+  border-radius: $radius;
   cursor: pointer;
   transition: background 0.2s;
   &:hover {

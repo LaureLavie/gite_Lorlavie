@@ -6,7 +6,7 @@ body {
   color: $noir;
   font-family: $font-main;
   min-height: 90vh;
-  width: 90%;
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
@@ -29,25 +29,25 @@ p {
 }
 
 .logo {
-  width: 50%;
+  width: 20%;
   margin-bottom: 2rem;
   filter: brightness(1.2);
 }
 
 .vache {
-  width: 40%;
+  width: 20%;
   margin-top: 2rem;
   filter: brightness(1.2);
 }
 
 .marmotte {
-  width: 30%;
+  width: 20%;
   margin-bottom: 2rem;
   filter: brightness(1.2);
 }
 
 .montagne {
-  width: 30%;
+  width: 20%;
   margin-bottom: 2rem;
   filter: brightness(1.2);
 }
