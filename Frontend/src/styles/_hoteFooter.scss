@@ -5,14 +5,10 @@
 .footer {
   background: $gris-perle;
   color: $brun-boise;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  width: 100vw;
   font-family: $font-main;
-  box-shadow: 0 1px 0 $noir;
-  border-radius: $radius;
   gap: 2rem;
+  margin-bottom: 1rem;
 
   .footer-container {
     display: flex;
@@ -20,14 +16,17 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 1.1rem;
+    width: 100vw;
+    margin: 0;
+    gap: 1rem;
   }
   &__socials {
-    gap: 1.2rem;
+    gap: 2rem;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
+    width: 30%;
     .footer__icon {
       color: $noir;
       font-size: 1.5rem;
@@ -37,20 +36,24 @@
       }
     }
   }
-
+&__logo{
+  width: 30%;
+}
   &__logo img {
-    width: 10%;
+    width: 3rem;
     filter: brightness(1.2);
   }
 
   &__infos {
     color: $noir;
     font-size: 1rem;
+    text-align: center;
+    width: 30%;
     .footer__mail {
       color: $brun-boise;
       text-decoration: none;
       margin-top: 0.5rem;
-      font-weight: 500;
+      font-weight: bold;
     }
   }
 }
