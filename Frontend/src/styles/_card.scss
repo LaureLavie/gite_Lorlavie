@@ -4,12 +4,11 @@
 .card {
   background: $blanc;
   border-radius: $radius;
-  box-shadow: 6px 6px 0 $noir;
+  box-shadow: $shadow;
   padding: 2rem;
   margin: 3rem;
   gap: 1.5rem;
   width: 100%;
-  max-width: 370px;
   position: relative;
   font-family: $font-main;
   color: $noir;
@@ -63,27 +62,25 @@
 
   &__badge {
     position: absolute;
-    top: -22px;
+    top: -1.1rem;
     left: 50%;
     transform: translateX(-50%);
     background: $gris-perle;
     color: $noir;
     font-weight: bold;
     font-size: 1.1rem;
-    border-radius: 18px;
+    border-radius: 20%;
     padding: 0.4rem 2rem;
-    box-shadow: 2px 2px 0 $gris-perle;
+    box-shadow: $shadow;
     text-align: center;
-    min-width: 180px;
     z-index: 2;
   }
 
   &__content {
-    margin-top: 1.8rem;
+    margin-top: 1.2rem;
     width: 100%;
     text-align: left;
     font-size: 1rem;
-    line-height: 1.6;
     color: $noir;
     .card__row {
       display: flex;
