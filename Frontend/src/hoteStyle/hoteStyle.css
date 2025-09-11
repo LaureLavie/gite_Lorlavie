@@ -223,7 +223,7 @@ p {
     text-align: center;
     width: 100vw;
     margin: 0;
-    gap: 2rem; }
+    gap: 1rem; }
   .footer__socials {
     gap: 2rem;
     display: flex;
@@ -601,8 +601,8 @@ form {
 .slide-container {
   position: relative;
   aspect-ratio: 16/9;
-  box-sizing: border-box;
-  width: 90vw;
+  box-sizing: content-box;
+  width: 100vw;
   overflow: hidden;
   display: flex;
   align-items: center;

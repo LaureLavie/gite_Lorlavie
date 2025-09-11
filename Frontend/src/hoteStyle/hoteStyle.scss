@@ -57,7 +57,7 @@ form {
 .slide-container {
   position: relative;
   aspect-ratio: 16/9;
-  box-sizing: border-box;
+  box-sizing: content-box;
   width: 100vw;
   overflow: hidden;
   display: flex;
