@@ -418,12 +418,9 @@ h2 {
 .footer {
   background: #000000;
   color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  width: 100vw;
+  margin-bottom: 1rem;
   font-family: "Montserrat", sans-serif;
-  box-shadow: 0 -2px 8px rgba(183, 183, 164, 0.08);
   gap: 2rem; }
   .footer .footer-container {
     display: flex;
@@ -431,29 +428,37 @@ h2 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 2rem; }
+    width: 100vw;
+    margin: 0;
+    gap: 1rem; }
   .footer__socials {
-    gap: 1rem;
+    gap: 2rem;
     display: flex;
-    justify-content: center; }
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 30%; }
     .footer__socials .footer__icon {
       color: #7a5c43;
       font-size: 1rem;
       transition: color 0.2s; }
       .footer__socials .footer__icon:hover {
         color: #ffffff; }
+  .footer__logo {
+    width: 30%; }
   .footer__logo img {
-    width: 10%;
+    width: 3rem;
     filter: brightness(1.2); }
   .footer__infos {
     color: #b7b7a4;
     font-size: 1rem;
-    gap: 1rem; }
+    text-align: center;
+    width: 30%; }
     .footer__infos .footer__mail {
       color: #ffffff;
       text-decoration: none;
       margin-top: 0.5rem;
-      font-weight: 500; }
+      font-weight: bold; }
 
 * {
   box-sizing: border-box;
@@ -517,14 +522,12 @@ h2 {
   top: 1rem;
   width: 100vw;
   height: 3rem;
-  background: none;
   display: flex;
   align-items: center;
   justify-items: center;
   justify-content: space-between;
   padding: 1rem;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(183, 183, 164, 0.08); }
+  z-index: 1000; }
   .navbar__logo img {
     background: #000000;
     border-radius: 50%;
@@ -539,14 +542,14 @@ h2 {
     flex-direction: column;
     justify-content: center;
     gap: 0.3rem;
-    padding: 1rem;
+    padding: 1.5rem;
     outline: none; }
     .navbar__burger span {
       display: block;
       width: 28px;
       height: 4px;
       background: #ffffff;
-      border-radius: 2px;
+      border-radius: 5%;
       transition: all 0.2s; }
     .navbar__burger.open span:nth-child(1) {
       transform: translateY(10px) rotate(45deg); }
@@ -563,6 +566,7 @@ h2 {
     width: 90%;
     background: #000000;
     box-shadow: 0 2px 8px rgba(183, 183, 164, 0.08);
+    border-radius: 50px;
     display: none;
     flex-direction: column;
     align-items: space-between;
@@ -576,6 +580,7 @@ h2 {
         margin-bottom: 1.2rem; }
         .navbar__menu ul li a {
           color: #ffffff;
+          font-weight: bold;
           font-family: "Montserrat", sans-serif;
           font-size: 1.2rem;
           text-decoration: none; }
@@ -585,7 +590,7 @@ h2 {
       display: flex; }
 
 body {
-  padding-top: 2rem; }
+  padding-top: 4rem; }
 
 form {
   box-sizing: border-box;

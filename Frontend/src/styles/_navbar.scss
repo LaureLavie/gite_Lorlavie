@@ -7,14 +7,12 @@
   top: 1rem;
   width: 100vw;
   height: 3rem;
-  background: none;
   display: flex;
   align-items: center;
   justify-items: center;
   justify-content: space-between;
   padding: 1rem;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba($gris-perle, 0.08);
 
   &__logo img {
     background: $noir;
@@ -32,14 +30,14 @@
     flex-direction: column;
     justify-content: center;
     gap: 0.3rem;
-    padding: 1rem;
+    padding: 1.5rem;
     outline: none;
     span {
       display: block;
       width: 28px;
       height: 4px;
       background: $blanc;
-      border-radius: 2px;
+      border-radius: 5%;
       transition: all 0.2s;
     }
     &.open span:nth-child(1) {
@@ -63,6 +61,7 @@
     width: 90%;
     background: $noir;
     box-shadow: 0 2px 8px rgba($gris-perle, 0.08);
+    border-radius: $radius;
     display: none;
     flex-direction: column;
     align-items: space-between;
@@ -76,6 +75,7 @@
         margin-bottom: 1.2rem;
         a {
           color: $blanc;
+          font-weight: bold;
           font-family: $font-main;
           font-size: 1.2rem;
           text-decoration: none;
@@ -92,5 +92,5 @@
 }
 
 body {
-  padding-top: 2rem;
+  padding-top: 4rem;
 }

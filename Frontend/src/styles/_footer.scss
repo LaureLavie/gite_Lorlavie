@@ -5,13 +5,9 @@
 .footer {
   background: $noir;
   color: $blanc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100vw;
   margin-bottom: 1rem;
-  font-family: $font-main;
-  box-shadow: 0 -2px 8px rgba($gris-perle, 0.08);
+  font-family: $font-main;  
   gap: 2rem;
 
   .footer-container {
@@ -20,40 +16,43 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    width: 100vw;
     margin: 0;
-    gap: 2rem;
-  }
-  &__socials {
     gap: 1rem;
-    display: flex;
-    justify-content: center;
-    .footer__icon {
-      color: $brun-boise;
+  }
+    &__socials {
+      gap: 2rem;
+      display: flex;
+      flex-direction:row;
+      align-items: center;
+      justify-content: center;
+      width: 30%;
+      .footer__icon {
+        color: $brun-boise;
+        font-size: 1rem;
+        transition: color 0.2s;
+        &:hover {
+          color: $blanc;
+        }
+      }
+    }
+    &__logo{
+      width: 30%;
+    }
+        &__logo img {
+      width: 3rem;
+      filter: brightness(1.2);
+    }
+        &__infos {
+      color: $gris-perle;
       font-size: 1rem;
-      transition: color 0.2s;
-      &:hover {
+      text-align: center;
+      width: 30%;
+      .footer__mail {
         color: $blanc;
+        text-decoration: none;
+        margin-top: 0.5rem;
+        font-weight: bold;
       }
     }
   }
-  &__logo{
-    width: 30%;
-  }
-
-  &__logo img {
-    width: 10%;
-    filter: brightness(1.2);
-  }
-
-  &__infos {
-    color: $gris-perle;
-    font-size: 1rem;
-    gap: 1rem;
-    .footer__mail {
-      color: $blanc;
-      text-decoration: none;
-      margin-top: 0.5rem;
-      font-weight: 500;
-    }
-  }
-}
