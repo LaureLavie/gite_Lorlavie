@@ -68,7 +68,7 @@ if (logoutBtn) {
     const logoutMsg = document.getElementById("logout-message");
     try {
       // Appel à l'API de déconnexion
-      const res = await fetch(`${process.env.API_URL}/api/auth/logout`, {
+      const res = await fetch("http://localhost:3000/api/auth/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -128,7 +128,7 @@ if (registerForm) {
     console.log("Registration data:", { name, surname, email, password });
 
     try {
-      const res = await fetch(`${process.env.API_URL}/api/auth/register`, {
+      const res = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
