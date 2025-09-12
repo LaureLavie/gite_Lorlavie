@@ -1,6 +1,7 @@
 @import "../styles/base";
 @import "../styles/button";
 @import "../styles/card";
+@import "../styles/calendar";
 @import "../styles/footer";
 @import "../styles/mixins";
 @import "../styles/navbar";
@@ -17,14 +18,15 @@
   gap: 2rem;
   padding:2rem;
 }
-.label {
+
+label {
   font-weight: bold;
   color: $noir;
   display: block;
   font-size: 1rem;
 }
 
-.a {
+a {
   color: $brun-boise;
   text-decoration: none;
   font-weight: bold;
