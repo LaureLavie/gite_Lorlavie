@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>gestion des Administrateur</title>
     <link rel="stylesheet" href="../../src/adminStyle/adminStyle.css" />
-    <script type="module" src="../../script.js" defer></script>
+    <script type="module" src="../../gestionAdmin.js" defer></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -18,32 +18,36 @@
   <body>
     <div id="navbar"></div>
     <h1>Gestion des Administrateurs</h1>
-    <div class="form">
-      <button class="button-dark" type="submit">Ajouter</button>
+    <div class="form" id="admin-form">
+      <button class="button-dark" type="submit" id="admin-add">Ajouter</button>
       <div class="card card--white">
-        <div class="card__badge">LAURE</div>
+        <div class="card__badge" id="admin-title">LAURE</div>
         <div class="card__icons">
-          <a href="#" class="icon-modif" title="Modifier">
+          <a href="#" class="icon-modif" id="admin-edit" title="Modifier">
             <i class="fa fa-pen"></i>
           </a>
-          <a href="#" class="icon-delete" title="Supprimer">
+          <a href="#" class="icon-delete" id="admin-delete" title="Supprimer">
             <i class="fa fa-trash"></i>
           </a>
         </div>
         <div class="card__content">
-          <div class="card__row"><span>Nom :</span> <strong>Lavie</strong></div>
-          <div class="card__row">
+          <div class="card__row" id="admin-name">
+            <span>Nom :</span> <strong>Lavie</strong></div>
+          <div class="card__row" id="admin-surname">
             <span>Prénom :</span> <strong>Laure</strong>
           </div>
-          <div class="card__row">
+          <div class="card__row" id="admin-email">
             <span>Email :</span> <strong>laure.lavie@example.com</strong>
           </div>
-          <div class="card__row">
+          <div class="card__row" id="admin-password">
             <span>Mot de Passe :</span> <strong> ***** </strong>
           </div>
         </div>
       </div>
+      <div class="successDiv" style="display: none"></div>
+      <div class="errorDiv" style="display: none"></div>
     </div>
+
     <div class="img_bottom">
       <img
         src="../../img/dessin marmotte blanc.png"
