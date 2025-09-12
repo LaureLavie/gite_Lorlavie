@@ -15,23 +15,17 @@
     />
   </head>
   <body>
-    <div class="dashboard-container">
-      <div class="logo">
+    <div class="form">
+      <div class="logo" width="15%">
         <a href="../../index.html">
           <img src="../../img/logo gite blanc.png" alt="Logo Gîte Lorlavie" />
         </a>
       </div>
       <h1>Activation de votre compte</h1>
+      <div class="form">
       <div id="activation-message" class="message-container"></div>
-      <div id="loading-spinner" style="text-align: center; margin: 2rem 0">
-        <i
-          class="fas fa-spinner fa-spin"
-          style="font-size: 2rem; color: #7a5c43"
-        ></i>
-        <p style="margin-top: 1rem; color: #666">Activation en cours...</p>
       </div>
     </div>
-
     <script>
       // Récupère le token dans l'URL
       const params = new URLSearchParams(window.location.search);
@@ -48,25 +42,20 @@
                 data.message.includes("succes"))
             ) {
               messageDiv.innerHTML = `
-                <div style="text-align: center; padding: 2rem;">
-                  <i class="fas fa-check-circle" style="font-size: 3rem; color: green; margin-bottom: 1rem;"></i>
+                              <div style="display: flex; align-items: center; justify-content: center; margin: 0; text-align: center; padding: 2rem;">
                   <p style="color: green; font-weight: bold; font-size: 1.2rem;">${data.message}</p>
-                  <p style="color: #666; margin: 1rem 0;">
-                    Redirection vers la page de connexion dans <span id="countdown">5</span> secondes...
-                  </p>
+                  <p style="color: green; margin: 1rem 0;">
+                    Redirection vers la page de connexion</p>
                   <a href="login.html" class="button-dark" style="margin-top: 1rem; display: inline-block;">
                     Aller à la connexion maintenant
                   </a>
-                </div>
+                </div>                      
               `;
 
             } else {
               messageDiv.innerHTML = `
-                <div style="text-align: center; padding: 2rem;">
-                  <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: red; margin-bottom: 1rem;"></i>
-                  <p style="color: red; font-size: 1.1rem; margin-bottom: 1rem;">
-                    ${data.message || "Erreur lors de l'activation"}
-                  </p>
+                <div style="display: flex; align-items: center; justify-content: center; margin: 0; text-align: center; padding: 2rem;">
+                  <p style="color: white; font-weight: bold; font-size: 1.2rem;">${data.message} || "Erreur lors de l'activation"</p>
                   <a href="login.html" class="button-dark" style="margin-top: 1rem; display: inline-block;">
                     Aller à la connexion
                   </a>
@@ -76,17 +65,15 @@
           })
           .catch((error) => {
             console.error("Erreur", error);
-            loadingSpinner.style.display = "none";
             messageDiv.innerHTML = `
-              <div style="text-align: center; padding: 2rem;">
-                <i class="fas fa-times-circle" style="font-size: 3rem; color: red; margin-bottom: 1rem;"></i>
-                <p style="color: red; font-size: 1.1rem; margin-bottom: 1rem;">
+               <div style="display: flex; align-items: center; justify-content: center; margin: 0; text-align: center; padding: 2rem;">
+                <p style="color: red; font-weight: bold; font-size: 1.2rem;">
                   Erreur lors de l'activation du compte.
                 </p>
-                <p style="color: #666; margin-bottom: 2rem;">
+                <p style="color: black; margin-bottom: 2rem;">
                   Veuillez réessayer ou contacter l'administrateur.
                 </p>
-                <a href="login.html" class="button-dark" style="display: inline-block;">
+                <a href="login.html" class="button-white" style="display: inline-block;">
                   Retour à la connexion
                 </a>
               </div>
@@ -94,12 +81,11 @@
           });
       } else {
         messageDiv.innerHTML = `
-          <div style="text-align: center; padding: 2rem;">
-            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: orange; margin-bottom: 1rem;"></i>
+          <div style="text-align: center; padding: 2rem;">           
             <p style="color: red; font-size: 1.1rem; margin-bottom: 1rem;">
               Lien d'activation invalide ou manquant.
             </p>
-            <p style="color: #666; margin-bottom: 2rem;">
+            <p style="color: white; margin-bottom: 2rem;">
               Vérifiez que vous avez bien copié le lien complet depuis votre email.
             </p>
             <div style="margin-top: 2rem;">
