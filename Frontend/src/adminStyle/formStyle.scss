@@ -17,14 +17,14 @@
   gap: 2rem;
   padding:2rem;
 }
-label {
+.label {
   font-weight: bold;
   color: $noir;
   display: block;
   font-size: 1rem;
 }
 
-a {
+.a {
   color: $brun-boise;
   text-decoration: none;
   font-weight: bold;
@@ -63,7 +63,7 @@ input[type="password"] {
   padding:1rem;
 }
 
-input[type="date"] {
+input[type="date"], textarea {
   width: 90%;
   padding: 1rem;
   background: transparent;
@@ -80,36 +80,76 @@ input[type="date"] {
     opacity: 0.9;
   }
 }
-
-.type-payment {
+input[type="checkbox"] {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  border-radius: $radius;
+  accent-color: $brun-boise;
+}
+
+
+.date-container,
+.message-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  padding: 1rem;
+  gap: 1rem;
+  background: $brun-boise;
+  border-radius: $radius;
+  margin: 0;
   label {
     font-weight: bold;
-    color: $blanc;
+    color: $noir;
     margin-bottom: 0;
     font-size: 1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
   }
-  input[type="radio"] {
-    accent-color: $brun-boise;
-    margin-right: 0.2rem;
+  }
+
+ .rgpd-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: none;
+  background: none;
+  width: 100%;
+  gap: 1rem;
+  margin: 1rem 0;
+  p {
+    font-size: 1rem;
+    text-align: left;
+    color: $noir;
+    margin: 0;
   }
 }
 
-.number-person,
-.number-night {
+.text-container{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 100%;
+gap: 1rem;
+p{
+  font-size: 1rem;
+  text-align: center;
+  color: $noir;
+  margin: 0 2rem;
+}
+}
+  
+.option {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
   label {
-    min-width: 160px;
-    font-weight: 600;
-    color: $blanc;
+    font-weight: bold;
+    color: $noir;
     margin-bottom: 0;
     font-size: 1rem;
   }
@@ -123,13 +163,17 @@ input[type="date"] {
     font-size: 1.3rem;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 2px 2px 0 $gris-perle;
-    transition: background 0.2s;    
+    box-shadow: $shadow;
+    transition: background 0.2s;
+    &:hover {
+      background: $gris;
+      color: $noir;
+    }
   }
   span {
     font-size: 1.3rem;
     font-weight: bold;
-    color: $blanc;
+    color: $brun-boise;
     min-width: 28px;
     text-align: center;
     display: inline-block;
@@ -141,7 +185,7 @@ input[type="date"] {
   gap: 2rem;
   label {
     font-weight: 600;
-    color: $blanc;
+    color: $noir;
     font-size: 1.1rem;
     margin-bottom: 0;
   }
@@ -150,34 +194,4 @@ input[type="date"] {
     font-weight: bold;
     color: $vert;
   }
-}
-
-.tarif-input,
-.option-nom,
-.option-tarif,
-.option-cond {
-  background: $gris-perle;
-  border: 2px solid $brun-boise;
-  border-radius: 8px;
-  padding: 0.4rem 0.8rem;
-  font-family: $font-main;
-  font-size: 1rem;
-  color: $noir;
-  margin-right: 0.5rem;
-  margin-bottom: 0.3rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 0 0 2px rgba($vert, 0.15);
-  &:focus {
-    border-color: $vert;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba($vert, 0.15);
-  }
-}
-
-.tarif-row,
-.option-row {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin-bottom: 0.5rem;
 }

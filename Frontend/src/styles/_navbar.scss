@@ -22,7 +22,7 @@
   }
 
   &__burger {
-    background: $noir;
+    background: $noir !important;
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -36,7 +36,7 @@
       display: block;
       width: 28px;
       height: 4px;
-      background: $blanc;
+      background: $blanc !important;
       border-radius: 5%;
       transition: all 0.2s;
     }

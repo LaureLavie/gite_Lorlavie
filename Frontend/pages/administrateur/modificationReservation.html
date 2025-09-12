@@ -21,53 +21,63 @@
    <form class="form">
       <div class="card card--white">
           <div class="card__badge">Ibanez Txumin</div>
-          <label for="date-container">Date de la réservation:</label>
-          <input
-            type="date"
-            id="date-arrivee"
-            name="date-arrivee"
-            required
-          />
-          <input
-            type="date"
-            id="date-depart"
-            name="date-depart"
-            required
-          />
-
-        <div class="type-payment">
-          <label>Mode de Paiement</label>
-          <label
-            ><input type="radio" name="paiement" value="enligne" checked /> EN
-            LIGNE</label
-          >
-          <label
-            ><input type="radio" name="paiement" value="espece" /> ESPÈCE</label
-          >
-          <label
-            ><input type="radio" name="paiement" value="carte" /> CARTE</label
-          >
-        </div>
-
-        <div class="number-person">
-          <label>Nombre de personnes</label>
-          <button type="button" onclick="changer('personnes', -1)">−</button>
-          <span id="personnes">1</span>
-          <button type="button" onclick="changer('personnes', 1)">+</button>
-        </div>
-
-        <div class="number-night">
-          <label>Nombre de nuits</label>
-          <button type="button" onclick="changer('nuits', -1)">−</button>
-          <span id="nuits">1</span>
-          <button type="button" onclick="changer('nuits', 1)">+</button>
-        </div>
-
-        <div class="amount-final">
-          <label>Montant</label>
-          <span id="montant">65€</span>
-        </div>
-      </div>
+          <div class="date-container">
+            <label for="reservation-date-arrivee">Date d'arrivée:</label>
+            <input
+              type="date"
+              id="reservation-date-arrivee"
+              name="reservation-date-arrivee"
+              required
+            />
+            <label for="reservation-date-depart">Date de départ:</label>
+            <input
+              type="date"
+              id="reservation-date-depart"
+              name="reservation-date-depart"
+              required
+            />
+          </div>  
+          <div class="option">
+            <label>Nombre de nuits</label>
+            <span id="nuits">1</span>
+          </div>
+          <div class="option">
+            <label>Nombre de personnes</label>
+            <button type="button" id="personnes-moins">−</button>
+            <span id="personnes">1</span>
+            <button type="button" id="personnes-plus">+</button>
+          </div>
+          <div class="option">
+            <label>Nombre de personnes supplémentaires</label>
+            <button type="button" id="sup-moins">−</button>
+            <span id="sup-personnes">0</span>
+            <button type="button" id="sup-plus">+</button>
+            <span>30€/pers</span>
+          </div>
+  
+          <div class="option">
+            <label>Options supplémentaires :</label>
+            
+              <input type="checkbox" id="option-menage" />
+              <label for="option-menage">Ménage 20€</label>
+            
+          </div>
+  
+          <div class="amount-final">
+            <label>Montant</label>
+            <span id="montant">65€</span>
+          </div>
+  
+          <div class="message-container">
+            <label for="message">Mesage de l'hôte</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              placeholder="Bonjour, je suis intéressé par votre logement"
+            ></textarea>
+          </div>
+          </div>  
       </form>
 
     <div class="button-container">

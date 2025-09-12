@@ -151,24 +151,7 @@ input[type="checkbox"] {
   }
   }
 
-  button {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: none;
-    background: $brun-boise;
-    color: $blanc;
-    font-size: 1.3rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: $shadow;
-    transition: background 0.2s;
-    &:hover {
-      background: $gris;
-      color: $noir;
-    }
-  }
-
+ 
 
 .rgpd-container {
   display: flex;
