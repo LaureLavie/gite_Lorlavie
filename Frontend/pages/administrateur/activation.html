@@ -36,15 +36,12 @@
       // Récupère le token dans l'URL
       const params = new URLSearchParams(window.location.search);
       const token = params.get("token");
-      const loadingSpinner = document.getElementById("loading-spinner");
       const messageDiv = document.getElementById("activation-message");
 
       if (token) {
         fetch(`http://localhost:3000/api/auth/activate/${token}`)
           .then((res) => res.json())
           .then((data) => {
-            loadingSpinner.style.display = "none";
-
             if (
               data.message &&
               (data.message.includes("succès") ||
@@ -63,17 +60,6 @@
                 </div>
               `;
 
-              // Compte à rebours
-              let countdown = 5;
-              const countdownElement = document.getElementById("countdown");
-              const countdownInterval = setInterval(() => {
-                countdown--;
-                countdownElement.textContent = countdown;
-                if (countdown <= 0) {
-                  clearInterval(countdownInterval);
-                  window.location.href = "login.html";
-                }
-              }, 1000);
             } else {
               messageDiv.innerHTML = `
                 <div style="text-align: center; padding: 2rem;">
@@ -107,7 +93,6 @@
             `;
           });
       } else {
-        loadingSpinner.style.display = "none";
         messageDiv.innerHTML = `
           <div style="text-align: center; padding: 2rem;">
             <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: orange; margin-bottom: 1rem;"></i>

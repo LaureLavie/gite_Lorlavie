@@ -1,3 +1,4 @@
+
 // Connexion admin
 const loginForm = document.getElementById("login-form");
 if (loginForm) {
@@ -59,15 +60,15 @@ if (loginForm) {
   });
 }
 
+//Déconnexion de l'Administrateur
 const logoutBtn = document.getElementById("logout-btn");
-
 if (logoutBtn) {
   logoutBtn.addEventListener("click", async (e) => {
     e.preventDefault();
-
+    const logoutMsg = document.getElementById("logout-message");
     try {
       // Appel à l'API de déconnexion
-      const res = await fetch("http://localhost:3000/api/auth/logout", {
+      const res = await fetch(`${process.env.API_URL}/api/auth/logout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -82,22 +83,25 @@ if (logoutBtn) {
       localStorage.removeItem("adminToken");
       localStorage.removeItem("adminData");
 
-      // Message de confirmation (optionnel)
       if (res && res.ok) {
-        console.log("Déconnexion réussie");
+        if (logoutMsg) {
+          logoutMsg.textContent = "Déconnexion réussie.";
+          logoutMsg.style.display = "block";
+        }
+      } else {
+        if (logoutMsg) {
+          logoutMsg.textContent = "Erreur lors de la déconnexion.";
+          logoutMsg.style.display = "block";
+        }
       }
 
       // Redirection vers la page d'accueil
       window.location.href = "../../index.html";
     } catch (error) {
-      console.error("Erreur lors de la déconnexion:", error);
-
-      // Même en cas d'erreur, on déconnecte côté client
-      localStorage.removeItem("adminToken");
-      localStorage.removeItem("adminData");
-
-      // Redirection vers la page d'accueil
-      window.location.href = "../../index.html";
+      if (logoutMsg) {
+        logoutMsg.textContent = "Erreur lors de la déconnexion.";
+        logoutMsg.style.display = "block";
+      }     
     }
   });
 }
@@ -124,7 +128,7 @@ if (registerForm) {
     console.log("Registration data:", { name, surname, email, password });
 
     try {
-      const res = await fetch("http://localhost:3000/api/auth/register", {
+      const res = await fetch(`${process.env.API_URL}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -138,14 +142,16 @@ if (registerForm) {
       if (res.ok && data.admin) {
        // Affiche le message de succès
        errorDiv.style.display = "none";
-       successDiv.textContent = "Inscription réussie";
+       successDiv.textContent = "Inscription réussie. Vérifiez votre mail, un lien d'activation vous a été envoyé.";
        successDiv.style.display = "block";
         // Redirige vers la page de connexion
-        window.location.href = "login.html";
-} else {
- errorDiv.textContent = data.message || data.error || "Erreur lors de l'inscription.";
- errorDiv.style.display = "block";
-}
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 3000);
+      } else {
+        errorDiv.textContent = data.message || data.error || "Erreur lors de l'inscription.";
+        errorDiv.style.display = "block";
+      }
     } catch (err) {
       console.error("Erreur:", err);
       errorDiv.textContent = "Erreur de connexion au serveur.";

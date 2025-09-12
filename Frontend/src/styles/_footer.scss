@@ -6,9 +6,9 @@
   background: $noir;
   color: $blanc;
   width: 100vw;
-  margin-bottom: 1rem;
-  font-family: $font-main;  
-  gap: 2rem;
+  padding: 2rem;
+  margin:0;
+  font-family: $font-main;
 
   .footer-container {
     display: flex;
@@ -26,7 +26,7 @@
       flex-direction:row;
       align-items: center;
       justify-content: center;
-      width: 30%;
+      width: 40%;
       .footer__icon {
         color: $brun-boise;
         font-size: 1rem;
@@ -37,7 +37,7 @@
       }
     }
     &__logo{
-      width: 30%;
+      width: 40%;
     }
         &__logo img {
       width: 3rem;
@@ -47,7 +47,8 @@
       color: $gris-perle;
       font-size: 1rem;
       text-align: center;
-      width: 30%;
+      line-height: 1rem;
+      width: 20%;
       .footer__mail {
         color: $blanc;
         text-decoration: none;

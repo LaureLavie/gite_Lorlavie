@@ -767,9 +767,9 @@ h2 {
   background: #000000;
   color: #ffffff;
   width: 100vw;
-  margin-bottom: 1rem;
-  font-family: "Montserrat", sans-serif;
-  gap: 2rem; }
+  padding: 2rem;
+  margin: 0;
+  font-family: "Montserrat", sans-serif; }
   .footer .footer-container {
     display: flex;
     flex-direction: row;
@@ -785,7 +785,7 @@ h2 {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 30%; }
+    width: 40%; }
     .footer__socials .footer__icon {
       color: #7a5c43;
       font-size: 1rem;
@@ -793,7 +793,7 @@ h2 {
       .footer__socials .footer__icon:hover {
         color: #ffffff; }
   .footer__logo {
-    width: 30%; }
+    width: 40%; }
   .footer__logo img {
     width: 3rem;
     filter: brightness(1.2); }
@@ -801,7 +801,8 @@ h2 {
     color: #b7b7a4;
     font-size: 1rem;
     text-align: center;
-    width: 30%; }
+    line-height: 1rem;
+    width: 20%; }
     .footer__infos .footer__mail {
       color: #ffffff;
       text-decoration: none;
@@ -1141,9 +1142,9 @@ h2 {
   background: #000000;
   color: #ffffff;
   width: 100vw;
-  margin-bottom: 1rem;
-  font-family: "Montserrat", sans-serif;
-  gap: 2rem; }
+  padding: 2rem;
+  margin: 0;
+  font-family: "Montserrat", sans-serif; }
   .footer .footer-container {
     display: flex;
     flex-direction: row;
@@ -1159,7 +1160,7 @@ h2 {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 30%; }
+    width: 40%; }
     .footer__socials .footer__icon {
       color: #7a5c43;
       font-size: 1rem;
@@ -1167,7 +1168,7 @@ h2 {
       .footer__socials .footer__icon:hover {
         color: #ffffff; }
   .footer__logo {
-    width: 30%; }
+    width: 40%; }
   .footer__logo img {
     width: 3rem;
     filter: brightness(1.2); }
@@ -1175,7 +1176,8 @@ h2 {
     color: #b7b7a4;
     font-size: 1rem;
     text-align: center;
-    width: 30%; }
+    line-height: 1rem;
+    width: 20%; }
     .footer__infos .footer__mail {
       color: #ffffff;
       text-decoration: none;
@@ -1357,8 +1359,8 @@ a {
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  background: transparent;
-  background-color: transparent;
+  background: none;
+  background-color: none;
   width: 90%;
   border: none;
   border-bottom: 1px solid #858585;
@@ -1366,10 +1368,6 @@ input[type="password"] {
   font-size: 1.1rem;
   color: #000000;
   padding: 1rem; }
-  input[type="email"] button-white,
-  input[type="text"] button-white,
-  input[type="password"] button-white {
-    background-color: none; }
 
 input[type="date"], textarea {
   width: 90%;

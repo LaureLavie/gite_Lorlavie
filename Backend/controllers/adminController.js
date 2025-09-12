@@ -23,7 +23,7 @@ export const registerAdmin = async (req, res) => {
         message: "veuillez entrer votre nom, prénom, mail et mot de passe",
       });
     }
-
+//vérifie si l'admin existe ou pas encore
     const existingAdmin = await Admin.findOne({ email });
     if (existingAdmin) {
       return res.status(400).json({
@@ -46,7 +46,7 @@ export const registerAdmin = async (req, res) => {
     // Génère un token d'activation et envoie le mail associé
     const token = v4();
     newAdmin.token = token;
-    const link = `${process.env.CLIENT_URL}page/administrateur/activation.html?token=${token}`;
+    const link = `${process.env.CLIENT_URL}/pages/administrateur/activation.html?token=${token}`;
     const html = htmlActivateAccount(surname, link);
     await sendMail(email, "Activation de votre Compte Admin", html);
     await newAdmin.save();
