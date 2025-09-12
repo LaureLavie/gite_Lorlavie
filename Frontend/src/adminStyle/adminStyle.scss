@@ -56,6 +56,8 @@ a {
 input[type="email"],
 input[type="text"],
 input[type="password"] {
+  background: none;
+  background-color: none;
   width: 90%;
   border: none;
   border-bottom: 1px solid $gris;
@@ -63,7 +65,7 @@ input[type="password"] {
   font-size: 1.1rem;
   color: $noir;
   padding:1rem;
-}
+ }
 
 input[type="date"], textarea {
   width: 90%;
@@ -89,7 +91,6 @@ input[type="checkbox"] {
   border-radius: $radius;
   accent-color: $brun-boise;
 }
-
 
 .date-container,
 .message-container {

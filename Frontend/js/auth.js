@@ -7,11 +7,13 @@ if (loginForm) {
     const email = loginForm.querySelector('input[type="email"]').value;
     const password = loginForm.querySelector('input[type="password"]').value;
     const errorDiv = loginForm.querySelector(".error-message");
+    const successDiv= loginForm.querySelector(".successDiv");
 
     //Validation côté client
     if (!email || !password) {
       errorDiv.textContent = "Veuillez remplir tous les champs.";
       errorDiv.style.display = "block";
+      successDiv.style.display = "none";
       return;
     }
 
@@ -34,20 +36,20 @@ if (loginForm) {
         localStorage.setItem("adminToken", data.token);
         localStorage.setItem("adminData", JSON.stringify(data.admin));
 
-        //masquer l'erreur et afficher succès
+        // Affiche le message de succès
         errorDiv.style.display = "none";
+        successDiv.textContent = "Connexion réussie";
+        successDiv.style.display = "block";
 
-        //Aficher message de succès temporaire
-        const successDiv = document.createElement("div");
-        successDiv.style.color = "green";
-        successDiv.style.textAlign = "center";
-        successDiv.style.margin = "1rem";
-        successDiv.textContent = "Connexion réussie !";
-        loginForm.appendChild(successDiv);
+         // Redirige vers le dashboard après 1s
+         setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1000);
       } else {
-        errorDiv.textContent =
-          data.error || data.message || "Email ou mot de passe incorrect.";
+        // Affiche le message d'erreur
+        errorDiv.textContent = data.error || data.message || "Email ou mot de passe incorrect.";
         errorDiv.style.display = "block";
+        successDiv.style.display = "none";
       }
     } catch (err) {
       console.error("Erreur:", err);
@@ -110,6 +112,7 @@ if (registerForm) {
     const email = registerForm.querySelector('input[name="email"]').value;
     const password = registerForm.querySelector('input[name="password"]').value;
     const errorDiv = registerForm.querySelector(".error-message");
+    const successDiv = registerForm.querySelector(".successDiv");
 
     if (!name || !surname || !email || !password) {
       errorDiv.textContent = "Veuillez remplir tous les champs.";
@@ -133,26 +136,16 @@ if (registerForm) {
       console.log("Response:", res.status, data); // Debug
 
       if (res.ok && data.admin) {
-        //masquer les erreurs
-        errorDiv.style.display = "none";
-
-        //Afficher message de succès
-        const successDiv = document.createElement("div");
-        successDiv.innerHTML = `div style="background:#d4edda; border:1px solid #c3e6cb; color:#155724; padding:10px; margin:10px 0; text-align:center;">
-        <strong>Inscription réussie !<strong><br>
-        <small>Un email de confirmation vous a été envoyé. ${email}<small><br>
-        <small>Redirection vers la page de connexion dans <span id="countdown">5</span> secondes...</small></div>`;
-        registerForm.appendChild(successDiv);
-
-        //désactiver le formulaire
-        const inputs = registerForm.querySelectorAll("input,button");
-        inputs.forEach((input) => (input.disabled = true));
-        registerForm.style.opacity = 0.7;
-      } else {
-        errorDiv.textContent =
-          data.message || data.error || "Erreur lors de l'inscription.";
-        errorDiv.style.display = "block";
-      }
+       // Affiche le message de succès
+       errorDiv.style.display = "none";
+       successDiv.textContent = "Inscription réussie";
+       successDiv.style.display = "block";
+        // Redirige vers la page de connexion
+        window.location.href = "login.html";
+} else {
+ errorDiv.textContent = data.message || data.error || "Erreur lors de l'inscription.";
+ errorDiv.style.display = "block";
+}
     } catch (err) {
       console.error("Erreur:", err);
       errorDiv.textContent = "Erreur de connexion au serveur.";

@@ -1357,6 +1357,8 @@ a {
 input[type="email"],
 input[type="text"],
 input[type="password"] {
+  background: transparent;
+  background-color: transparent;
   width: 90%;
   border: none;
   border-bottom: 1px solid #858585;
@@ -1364,6 +1366,10 @@ input[type="password"] {
   font-size: 1.1rem;
   color: #000000;
   padding: 1rem; }
+  input[type="email"] button-white,
+  input[type="text"] button-white,
+  input[type="password"] button-white {
+    background-color: none; }
 
 input[type="date"], textarea {
   width: 90%;

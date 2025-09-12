@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 /**
- * Modèle CalendrierStatus
+ * Modèle CalendrierStat
  * - Gère les statuts de chaque date du calendrier
  * - Permet à l'admin de bloquer des dates
  * - Lie les dates réservées aux réservations
  */
-const CalendrierStatusSchema = new mongoose.Schema({
+const CalendrierStatSchema = new mongoose.Schema({
   date: {
     type: Date,
     required: true,
@@ -37,10 +37,10 @@ const CalendrierStatusSchema = new mongoose.Schema({
 });
 
 // Index pour optimiser les requêtes par date
-CalendrierStatusSchema.index({ statut: 1, date: 1 });
+CalendrierStatSchema.index({ statut: 1, date: 1 });
 
 // Méthodes statiques utiles
-CalendrierStatusSchema.statics.getDatesDisponibles = async function (
+CalendrierStatSchema.statics.getDatesDisponibles = async function (
   dateDebut,
   dateFin
 ) {
@@ -53,7 +53,7 @@ CalendrierStatusSchema.statics.getDatesDisponibles = async function (
   return dates.map((d) => d.date);
 };
 
-CalendrierStatusSchema.statics.verifierDisponibilite = async function (
+CalendrierStatSchema.statics.verifierDisponibilite = async function (
   dateArrivee,
   dateDepart
 ) {
@@ -69,7 +69,7 @@ CalendrierStatusSchema.statics.verifierDisponibilite = async function (
   return datesOccupees.length === 0;
 };
 
-CalendrierStatusSchema.statics.bloquerPeriode = async function (
+CalendrierStatSchema.statics.bloquerPeriode = async function (
   dateDebut,
   dateFin,
   reservationId = null
@@ -95,7 +95,7 @@ CalendrierStatusSchema.statics.bloquerPeriode = async function (
   );
 };
 
-CalendrierStatusSchema.statics.libererPeriode = async function (
+CalendrierStatSchema.statics.libererPeriode = async function (
   dateDebut,
   dateFin
 ) {
@@ -112,4 +112,4 @@ CalendrierStatusSchema.statics.libererPeriode = async function (
   );
 };
 
-export default mongoose.model("CalendrierStatus", CalendrierStatusSchema);
+export default mongoose.model("CalendrierStat", CalendrierStatSchema);
