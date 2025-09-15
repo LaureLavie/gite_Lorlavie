@@ -484,7 +484,8 @@ p {
     box-shadow: 8px 8px 0 #7a5c43; }
     .card--white .card__badge {
       background: #7a5c43;
-      color: #ffffff; }
+      color: #ffffff;
+      box-shadow: 8px 8px 0 #858585; }
     .card--white .card__content {
       color: #000000; }
   .card--brown {
@@ -492,7 +493,8 @@ p {
     color: #ffffff; }
     .card--brown .card__badge {
       background: #b7b7a4;
-      color: #000000; }
+      color: #000000;
+      box-shadow: 8px 8px 0 #858585; }
     .card--brown .card__content {
       color: #000000; }
   .card--black {
