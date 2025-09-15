@@ -123,45 +123,30 @@ export function Reservation() {
   updateNuits();
   updateMontant();
 
-  // Récupèrer les données du formulaire
-  const reservation = {
-    dateArrivee: document.getElementById("reservation-date-arrivee").value,
-    dateDepart: document.getElementById("reservation-date-depart").value,
-    nombrePersonnes: parseInt(document.getElementById("personnes").textContent, 10),
-    personnesSupplementaires: parseInt(document.getElementById("sup-personnes").textContent, 10),
-    options: {
-      menage: document.getElementById("option-menage").checked,
-      message: document.getElementById("message").value,
-    modePaiement: document.getElementById("mode-paiement").value,
-    prixTotal: document.getElementById("montant").value
-    }
-   
-  };
-    // Stocke la réservation dans le localStorage
-    localStorage.setItem("reservationEnCours", JSON.stringify(reservation));
+  // Handler du submit du formulaire
+  const form = document.querySelector("form.form");
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-    // Redirige vers la page de paiement
-    const reservationForm = document.getElementById("reservationEnCours");
-    const errorDiv = document.getElementById("errorDiv");
-    const successDiv = document.getElementById("successDiv");
+      // Récupère les valeurs au moment du submit
+      const reservation = {
+        dateArrivee: arriveeInput.value,
+        dateDepart: departInput.value,
+        nombrePersonnes: parseInt(personnesSpan.textContent, 10),
+        personnesSupplementaires: parseInt(supPersonnesSpan.textContent, 10),
+        options: {
+          menage: menageCheckbox.checked,
+          message: document.getElementById("message").value
+        },
+        prixTotal: montantSpan.textContent 
+      };
 
-    if (reservationForm) {
-      reservationForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        try {
-          // Ici, vous pouvez ajouter la logique pour vérifier la réservation
-          // Par exemple, envoyer la réservation au serveur et attendre la réponse
-          // Pour l'exemple, on suppose que tout va bien :
-          window.location.href = "modePaiement.html";
-        } catch (err) {
-          if (errorDiv) {
-            errorDiv.textContent = "Erreur de connexion au serveur.";
-            errorDiv.style.display = "block";
-          }
-          if (successDiv) {
-            successDiv.style.display = "none";
-          }
-        }
+      // Stocke la réservation dans le localStorage
+      localStorage.setItem("reservationEnCours", JSON.stringify(reservation));
+
+      // Redirige vers la page de paiement
+      window.location.href = "modePaiement.html";
       });
     }
 }
