@@ -46,7 +46,7 @@ export const registerAdmin = async (req, res) => {
     // Génère un token d'activation et envoie le mail associé
     const token = v4();
     newAdmin.token = token;
-    const link = `${process.env.CLIENT_URL}/pages/administrateur/activation.html?token=${token}`;
+    const link = `${process.env.CLIENT_URL}/Frontend/pages/administrateur/activation.html?token=${token}`;
     const html = htmlActivateAccount(surname, link);
     await sendMail(email, "Activation de votre Compte Admin", html);
     await newAdmin.save();
@@ -176,12 +176,12 @@ export const forgotPassword = async (req, res) => {
     );
 
     // Lien vers la page de réinitialisation avec le token en paramètre
-    const resetLink = `${process.env.CLIENT_URL}/pages/administrateur/new_password.html?token=${resetToken}`;
+    const resetLink = `${process.env.CLIENT_URL}/Frontend/pages/administrateur/new_password.html?token=${resetToken}`;
     const html = htmlResetPassword(admin.surname, resetLink);
     await sendMail(email, "Réinitialisation de votre mot de passe", html);
     res
       .status(200)
-      .json({ message: "Email de réinitialisation envoyé avc succès" });
+      .json({ message: "Email de réinitialisation envoyé avec succès" });
   } catch (error) {
     console.error("Forgot password error:", error);
     res.status(500).json({ message: "Erreur interne du serveur" });

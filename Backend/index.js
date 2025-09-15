@@ -28,6 +28,13 @@ app.use(express.json());
 
 // Middleware CORS pour sécuriser les échanges entre frontend et backend
 app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;"
+  );
+  next();
+});
 
 // Définition des routes principales de l'API
 app.use("/api/calendrier",calendrierRouter)//gestion du calendrier
