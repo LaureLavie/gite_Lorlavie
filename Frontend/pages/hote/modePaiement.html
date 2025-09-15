@@ -93,12 +93,18 @@
         class="marmotte-icon"
         />
         <h2 class="switch-title">Mode de paiement</h2>
-          <div class="switch-options">
-            <btn class="switch-btn">EN LIGNE</btn>
-            <btn class="switch-btn">ESPÈCE</btn>
-            <btn class="switch-btn">CARTE</btn>
-          </div>
+        <div class="switch-options" id="mode-paiement">
+          <btn class="switch-btn">EN LIGNE</btn>
+          <btn class="switch-btn">ESPÈCE</btn>
+          <btn class="switch-btn">CARTE</btn>
+        </div>
+        <div class="amount-final">
+          <label>Montant</label>
+          <span id="montant">65€</span>
+        </div>
       </div>
+      <div class="successDiv" style="display: none"></div>
+      <div class="errorDiv" style="display: none"></div>
     </form>
       <div class="text-container">
         <h2>Informations Importantes</h2>

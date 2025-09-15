@@ -11,6 +11,7 @@ export function Reservation() {
   const supPlusBtn = document.getElementById("sup-plus");
   const supPersonnesSpan = document.getElementById("sup-personnes");
 
+
   if (
     !arriveeInput ||
     !departInput ||
@@ -121,4 +122,46 @@ export function Reservation() {
   // Initialisation
   updateNuits();
   updateMontant();
+
+  // Récupèrer les données du formulaire
+  const reservation = {
+    dateArrivee: document.getElementById("reservation-date-arrivee").value,
+    dateDepart: document.getElementById("reservation-date-depart").value,
+    nombrePersonnes: parseInt(document.getElementById("personnes").textContent, 10),
+    personnesSupplementaires: parseInt(document.getElementById("sup-personnes").textContent, 10),
+    options: {
+      menage: document.getElementById("option-menage").checked,
+      message: document.getElementById("message").value,
+    modePaiement: document.getElementById("mode-paiement").value,
+    prixTotal: document.getElementById("montant").value
+    }
+   
+  };
+    // Stocke la réservation dans le localStorage
+    localStorage.setItem("reservationEnCours", JSON.stringify(reservation));
+
+    // Redirige vers la page de paiement
+    const reservationForm = document.getElementById("reservationEnCours");
+    const errorDiv = document.getElementById("errorDiv");
+    const successDiv = document.getElementById("successDiv");
+
+    if (reservationForm) {
+      reservationForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        try {
+          // Ici, vous pouvez ajouter la logique pour vérifier la réservation
+          // Par exemple, envoyer la réservation au serveur et attendre la réponse
+          // Pour l'exemple, on suppose que tout va bien :
+          window.location.href = "modePaiement.html";
+        } catch (err) {
+          if (errorDiv) {
+            errorDiv.textContent = "Erreur de connexion au serveur.";
+            errorDiv.style.display = "block";
+          }
+          if (successDiv) {
+            successDiv.style.display = "none";
+          }
+        }
+      });
+    }
 }
