@@ -159,3 +159,9 @@ if (registerForm) {
     }
   });
 }
+
+//initialisation au chargement
+window.addEventListener("DOMContentLoaded", () => {
+  if (loginForm) loginForm.reset();
+  if (registerForm) registerForm.reset();
+});

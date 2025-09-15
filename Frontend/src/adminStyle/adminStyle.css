@@ -262,7 +262,7 @@ h2 {
   padding: 2rem;
   margin: 3rem;
   gap: 1.5rem;
-  width: 100%;
+  width: 90%;
   position: relative;
   font-family: "Montserrat", sans-serif;
   color: #000000;
@@ -616,7 +616,7 @@ h2 {
   padding: 2rem;
   margin: 3rem;
   gap: 1.5rem;
-  width: 100%;
+  width: 90%;
   position: relative;
   font-family: "Montserrat", sans-serif;
   color: #000000;
@@ -1339,6 +1339,17 @@ a {
   font-weight: bold; }
   a:hover {
     text-decoration: underline; }
+
+.form-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  gap: 1rem;
+  padding: 2rem; }
 
 .date-container {
   display: flex;

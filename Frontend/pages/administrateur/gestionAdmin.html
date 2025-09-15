@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gestion des Administrateur</title>
+  <link rel="stylesheet" href="../../src/adminStyle/adminStyle.css" />
+  <script type="module" src="../../gestionAdmin.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <div id="navbar"></div>
+  <h1>Gestion des Administrateurs</h1>
+  <div class="form-container">
+    <button class="button-white" type="submit" id="add-Admin-Btn">Ajouter</button>
+    <form class="form" id="admin-form" style="display:none;">
+      <div class="mesage-container">
+        <div class="successDiv" style="display: none"></div>
+        <div class="errorDiv" style="display: none"></div>
+      </div>
+
+      <label for="name">Nom *</label>
+      <input type="text" id="name" name="name" required placeholder="Nom" />
+
+      <label for="surname">Prénom *</label>
+      <input type="text" id="surname" name="surname" required placeholder="Prénom" />
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required placeholder="adresse@email.com" maxlength="100" />
+
+      <label for="password">Mot de passe *</label>
+      <input type="password" id="password" name="password" placeholder="Mot de passe" />
+
+      <div class="button-container">
+        <button type="button" id="edit-btn" class="button-dark">
+          Modifier
+        </button>
+        <button type="button" id="cancel-btn" class="button-grey">
+          Annuler
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="form"></div>
+  <h2>Liste des administrateurs</h2>
+  <div class="card card--brown">
+    <div id="admins-list" class="admins-grid">
+      <!-- Les cartes d'administrateurs seront insérées ici par JavaScript -->
+    </div>
+  </div>
+
+
+  <div class="successDiv" style="display: none"></div>
+  <div class="errorDiv" style="display: none"></div>
+  </div>
+  </form>
+  <div class="img_bottom">
+    <img src="../../img/dessin marmotte blanc.png" alt="Illustration de marmotte" class="marmotte" />
+  </div>
+  <div id="footer"></div>
+</body>
+
+</html>
