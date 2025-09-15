@@ -238,7 +238,16 @@ p {
       .footer__socials .footer__icon:hover {
         color: #7a5c43; }
   .footer__logo {
-    width: 30%; }
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    .footer__logo .footer__legal {
+      color: #7a5c43;
+      text-decoration: none;
+      margin-top: 0.5rem;
+      font-weight: bold; }
   .footer__logo img {
     width: 3rem;
     filter: brightness(1.2); }
@@ -246,7 +255,8 @@ p {
     color: #000000;
     font-size: 1rem;
     text-align: center;
-    width: 30%; }
+    width: 30%;
+    margin-top: 0.5rem; }
     .footer__infos .footer__mail {
       color: #7a5c43;
       text-decoration: none;
