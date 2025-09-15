@@ -463,6 +463,10 @@ p {
     background: #b7b7a4;
     color: #000000; }
 
+.switch-btn.active {
+  background: #7a5c43;
+  color: #ffffff; }
+
 .card {
   background: #ffffff;
   border-radius: 50px;

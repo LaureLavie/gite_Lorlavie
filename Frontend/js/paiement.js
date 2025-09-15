@@ -2,6 +2,17 @@ const API_BACK= "https://backend-lorlavie.onrender.com";
 const errorDiv = adminForm.querySelector(".errorDiv");
 const successDiv = adminForm.querySelector(".successDiv");
 
+let selectedMode = "EN LIGNE"; // valeur par défaut
+
+  document.querySelectorAll("#mode-paiement .switch-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      // Retire la classe active des autres
+      document.querySelectorAll("#mode-paiement .switch-btn").forEach(b => b.classList.remove("active"));
+      // Ajoute la classe active à celui cliqué
+      this.classList.add("active");
+      selectedMode = this.textContent.trim();
+    });
+  });
 
 document.querySelector("form.form").addEventListener("submit", async function(e) {
   e.preventDefault();
@@ -20,7 +31,12 @@ document.querySelector("form.form").addEventListener("submit", async function(e)
     telephone: document.getElementById("telephone").value,
     email: document.getElementById("email").value
   };
-  reservation.modePaiement = "en ligne"; // ou récupère le choix réel
+
+      // Ajoute le mode de paiement choisi
+  reservation.modePaiement = selectedMode; // ou récupère le choix réel
+
+  // Stocke la réservation complète dans le localStorage
+  localStorage.setItem("reservationEnCours", JSON.stringify(reservation));
 
   // Envoie la réservation au backend
   try {
