@@ -1,3 +1,4 @@
+const API_BACK= "https://backend-lorlavie.onrender.com";
 const adminForm = document.getElementById("admin-form");
 const adminsListDiv = document.getElementById("admins-list");
 const cancelBtn = document.getElementById("cancel-btn");
@@ -21,11 +22,11 @@ cancelBtn.addEventListener("click", (e) => {
   resetForm();
 });
 
-// Récupérer la liste des admins (GET)
+// Récupérer la liste des admins
 async function fetchAdmins() {
   const token = localStorage.getItem("adminToken");
   try {
-    const res = await fetch("http://localhost:3000/api/auth/", {
+    const res = await fetch(`${API_BACK}/api/auth/`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     const admins = await res.json();
@@ -72,7 +73,7 @@ window.editAdminForm = async function(id) {
   editingAdminId = id;
   const token = localStorage.getItem("adminToken");
   try {
-    const res = await fetch(`http://localhost:3000/api/auth/${id}`, {
+    const res = await fetch(`${API_BACK}/api/auth/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     const admin = await res.json();
@@ -108,7 +109,7 @@ adminForm.addEventListener("submit", async (e) => {
     let res, result;
     if (!editingAdminId) {
       // Ajout
-      res = await fetch("http://localhost:3000/api/auth/create", {
+      res = await fetch(`${API_BACK}/api/auth/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -118,7 +119,7 @@ adminForm.addEventListener("submit", async (e) => {
       });
     } else {
       // Modification
-      res = await fetch(`http://localhost:3000/api/auth/${editingAdminId}`, {
+      res = await fetch(`${API_BACK}/api/auth/${editingAdminId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -152,7 +153,7 @@ window.deleteAdmin = async function(id) {
   if (!confirm("Supprimer cet administrateur ?")) return;
   const token = localStorage.getItem("adminToken");
   try {
-    const res = await fetch(`http://localhost:3000/api/auth/${id}`, {
+    const res = await fetch(`${API_BACK}/api/auth/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     });

@@ -16,6 +16,7 @@ import {
   getAdminById,
   updateAdmin,
   deleteAdmin,
+  createAdmin
 } from "../controllers/adminController.js";
 import { verifyAdmin } from "../middlewares/auth.js";
 
@@ -35,6 +36,7 @@ authRouter.post("/logout", verifyAdmin, logoutAdmin);
 
 // Gestion CRUD admin (routes protégées)
 authRouter.get("/", verifyAdmin, getAdmins); // Liste des admins
+authRouter.post("/",verifyAdmin,createAdmin); //créer un admin
 authRouter.get("/:id", verifyAdmin, getAdminById); // Détail d'un admin
 authRouter.put("/:id", verifyAdmin, updateAdmin); // Modification admin
 authRouter.delete("/:id", verifyAdmin, deleteAdmin); // Suppression admin

@@ -90,70 +90,6 @@ export const activateAccount = async (req, res) => {
   }
 };
 
-/**
- * Connexion administrateur -
- * - Vérifie email et mot de passe
- * - Génère un token JWT sécurisé
- */
-export const loginAdmin = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    // Validation des champs
-    if (!email || !password) {
-      return res.status(400).json({ error: "Email et mot de passe requis" });
-    }
-
-    const admin = await Admin.findOne({ email });
-    if (!admin) {
-      return res.status(401).json({ error: "Email ou mot de passe incorrect" });
-    }
-
-    const valid = await bcrypt.compare(password, admin.password);
-    if (!valid) {
-      return res.status(401).json({ error: "Email ou mot de passe incorrect" });
-    }
-
-    // Générer le token JWT
-    const token = jwt.sign(
-      { id: admin._id, email: admin.email },
-      process.env.JWT_SECRET,
-      { expiresIn: "1d" }
-    );
-
-    // Retourner la réponse avec le token
-    res.status(200).json({
-      message: "Connexion réussie",
-      token: token,
-      admin: {
-        id: admin._id,
-        name: admin.name,
-        surname: admin.surname,
-        email: admin.email,
-      },
-    });
-  } catch (error) {
-    console.error("Login error:", error);
-    res.status(500).json({ error: "Erreur interne du serveur" });
-  }
-};
-
-// Déconnexion de l'administrateur en supprimant le cookie JWT
-export const logoutAdmin = async (req, res) => {
-  try {
-    const token = req.headers.authorization?.split(" ")[1];
-    if (token) {
-      // Décodage du token pour récupérer l'ID admin
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      console.log(`Admin ${decoded.id} s'est déconnecté`);
-    }
-    res.status(200).json({ message: "Déconnexion réussie" });
-  } catch (error) {
-    console.error("Logout error :", error);
-    res.status(500).json({ message: "Erreur interne du serveur" });
-  }
-};
-
 //Lance la procédure de mot de passe oublié, envoie un mail avec un lien de réinitialisation
 export const forgotPassword = async (req, res) => {
   try {
@@ -219,6 +155,70 @@ export const resetPassword = async (req, res) => {
 };
 
 /**
+ * Connexion administrateur -
+ * - Vérifie email et mot de passe
+ * - Génère un token JWT sécurisé
+ */
+export const loginAdmin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Validation des champs
+    if (!email || !password) {
+      return res.status(400).json({ error: "Email et mot de passe requis" });
+    }
+
+    const admin = await Admin.findOne({ email });
+    if (!admin) {
+      return res.status(401).json({ error: "Email ou mot de passe incorrect" });
+    }
+
+    const valid = await bcrypt.compare(password, admin.password);
+    if (!valid) {
+      return res.status(401).json({ error: "Email ou mot de passe incorrect" });
+    }
+
+    // Générer le token JWT
+    const token = jwt.sign(
+      { id: admin._id, email: admin.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    // Retourner la réponse avec le token
+    res.status(200).json({
+      message: "Connexion réussie",
+      token: token,
+      admin: {
+        id: admin._id,
+        name: admin.name,
+        surname: admin.surname,
+        email: admin.email,
+      },
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({ error: "Erreur interne du serveur" });
+  }
+};
+
+// Déconnexion de l'administrateur en supprimant le cookie JWT
+export const logoutAdmin = async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (token) {
+      // Décodage du token pour récupérer l'ID admin
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      console.log(`Admin ${decoded.id} s'est déconnecté`);
+    }
+    res.status(200).json({ message: "Déconnexion réussie" });
+  } catch (error) {
+    console.error("Logout error :", error);
+    res.status(500).json({ message: "Erreur interne du serveur" });
+  }
+};
+
+/**
  * Récupérer tous les administrateurs
  * - Pour interface de gestion
  */
@@ -243,6 +243,54 @@ export const getAdminById = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+};
+
+export const createAdmin = async (req, res) => {
+  try {
+    // Validation basique des champs
+    const { name, surname, email, password } = req.body;
+    if (!name || !surname || !email || !password) {
+      return res.status(400).json({
+        message: "veuillez entrer le nom, prénom, email et mot de passe",
+      });
+    }
+
+    // Vérifier si l'admin existe déjà
+    const existingAdmin = await Admin.findOne({ email });
+    if (existingAdmin) {
+      return res.status(400).json({
+        message: "Un administrateur avec cet email existe déjà",
+      });
+    }
+// Hash du mot de passe
+const hashedPassword = await bcrypt.hash(password, 12);
+
+// Création de l'admin directement activé (pas d'email d'activation)
+const newAdmin = await Admin.create({
+  name,
+  surname,
+  email,
+  password: hashedPassword,
+  role: "admin",
+  isVerified: true, // Directement vérifié car créé par un admin
+});
+
+// Retourner l'admin créé (sans le mot de passe)
+res.status(201).json({
+  message: "Administrateur créé avec succès",
+  admin: {
+    id: newAdmin._id,
+    name: newAdmin.name,
+    surname: newAdmin.surname,
+    email: newAdmin.email,
+    isVerified: newAdmin.isVerified,
+    createdAt: newAdmin.createdAt,
+  },
+});
+} catch (error) {
+console.error("Create admin error:", error);
+res.status(500).json({ message: "Erreur interne du serveur" });
+}
 };
 
 /**

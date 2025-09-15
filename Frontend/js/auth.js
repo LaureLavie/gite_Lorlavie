@@ -1,3 +1,4 @@
+const API_BACK= "https://backend-lorlavie.onrender.com";
 
 // Connexion admin
 const loginForm = document.getElementById("login-form");
@@ -22,7 +23,7 @@ if (loginForm) {
     console.log("Email:", email, "Password:", password);
 
     try {
-      const res = await fetch("http://localhost:3000/api/auth/login", {
+      const res = await fetch(`${API_BACK}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +69,7 @@ if (logoutBtn) {
     const logoutMsg = document.getElementById("logout-message");
     try {
       // Appel à l'API de déconnexion
-      const res = await fetch("http://localhost:3000/api/auth/logout", {
+      const res = await fetch(`${API_BACK}/api/auth/logout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -128,7 +129,7 @@ if (registerForm) {
     console.log("Registration data:", { name, surname, email, password });
 
     try {
-      const res = await fetch("http://localhost:3000/api/auth/register", {
+      const res = await fetch(`${API_BACK}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
