@@ -1,6 +1,6 @@
 import express from "express";
 import {
-  getCalendrierStatus,
+  getCalendrierStat,
   verifierDisponibilite,
   updateStatusDates,
   bloquerPeriode,
@@ -15,7 +15,7 @@ calendrierRouter.get("/disponibles/:annee/:mois", getDatesDisponibles); // Dates
 calendrierRouter.post("/verifier", verifierDisponibilite); // Vérifier disponibilité d'une période
 
 // Routes admin
-calendrierRouter.get("/:annee/:mois", getCalendrierStatus); // Statut complet d'un mois
+calendrierRouter.get("/:annee/:mois", getCalendrierStat); // Statut complet d'un mois
 calendrierRouter.put("/dates", updateStatusDates); // Modifier le statut de dates spécifiques
 calendrierRouter.post("/bloquer", bloquerPeriode); // Bloquer une période
 calendrierRouter.delete("/nettoyer", nettoyerAnciennesDates); // Maintenance
