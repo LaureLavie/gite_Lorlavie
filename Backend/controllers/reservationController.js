@@ -5,22 +5,21 @@
 
 import Reservation from "../models/reservation.js";
 import Client from "../models/client.js";
-import CalendrierStatus from "../models/calendrier.js";
-import {
-  sendMail,
-  // htmlReservationEnAttente,
-  // htmlReservationConfirmee,
-  // htmlReservationRefusee,
-  // htmlReservationModifiee,
-} from "../middlewares/mail.js";
+import CalendrierStat from "../models/calendrier.js";
+import { sendMail } from "../middlewares/mail.js";
 
 /**
- *Créer une réservation
- * - Vérifier la disponibilité
- * - Créer client et réservation
- * - bloquer temporairement les dates
- * - envoyer email "en attente"
+ * Calcule le prix total d'une réservation
  */
+function calculerPrix(nombrePersonnes, nuits, personnesSupplementaires = 0, options = {}) {
+  const tarifs = [65, 75, 85, 95, 105, 115]; // Prix par nombre de personnes (1 à 6)
+  let prixTotal = tarifs[nombrePersonnes - 1] * nuits; // Prix de base
+
+  if (options.menage) prixTotal += 30; // Option ménage
+  prixTotal += personnesSupplementaires * 30; // Personnes supplémentaires
+
+  return prixTotal;
+}
 
 export const createReservation = async (req, res) => {
   try {
@@ -60,7 +59,7 @@ export const createReservation = async (req, res) => {
     }
 
     // Vérifier disponibilité des dates
-    const disponible = await CalendrierStatus.verifierDisponibilite(
+    const disponible = await CalendrierStat.verifierDisponibilite(
       dateArrivee,
       dateDepart
     );
@@ -70,13 +69,9 @@ export const createReservation = async (req, res) => {
       });
     }
 
-    // Calculer le prix total
-    const tarifs = [65, 75, 85, 95, 105, 115]; // Prix par nombre de personnes
+    // Calculer le prix total (utilisation de la fonction utilitaire)
     const nuits = Math.ceil((depart - arrivee) / (1000 * 60 * 60 * 24));
-    let prixTotal = tarifs[nombrePersonnes - 1] * nuits;
-
-    if (options.menage) prixTotal += 30;
-    prixTotal += personnesSupplementaires * 30;
+    const prixTotal = calculerPrix(nombrePersonnes, nuits, personnesSupplementaires, options);
 
     // Créer le client
     const newClient = await Client.create(client);
@@ -95,7 +90,7 @@ export const createReservation = async (req, res) => {
     });
 
     // Bloquer temporairement les dates dans le calendrier
-    await CalendrierStatus.bloquerPeriode(
+    await CalendrierStat.bloquerPeriode(
       dateArrivee,
       dateDepart,
       reservation._id
@@ -158,7 +153,7 @@ export const validerReservation = async (req, res) => {
     await reservation.save();
 
     // Les dates sont déjà bloquées, juste confirmer le statut
-    await CalendrierStatus.updateMany(
+    await CalendrierStat.updateMany(
       {
         date: {
           $gte: reservation.dateArrivee,
@@ -210,7 +205,7 @@ export const refuserReservation = async (req, res) => {
     await reservation.save();
 
     // Libérer les dates dans le calendrier
-    await CalendrierStatus.libererPeriode(
+    await CalendrierStat.libererPeriode(
       reservation.dateArrivee,
       reservation.dateDepart
     );
@@ -268,20 +263,20 @@ export const modifierReservation = async (req, res) => {
         modifications.dateDepart || reservation.dateDepart;
 
       // Libérer les anciennes dates
-      await CalendrierStatus.libererPeriode(
+      await CalendrierStat.libererPeriode(
         reservation.dateArrivee,
         reservation.dateDepart
       );
 
       // Vérifier disponibilité nouvelles dates
-      const disponible = await CalendrierStatus.verifierDisponibilite(
+      const disponible = await CalendrierStat.verifierDisponibilite(
         nouvelleDateArrivee,
         nouvelleDateDepart
       );
 
       if (!disponible) {
         // Rebloquer les anciennes dates si les nouvelles ne sont pas dispo
-        await CalendrierStatus.bloquerPeriode(
+        await CalendrierStat.bloquerPeriode(
           reservation.dateArrivee,
           reservation.dateDepart,
           reservation._id
@@ -293,7 +288,7 @@ export const modifierReservation = async (req, res) => {
       }
 
       // Bloquer les nouvelles dates
-      await CalendrierStatus.bloquerPeriode(
+      await CalendrierStat.bloquerPeriode(
         nouvelleDateArrivee,
         nouvelleDateDepart,
         reservation._id
@@ -304,7 +299,7 @@ export const modifierReservation = async (req, res) => {
     Object.assign(reservation, modifications);
     reservation.dateModification = new Date();
 
-    // Recalculer le prix si nécessaire
+    // Recalculer le prix si nécessaire (utilisation de la fonction utilitaire)
     if (
       modifications.nombrePersonnes ||
       modifications.personnesSupplementaires ||
@@ -312,16 +307,16 @@ export const modifierReservation = async (req, res) => {
       modifications.dateDepart ||
       modifications.options
     ) {
-      const tarifs = [65, 75, 85, 95, 105, 115];
       const arrivee = new Date(reservation.dateArrivee);
       const depart = new Date(reservation.dateDepart);
       const nuits = Math.ceil((depart - arrivee) / (1000 * 60 * 60 * 24));
 
-      let nouveauPrix = tarifs[reservation.nombrePersonnes - 1] * nuits;
-      if (reservation.options.menage) nouveauPrix += 30;
-      nouveauPrix += reservation.personnesSupplementaires * 30;
-
-      reservation.prixTotal = nouveauPrix;
+      reservation.prixTotal = calculerPrix(
+        reservation.nombrePersonnes,
+        nuits,
+        reservation.personnesSupplementaires,
+        reservation.options
+      );
     }
 
     await reservation.save();
@@ -390,7 +385,7 @@ export const deleteReservation = async (req, res) => {
     }
 
     // Libérer les dates
-    await CalendrierStatus.libererPeriode(
+    await CalendrierStat.libererPeriode(
       reservation.dateArrivee,
       reservation.dateDepart
     );
