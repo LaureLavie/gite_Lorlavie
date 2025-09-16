@@ -137,9 +137,9 @@ export function Reservation() {
         personnesSupplementaires: parseInt(supPersonnesSpan.textContent, 10),
         options: {
           menage: menageCheckbox.checked,
-          message: document.getElementById("message").value
+          commentaires: document.getElementById("message").value ||""
         },
-        prixTotal: montantSpan.textContent 
+        prixTotal: parseInt(montantSpan.textContent,10) 
       };
 
       // Stocke la réservation dans le localStorage

@@ -1,8 +1,8 @@
-const API_BACK= "https://backend-lorlavie.onrender.com";
+import { API_BACK } from "./config.js";
 const errorDiv = adminForm.querySelector(".errorDiv");
 const successDiv = adminForm.querySelector(".successDiv");
 
-let selectedMode = "EN LIGNE"; // valeur par défaut
+let selectedMode = "en ligne"; // valeur par défaut
 
   document.querySelectorAll("#mode-paiement .switch-btn").forEach(btn => {
     btn.addEventListener("click", function() {
@@ -24,12 +24,13 @@ document.querySelector("form.form").addEventListener("submit", async function(e)
   reservation.client = {
     name: document.getElementById("nom").value,
     surname: document.getElementById("prenom").value,
-    adresse: document.getElementById("adresse").value,
-    codePostal: document.getElementById("codePostal").value,
-    ville: document.getElementById("ville").value,
-    pays: document.getElementById("pays").value,
+    email: document.getElementById("email").value,
     telephone: document.getElementById("telephone").value,
-    email: document.getElementById("email").value
+    adresseComplete: { 
+    adresse: document.getElementById("adresse").value,
+    ville: document.getElementById("ville").value,
+    codePostal: document.getElementById("codePostal").value,
+    pays: document.getElementById("pays").value}
   };
 
       // Ajoute le mode de paiement choisi
@@ -50,7 +51,7 @@ document.querySelector("form.form").addEventListener("submit", async function(e)
       // Nettoie le localStorage
       localStorage.removeItem("reservationEnCours");
       // Redirige       
-      window.location.href = "confirmation.html";
+      window.location.href = `confirmation.html?id=${result.reservation.numero}`;
     } else {
       errorDiv.textContent = result.error || result.message || "Erreur lors de la récupération de la réservation";
       errorDiv.style.display = "block";

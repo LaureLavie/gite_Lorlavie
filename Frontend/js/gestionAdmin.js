@@ -1,4 +1,4 @@
-const API_BACK= "https://backend-lorlavie.onrender.com";
+import { API_BACK } from "./config.js";
 const adminForm = document.getElementById("admin-form");
 const adminsListDiv = document.getElementById("admins-list");
 const cancelBtn = document.getElementById("cancel-btn");
