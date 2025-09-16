@@ -27,7 +27,7 @@ const app = express();
 app.use(express.json());
 
 // Middleware CORS pour sécuriser les échanges entre frontend et backend
-app.use(cors());
+app.use(cors({ origin: process.env.CLIENT_URL }));
 app.use((req, res, next) => {
   res.setHeader(
     "Content-Security-Policy",

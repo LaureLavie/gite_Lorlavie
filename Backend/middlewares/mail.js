@@ -1,5 +1,12 @@
 import nodemailer from "nodemailer";
 
+const EMAIL_STYLE=`
+  font-family: Montserrat, sans-serif;
+  color: black;
+  text-align: center;
+  padding: 1rem;
+  background: #7a5c43;
+  `;
 // Fonction utilitaire pour envoyer un email via le service Gmail, avec authentification par variables d'environnement.
 export const sendMail = async (to, subject, html) => {
   const transporter = nodemailer.createTransport({
@@ -28,11 +35,11 @@ export const htmlActivateAccount = (surname, link) => {
         <meta charset="UTF-8" />
         <title>Activation de compte</title>
       </head>
-      <body style="font-family: Montserrat, sans-serif; color: white; text-align: center; padding: 20px; background: #7A5C43;">
+      <body style="${EMAIL_STYLE}">
         <h1>Bienvenue ${surname} au Gîte Lorlavie !</h1>
         <p>Pour activer votre compte administrateur, veuillez cliquer sur le lien ci-dessous :</p>
-        <a href="${link}" style="background-color: #EAE7DD; color: black; padding: 10px 20px; text-decoration: none; border-radius: 30px; display: inline-block; margin: 20px 0;">Activer mon compte</a>
-        <p>Merci et bonne gestion !</p>
+        <a href="${link}" style="background-color: #EAE7DD; color: black; padding: 1rem; text-decoration: none; border-radius: 50px; display: inline-block; margin: 2rem;">Activer mon compte</a>
+        <p>Merci</p>
       </body>
     </html>
   `;
@@ -47,11 +54,11 @@ export const htmlResetPassword = (surname, link) => {
         <meta charset="UTF-8" />
         <title>Réinitialisation du mot de passe</title>
       </head>
-      <body style="font-family: Montserrat, sans-serif; color: white; text-align: center; padding: 20px; background: #7A5C43;">
+      <body style="${EMAIL_STYLE}">
         <h1>Réinitialisation de votre mot de passe</h1>
         <p>Bonjour ${surname},</p>
         <p>Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien ci-dessous :</p>
-        <a href="${link}" style="background-color: #EAE7DD; color: black; padding: 10px 20px; text-decoration: none; border-radius: 30px; display: inline-block; margin: 20px 0;">Réinitialiser mon mot de passe</a>
+        <a href="${link}" style="background-color: #EAE7DD; color: black; padding: 1rem; text-decoration: none; border-radius: 50px; display: inline-block; margin: 2rem;">Réinitialiser mon mot de passe</a>
         <p>Si vous n'avez pas demandé cette réinitialisation, vous pouvez ignorer ce message.</p>
       </body>
     </html>
@@ -67,8 +74,8 @@ export const htmlReceiptTemplate = (Confirmation) => {
         <meta charset="UTF-8" />
         <title>Votre confirmation de réservation</title>
       </head>
-      <body style="font-family: Montserrat, sans-serif; color: white;text-align: center; padding: 20px; background: #7A5C43;">
-        <h2 style="color: #007BFF;">Confirmation de réservation – ${
+      <body style="${EMAIL_STYLE}">
+        <h2>Confirmation de réservation – ${
           Confirmation.client
         }</h2>
         <p><strong>Date d'arrivée :</strong> ${Confirmation.dateArrivee}</p>

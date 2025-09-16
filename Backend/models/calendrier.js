@@ -75,7 +75,7 @@ CalendrierStatSchema.statics.bloquerPeriode = async function (
   reservationId = null
 ) {
   const debut = new Date(dateDebut);
-  const fin = new Date(dateDepart);
+  const fin = new Date(dateFin);
   const statut = reservationId ? "reserve" : "bloque";
 
   const dates = [];

@@ -1,35 +1,44 @@
 import CalendrierStat from "../models/calendrier.js";
 
 /**
- * Récupérer le statut du calendrier pour une période
- * Utilisé par l'admin et les visiteurs
+ * Génère un calendrier de base avec toutes les dates du mois en "disponible"
  */
-export const getCalendrierStatus = async (req, res) =>{
+export function calendrierBase(dateDebut, dateFin) {
+  const calendrier = {};
+  for (
+    let d = new Date(dateDebut);
+    d <= dateFin;
+    d.setDate(d.getDate() + 1)
+  ) {
+    const dateKey = d.toISOString().split("T")[0];
+    calendrier[dateKey] = {
+      date: dateKey,
+      statut: "disponible",
+      reservationInfo: null,
+      notes: "",
+    };
+  }
+  return calendrier;
+}
+
+/**
+ * Récupérer le statut du calendrier pour une période (admin et visiteurs)
+ */
+export const getCalendrierStat = async (req, res) => {
   try {
     const { annee, mois } = req.params;
-    const dateDebut = new Date(annee, mois - 1, 1); // mois - 1 car les mois JS commencent à 0
-    const dateFin = new Date(annee, mois, 0); // Dernier jour du mois
+    const dateDebut = new Date(annee, mois - 1, 1); // mois JS commence à 0
+    const dateFin = new Date(annee, mois, 0); // dernier jour du mois
 
-    const statuts = await CalendrierStatus.find({
+    // 1. Génère le calendrier de base
+    const calendrier = calendrierBase(dateDebut, dateFin);
+
+    // 2. Récupère les statuts en base
+    const statuts = await CalendrierStat.find({
       date: { $gte: dateDebut, $lte: dateFin },
     }).populate("reservationId", "numero client");
 
-    // Créer un objet avec tous les jours du mois
-    const calendrier = {};
-    for (
-      let d = new Date(dateDebut);
-      d <= dateFin;
-      d.setDate(d.getDate() + 1)
-    ) {
-      const dateKey = d.toISOString().split("T")[0]; // YYYY-MM-DD
-      calendrier[dateKey] = {
-        date: dateKey,
-        statut: "disponible",
-        reservationInfo: null,
-      };
-    }
-
-    // Appliquer les statuts depuis la base
+    // 3. Applique les statuts sur le calendrier
     statuts.forEach((status) => {
       const dateKey = status.date.toISOString().split("T")[0];
       calendrier[dateKey] = {
@@ -78,14 +87,14 @@ export const verifierDisponibilite = async (req, res) =>{
       });
     }
 
-    const disponible = await CalendrierStatus.verifierDisponibilite(
+    const disponible = await CalendrierStat.verifierDisponibilite(
       dateArrivee,
       dateDepart
     );
 
     if (!disponible) {
       // Récupérer les dates problématiques pour donner plus de détails
-      const datesOccupees = await CalendrierStatus.find({
+      const datesOccupees = await CalendrierStat.find({
         date: { $gte: arrivee, $lt: depart },
         statut: { $in: ["reserve", "bloque"] },
       }).populate("reservationId", "numero");
@@ -138,7 +147,7 @@ export const updateStatusDates = async (req, res) =>{
       if (statut === "disponible") {
         // Libérer la date
         updates.push(
-          CalendrierStatus.findOneAndUpdate(
+          CalendrierStat.findOneAndUpdate(
             { date },
             {
               statut: "disponible",
@@ -152,7 +161,7 @@ export const updateStatusDates = async (req, res) =>{
       } else {
         // Bloquer la date
         updates.push(
-          CalendrierStatus.findOneAndUpdate(
+          CalendrierStat.findOneAndUpdate(
             { date },
             {
               statut: "bloque",
@@ -204,7 +213,7 @@ export const bloquerPeriode = async (req, res) =>{
     }
 
     // Vérifier s'il y a des réservations confirmées dans cette période
-    const reservationsExistantes = await CalendrierStatus.find({
+    const reservationsExistantes = await CalendrierStat.find({
       date: { $gte: debut, $lt: fin },
       statut: "reserve",
     }).populate("reservationId", "numero statut");
@@ -238,7 +247,7 @@ export const bloquerPeriode = async (req, res) =>{
 
     // Upsert pour chaque date
     const operations = dates.map((dateObj) =>
-      CalendrierStatus.findOneAndUpdate({ date: dateObj.date }, dateObj, {
+      CalendrierStat.findOneAndUpdate({ date: dateObj.date }, dateObj, {
         upsert: true,
       })
     );
@@ -265,7 +274,7 @@ export const getDatesDisponibles = async (req, res)=> {
     const dateFin = new Date(annee, mois, 0);
 
     // Récupérer seulement les dates NON disponibles
-    const datesOccupees = await CalendrierStatus.find({
+    const datesOccupees = await CalendrierStat.find({
       date: { $gte: dateDebut, $lte: dateFin },
       statut: { $ne: "disponible" },
     });
@@ -294,7 +303,7 @@ export const nettoyerAnciennesDates = async (req, res) =>{
     const dateLimit = new Date();
     dateLimit.setMonth(dateLimit.getMonth() - 3); // Garder 3 mois d'historique
 
-    const result = await CalendrierStatus.deleteMany({
+    const result = await CalendrierStat.deleteMany({
       date: { $lt: dateLimit },
       statut: "disponible", // Ne supprimer que les dates disponibles anciennes
     });
