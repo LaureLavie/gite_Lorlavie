@@ -9,3 +9,9 @@ $radius: 50px;
 $shadow: 4px 4px 0 $gris-perle;
 $font-main: "Montserrat", sans-serif;
 $font-title: "Allura", cursive;
+
+
+// ===== VARIABLES DES BREAKPOINTS =====
+$breakpoint-xs: 370px;  // Très petit mobile
+$breakpoint-sm: 500px;  // Mobile standard
+$breakpoint-md: 900px;  // Tablette/Desktop

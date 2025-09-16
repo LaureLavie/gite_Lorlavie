@@ -1,167 +1,108 @@
-const API_BACK= "https://backend-lorlavie.onrender.com";
+const API_BACK = "https://backend-lorlavie.onrender.com";
+
+// Helper pour afficher les messages
+function showMessage(div, msg, type = "error") {
+  div.textContent = msg;
+  div.style.display = "block";
+  div.style.color = type === "error" ? "red" : "green";
+}
 
 // Connexion admin
 const loginForm = document.getElementById("login-form");
 if (loginForm) {
+  const errorDiv = loginForm.querySelector(".error-message");
+  const successDiv = loginForm.querySelector(".successDiv");
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    const email = loginForm.querySelector('input[type="email"]').value;
-    const password = loginForm.querySelector('input[type="password"]').value;
-    const errorDiv = loginForm.querySelector(".error-message");
-    const successDiv= loginForm.querySelector(".successDiv");
-
-    //Validation côté client
+    const email = loginForm.email.value;
+    const password = loginForm.password.value;
     if (!email || !password) {
-      errorDiv.textContent = "Veuillez remplir tous les champs.";
-      errorDiv.style.display = "block";
+      showMessage(errorDiv, "Veuillez remplir tous les champs.");
       successDiv.style.display = "none";
       return;
     }
-
-    // Debug : vérifier que les valeurs sont bien récupérées
-    console.log("Email:", email, "Password:", password);
-
     try {
       const res = await fetch(`${API_BACK}/api/auth/login`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-
       const data = await res.json();
-      console.log("Response:", res.status, data);
-
       if (res.ok && data.token) {
         localStorage.setItem("adminToken", data.token);
         localStorage.setItem("adminData", JSON.stringify(data.admin));
-
-        // Affiche le message de succès
         errorDiv.style.display = "none";
-        successDiv.textContent = "Connexion réussie";
-        successDiv.style.display = "block";
-
-         // Redirige vers le dashboard après 1s
-         setTimeout(() => {
-          window.location.href = "dashboard.html";
-        }, 1000);
+        showMessage(successDiv, "Connexion réussie", "success");
+        setTimeout(() => window.location.href = "dashboard.html", 1000);
       } else {
-        // Affiche le message d'erreur
-        errorDiv.textContent = data.error || data.message || "Email ou mot de passe incorrect.";
-        errorDiv.style.display = "block";
+        showMessage(errorDiv, data.error || data.message || "Email ou mot de passe incorrect.");
         successDiv.style.display = "none";
       }
     } catch (err) {
-      console.error("Erreur:", err);
-      errorDiv.textContent = "Erreur de connexion au serveur.";
-      errorDiv.style.display = "block";
+      showMessage(errorDiv, "Erreur de connexion au serveur.");
+      successDiv.style.display = "none";
     }
   });
 }
 
-//Déconnexion de l'Administrateur
+// Déconnexion admin
 const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     const logoutMsg = document.getElementById("logout-message");
     try {
-      // Appel à l'API de déconnexion
-      const res = await fetch(`${API_BACK}/api/auth/logout`, {
+      await fetch(`${API_BACK}/api/auth/logout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
         },
       });
-
-      // Même si l'API échoue, on nettoie le localStorage
-      // (car la déconnexion est cruciale pour la sécurité)
-
-      // Supprimer les données d'authentification du localStorage
-      localStorage.removeItem("adminToken");
-      localStorage.removeItem("adminData");
-
-      if (res && res.ok) {
-        if (logoutMsg) {
-          logoutMsg.textContent = "Déconnexion réussie.";
-          logoutMsg.style.display = "block";
-        }
-      } else {
-        if (logoutMsg) {
-          logoutMsg.textContent = "Erreur lors de la déconnexion.";
-          logoutMsg.style.display = "block";
-        }
-      }
-
-      // Redirection vers la page d'accueil
-      window.location.href = "../../index.html";
-    } catch (error) {
-      if (logoutMsg) {
-        logoutMsg.textContent = "Erreur lors de la déconnexion.";
-        logoutMsg.style.display = "block";
-      }     
-    }
+    } catch {}
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("adminData");
+    if (logoutMsg) showMessage(logoutMsg, "Déconnexion réussie.", "success");
+    window.location.href = "../../index.html";
   });
 }
 
-// Inscription administrateur
+// Inscription admin
 const registerForm = document.getElementById("register-form");
 if (registerForm) {
+  const errorDiv = registerForm.querySelector(".error-message");
+  const successDiv = registerForm.querySelector(".successDiv");
   registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const name = registerForm.querySelector('input[name="name"]').value;
-    const surname = registerForm.querySelector('input[name="surname"]').value;
-    const email = registerForm.querySelector('input[name="email"]').value;
-    const password = registerForm.querySelector('input[name="password"]').value;
-    const errorDiv = registerForm.querySelector(".error-message");
-    const successDiv = registerForm.querySelector(".successDiv");
-
+    const name = registerForm.name.value;
+    const surname = registerForm.surname.value;
+    const email = registerForm.email.value;
+    const password = registerForm.password.value;
     if (!name || !surname || !email || !password) {
-      errorDiv.textContent = "Veuillez remplir tous les champs.";
-      errorDiv.style.display = "block";
+      showMessage(errorDiv, "Veuillez remplir tous les champs.");
       return;
     }
-
-    // Debug : vérifier que les valeurs sont bien récupérées
-    console.log("Registration data:", { name, surname, email, password });
-
     try {
       const res = await fetch(`${API_BACK}/api/auth/register`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, surname, email, password }),
       });
-
       const data = await res.json();
-      console.log("Response:", res.status, data); // Debug
-
       if (res.ok && data.admin) {
-       // Affiche le message de succès
-       errorDiv.style.display = "none";
-       successDiv.textContent = "Inscription réussie. Vérifiez votre mail, un lien d'activation vous a été envoyé.";
-       successDiv.style.display = "block";
-        // Redirige vers la page de connexion
-        setTimeout(() => {
-          window.location.href = "login.html";
-        }, 3000);
+        errorDiv.style.display = "none";
+        showMessage(successDiv, "Inscription réussie. Vérifiez votre mail, un lien d'activation vous a été envoyé.", "success");
+        setTimeout(() => window.location.href = "login.html", 3000);
       } else {
-        errorDiv.textContent = data.message || data.error || "Erreur lors de l'inscription.";
-        errorDiv.style.display = "block";
+        showMessage(errorDiv, data.message || data.error || "Erreur lors de l'inscription.");
       }
     } catch (err) {
-      console.error("Erreur:", err);
-      errorDiv.textContent = "Erreur de connexion au serveur.";
-      errorDiv.style.display = "block";
+      showMessage(errorDiv, "Erreur de connexion au serveur.");
     }
   });
 }
 
-//initialisation au chargement
+// Initialisation au chargement
 window.addEventListener("DOMContentLoaded", () => {
   if (loginForm) loginForm.reset();
   if (registerForm) registerForm.reset();

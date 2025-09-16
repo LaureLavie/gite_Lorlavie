@@ -255,6 +255,10 @@ h2 {
     background: #b7b7a4;
     color: #000000; }
 
+.switch-btn.active {
+  background: #7a5c43;
+  color: #ffffff; }
+
 .card {
   background: #ffffff;
   border-radius: 50px;
@@ -276,7 +280,8 @@ h2 {
     box-shadow: 8px 8px 0 #7a5c43; }
     .card--white .card__badge {
       background: #7a5c43;
-      color: #ffffff; }
+      color: #ffffff;
+      box-shadow: 8px 8px 0 #858585; }
     .card--white .card__content {
       color: #000000; }
   .card--brown {
@@ -284,7 +289,8 @@ h2 {
     color: #ffffff; }
     .card--brown .card__badge {
       background: #b7b7a4;
-      color: #000000; }
+      color: #000000;
+      box-shadow: 8px 8px 0 #858585; }
     .card--brown .card__content {
       color: #000000; }
   .card--black {
@@ -609,6 +615,10 @@ h2 {
     background: #b7b7a4;
     color: #000000; }
 
+.switch-btn.active {
+  background: #7a5c43;
+  color: #ffffff; }
+
 .card {
   background: #ffffff;
   border-radius: 50px;
@@ -630,7 +640,8 @@ h2 {
     box-shadow: 8px 8px 0 #7a5c43; }
     .card--white .card__badge {
       background: #7a5c43;
-      color: #ffffff; }
+      color: #ffffff;
+      box-shadow: 8px 8px 0 #858585; }
     .card--white .card__content {
       color: #000000; }
   .card--brown {
@@ -638,7 +649,8 @@ h2 {
     color: #ffffff; }
     .card--brown .card__badge {
       background: #b7b7a4;
-      color: #000000; }
+      color: #000000;
+      box-shadow: 8px 8px 0 #858585; }
     .card--brown .card__content {
       color: #000000; }
   .card--black {
@@ -763,6 +775,339 @@ h2 {
   justify-content: center;
   filter: brightness(1.2); }
 
+body {
+  font-size: 14px;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    body {
+      font-size: 15px;
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    body {
+      font-size: 16px;
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    body {
+      font-size: 18px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto; } }
+
+h1 {
+  font-size: 1.8rem;
+  margin: 1rem 0; }
+  @media (min-width: 370px) {
+    h1 {
+      font-size: 2rem; } }
+  @media (min-width: 500px) {
+    h1 {
+      font-size: 2.5rem;
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    h1 {
+      font-size: 3rem;
+      margin: 2rem 0; } }
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0.8rem 0; }
+  @media (min-width: 370px) {
+    h2 {
+      font-size: 1.6rem; } }
+  @media (min-width: 500px) {
+    h2 {
+      font-size: 1.8rem;
+      margin: 1rem 0; } }
+  @media (min-width: 900px) {
+    h2 {
+      font-size: 2.2rem;
+      margin: 1.5rem 0; } }
+
+.container {
+  width: 100%;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    .container {
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    .container {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem; } }
+
+form {
+  width: 100%;
+  padding: 1rem;
+  gap: 0.8rem; }
+  @media (min-width: 370px) {
+    form {
+      padding: 1.2rem;
+      gap: 1rem; } }
+  @media (min-width: 500px) {
+    form {
+      padding: 1.5rem;
+      gap: 1.2rem; } }
+  @media (min-width: 900px) {
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      gap: 1.5rem; } }
+
+.card {
+  margin: 0.5rem 0;
+  padding: 1rem; }
+  @media (min-width: 370px) {
+    .card {
+      margin: 0.75rem 0;
+      padding: 1.2rem; } }
+  @media (min-width: 500px) {
+    .card {
+      margin: 1rem 0;
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    .card {
+      margin: 1.5rem auto;
+      padding: 2rem;
+      max-width: 800px; } }
+
+.button-container {
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%; }
+  @media (min-width: 500px) {
+    .button-container {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1rem; } }
+  @media (min-width: 900px) {
+    .button-container {
+      gap: 1.5rem; } }
+
+button, .button-dark, .button-brown, .button-green, .button-red {
+  min-height: 44px;
+  width: 100%;
+  font-size: 0.9rem; }
+  @media (min-width: 370px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 48px;
+      font-size: 1rem; } }
+  @media (min-width: 500px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      width: auto;
+      min-width: 120px;
+      padding: 0.8rem 1.5rem; } }
+  @media (min-width: 900px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 50px;
+      font-size: 1.1rem;
+      padding: 1rem 2rem; } }
+
+.calendar-container {
+  margin: 1rem 0; }
+  @media (min-width: 500px) {
+    .calendar-container {
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    .calendar-container {
+      max-width: 800px;
+      margin: 2rem auto; } }
+
+.calendar-grid {
+  font-size: 0.8rem; }
+  @media (min-width: 370px) {
+    .calendar-grid {
+      font-size: 0.9rem; } }
+  @media (min-width: 500px) {
+    .calendar-grid {
+      font-size: 1rem; } }
+  @media (min-width: 900px) {
+    .calendar-grid {
+      font-size: 1.1rem; } }
+
+.calendar-date {
+  height: 35px;
+  min-width: 35px; }
+  @media (min-width: 370px) {
+    .calendar-date {
+      height: 40px;
+      min-width: 40px; } }
+  @media (min-width: 500px) {
+    .calendar-date {
+      height: 45px;
+      min-width: 45px; } }
+  @media (min-width: 900px) {
+    .calendar-date {
+      height: 60px;
+      min-width: 60px;
+      font-size: 1.1rem; } }
+
+#navbar {
+  padding: 0.5rem; }
+  @media (min-width: 500px) {
+    #navbar {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    #navbar {
+      padding: 1rem 2rem; } }
+
+.navbar-toggle {
+  display: block; }
+  @media (min-width: 900px) {
+    .navbar-toggle {
+      display: none; } }
+
+.navbar-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%; }
+  .navbar-menu.active {
+    display: flex; }
+  @media (min-width: 900px) {
+    .navbar-menu {
+      display: flex !important;
+      flex-direction: row;
+      width: auto; } }
+
+.slide-container {
+  aspect-ratio: 4/3; }
+  @media (min-width: 500px) {
+    .slide-container {
+      aspect-ratio: 16/10; } }
+  @media (min-width: 900px) {
+    .slide-container {
+      aspect-ratio: 16/9; } }
+
+.vache, .marmotte, .montagne {
+  width: 60%;
+  max-width: 200px; }
+  @media (min-width: 500px) {
+    .vache, .marmotte, .montagne {
+      width: 50%;
+      max-width: 250px; } }
+  @media (min-width: 900px) {
+    .vache, .marmotte, .montagne {
+      width: 40%;
+      max-width: 300px; } }
+
+.option {
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    .option {
+      flex-direction: row;
+      gap: 1rem;
+      padding: 1rem; } }
+  .option button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem; }
+    @media (min-width: 500px) {
+      .option button {
+        width: 32px;
+        height: 32px;
+        font-size: 1.3rem; } }
+
+.date-container {
+  flex-direction: column;
+  text-align: center; }
+  @media (min-width: 500px) {
+    .date-container {
+      flex-direction: row;
+      text-align: left; } }
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; }
+  @media (min-width: 900px) {
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem; } }
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+textarea {
+  font-size: 16px;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    input[type="password"],
+    textarea {
+      padding: 1rem; } }
+
+#footer {
+  padding: 1rem;
+  text-align: center; }
+  @media (min-width: 500px) {
+    #footer {
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    #footer {
+      padding: 2rem; } }
+
+.hide-mobile {
+  display: none; }
+  @media (min-width: 500px) {
+    .hide-mobile {
+      display: block; } }
+
+.hide-desktop {
+  display: block; }
+  @media (min-width: 900px) {
+    .hide-desktop {
+      display: none; } }
+
+.text-center-mobile {
+  text-align: center; }
+  @media (min-width: 500px) {
+    .text-center-mobile {
+      text-align: left; } }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem; }
+  @media (min-width: 500px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
+  @media (min-width: 900px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem; } }
+
+@media (max-width: 370px) {
+  body {
+    font-size: 13px;
+    padding: 0.25rem; }
+
+  h1 {
+    font-size: 1.6rem; }
+
+  .card {
+    padding: 0.8rem; }
+
+  button {
+    min-height: 42px;
+    font-size: 0.85rem; } }
+@media (orientation: landscape) and (max-height: 500px) {
+  .slide-container {
+    height: 200px; }
+
+  h1 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0; } }
 .footer {
   background: #000000;
   color: #ffffff;
@@ -866,6 +1211,339 @@ h2 {
   justify-content: center;
   filter: brightness(1.2); }
 
+body {
+  font-size: 14px;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    body {
+      font-size: 15px;
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    body {
+      font-size: 16px;
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    body {
+      font-size: 18px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto; } }
+
+h1 {
+  font-size: 1.8rem;
+  margin: 1rem 0; }
+  @media (min-width: 370px) {
+    h1 {
+      font-size: 2rem; } }
+  @media (min-width: 500px) {
+    h1 {
+      font-size: 2.5rem;
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    h1 {
+      font-size: 3rem;
+      margin: 2rem 0; } }
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0.8rem 0; }
+  @media (min-width: 370px) {
+    h2 {
+      font-size: 1.6rem; } }
+  @media (min-width: 500px) {
+    h2 {
+      font-size: 1.8rem;
+      margin: 1rem 0; } }
+  @media (min-width: 900px) {
+    h2 {
+      font-size: 2.2rem;
+      margin: 1.5rem 0; } }
+
+.container {
+  width: 100%;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    .container {
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    .container {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem; } }
+
+form {
+  width: 100%;
+  padding: 1rem;
+  gap: 0.8rem; }
+  @media (min-width: 370px) {
+    form {
+      padding: 1.2rem;
+      gap: 1rem; } }
+  @media (min-width: 500px) {
+    form {
+      padding: 1.5rem;
+      gap: 1.2rem; } }
+  @media (min-width: 900px) {
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      gap: 1.5rem; } }
+
+.card {
+  margin: 0.5rem 0;
+  padding: 1rem; }
+  @media (min-width: 370px) {
+    .card {
+      margin: 0.75rem 0;
+      padding: 1.2rem; } }
+  @media (min-width: 500px) {
+    .card {
+      margin: 1rem 0;
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    .card {
+      margin: 1.5rem auto;
+      padding: 2rem;
+      max-width: 800px; } }
+
+.button-container {
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%; }
+  @media (min-width: 500px) {
+    .button-container {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1rem; } }
+  @media (min-width: 900px) {
+    .button-container {
+      gap: 1.5rem; } }
+
+button, .button-dark, .button-brown, .button-green, .button-red {
+  min-height: 44px;
+  width: 100%;
+  font-size: 0.9rem; }
+  @media (min-width: 370px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 48px;
+      font-size: 1rem; } }
+  @media (min-width: 500px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      width: auto;
+      min-width: 120px;
+      padding: 0.8rem 1.5rem; } }
+  @media (min-width: 900px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 50px;
+      font-size: 1.1rem;
+      padding: 1rem 2rem; } }
+
+.calendar-container {
+  margin: 1rem 0; }
+  @media (min-width: 500px) {
+    .calendar-container {
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    .calendar-container {
+      max-width: 800px;
+      margin: 2rem auto; } }
+
+.calendar-grid {
+  font-size: 0.8rem; }
+  @media (min-width: 370px) {
+    .calendar-grid {
+      font-size: 0.9rem; } }
+  @media (min-width: 500px) {
+    .calendar-grid {
+      font-size: 1rem; } }
+  @media (min-width: 900px) {
+    .calendar-grid {
+      font-size: 1.1rem; } }
+
+.calendar-date {
+  height: 35px;
+  min-width: 35px; }
+  @media (min-width: 370px) {
+    .calendar-date {
+      height: 40px;
+      min-width: 40px; } }
+  @media (min-width: 500px) {
+    .calendar-date {
+      height: 45px;
+      min-width: 45px; } }
+  @media (min-width: 900px) {
+    .calendar-date {
+      height: 60px;
+      min-width: 60px;
+      font-size: 1.1rem; } }
+
+#navbar {
+  padding: 0.5rem; }
+  @media (min-width: 500px) {
+    #navbar {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    #navbar {
+      padding: 1rem 2rem; } }
+
+.navbar-toggle {
+  display: block; }
+  @media (min-width: 900px) {
+    .navbar-toggle {
+      display: none; } }
+
+.navbar-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%; }
+  .navbar-menu.active {
+    display: flex; }
+  @media (min-width: 900px) {
+    .navbar-menu {
+      display: flex !important;
+      flex-direction: row;
+      width: auto; } }
+
+.slide-container {
+  aspect-ratio: 4/3; }
+  @media (min-width: 500px) {
+    .slide-container {
+      aspect-ratio: 16/10; } }
+  @media (min-width: 900px) {
+    .slide-container {
+      aspect-ratio: 16/9; } }
+
+.vache, .marmotte, .montagne {
+  width: 60%;
+  max-width: 200px; }
+  @media (min-width: 500px) {
+    .vache, .marmotte, .montagne {
+      width: 50%;
+      max-width: 250px; } }
+  @media (min-width: 900px) {
+    .vache, .marmotte, .montagne {
+      width: 40%;
+      max-width: 300px; } }
+
+.option {
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    .option {
+      flex-direction: row;
+      gap: 1rem;
+      padding: 1rem; } }
+  .option button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem; }
+    @media (min-width: 500px) {
+      .option button {
+        width: 32px;
+        height: 32px;
+        font-size: 1.3rem; } }
+
+.date-container {
+  flex-direction: column;
+  text-align: center; }
+  @media (min-width: 500px) {
+    .date-container {
+      flex-direction: row;
+      text-align: left; } }
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; }
+  @media (min-width: 900px) {
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem; } }
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+textarea {
+  font-size: 16px;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    input[type="password"],
+    textarea {
+      padding: 1rem; } }
+
+#footer {
+  padding: 1rem;
+  text-align: center; }
+  @media (min-width: 500px) {
+    #footer {
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    #footer {
+      padding: 2rem; } }
+
+.hide-mobile {
+  display: none; }
+  @media (min-width: 500px) {
+    .hide-mobile {
+      display: block; } }
+
+.hide-desktop {
+  display: block; }
+  @media (min-width: 900px) {
+    .hide-desktop {
+      display: none; } }
+
+.text-center-mobile {
+  text-align: center; }
+  @media (min-width: 500px) {
+    .text-center-mobile {
+      text-align: left; } }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem; }
+  @media (min-width: 500px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
+  @media (min-width: 900px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem; } }
+
+@media (max-width: 370px) {
+  body {
+    font-size: 13px;
+    padding: 0.25rem; }
+
+  h1 {
+    font-size: 1.6rem; }
+
+  .card {
+    padding: 0.8rem; }
+
+  button {
+    min-height: 42px;
+    font-size: 0.85rem; } }
+@media (orientation: landscape) and (max-height: 500px) {
+  .slide-container {
+    height: 200px; }
+
+  h1 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0; } }
 .navbar {
   position: fixed;
   top: 1rem;
@@ -941,6 +1619,339 @@ h2 {
 body {
   padding-top: 4rem; }
 
+body {
+  font-size: 14px;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    body {
+      font-size: 15px;
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    body {
+      font-size: 16px;
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    body {
+      font-size: 18px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto; } }
+
+h1 {
+  font-size: 1.8rem;
+  margin: 1rem 0; }
+  @media (min-width: 370px) {
+    h1 {
+      font-size: 2rem; } }
+  @media (min-width: 500px) {
+    h1 {
+      font-size: 2.5rem;
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    h1 {
+      font-size: 3rem;
+      margin: 2rem 0; } }
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0.8rem 0; }
+  @media (min-width: 370px) {
+    h2 {
+      font-size: 1.6rem; } }
+  @media (min-width: 500px) {
+    h2 {
+      font-size: 1.8rem;
+      margin: 1rem 0; } }
+  @media (min-width: 900px) {
+    h2 {
+      font-size: 2.2rem;
+      margin: 1.5rem 0; } }
+
+.container {
+  width: 100%;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    .container {
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    .container {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem; } }
+
+form {
+  width: 100%;
+  padding: 1rem;
+  gap: 0.8rem; }
+  @media (min-width: 370px) {
+    form {
+      padding: 1.2rem;
+      gap: 1rem; } }
+  @media (min-width: 500px) {
+    form {
+      padding: 1.5rem;
+      gap: 1.2rem; } }
+  @media (min-width: 900px) {
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      gap: 1.5rem; } }
+
+.card {
+  margin: 0.5rem 0;
+  padding: 1rem; }
+  @media (min-width: 370px) {
+    .card {
+      margin: 0.75rem 0;
+      padding: 1.2rem; } }
+  @media (min-width: 500px) {
+    .card {
+      margin: 1rem 0;
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    .card {
+      margin: 1.5rem auto;
+      padding: 2rem;
+      max-width: 800px; } }
+
+.button-container {
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%; }
+  @media (min-width: 500px) {
+    .button-container {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1rem; } }
+  @media (min-width: 900px) {
+    .button-container {
+      gap: 1.5rem; } }
+
+button, .button-dark, .button-brown, .button-green, .button-red {
+  min-height: 44px;
+  width: 100%;
+  font-size: 0.9rem; }
+  @media (min-width: 370px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 48px;
+      font-size: 1rem; } }
+  @media (min-width: 500px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      width: auto;
+      min-width: 120px;
+      padding: 0.8rem 1.5rem; } }
+  @media (min-width: 900px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 50px;
+      font-size: 1.1rem;
+      padding: 1rem 2rem; } }
+
+.calendar-container {
+  margin: 1rem 0; }
+  @media (min-width: 500px) {
+    .calendar-container {
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    .calendar-container {
+      max-width: 800px;
+      margin: 2rem auto; } }
+
+.calendar-grid {
+  font-size: 0.8rem; }
+  @media (min-width: 370px) {
+    .calendar-grid {
+      font-size: 0.9rem; } }
+  @media (min-width: 500px) {
+    .calendar-grid {
+      font-size: 1rem; } }
+  @media (min-width: 900px) {
+    .calendar-grid {
+      font-size: 1.1rem; } }
+
+.calendar-date {
+  height: 35px;
+  min-width: 35px; }
+  @media (min-width: 370px) {
+    .calendar-date {
+      height: 40px;
+      min-width: 40px; } }
+  @media (min-width: 500px) {
+    .calendar-date {
+      height: 45px;
+      min-width: 45px; } }
+  @media (min-width: 900px) {
+    .calendar-date {
+      height: 60px;
+      min-width: 60px;
+      font-size: 1.1rem; } }
+
+#navbar {
+  padding: 0.5rem; }
+  @media (min-width: 500px) {
+    #navbar {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    #navbar {
+      padding: 1rem 2rem; } }
+
+.navbar-toggle {
+  display: block; }
+  @media (min-width: 900px) {
+    .navbar-toggle {
+      display: none; } }
+
+.navbar-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%; }
+  .navbar-menu.active {
+    display: flex; }
+  @media (min-width: 900px) {
+    .navbar-menu {
+      display: flex !important;
+      flex-direction: row;
+      width: auto; } }
+
+.slide-container {
+  aspect-ratio: 4/3; }
+  @media (min-width: 500px) {
+    .slide-container {
+      aspect-ratio: 16/10; } }
+  @media (min-width: 900px) {
+    .slide-container {
+      aspect-ratio: 16/9; } }
+
+.vache, .marmotte, .montagne {
+  width: 60%;
+  max-width: 200px; }
+  @media (min-width: 500px) {
+    .vache, .marmotte, .montagne {
+      width: 50%;
+      max-width: 250px; } }
+  @media (min-width: 900px) {
+    .vache, .marmotte, .montagne {
+      width: 40%;
+      max-width: 300px; } }
+
+.option {
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    .option {
+      flex-direction: row;
+      gap: 1rem;
+      padding: 1rem; } }
+  .option button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem; }
+    @media (min-width: 500px) {
+      .option button {
+        width: 32px;
+        height: 32px;
+        font-size: 1.3rem; } }
+
+.date-container {
+  flex-direction: column;
+  text-align: center; }
+  @media (min-width: 500px) {
+    .date-container {
+      flex-direction: row;
+      text-align: left; } }
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; }
+  @media (min-width: 900px) {
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem; } }
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+textarea {
+  font-size: 16px;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    input[type="password"],
+    textarea {
+      padding: 1rem; } }
+
+#footer {
+  padding: 1rem;
+  text-align: center; }
+  @media (min-width: 500px) {
+    #footer {
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    #footer {
+      padding: 2rem; } }
+
+.hide-mobile {
+  display: none; }
+  @media (min-width: 500px) {
+    .hide-mobile {
+      display: block; } }
+
+.hide-desktop {
+  display: block; }
+  @media (min-width: 900px) {
+    .hide-desktop {
+      display: none; } }
+
+.text-center-mobile {
+  text-align: center; }
+  @media (min-width: 500px) {
+    .text-center-mobile {
+      text-align: left; } }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem; }
+  @media (min-width: 500px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
+  @media (min-width: 900px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem; } }
+
+@media (max-width: 370px) {
+  body {
+    font-size: 13px;
+    padding: 0.25rem; }
+
+  h1 {
+    font-size: 1.6rem; }
+
+  .card {
+    padding: 0.8rem; }
+
+  button {
+    min-height: 42px;
+    font-size: 0.85rem; } }
+@media (orientation: landscape) and (max-height: 500px) {
+  .slide-container {
+    height: 200px; }
+
+  h1 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0; } }
 .calendar-container {
   box-sizing: border-box;
   display: flex;
@@ -1138,6 +2149,339 @@ h2 {
   justify-content: center;
   filter: brightness(1.2); }
 
+body {
+  font-size: 14px;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    body {
+      font-size: 15px;
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    body {
+      font-size: 16px;
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    body {
+      font-size: 18px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto; } }
+
+h1 {
+  font-size: 1.8rem;
+  margin: 1rem 0; }
+  @media (min-width: 370px) {
+    h1 {
+      font-size: 2rem; } }
+  @media (min-width: 500px) {
+    h1 {
+      font-size: 2.5rem;
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    h1 {
+      font-size: 3rem;
+      margin: 2rem 0; } }
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0.8rem 0; }
+  @media (min-width: 370px) {
+    h2 {
+      font-size: 1.6rem; } }
+  @media (min-width: 500px) {
+    h2 {
+      font-size: 1.8rem;
+      margin: 1rem 0; } }
+  @media (min-width: 900px) {
+    h2 {
+      font-size: 2.2rem;
+      margin: 1.5rem 0; } }
+
+.container {
+  width: 100%;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    .container {
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    .container {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem; } }
+
+form {
+  width: 100%;
+  padding: 1rem;
+  gap: 0.8rem; }
+  @media (min-width: 370px) {
+    form {
+      padding: 1.2rem;
+      gap: 1rem; } }
+  @media (min-width: 500px) {
+    form {
+      padding: 1.5rem;
+      gap: 1.2rem; } }
+  @media (min-width: 900px) {
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      gap: 1.5rem; } }
+
+.card {
+  margin: 0.5rem 0;
+  padding: 1rem; }
+  @media (min-width: 370px) {
+    .card {
+      margin: 0.75rem 0;
+      padding: 1.2rem; } }
+  @media (min-width: 500px) {
+    .card {
+      margin: 1rem 0;
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    .card {
+      margin: 1.5rem auto;
+      padding: 2rem;
+      max-width: 800px; } }
+
+.button-container {
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%; }
+  @media (min-width: 500px) {
+    .button-container {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1rem; } }
+  @media (min-width: 900px) {
+    .button-container {
+      gap: 1.5rem; } }
+
+button, .button-dark, .button-brown, .button-green, .button-red {
+  min-height: 44px;
+  width: 100%;
+  font-size: 0.9rem; }
+  @media (min-width: 370px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 48px;
+      font-size: 1rem; } }
+  @media (min-width: 500px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      width: auto;
+      min-width: 120px;
+      padding: 0.8rem 1.5rem; } }
+  @media (min-width: 900px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 50px;
+      font-size: 1.1rem;
+      padding: 1rem 2rem; } }
+
+.calendar-container {
+  margin: 1rem 0; }
+  @media (min-width: 500px) {
+    .calendar-container {
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    .calendar-container {
+      max-width: 800px;
+      margin: 2rem auto; } }
+
+.calendar-grid {
+  font-size: 0.8rem; }
+  @media (min-width: 370px) {
+    .calendar-grid {
+      font-size: 0.9rem; } }
+  @media (min-width: 500px) {
+    .calendar-grid {
+      font-size: 1rem; } }
+  @media (min-width: 900px) {
+    .calendar-grid {
+      font-size: 1.1rem; } }
+
+.calendar-date {
+  height: 35px;
+  min-width: 35px; }
+  @media (min-width: 370px) {
+    .calendar-date {
+      height: 40px;
+      min-width: 40px; } }
+  @media (min-width: 500px) {
+    .calendar-date {
+      height: 45px;
+      min-width: 45px; } }
+  @media (min-width: 900px) {
+    .calendar-date {
+      height: 60px;
+      min-width: 60px;
+      font-size: 1.1rem; } }
+
+#navbar {
+  padding: 0.5rem; }
+  @media (min-width: 500px) {
+    #navbar {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    #navbar {
+      padding: 1rem 2rem; } }
+
+.navbar-toggle {
+  display: block; }
+  @media (min-width: 900px) {
+    .navbar-toggle {
+      display: none; } }
+
+.navbar-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%; }
+  .navbar-menu.active {
+    display: flex; }
+  @media (min-width: 900px) {
+    .navbar-menu {
+      display: flex !important;
+      flex-direction: row;
+      width: auto; } }
+
+.slide-container {
+  aspect-ratio: 4/3; }
+  @media (min-width: 500px) {
+    .slide-container {
+      aspect-ratio: 16/10; } }
+  @media (min-width: 900px) {
+    .slide-container {
+      aspect-ratio: 16/9; } }
+
+.vache, .marmotte, .montagne {
+  width: 60%;
+  max-width: 200px; }
+  @media (min-width: 500px) {
+    .vache, .marmotte, .montagne {
+      width: 50%;
+      max-width: 250px; } }
+  @media (min-width: 900px) {
+    .vache, .marmotte, .montagne {
+      width: 40%;
+      max-width: 300px; } }
+
+.option {
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    .option {
+      flex-direction: row;
+      gap: 1rem;
+      padding: 1rem; } }
+  .option button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem; }
+    @media (min-width: 500px) {
+      .option button {
+        width: 32px;
+        height: 32px;
+        font-size: 1.3rem; } }
+
+.date-container {
+  flex-direction: column;
+  text-align: center; }
+  @media (min-width: 500px) {
+    .date-container {
+      flex-direction: row;
+      text-align: left; } }
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; }
+  @media (min-width: 900px) {
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem; } }
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+textarea {
+  font-size: 16px;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    input[type="password"],
+    textarea {
+      padding: 1rem; } }
+
+#footer {
+  padding: 1rem;
+  text-align: center; }
+  @media (min-width: 500px) {
+    #footer {
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    #footer {
+      padding: 2rem; } }
+
+.hide-mobile {
+  display: none; }
+  @media (min-width: 500px) {
+    .hide-mobile {
+      display: block; } }
+
+.hide-desktop {
+  display: block; }
+  @media (min-width: 900px) {
+    .hide-desktop {
+      display: none; } }
+
+.text-center-mobile {
+  text-align: center; }
+  @media (min-width: 500px) {
+    .text-center-mobile {
+      text-align: left; } }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem; }
+  @media (min-width: 500px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
+  @media (min-width: 900px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem; } }
+
+@media (max-width: 370px) {
+  body {
+    font-size: 13px;
+    padding: 0.25rem; }
+
+  h1 {
+    font-size: 1.6rem; }
+
+  .card {
+    padding: 0.8rem; }
+
+  button {
+    min-height: 42px;
+    font-size: 0.85rem; } }
+@media (orientation: landscape) and (max-height: 500px) {
+  .slide-container {
+    height: 200px; }
+
+  h1 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0; } }
 .footer {
   background: #000000;
   color: #ffffff;
@@ -1241,6 +2585,339 @@ h2 {
   justify-content: center;
   filter: brightness(1.2); }
 
+body {
+  font-size: 14px;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    body {
+      font-size: 15px;
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    body {
+      font-size: 16px;
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    body {
+      font-size: 18px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto; } }
+
+h1 {
+  font-size: 1.8rem;
+  margin: 1rem 0; }
+  @media (min-width: 370px) {
+    h1 {
+      font-size: 2rem; } }
+  @media (min-width: 500px) {
+    h1 {
+      font-size: 2.5rem;
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    h1 {
+      font-size: 3rem;
+      margin: 2rem 0; } }
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0.8rem 0; }
+  @media (min-width: 370px) {
+    h2 {
+      font-size: 1.6rem; } }
+  @media (min-width: 500px) {
+    h2 {
+      font-size: 1.8rem;
+      margin: 1rem 0; } }
+  @media (min-width: 900px) {
+    h2 {
+      font-size: 2.2rem;
+      margin: 1.5rem 0; } }
+
+.container {
+  width: 100%;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    .container {
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    .container {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem; } }
+
+form {
+  width: 100%;
+  padding: 1rem;
+  gap: 0.8rem; }
+  @media (min-width: 370px) {
+    form {
+      padding: 1.2rem;
+      gap: 1rem; } }
+  @media (min-width: 500px) {
+    form {
+      padding: 1.5rem;
+      gap: 1.2rem; } }
+  @media (min-width: 900px) {
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      gap: 1.5rem; } }
+
+.card {
+  margin: 0.5rem 0;
+  padding: 1rem; }
+  @media (min-width: 370px) {
+    .card {
+      margin: 0.75rem 0;
+      padding: 1.2rem; } }
+  @media (min-width: 500px) {
+    .card {
+      margin: 1rem 0;
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    .card {
+      margin: 1.5rem auto;
+      padding: 2rem;
+      max-width: 800px; } }
+
+.button-container {
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%; }
+  @media (min-width: 500px) {
+    .button-container {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1rem; } }
+  @media (min-width: 900px) {
+    .button-container {
+      gap: 1.5rem; } }
+
+button, .button-dark, .button-brown, .button-green, .button-red {
+  min-height: 44px;
+  width: 100%;
+  font-size: 0.9rem; }
+  @media (min-width: 370px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 48px;
+      font-size: 1rem; } }
+  @media (min-width: 500px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      width: auto;
+      min-width: 120px;
+      padding: 0.8rem 1.5rem; } }
+  @media (min-width: 900px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 50px;
+      font-size: 1.1rem;
+      padding: 1rem 2rem; } }
+
+.calendar-container {
+  margin: 1rem 0; }
+  @media (min-width: 500px) {
+    .calendar-container {
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    .calendar-container {
+      max-width: 800px;
+      margin: 2rem auto; } }
+
+.calendar-grid {
+  font-size: 0.8rem; }
+  @media (min-width: 370px) {
+    .calendar-grid {
+      font-size: 0.9rem; } }
+  @media (min-width: 500px) {
+    .calendar-grid {
+      font-size: 1rem; } }
+  @media (min-width: 900px) {
+    .calendar-grid {
+      font-size: 1.1rem; } }
+
+.calendar-date {
+  height: 35px;
+  min-width: 35px; }
+  @media (min-width: 370px) {
+    .calendar-date {
+      height: 40px;
+      min-width: 40px; } }
+  @media (min-width: 500px) {
+    .calendar-date {
+      height: 45px;
+      min-width: 45px; } }
+  @media (min-width: 900px) {
+    .calendar-date {
+      height: 60px;
+      min-width: 60px;
+      font-size: 1.1rem; } }
+
+#navbar {
+  padding: 0.5rem; }
+  @media (min-width: 500px) {
+    #navbar {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    #navbar {
+      padding: 1rem 2rem; } }
+
+.navbar-toggle {
+  display: block; }
+  @media (min-width: 900px) {
+    .navbar-toggle {
+      display: none; } }
+
+.navbar-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%; }
+  .navbar-menu.active {
+    display: flex; }
+  @media (min-width: 900px) {
+    .navbar-menu {
+      display: flex !important;
+      flex-direction: row;
+      width: auto; } }
+
+.slide-container {
+  aspect-ratio: 4/3; }
+  @media (min-width: 500px) {
+    .slide-container {
+      aspect-ratio: 16/10; } }
+  @media (min-width: 900px) {
+    .slide-container {
+      aspect-ratio: 16/9; } }
+
+.vache, .marmotte, .montagne {
+  width: 60%;
+  max-width: 200px; }
+  @media (min-width: 500px) {
+    .vache, .marmotte, .montagne {
+      width: 50%;
+      max-width: 250px; } }
+  @media (min-width: 900px) {
+    .vache, .marmotte, .montagne {
+      width: 40%;
+      max-width: 300px; } }
+
+.option {
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    .option {
+      flex-direction: row;
+      gap: 1rem;
+      padding: 1rem; } }
+  .option button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem; }
+    @media (min-width: 500px) {
+      .option button {
+        width: 32px;
+        height: 32px;
+        font-size: 1.3rem; } }
+
+.date-container {
+  flex-direction: column;
+  text-align: center; }
+  @media (min-width: 500px) {
+    .date-container {
+      flex-direction: row;
+      text-align: left; } }
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; }
+  @media (min-width: 900px) {
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem; } }
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+textarea {
+  font-size: 16px;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    input[type="password"],
+    textarea {
+      padding: 1rem; } }
+
+#footer {
+  padding: 1rem;
+  text-align: center; }
+  @media (min-width: 500px) {
+    #footer {
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    #footer {
+      padding: 2rem; } }
+
+.hide-mobile {
+  display: none; }
+  @media (min-width: 500px) {
+    .hide-mobile {
+      display: block; } }
+
+.hide-desktop {
+  display: block; }
+  @media (min-width: 900px) {
+    .hide-desktop {
+      display: none; } }
+
+.text-center-mobile {
+  text-align: center; }
+  @media (min-width: 500px) {
+    .text-center-mobile {
+      text-align: left; } }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem; }
+  @media (min-width: 500px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
+  @media (min-width: 900px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem; } }
+
+@media (max-width: 370px) {
+  body {
+    font-size: 13px;
+    padding: 0.25rem; }
+
+  h1 {
+    font-size: 1.6rem; }
+
+  .card {
+    padding: 0.8rem; }
+
+  button {
+    min-height: 42px;
+    font-size: 0.85rem; } }
+@media (orientation: landscape) and (max-height: 500px) {
+  .slide-container {
+    height: 200px; }
+
+  h1 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0; } }
 .navbar {
   position: fixed;
   top: 1rem;
@@ -1316,6 +2993,339 @@ h2 {
 body {
   padding-top: 4rem; }
 
+body {
+  font-size: 14px;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    body {
+      font-size: 15px;
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    body {
+      font-size: 16px;
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    body {
+      font-size: 18px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto; } }
+
+h1 {
+  font-size: 1.8rem;
+  margin: 1rem 0; }
+  @media (min-width: 370px) {
+    h1 {
+      font-size: 2rem; } }
+  @media (min-width: 500px) {
+    h1 {
+      font-size: 2.5rem;
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    h1 {
+      font-size: 3rem;
+      margin: 2rem 0; } }
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0.8rem 0; }
+  @media (min-width: 370px) {
+    h2 {
+      font-size: 1.6rem; } }
+  @media (min-width: 500px) {
+    h2 {
+      font-size: 1.8rem;
+      margin: 1rem 0; } }
+  @media (min-width: 900px) {
+    h2 {
+      font-size: 2.2rem;
+      margin: 1.5rem 0; } }
+
+.container {
+  width: 100%;
+  padding: 0.5rem; }
+  @media (min-width: 370px) {
+    .container {
+      padding: 0.75rem; } }
+  @media (min-width: 500px) {
+    .container {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem; } }
+
+form {
+  width: 100%;
+  padding: 1rem;
+  gap: 0.8rem; }
+  @media (min-width: 370px) {
+    form {
+      padding: 1.2rem;
+      gap: 1rem; } }
+  @media (min-width: 500px) {
+    form {
+      padding: 1.5rem;
+      gap: 1.2rem; } }
+  @media (min-width: 900px) {
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      gap: 1.5rem; } }
+
+.card {
+  margin: 0.5rem 0;
+  padding: 1rem; }
+  @media (min-width: 370px) {
+    .card {
+      margin: 0.75rem 0;
+      padding: 1.2rem; } }
+  @media (min-width: 500px) {
+    .card {
+      margin: 1rem 0;
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    .card {
+      margin: 1.5rem auto;
+      padding: 2rem;
+      max-width: 800px; } }
+
+.button-container {
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%; }
+  @media (min-width: 500px) {
+    .button-container {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1rem; } }
+  @media (min-width: 900px) {
+    .button-container {
+      gap: 1.5rem; } }
+
+button, .button-dark, .button-brown, .button-green, .button-red {
+  min-height: 44px;
+  width: 100%;
+  font-size: 0.9rem; }
+  @media (min-width: 370px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 48px;
+      font-size: 1rem; } }
+  @media (min-width: 500px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      width: auto;
+      min-width: 120px;
+      padding: 0.8rem 1.5rem; } }
+  @media (min-width: 900px) {
+    button, .button-dark, .button-brown, .button-green, .button-red {
+      min-height: 50px;
+      font-size: 1.1rem;
+      padding: 1rem 2rem; } }
+
+.calendar-container {
+  margin: 1rem 0; }
+  @media (min-width: 500px) {
+    .calendar-container {
+      margin: 1.5rem 0; } }
+  @media (min-width: 900px) {
+    .calendar-container {
+      max-width: 800px;
+      margin: 2rem auto; } }
+
+.calendar-grid {
+  font-size: 0.8rem; }
+  @media (min-width: 370px) {
+    .calendar-grid {
+      font-size: 0.9rem; } }
+  @media (min-width: 500px) {
+    .calendar-grid {
+      font-size: 1rem; } }
+  @media (min-width: 900px) {
+    .calendar-grid {
+      font-size: 1.1rem; } }
+
+.calendar-date {
+  height: 35px;
+  min-width: 35px; }
+  @media (min-width: 370px) {
+    .calendar-date {
+      height: 40px;
+      min-width: 40px; } }
+  @media (min-width: 500px) {
+    .calendar-date {
+      height: 45px;
+      min-width: 45px; } }
+  @media (min-width: 900px) {
+    .calendar-date {
+      height: 60px;
+      min-width: 60px;
+      font-size: 1.1rem; } }
+
+#navbar {
+  padding: 0.5rem; }
+  @media (min-width: 500px) {
+    #navbar {
+      padding: 1rem; } }
+  @media (min-width: 900px) {
+    #navbar {
+      padding: 1rem 2rem; } }
+
+.navbar-toggle {
+  display: block; }
+  @media (min-width: 900px) {
+    .navbar-toggle {
+      display: none; } }
+
+.navbar-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%; }
+  .navbar-menu.active {
+    display: flex; }
+  @media (min-width: 900px) {
+    .navbar-menu {
+      display: flex !important;
+      flex-direction: row;
+      width: auto; } }
+
+.slide-container {
+  aspect-ratio: 4/3; }
+  @media (min-width: 500px) {
+    .slide-container {
+      aspect-ratio: 16/10; } }
+  @media (min-width: 900px) {
+    .slide-container {
+      aspect-ratio: 16/9; } }
+
+.vache, .marmotte, .montagne {
+  width: 60%;
+  max-width: 200px; }
+  @media (min-width: 500px) {
+    .vache, .marmotte, .montagne {
+      width: 50%;
+      max-width: 250px; } }
+  @media (min-width: 900px) {
+    .vache, .marmotte, .montagne {
+      width: 40%;
+      max-width: 300px; } }
+
+.option {
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    .option {
+      flex-direction: row;
+      gap: 1rem;
+      padding: 1rem; } }
+  .option button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem; }
+    @media (min-width: 500px) {
+      .option button {
+        width: 32px;
+        height: 32px;
+        font-size: 1.3rem; } }
+
+.date-container {
+  flex-direction: column;
+  text-align: center; }
+  @media (min-width: 500px) {
+    .date-container {
+      flex-direction: row;
+      text-align: left; } }
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; }
+  @media (min-width: 900px) {
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem; } }
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+textarea {
+  font-size: 16px;
+  padding: 0.8rem; }
+  @media (min-width: 500px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    input[type="password"],
+    textarea {
+      padding: 1rem; } }
+
+#footer {
+  padding: 1rem;
+  text-align: center; }
+  @media (min-width: 500px) {
+    #footer {
+      padding: 1.5rem; } }
+  @media (min-width: 900px) {
+    #footer {
+      padding: 2rem; } }
+
+.hide-mobile {
+  display: none; }
+  @media (min-width: 500px) {
+    .hide-mobile {
+      display: block; } }
+
+.hide-desktop {
+  display: block; }
+  @media (min-width: 900px) {
+    .hide-desktop {
+      display: none; } }
+
+.text-center-mobile {
+  text-align: center; }
+  @media (min-width: 500px) {
+    .text-center-mobile {
+      text-align: left; } }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem; }
+  @media (min-width: 500px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } }
+  @media (min-width: 900px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem; } }
+
+@media (max-width: 370px) {
+  body {
+    font-size: 13px;
+    padding: 0.25rem; }
+
+  h1 {
+    font-size: 1.6rem; }
+
+  .card {
+    padding: 0.8rem; }
+
+  button {
+    min-height: 42px;
+    font-size: 0.85rem; } }
+@media (orientation: landscape) and (max-height: 500px) {
+  .slide-container {
+    height: 200px; }
+
+  h1 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0; } }
 .form {
   box-sizing: border-box;
   display: flex;
@@ -1326,12 +3336,6 @@ body {
   width: 100%;
   gap: 2rem;
   padding: 2rem; }
-
-label {
-  font-weight: bold;
-  color: #000000;
-  display: block;
-  font-size: 1rem; }
 
 a {
   color: #7a5c43;
@@ -1371,14 +3375,13 @@ a {
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  background: none;
-  background-color: none;
+  background: transparent;
   width: 90%;
   border: none;
   border-bottom: 1px solid #858585;
   font-family: "Montserrat", sans-serif;
   font-size: 1.1rem;
-  color: #000000;
+  color: #ffffff;
   padding: 1rem; }
 
 input[type="date"], textarea {

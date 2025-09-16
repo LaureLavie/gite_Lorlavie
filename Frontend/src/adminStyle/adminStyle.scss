@@ -5,8 +5,8 @@
 @import "../styles/footer";
 @import "../styles/mixins";
 @import "../styles/navbar";
-@import "../styles/responsive";
 @import "../styles/variables";
+@import "../styles/responsive";
 
 .form {
   box-sizing: border-box;
@@ -19,14 +19,6 @@
   gap: 2rem;
   padding: 2rem;
 }
-
-label {
-  font-weight: bold;
-  color: $noir;
-  display: block;
-  font-size: 1rem;
-}
-
 a {
   color: $brun-boise;
   text-decoration: none;
@@ -69,14 +61,13 @@ a {
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-  background: none;
-  background-color: none;
+  background: transparent;
   width: 90%;
   border: none;
   border-bottom: 1px solid $gris;
   font-family: $font-main;
   font-size: 1.1rem;
-  color: $noir;
+  color: $blanc;
   padding:1rem;
  }
 
