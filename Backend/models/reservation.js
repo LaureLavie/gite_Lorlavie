@@ -6,12 +6,6 @@ import mongoose from "mongoose";
  * - Gère tout le cycle de vie d'une réservation
  */
 const ReservationSchema = new mongoose.Schema({
-  numero: {
-    type: String,
-    unique: true,
-    required: true,
-  }, // Numéro visible par le client (ex: RES-20260109-1234)
-
   client: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Client",
@@ -57,16 +51,6 @@ const ReservationSchema = new mongoose.Schema({
   dateModification: { type: Date }, // Dernière modification
 });
 
-// Middleware pour générer le numéro de réservation
-ReservationSchema.pre("save", function (next) {
-  if (!this.numero) {
-    const now = new Date();
-    const dateString = now.toISOString().replace(/[-:T]/g, "").slice(0, 8); // YYYYMMDD
-    const rand = Math.floor(1000 + Math.random() * 9000);
-    this.numero = `RES-${dateString}-${rand}`;
-  }
-  next();
-});
 
 // Méthode pour calculer le nombre de nuits
 ReservationSchema.methods.getNombreNuits = function () {

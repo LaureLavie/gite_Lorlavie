@@ -1,471 +1,84 @@
-// // ===== RESPONSIVE MOBILE-FIRST OPTIMISÉ =====
-// @import "variables";
-// @import "mixins";
+body, .container, .form-container, .card { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  width: 100vw;
+  box-sizing: border-box;
 
-// // ===== BASE MOBILE-FIRST =====
-// * {
-//   box-sizing: border-box;
-//   margin: 0;
-//   padding: 0;
-// }
+  @include mobile-xs {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  @include mobile-sm {
+    padding: 1.5rem;
+    font-size: 1.1rem;
+  }
+  @include tablet-desktop {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    padding: 2rem;
+  }
+  @include desktop-lg {
+    max-width: 1200px;
+    font-size: 1.3rem;
+  }
+}
 
-// // Centrage du body et des principaux conteneurs
-// body, .container, .form-container, .card, .dashboard-container {
-  
-//   // Mobile XS (≥ 370px)
-//   @include mobile-xs {
-//     font-size: 1rem;
-//     padding: 1.3rem;
-//   }  
-//   // Mobile SM (≥ 500px)
-//   @include mobile-sm {
-//     font-size: 1.2rem;
-//     padding: 1.5rem;
-//   }
-//   // Tablette/Desktop (≥ 900px)
-//   @include tablet-desktop {
-//     font-size: 1.5;
-//     padding: 2rem;
-//     max-width: 1200px;
-//     margin: 0 auto;
-//   }
-// }
+h1, h2 {
+  text-align: center;
+  margin: 1rem 0;
+  width: 100%;
+  @include mobile-xs { font-size: 2rem; }
+  @include mobile-sm { font-size: 2.5rem; }
+  @include tablet-desktop { font-size: 3rem; }
+}
 
-// // Centrage des titres
-// h1, h2 {
-//   text-align: center;
-//   margin-left: auto;
-//   margin-right: auto;
-// }
-  
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 350px;
+  padding: 1rem;
 
-// // Centrage des boutons et des containers de boutons
-// .button-container {
-  
-//   @include mobile-sm {
-//     flex-direction: row;
-//     gap: 1rem;
-//   }
-// }
-
-// // ===== CONTENEUR PRINCIPAL CENTRÉ =====
-// .main-container {
-    
-//   @include mobile-sm {
-//     max-width: 600px;
-//     gap: 2rem;
-//   }
-  
-//   @include tablet-desktop {
-//     max-width: 800px;
-//     gap: 2.5rem;
-//   }
-// }
-
-// // ===== TITRES RESPONSIVE ET CENTRÉS =====
-// h1 {
-   
-//   @include mobile-xs {
-//     font-size: 2.2rem;
-//     margin: 1.75rem 0;
-//   }
-  
-//   @include mobile-sm {
-//     font-size: 2.5rem;
-//     margin: 2rem 0;
-//   }
-  
-//   @include tablet-desktop {
-//     font-size: 3rem;
-//     margin: 2.5rem 0;
-//   }
-// }
-
-// h2 {
-    
-//   @include mobile-xs {
-//     font-size: 1.7rem;
-//   }
-  
-//   @include mobile-sm {
-//     font-size: 1.8rem;
-//     margin: 1.5rem 0;
-//   }
-  
-//   @include tablet-desktop {
-//     font-size: 2.2rem;
-//     margin: 2rem 0;
-//   }
-// }
-
-// // ===== FORMULAIRES CENTRÉS ET RESPONSIVE =====
-// .form {
-  
-//   @include mobile-xs {
-//     max-width: 380px;
-//     padding: 1.75rem;
-//     gap: 1.4rem;
-//   }
-  
-//   @include mobile-sm {
-//     max-width: 450px;
-//     padding: 2rem;
-//     gap: 1.6rem;
-//   }
-  
-//   @include tablet-desktop {
-//     max-width: 600px;
-//     padding: 2.5rem;
-//     gap: 2rem;
-//   }
-// }
-
-// // ===== CONTENEURS DE FORMULAIRE =====
-// .form-container,
-// .date-container,
-// .message-container {
-   
-//   @include mobile-sm {
-//     flex-direction: row;
-//     padding: 1.25rem;
-//     gap: 1.25rem;
-//   }
-  
-//   @include tablet-desktop {
-//     padding: 1.5rem;
-//     gap: 1.5rem;
-//   }
-  
-//   label {
-       
-//     @include mobile-sm {
-//       margin-bottom: 0;
-//       text-align: left;
-//       white-space: nowrap;
-//     }
-    
-//     @include tablet-desktop {
-//       font-size: 1.1rem;
-//     }
-//   }
-// }
-
-// // ===== INPUTS OPTIMISÉS POUR MOBILE =====
-// input[type="text"],
-// input[type="tel"],
-// input[type="email"],
-// input[type="date"],
-// input[type="password"],
-// textarea {
-   
-//   @include mobile-sm {
-//     padding: 1.25rem;
-//     text-align: left;
-//   }
-  
-//   @include tablet-desktop {
-//     padding: 1.5rem;
-//     font-size: 1.1rem;
-//   }
-  
-// }
-
-// // ===== CARTES CENTRÉES ET RESPONSIVE =====
-// .card {
-  
-//   @include mobile-xs {
-//     max-width: 380px;
-//     padding: 1.75rem;
-//   }
-  
-//   @include mobile-sm {
-//     max-width: 450px;
-//     padding: 2rem;
-//   }
-  
-//   @include tablet-desktop {
-//     max-width: 600px;
-//     padding: 2.5rem;
-//   }
-  
-//   &__content {
-       
-//     @include tablet-desktop {
-//       text-align: left;
-//     }
-//   }
-  
-//   &__row {
-        
-//     @include mobile-sm {
-//       flex-direction: row;
-//       justify-content: space-between;
-//       text-align: left;
-//     }
-//   }
-// }
-
-// // ===== BOUTONS OPTIMISÉS POUR LE TOUCH =====
-// button,
-// .button-dark,
-// .button-brown,
-// .button-green,
-// .button-red,
-// .button-white,
-// .button-grey {
-//   min-height: 48px; 
-//   min-width: 48px;
- 
-  
-//   @include mobile-xs {
-//     min-height: 50px;
-//     font-size: 1.1rem;
-//   }
-  
-//   @include mobile-sm {
-//     width: auto;
-//     min-width: 150px;
-//     max-width: none;
-//     padding: 1.2rem 2rem;
-//   }
-  
-//   @include tablet-desktop {
-//     min-height: 52px;
-//     font-size: 1.1rem;
-//     padding: 1.5rem 2.5rem;
-//   }
-// }
-
-// // ===== CONTENEUR DE BOUTONS =====
-// .button-container {
-
-  
-//   @include mobile-sm {
-//     flex-direction: row;
-//     flex-wrap: wrap;
-//     gap: 1.25rem;
-//   }
-  
-//   @include tablet-desktop {
-//     gap: 1.5rem;
-//     margin: 2rem 0;
-//   }
-// }
-
-// // ===== CALENDRIER CENTRÉ =====
-// .calendar-container {
-   
-//   @include mobile-xs {
-//     max-width: 380px;
-//   }
-  
-//   @include mobile-sm {
-//     max-width: 450px;
-//     gap: 2rem;
-//   }
-  
-//   @include tablet-desktop {
-//     max-width: 600px;
-//     margin: 2rem auto;
-//     gap: 2.5rem;
-//   }
-// }
-
-// // Centrage du calendrier
-// .calendar-container {
-//   max-width: 400px;
-//   @include tablet-desktop {
-//     max-width: 800px;
-//   }
-// }
-
-// .calendar-dates {
-//   display: grid;
-//   grid-template-columns: repeat(7, 1fr);
-//   gap: 0.3rem;
-  
-//   @include mobile-sm {
-//     gap: 0.5rem;
-//   }
-  
-//   @include tablet-desktop {
-//     gap: 0.7rem;
-//   }
-// }
-
-// .calendar-date {
-   
-//   @include mobile-xs {
-//     min-height: 42px;
-//     font-size: 1rem;
-//   }
-  
-//   @include mobile-sm {
-//     min-height: 45px;
-//     font-size: 1.05rem;
-//   }
-  
-//   @include tablet-desktop {
-//     min-height: 55px;
-//     font-size: 1.1rem;
-//   }
-// }
-
-// // ===== BOUTONS =====
-  
-//   button {
-       
-//     @include mobile-sm {
-//       width: 44px;
-//       height: 44px;
-//       min-width: 44px;
-//     }
-    
-//     @include tablet-desktop {
-//       width: 44px;
-//       height: 44px;
-//       min-width: 44px
-//   }  
-// }
+  @include mobile-sm { max-width: 450px; padding: 1.5rem; }
+  @include tablet-desktop { max-width: 600px; padding: 2rem; }
+  @include desktop-lg { max-width: 800px; }
+}
 
 
-// // ===== IMAGES RESPONSIVE ET CENTRÉES =====
-// img,
-// .logo,
-// .vache,
-// .marmotte,
-// .montagne,
-// .marmotte-icon {
-  
-//   @include mobile-xs {
-//     max-width: 100%;
-//   }
-  
-//   @include mobile-sm {
-//     max-width: 100%;
-//   }
-  
-//   @include tablet-desktop {
-//     max-width: 100%;
-//   }
-// }
+button, .button-dark, .button-brown, .button-green, .button-red, .button-white, .button-grey {
+  min-width: 48px;
+  min-height: 48px;
+  font-size: 1rem;
+  border-radius: $radius;
+  padding: 0.7rem 1.2rem;
 
-// .img_bottom {
-  
-//   @include tablet-desktop {
-//     margin: 2rem 0;
-//   }
-// }
+  @include mobile-xs { font-size: 1rem; }
+  @include mobile-sm { font-size: 1.1rem; padding: 1rem 2rem; }
+  @include tablet-desktop { font-size: 1.2rem; padding: 1.2rem 2.5rem; }
+}
 
-// // ===== CARROUSEL D'IMAGES =====
-// .slide-container {
-//   position: relative;
-//   aspect-ratio: 4/3;
+img, .logo, .vache, .marmotte, .montagne {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  @include mobile-xs { max-width: 60%; }
+  @include mobile-sm { width: 40%; }
+  @include tablet-desktop { width: 20%; }
+}
 
-  
-//   @include mobile-sm {
-//     aspect-ratio: 16/10;
-//   }
-  
-//   @include tablet-desktop {
-//     aspect-ratio: 16/9;
-//     margin: 2rem auto;
-//   } 
-//   img {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//   }
-// }
-
-// .prev,
-// .next {
-//   position: absolute;
-//     z-index: 2;
-  
-//   @include tablet-desktop {
-//     width: 60px;
-//     height: 60px;
-//     font-size: 1.8rem;
-//   }
-// }
-// .prev {
-//   left: 1rem;
-// }
-// .next {
-//   right: 1rem;
-// }
-
-// // ===== CONTENEURS DE TEXTE =====
-// .text-container {
-    
-//   @include tablet-desktop {
-//     margin: 2rem 0;
-//     gap: 1.5rem;
-//   }
-  
-//   p {
-//     line-height: 1.6;
-//     margin: 0;
-//     padding: 0 0.5rem;
-    
-//     @include mobile-sm {
-//       padding: 0 1rem;
-//     }
-    
-//     @include tablet-desktop {
-//       font-size: 1.1rem;
-//       line-height: 1.7;
-//       padding: 0;
-//     }
-//   }
-// }
-
-// // ===== RGPD CONTAINER =====
-// .rgpd-container {
-    
-//   @include mobile-sm {
-//     flex-direction: row;
-//     align-items: flex-start;
-//     text-align: left;
-//     gap: 1rem;
-//   }
-  
-//   input[type="checkbox"] {
-//     flex-shrink: 0;
-//     margin-top: 0.2rem;
-//   }
-  
-//   p {
-//     font-size: 0.9rem;
-//     text-align: center;
-//     color: $noir;
-//     line-height: 1.5;
-    
-//     @include mobile-sm {
-//       text-align: left;
-//     }
-    
-//     @include tablet-desktop {
-//       font-size: 1rem;
-//     }
-//   }
-// }
-
-// // Centrage de navbar
-// .navbar, .hoteNavbar {
-//   text-align: center;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: space-around;
-// }
-
-// // Centrage du footer
-// .footer, #footer {
-//   text-align: center;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-// }
+.card {
+  width: 100%;
+  max-width: 350px;
+  margin: 1rem auto;
+  padding: 1rem;
+  @include mobile-sm { max-width: 450px; padding: 1.5rem; }
+  @include tablet-desktop { max-width: 600px; padding: 2rem; }
+  @include desktop-lg { max-width: 800px; }
+}

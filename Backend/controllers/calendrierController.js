@@ -36,7 +36,7 @@ export const getCalendrierStat = async (req, res) => {
     // 2. Récupère les statuts en base
     const statuts = await CalendrierStat.find({
       date: { $gte: dateDebut, $lte: dateFin },
-    }).populate("reservationId", "numero client");
+    }).populate("reservationId");
 
     // 3. Applique les statuts sur le calendrier
     statuts.forEach((status) => {
@@ -46,8 +46,7 @@ export const getCalendrierStat = async (req, res) => {
         statut: status.statut,
         reservationInfo: status.reservationId
           ? {
-              numero: status.reservationId.numero,
-              clientId: status.reservationId.client,
+             clientId: status.reservationId.client,
             }
           : null,
         notes: status.notes,
@@ -97,7 +96,7 @@ export const verifierDisponibilite = async (req, res) =>{
       const datesOccupees = await CalendrierStat.find({
         date: { $gte: arrivee, $lt: depart },
         statut: { $in: ["reserve", "bloque"] },
-      }).populate("reservationId", "numero");
+      }).populate("reservationId");
 
       res.json({
         disponible: false,
@@ -105,7 +104,6 @@ export const verifierDisponibilite = async (req, res) =>{
         datesOccupees: datesOccupees.map((d) => ({
           date: d.date.toISOString().split("T")[0],
           statut: d.statut,
-          reservation: d.reservationId?.numero || null,
         })),
       });
     } else {
@@ -216,7 +214,7 @@ export const bloquerPeriode = async (req, res) =>{
     const reservationsExistantes = await CalendrierStat.find({
       date: { $gte: debut, $lt: fin },
       statut: "reserve",
-    }).populate("reservationId", "numero statut");
+    }).populate("reservationId");
 
     const reservationsConfirmees = reservationsExistantes.filter(
       (r) => r.reservationId?.statut === "Confirmee"
@@ -228,7 +226,7 @@ export const bloquerPeriode = async (req, res) =>{
           "Impossible de bloquer cette période, des réservations confirmées existent",
         reservationsConflictuelles: reservationsConfirmees.map((r) => ({
           date: r.date,
-          reservation: r.reservationId.numero,
+          reservation: r.reservationId,
         })),
       });
     }

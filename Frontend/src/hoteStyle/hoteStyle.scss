@@ -1,10 +1,10 @@
-@import "../styles/hoteBase";
-@import "../styles/hoteNavbar";
-@import "../styles/hoteFooter";
 @import "../styles/variables";
+@import "../styles/hoteBase";
+@import "../styles/mixins";
 @import "../styles/button";
 @import "../styles/card";
-@import "../styles/mixins";
+@import "../styles/hoteFooter";
+@import "../styles/hoteNavbar";
 @import "../styles/responsive";
 
 * {

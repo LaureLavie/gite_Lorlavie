@@ -92,3 +92,26 @@ export const htmlReceiptTemplate = (Confirmation) => {
     </html>
   `;
 };
+
+export const htmlReservationEnAttente = (reservation, client) => {
+  return `
+    <!DOCTYPE html>
+    <html lang="fr">
+      <head>
+        <meta charset="UTF-8" />
+        <title>Réservation en attente</title>
+      </head>
+      <body style="${EMAIL_STYLE}">
+        <h2>Bonjour ${client.surname},</h2>
+        <p>Votre demande de réservation au Gîte Lorlavie a bien été reçue.</p>
+        <p><strong>Date d'arrivée :</strong> ${reservation.dateArrivee}</p>
+        <p><strong>Date de départ :</strong> ${reservation.dateDepart}</p>
+        <p><strong>Nombre de personnes :</strong> ${reservation.nombrePersonnes}</p>
+        <p><strong>Prix total :</strong> ${reservation.prixTotal} €</p>
+        <p>Votre réservation est en attente de validation par l'administrateur.</p>
+        <p>Vous recevrez un email dès qu'elle sera confirmée.</p>
+        <p>Merci et à bientôt !</p>
+      </body>
+    </html>
+  `;
+};

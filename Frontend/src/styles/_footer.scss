@@ -3,10 +3,13 @@
 @import "responsive";
 
 .footer {
-  background: $noir;
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   color: $blanc;
   width: 100vw;
-  padding: 2rem;
+  padding: 1rem;
   margin:0;
   font-family: $font-main;
 
@@ -55,5 +58,47 @@
         margin-top: 0.5rem;
         font-weight: bold;
       }
+    }
+  }
+
+
+  .footer {
+    width: 100vw;
+    padding: 1rem;
+    font-size: 1rem;
+  
+    @include mobile-xs {
+      font-size: 0.9rem;
+      padding: 0.5rem 0;
+    }
+    @include tablet-desktop {
+      font-size: 1.1rem;
+      padding: 2rem 0;
+    }
+    @include desktop-lg {
+      font-size: 1.2rem;
+      padding: 2.5rem 0;
+    }
+  
+    .footer-container {
+      flex-direction: column;
+      gap: 0.5rem;
+      @include tablet-desktop {
+        flex-direction: row;
+        gap: 2rem;
+      }
+    }
+  
+    &__logo img {
+      width: 2.5rem;
+      @include mobile-xs { width: 2rem; }
+      @include tablet-desktop { width: 3.5rem; }
+    }
+  
+    &__infos, &__socials {
+      width: 100%;
+      text-align: center;
+      margin: 0.5rem 0;
+      @include tablet-desktop { width: 30%; }
     }
   }

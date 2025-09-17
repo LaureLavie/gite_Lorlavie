@@ -94,3 +94,63 @@
 body {
   padding-top: 4rem;
 }
+
+.hoteNavbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+
+  @include mobile-xs {
+    height: 3rem;
+    padding: 0.2rem 0.5rem;
+  }
+  @include mobile-sm {
+    height: 3.2rem;
+    padding: 0.5rem 1rem;
+  }
+  @include tablet-desktop {
+    height: 4rem;
+    padding: 1rem 2rem;
+  }
+  @include desktop-lg {
+    height: 4.5rem;
+    padding: 1.5rem 3rem;
+  }
+
+  &__logo img {
+    width: 2.5rem;
+    @include mobile-xs { width: 2rem; }
+    @include tablet-desktop { width: 3.5rem; }
+  }
+
+  &__burger {
+    padding: 0.7rem;
+    @include mobile-xs { padding: 0.3rem; }
+    @include tablet-desktop { padding: 1.2rem; }
+    span {
+      width: 22px;
+      height: 3px;
+      @include mobile-xs { width: 16px; height: 2px; }
+      @include tablet-desktop { width: 28px; height: 4px; }
+    }
+  }
+
+  &__menu {
+    width: 90vw;
+    padding: 1rem;
+    @include mobile-xs { padding: 0.5rem; }
+    @include tablet-desktop { width: 60vw; padding: 2rem; }
+    ul li a {
+      font-size: 1rem;
+      @include mobile-xs { font-size: 0.9rem; }
+      @include tablet-desktop { font-size: 1.2rem; }
+    }
+  }
+}

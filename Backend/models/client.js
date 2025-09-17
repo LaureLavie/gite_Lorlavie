@@ -17,11 +17,7 @@ const ClientSchema = new mongoose.Schema({
     codePostal: { type: String, required: true },
     pays: { type: String, required: true },
   }, // Adresse complète structurée
-  modePaiement: {
-    type: String,
-    enum: ["carte", "espece", "en ligne"],
-    required: true,
-  }, // Mode de paiement choisi
+
 });
 
 export default mongoose.model("Client", ClientSchema);

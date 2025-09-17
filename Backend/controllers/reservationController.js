@@ -6,7 +6,7 @@
 import Reservation from "../models/reservation.js";
 import Client from "../models/client.js";
 import CalendrierStat from "../models/calendrier.js";
-import { sendMail } from "../middlewares/mail.js";
+import { sendMail, htmlReservationEnAttente } from "../middlewares/mail.js";
 
 /**
  * Calcule le prix total d'une réservation
@@ -30,7 +30,7 @@ export const createReservation = async (req, res) => {
       nombrePersonnes,
       personnesSupplementaires = 0,
       options = {},
-      modePaiement,
+      modePaiement
     } = req.body;
 
     // Validation des champs obligatoires
@@ -41,8 +41,7 @@ export const createReservation = async (req, res) => {
       !client.email ||
       !dateArrivee ||
       !dateDepart ||
-      !nombrePersonnes ||
-      !modePaiement
+      !nombrePersonnes 
     ) {
       return res.status(400).json({
         error: "Tous les champs requis doivent être renseignés",
@@ -107,8 +106,7 @@ export const createReservation = async (req, res) => {
     res.status(201).json({
       message:
         "Réservation créée avec succès. Un email de confirmation vous a été envoyé.",
-      reservation: {
-        numero: reservation.numero,
+      reservation: {        
         statut: reservation.statut,
         prixTotal: reservation.prixTotal,
       },
