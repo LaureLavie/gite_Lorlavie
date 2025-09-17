@@ -15,6 +15,27 @@
   gap: 1.5rem;
   margin: 0 auto;
   max-width: 400px;
+
+  @include mobile-xs {
+    max-width: 320px;
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+  @include mobile-sm {
+    max-width: 500px;
+    padding: 1rem;
+    gap: 1.2rem;
+  }
+  @include tablet-desktop {
+    max-width: 900px;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  @include desktop-lg {
+    max-width: 1200px;
+    padding: 2.5rem;
+    gap: 2.5rem;
+  }
 }
 
 .calendar-header {
@@ -26,6 +47,14 @@
   width: 100%;
   text-align: center;
   color: $blanc;
+  @include mobile-xs {
+    font-size: 1rem;
+    gap: 0.3rem;
+  }
+  @include tablet-desktop {
+    font-size: 1.3rem;
+    gap: 1rem;
+  }
 }
 
 .calendar-arrow {
@@ -37,6 +66,16 @@
   width: 36px;
   height: 36px;
   font-size: 1.5rem;
+  @include mobile-xs {
+    width: 24px;
+    height: 24px;
+    font-size: 1rem;
+  }
+  @include tablet-desktop {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
   cursor: pointer;
   box-shadow: 2px 2px 0 $gris-perle;
   transition: background 0.2s;
@@ -56,6 +95,16 @@
   box-shadow: 2px 2px 0 $gris-perle;
   text-align: center;
   min-width: 180px;
+  @include mobile-xs {
+    min-width: 80px;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+  }
+  @include tablet-desktop {
+    min-width: 180px;
+    font-size: 1.2rem;
+    padding: 0.4rem 2rem;
+  }
 }
 
 .calendar-grid {
@@ -70,12 +119,24 @@
   font-weight: bold;
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
+  @include mobile-xs {
+    font-size: 0.8rem;
+  }
+  @include tablet-desktop {
+    font-size: 1.1rem;
+  }
 }
 
 .calendar-dates {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 0.4rem;
+  @include mobile-xs {
+    gap: 0.15rem;
+  }
+  @include tablet-desktop {
+    gap: 0.5rem;
+  }
 }
 
 .calendar-date {
@@ -88,6 +149,14 @@
   justify-content: center;
   font-weight: bold;
   font-size: 1.1rem;
+  @include mobile-xs {
+    height: 24px;
+    font-size: 0.8rem;
+  }
+  @include tablet-desktop {
+    height: 38px;
+    font-size: 1.1rem;
+  }
   cursor: pointer;
   box-shadow: 2px 2px 0 $noir;
   transition: background 0.2s, color 0.2s, border 0.2s;
@@ -116,12 +185,24 @@
   flex-direction: column;
   width: 100%;
   margin-top: 1.2rem;
+  @include mobile-xs {
+    margin-top: 0.5rem;
+  }
+  @include tablet-desktop {
+    margin-top: 1.5rem;
+  }
   label {
     color: $blanc;
     font-weight: bold;
     font-size: 1.1rem;
     margin-bottom: 0.7rem;
     display: block;
+    @include mobile-xs {
+      font-size: 0.9rem;
+    }
+    @include tablet-desktop {
+      font-size: 1.1rem;
+    }
   }
   .status-options {
     display: flex;
@@ -129,6 +210,12 @@
     gap: 1.2rem;
     margin-bottom: 1rem;
     flex-wrap: wrap;
+    @include mobile-xs {
+      gap: 0.3rem;
+    }
+    @include tablet-desktop {
+      gap: 1.2rem;
+    }
   }
   .status-btn.active {
     background: $gris-perle;
@@ -144,6 +231,14 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    @include mobile-xs {
+      font-size: 0.8rem;
+      padding: 0.1rem 0.3rem;
+    }
+    @include tablet-desktop {
+      font-size: 1.1rem;
+      padding: 0.2rem 0.7rem;
+    }
     cursor: pointer;
     padding: 0.2rem 0.7rem;
     border-radius: 12px;
@@ -157,7 +252,28 @@
     display: inline-block;
     width: 18px;
     height: 18px;
-    border-radius: 4px;
+    @include mobile-xs {
+      width: 10px;
+      height: 10px;
+    }
+    @include tablet-desktop {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  .status-flag {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    @include mobile-xs {
+      width: 10px;
+      height: 10px;
+    }
+    @include tablet-desktop {
+      width: 18px;
+      height: 18px;
+    }
+      border-radius: 4px;
     margin-right: 0.2rem;
     &.status-reserve {
       background: $rouge;
