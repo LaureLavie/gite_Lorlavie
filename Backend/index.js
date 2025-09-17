@@ -27,7 +27,20 @@ const app = express();
 app.use(express.json());
 
 // Middleware CORS pour sécuriser les échanges entre frontend et backend
-app.use(cors({ origin: process.env.CLIENT_URL }));
+const allowedOrigins = [
+  "https://gite-lorlavie.onrender.com",
+  "http://localhost:5503"
+];
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  }
+}));
+
 app.use((req, res, next) => {
   res.setHeader(
     "Content-Security-Policy",
