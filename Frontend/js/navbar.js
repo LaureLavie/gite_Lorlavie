@@ -1,3 +1,5 @@
+import {Logout} from "./logout.js";
+
 export function Navbar() {
   const placeholder = document.getElementById("navbar");
   if (placeholder) {
@@ -13,6 +15,9 @@ export function Navbar() {
             navbarMenu.classList.toggle("open");
           });
         }
+        //Intégration de la déconnexion
+        Logout()
       });
   }
 }
+

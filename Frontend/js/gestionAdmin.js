@@ -1,10 +1,10 @@
-
 const adminForm = document.getElementById("admin-form");
 const adminsListDiv = document.getElementById("admins-list");
 const cancelBtn = document.getElementById("cancel-btn");
 const adminAddBtn = document.getElementById("add-Admin-Btn");
 const errorDiv = adminForm.querySelector(".errorDiv");
 const successDiv = adminForm.querySelector(".successDiv");
+const submitBtn = document.getElementById("submit-btn");
 
 let editingAdminId = null;
 
@@ -41,14 +41,14 @@ async function fetchAdmins() {
 function listingAdmins(admins) {
   adminsListDiv.innerHTML = admins.map(admin => `
     <div class="card card--white">
-      <div class="card__badge">${admin.name.toUpperCase()}</div>
+      <div class="card__badge">${admin.surname.toUpperCase()}</div>
       <div class="card__icons">
-        <a href="#" class="icon-modif" title="Modifier" onclick="window.editAdminForm('${admin._id}')">
+        <button class="icon-modif" title="Modifier" data-id="${admin._id}">
           <i class="fa fa-pen"></i>
-        </a>
-        <a href="#" class="icon-delete" title="Supprimer" onclick="window.deleteAdmin('${admin._id}')">
+        </button>
+        <button class="icon-delete" title="Supprimer" data-id="${admin._id}">
           <i class="fa fa-trash"></i>
-        </a>
+        </button>
       </div>
       <div class="card__content">
         <div class="card__row"><span>Nom :</span> <strong>${admin.surname}</strong></div>
@@ -57,19 +57,27 @@ function listingAdmins(admins) {
       </div>
     </div>
   `).join('');
+
+  // Ajoute les listeners pour modifier et supprimer
+  adminsListDiv.querySelectorAll(".icon-modif").forEach(btn => {
+    btn.addEventListener("click", () => editAdminForm(btn.dataset.id));
+  });
+  adminsListDiv.querySelectorAll(".icon-delete").forEach(btn => {
+    btn.addEventListener("click", () => deleteAdmin(btn.dataset.id));
+  });
 }
 
 // Réinitialiser le formulaire (mode ajout)
 function resetForm() {
   editingAdminId = null;
   adminForm.reset();
-  adminForm.querySelector("#submit-btn").textContent = "Ajouter";
+  submitBtn.textContent = "Valider";
   successDiv.style.display = "none";
   errorDiv.style.display = "none";
 }
 
 // Pré-remplir le formulaire pour modification
-window.editAdminForm = async function(id) {
+async function editAdminForm(id) {
   editingAdminId = id;
   const token = localStorage.getItem("adminToken");
   try {
@@ -82,14 +90,14 @@ window.editAdminForm = async function(id) {
     adminForm.email.value = admin.email;
     adminForm.password.value = ""; // Ne jamais pré-remplir le mot de passe
     adminForm.style.display = "block";
-    adminForm.querySelector("#submit-btn").textContent = "Modifier";
+    submitBtn.textContent = "Valider";
     successDiv.style.display = "none";
     errorDiv.style.display = "none";
   } catch (err) {
     errorDiv.textContent = "Erreur lors de la récupération de l'administrateur.";
     errorDiv.style.display = "block";
   }
-};
+}
 
 // Ajouter ou modifier un admin
 adminForm.addEventListener("submit", async (e) => {
@@ -109,7 +117,7 @@ adminForm.addEventListener("submit", async (e) => {
     let res, result;
     if (!editingAdminId) {
       // Ajout
-      res = await fetch(`http://localhost:3000/api/auth/create`, {
+      res = await fetch(`http://localhost:3000/api/auth/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -149,7 +157,7 @@ adminForm.addEventListener("submit", async (e) => {
 });
 
 // Supprimer un admin
-window.deleteAdmin = async function(id) {
+async function deleteAdmin(id) {
   if (!confirm("Supprimer cet administrateur ?")) return;
   const token = localStorage.getItem("adminToken");
   try {
@@ -174,7 +182,7 @@ window.deleteAdmin = async function(id) {
     errorDiv.style.display = "block";
     successDiv.style.display = "none";
   }
-};
+}
 
 // Initialisation au chargement
 fetchAdmins();

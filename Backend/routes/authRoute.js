@@ -28,7 +28,7 @@ authRouter.post("/login", loginAdmin);
 
 //Activation du compte et Mot de passe oublié
 authRouter.get("/activate/:token", activateAccount);
-authRouter.post("/motdepasseoublie", forgotPassword);
+authRouter.post("/motdepasseoublie/:token", forgotPassword);
 authRouter.post("/resetmotdepasse/:token", resetPassword);
 
 //Deconnexion

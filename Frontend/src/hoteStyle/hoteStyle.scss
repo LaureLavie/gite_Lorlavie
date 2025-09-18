@@ -3,6 +3,7 @@
 @import "../styles/mixins";
 @import "../styles/button";
 @import "../styles/card";
+@import "../styles/calendar";
 @import "../styles/hoteFooter";
 @import "../styles/hoteNavbar";
 @import "../styles/responsive";
@@ -193,13 +194,14 @@ p{
     font-size: 1rem;
   }
   button {
-    width: 32px;
-    height: 32px;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     border: none;
     background: $brun-boise;
     color: $blanc;
     font-size: 1.3rem;
+    text-align: center;
     font-weight: bold;
     cursor: pointer;
     box-shadow: $shadow;
@@ -210,10 +212,10 @@ p{
     }
   }
   span {
-    font-size: 1.3rem;
+    font-size: 1.3rem;    
     font-weight: bold;
     color: $brun-boise;
-    min-width: 28px;
+    min-width: 2rem;
     text-align: center;
     display: inline-block;
   }
