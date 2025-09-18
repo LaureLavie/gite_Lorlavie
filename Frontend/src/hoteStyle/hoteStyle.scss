@@ -81,7 +81,7 @@ h2 {
 .prev,
 .next {
   position: absolute;
-  top: 50%;
+    top: 50%;
   transform: translateY(-50%);
   font-size: 2rem;
   font-weight: bold;
@@ -91,10 +91,10 @@ h2 {
   cursor: pointer;
 }
 .prev {
-  left: 3rem;
+  left: 1rem;
 }
 .next {
-  right: 3rem;
+  right: 1rem;
 }
 
 input[type="text"],
@@ -246,34 +246,7 @@ p{
   filter: brightness(1.2);
 }
 
-.img_bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: brightness(1.2);
-}
-
-.vache {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: brightness(1.2);
-}
-
-.marmotte {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: brightness(1.2);
-}
-
-.montagne {
+.img_bottom, .logo img, .logo, .vache, .marmotte, .montagne {
   display: flex;
   align-items: center;
   justify-content: center;

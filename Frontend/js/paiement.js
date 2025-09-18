@@ -1,4 +1,4 @@
-import { API_BACK } from "../js/config.js";
+
 const errorDiv = adminForm.querySelector(".errorDiv");
 const successDiv = adminForm.querySelector(".successDiv");
 
@@ -41,7 +41,7 @@ document.querySelector("form.form").addEventListener("submit", async function(e)
 
   // Envoie la réservation au backend
   try {
-    const res = await fetch(`${API_BACK}/api/reservations`, {
+    const res = await fetch(`http://localhost:3000/api/reservations`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(reservation)
@@ -51,7 +51,7 @@ document.querySelector("form.form").addEventListener("submit", async function(e)
       // Nettoie le localStorage
       localStorage.removeItem("reservationEnCours");
       // Redirige       
-      window.location.href = `confirmation.html?id=${result.reservation.numero}`;
+      window.location.href = `confirmation.html?id=${result.reservation._id}`;
     } else {
       errorDiv.textContent = result.error || result.message || "Erreur lors de la récupération de la réservation";
       errorDiv.style.display = "block";

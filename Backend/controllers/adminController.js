@@ -173,6 +173,10 @@ export const loginAdmin = async (req, res) => {
       return res.status(401).json({ error: "Email ou mot de passe incorrect" });
     }
 
+    if (!admin.isVerified) {
+      return res.status(403).json({ error: "Compte non activé. Vérifiez vos emails." });
+    }
+
     const valid = await bcrypt.compare(password, admin.password);
     if (!valid) {
       return res.status(401).json({ error: "Email ou mot de passe incorrect" });

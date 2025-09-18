@@ -20,6 +20,12 @@ body{
   padding-top: 3rem;
 }
 
+h1, h2 {
+  text-align: center;
+  margin: 1rem;
+  width: 100%;
+}
+
 .form, form, .date-container {
   box-sizing: border-box;
   display: flex;
@@ -182,4 +188,11 @@ p{
     font-weight: bold;
     color: $vert;
   }
+}
+
+.img_bottom, .logo img, .logo, .vache, .marmotte, .montagne {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: brightness(1.2);
 }

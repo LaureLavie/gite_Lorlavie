@@ -1,11 +1,4 @@
-import { API_BACK } from "../js/config.js";
-
-// Helper pour afficher les messages
-function showMessage(div, msg, type = "error") {
-  div.textContent = msg;
-  div.style.display = "block";
-  div.style.color = type === "error" ? "red" : "green";
-}
+import {showMessage} from "../js/config.js";
 
 // Connexion admin
 const loginForm = document.getElementById("login-form");
@@ -22,7 +15,7 @@ if (loginForm) {
       return;
     }
     try {
-      const res = await fetch(`${API_BACK}/api/auth/login`, {
+      const res = await fetch(`http://localhost:3000/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -45,27 +38,7 @@ if (loginForm) {
   });
 }
 
-// Déconnexion admin
-const logoutBtn = document.getElementById("logout-btn");
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const logoutMsg = document.getElementById("logout-message");
-    try {
-      await fetch(`${API_BACK}/api/auth/logout`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-        },
-      });
-    } catch {}
-    localStorage.removeItem("adminToken");
-    localStorage.removeItem("adminData");
-    if (logoutMsg) showMessage(logoutMsg, "Déconnexion réussie.", "success");
-    window.location.href = "../../index.html";
-  });
-}
+
 
 // Inscription admin
 const registerForm = document.getElementById("register-form");
@@ -83,7 +56,7 @@ if (registerForm) {
       return;
     }
     try {
-      const res = await fetch(`${API_BACK}/api/auth/register`, {
+      const res = await fetch(`http://localhost:3000/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, surname, email, password }),

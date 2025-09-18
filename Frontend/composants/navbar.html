@@ -12,13 +12,37 @@
   <div class="navbar__menu" id="navbar-menu">
     <ul>
       <li><a href="../../pages/hote/accueil.html">Site Visiteur</a></li>
+      <li><a href="../../pages/administrateur/reservation.html">Réservation</a></li>
+      <li><a href="../../pages/administrateur/calendrier.html">Calendrier</a></li>
+      <li><a href="../../pages/administrateur/infoGite.html">Informations</a></li>
+      <li><a href="../../pages/administrateur/gestionAdmin.html">Administrateurs</a></li>
       <li>
-        <a href="../../pages/administrateur/dashboard.html">Dashboard Admin</a>
-      </li>
-      <li>
-        <button id="logout-btn" class="button-white">Déconnexion</button>
+        <button class="button-white" type="submit" id="logout-btn">Deconnexion</button>
         <div id="logout-message" class="successDiv" style="display:none"></div>
       </li>
       </ul>
       </div>
       </nav>
+<script>
+  // Déconnexion admin
+  const logoutBtn = document.getElementById("logout-btn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const logoutMsg = document.getElementById("logout-message");
+      try {
+        await fetch(`${API_BACK}/api/auth/logout`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
+          },
+        });
+      } catch { }
+      localStorage.removeItem("adminToken");
+      localStorage.removeItem("adminData");
+      if (logoutMsg) showMessage(logoutMsg, "Déconnexion réussie.", "success");
+      window.location.href = "../../index.html";
+    });
+  }
+    </scrpit >

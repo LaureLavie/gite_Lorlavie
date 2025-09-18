@@ -392,31 +392,32 @@ p {
   margin-bottom: 2rem;
   filter: brightness(1.2); }
 
-body, .container, .card {
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-width: 320px;
   width: 100vw;
+  height: auto;
   box-sizing: border-box; }
   @media (max-width: 320px) {
-    body, .container, .card {
+    body {
       padding: 1rem;
       font-size: 1rem; } }
   @media (min-width: 500px) {
-    body, .container, .card {
+    body {
       padding: 1.5rem;
       font-size: 1.1rem; } }
   @media (min-width: 900px) {
-    body, .container, .card {
-      max-width: 900px;
+    body {
+      min-width: 900px;
       margin: 0 auto;
       font-size: 1.2rem;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    body, .container, .card {
-      max-width: 1200px;
+    body {
+      min-width: 1200px;
       font-size: 1.3rem; } }
 
 h1, h2 {
@@ -439,7 +440,6 @@ h1, h2 {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  max-width: 350px;
   padding: 1rem; }
   @media (min-width: 500px) {
     .form, form {
@@ -447,11 +447,11 @@ h1, h2 {
       padding: 1.5rem; } }
   @media (min-width: 900px) {
     .form, form {
-      max-width: 600px;
+      min-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
     .form, form {
-      max-width: 800px; } }
+      min-width: 800px; } }
 
 button, .button-dark, .button-brown, .button-green, .button-red, .button-white, .button-grey {
   min-width: 48px;
@@ -471,37 +471,37 @@ button, .button-dark, .button-brown, .button-green, .button-red, .button-white, 
       font-size: 1.2rem;
       padding: 1.2rem 2.5rem; } }
 
-img, .logo, .vache, .marmotte, .montagne {
+img, .logo, .vache, .marmotte, .montagne, .img_bottom {
   display: block;
   margin: 0 auto;
   max-width: 100%;
   height: auto; }
   @media (max-width: 320px) {
-    img, .logo, .vache, .marmotte, .montagne {
+    img, .logo, .vache, .marmotte, .montagne, .img_bottom {
       max-width: 60%; } }
   @media (min-width: 500px) {
-    img, .logo, .vache, .marmotte, .montagne {
-      width: 40%; } }
+    img, .logo, .vache, .marmotte, .montagne, .img_bottom {
+      min-width: 50%; } }
   @media (min-width: 900px) {
-    img, .logo, .vache, .marmotte, .montagne {
-      width: 20%; } }
+    img, .logo, .vache, .marmotte, .montagne, .img_bottom {
+      min-width: 60%; } }
 
-.card {
+.card, .container {
   width: 100%;
   max-width: 350px;
   margin: 1rem auto;
   padding: 1rem; }
   @media (min-width: 500px) {
-    .card {
+    .card, .container {
       max-width: 450px;
       padding: 1.5rem; } }
   @media (min-width: 900px) {
-    .card {
-      max-width: 600px;
+    .card, .container {
+      min-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    .card {
-      max-width: 800px; } }
+    .card, .container {
+      min-width: 800px; } }
 
 .footer {
   display: flex;
@@ -645,31 +645,32 @@ p {
   margin-bottom: 2rem;
   filter: brightness(1.2); }
 
-body, .container, .card {
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-width: 320px;
   width: 100vw;
+  height: auto;
   box-sizing: border-box; }
   @media (max-width: 320px) {
-    body, .container, .card {
+    body {
       padding: 1rem;
       font-size: 1rem; } }
   @media (min-width: 500px) {
-    body, .container, .card {
+    body {
       padding: 1.5rem;
       font-size: 1.1rem; } }
   @media (min-width: 900px) {
-    body, .container, .card {
-      max-width: 900px;
+    body {
+      min-width: 900px;
       margin: 0 auto;
       font-size: 1.2rem;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    body, .container, .card {
-      max-width: 1200px;
+    body {
+      min-width: 1200px;
       font-size: 1.3rem; } }
 
 h1, h2 {
@@ -692,7 +693,6 @@ h1, h2 {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  max-width: 350px;
   padding: 1rem; }
   @media (min-width: 500px) {
     .form, form {
@@ -700,11 +700,11 @@ h1, h2 {
       padding: 1.5rem; } }
   @media (min-width: 900px) {
     .form, form {
-      max-width: 600px;
+      min-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
     .form, form {
-      max-width: 800px; } }
+      min-width: 800px; } }
 
 button, .button-dark, .button-brown, .button-green, .button-red, .button-white, .button-grey {
   min-width: 48px;
@@ -724,37 +724,37 @@ button, .button-dark, .button-brown, .button-green, .button-red, .button-white, 
       font-size: 1.2rem;
       padding: 1.2rem 2.5rem; } }
 
-img, .logo, .vache, .marmotte, .montagne {
+img, .logo, .vache, .marmotte, .montagne, .img_bottom {
   display: block;
   margin: 0 auto;
   max-width: 100%;
   height: auto; }
   @media (max-width: 320px) {
-    img, .logo, .vache, .marmotte, .montagne {
+    img, .logo, .vache, .marmotte, .montagne, .img_bottom {
       max-width: 60%; } }
   @media (min-width: 500px) {
-    img, .logo, .vache, .marmotte, .montagne {
-      width: 40%; } }
+    img, .logo, .vache, .marmotte, .montagne, .img_bottom {
+      min-width: 50%; } }
   @media (min-width: 900px) {
-    img, .logo, .vache, .marmotte, .montagne {
-      width: 20%; } }
+    img, .logo, .vache, .marmotte, .montagne, .img_bottom {
+      min-width: 60%; } }
 
-.card {
+.card, .container {
   width: 100%;
   max-width: 350px;
   margin: 1rem auto;
   padding: 1rem; }
   @media (min-width: 500px) {
-    .card {
+    .card, .container {
       max-width: 450px;
       padding: 1.5rem; } }
   @media (min-width: 900px) {
-    .card {
-      max-width: 600px;
+    .card, .container {
+      min-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    .card {
-      max-width: 800px; } }
+    .card, .container {
+      min-width: 800px; } }
 
 .hoteNavbar {
   position: fixed;
@@ -904,31 +904,32 @@ body {
         .hoteNavbar__menu ul li a {
           font-size: 1.2rem; } }
 
-body, .container, .card {
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-width: 320px;
   width: 100vw;
+  height: auto;
   box-sizing: border-box; }
   @media (max-width: 320px) {
-    body, .container, .card {
+    body {
       padding: 1rem;
       font-size: 1rem; } }
   @media (min-width: 500px) {
-    body, .container, .card {
+    body {
       padding: 1.5rem;
       font-size: 1.1rem; } }
   @media (min-width: 900px) {
-    body, .container, .card {
-      max-width: 900px;
+    body {
+      min-width: 900px;
       margin: 0 auto;
       font-size: 1.2rem;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    body, .container, .card {
-      max-width: 1200px;
+    body {
+      min-width: 1200px;
       font-size: 1.3rem; } }
 
 h1, h2 {
@@ -951,7 +952,6 @@ h1, h2 {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  max-width: 350px;
   padding: 1rem; }
   @media (min-width: 500px) {
     .form, form {
@@ -959,11 +959,11 @@ h1, h2 {
       padding: 1.5rem; } }
   @media (min-width: 900px) {
     .form, form {
-      max-width: 600px;
+      min-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
     .form, form {
-      max-width: 800px; } }
+      min-width: 800px; } }
 
 button, .button-dark, .button-brown, .button-green, .button-red, .button-white, .button-grey {
   min-width: 48px;
@@ -983,37 +983,37 @@ button, .button-dark, .button-brown, .button-green, .button-red, .button-white, 
       font-size: 1.2rem;
       padding: 1.2rem 2.5rem; } }
 
-img, .logo, .vache, .marmotte, .montagne {
+img, .logo, .vache, .marmotte, .montagne, .img_bottom {
   display: block;
   margin: 0 auto;
   max-width: 100%;
   height: auto; }
   @media (max-width: 320px) {
-    img, .logo, .vache, .marmotte, .montagne {
+    img, .logo, .vache, .marmotte, .montagne, .img_bottom {
       max-width: 60%; } }
   @media (min-width: 500px) {
-    img, .logo, .vache, .marmotte, .montagne {
-      width: 40%; } }
+    img, .logo, .vache, .marmotte, .montagne, .img_bottom {
+      min-width: 50%; } }
   @media (min-width: 900px) {
-    img, .logo, .vache, .marmotte, .montagne {
-      width: 20%; } }
+    img, .logo, .vache, .marmotte, .montagne, .img_bottom {
+      min-width: 60%; } }
 
-.card {
+.card, .container {
   width: 100%;
   max-width: 350px;
   margin: 1rem auto;
   padding: 1rem; }
   @media (min-width: 500px) {
-    .card {
+    .card, .container {
       max-width: 450px;
       padding: 1.5rem; } }
   @media (min-width: 900px) {
-    .card {
-      max-width: 600px;
+    .card, .container {
+      min-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    .card {
-      max-width: 800px; } }
+    .card, .container {
+      min-width: 800px; } }
 
 * {
   box-sizing: border-box;
@@ -1095,10 +1095,10 @@ h2 {
   cursor: pointer; }
 
 .prev {
-  left: 3rem; }
+  left: 1rem; }
 
 .next {
-  right: 3rem; }
+  right: 1rem; }
 
 input[type="text"],
 input[type="tel"],
@@ -1236,30 +1236,7 @@ input[type="checkbox"] {
   right: 0;
   filter: brightness(1.2); }
 
-.img_bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center; }
-
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: brightness(1.2); }
-
-.vache {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: brightness(1.2); }
-
-.marmotte {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: brightness(1.2); }
-
-.montagne {
+.img_bottom, .logo img, .logo, .vache, .marmotte, .montagne {
   display: flex;
   align-items: center;
   justify-content: center;

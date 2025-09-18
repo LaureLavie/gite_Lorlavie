@@ -1,10 +1,11 @@
-body, .container, .card { 
+body{ 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-width: 320px;
   width: 100vw;
+  height: auto;
   box-sizing: border-box;
 
   @include mobile-xs {
@@ -16,13 +17,13 @@ body, .container, .card {
     font-size: 1.1rem;
   }
   @include tablet-desktop {
-    max-width: 900px;
+    min-width: 900px;
     margin: 0 auto;
     font-size: 1.2rem;
     padding: 2rem;
   }
   @include desktop-lg {
-    max-width: 1200px;
+    min-width: 1200px;
     font-size: 1.3rem;
   }
 }
@@ -42,12 +43,11 @@ h1, h2 {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  max-width: 350px;
   padding: 1rem;
 
   @include mobile-sm { max-width: 450px; padding: 1.5rem; }
-  @include tablet-desktop { max-width: 600px; padding: 2rem; }
-  @include desktop-lg { max-width: 800px; }
+  @include tablet-desktop { min-width: 600px; padding: 2rem; }
+  @include desktop-lg { min-width: 800px; }
 }
 
 
@@ -63,22 +63,22 @@ button, .button-dark, .button-brown, .button-green, .button-red, .button-white, 
   @include tablet-desktop { font-size: 1.2rem; padding: 1.2rem 2.5rem; }
 }
 
-img, .logo, .vache, .marmotte, .montagne {
+img, .logo, .vache, .marmotte, .montagne, .img_bottom {
   display: block;
   margin: 0 auto;
   max-width: 100%;
   height: auto;
   @include mobile-xs { max-width: 60%; }
-  @include mobile-sm { width: 40%; }
-  @include tablet-desktop { width: 20%; }
+  @include mobile-sm { min-width: 50%; }
+  @include tablet-desktop { min-width: 60%; }
 }
 
-.card {
+.card, .container {
   width: 100%;
   max-width: 350px;
   margin: 1rem auto;
   padding: 1rem;
   @include mobile-sm { max-width: 450px; padding: 1.5rem; }
-  @include tablet-desktop { max-width: 600px; padding: 2rem; }
-  @include desktop-lg { max-width: 800px; }
+  @include tablet-desktop { min-width: 600px; padding: 2rem; }
+  @include desktop-lg { min-width: 800px; }
 }

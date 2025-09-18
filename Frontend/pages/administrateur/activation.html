@@ -42,62 +42,61 @@
                 data.message.includes("succes"))
             ) {
               messageDiv.innerHTML = `
-                              <div style="display: flex; align-items: center; justify-content: center; margin: 0; text-align: center; padding: 2rem;">
-                  <p style="color: green; font-weight: bold; font-size: 1.2rem;">${data.message}</p>
-                  <p style="color: green; margin: 1rem 0;">
-                    Redirection vers la page de connexion</p>
-                  <a href="login.html" class="button-dark" style="margin-top: 1rem; display: inline-block;">
-                    Aller à la connexion maintenant
-                  </a>
-                </div>                      
-              `;
+  <div class="card card-brown" style="min-width: 320px; margin: 2rem auto; padding: 2rem; text-align: center;">
+    <p style="color: white; font-weight: bold; font-size: 1.2rem;">${data.message}</p>
+    <p style="color: white; margin: 1rem 0;">
+      Redirection vers la page de connexion
+    </p>
+    <div class="button-container" style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center;">
+      <a href="login.html" class="button-brown">Aller à la connexion maintenant</a>
+    </div>
+  </div>
+`;
 
             } else {
               messageDiv.innerHTML = `
-                <div style="display: flex; align-items: center; justify-content: center; margin: 0; text-align: center; padding: 2rem;">
-                  <p style="color: white; font-weight: bold; font-size: 1.2rem;">${data.message} || "Erreur lors de l'activation"</p>
-                  <a href="login.html" class="button-dark" style="margin-top: 1rem; display: inline-block;">
-                    Aller à la connexion
-                  </a>
-                </div>
-              `;
+  <div class="card card-brown" style="min-width: 320px; margin: 2rem auto; padding: 2rem; text-align: center;">
+    <p style="color: white; font-weight: bold; font-size: 1.2rem;">
+      ${data.message || "Erreur lors de l'activation"}
+    </p>
+    <div class="button-container" style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center;">
+      <a href="login.html" class="button-brown">Aller à la connexion</a>
+    </div>
+  </div>
+`;
             }
           })
           .catch((error) => {
             console.error("Erreur", error);
             messageDiv.innerHTML = `
-               <div style="display: flex; align-items: center; justify-content: center; margin: 0; text-align: center; padding: 2rem;">
-                <p style="color: red; font-weight: bold; font-size: 1.2rem;">
-                  Erreur lors de l'activation du compte.
-                </p>
-                <p style="color: black; margin-bottom: 2rem;">
-                  Veuillez réessayer ou contacter l'administrateur.
-                </p>
-                <a href="login.html" class="button-white" style="display: inline-block;">
-                  Retour à la connexion
-                </a>
-              </div>
-            `;
+  <div class="card card-brown" style="min-width: 320px; margin: 2rem auto; padding: 2rem; text-align: center;">
+    <p style="color: #ff4d4d; font-weight: bold; font-size: 1.2rem;">
+      Erreur lors de l'activation du compte.
+    </p>
+    <p style="color: white; margin-bottom: 2rem;">
+      Veuillez réessayer ou contacter l'administrateur.
+    </p>
+    <div class="button-container" style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center;">
+      <a href="login.html" class="button-white">Retour à la connexion</a>
+    </div>
+  </div>
+`;
           });
       } else {
         messageDiv.innerHTML = `
-          <div style="text-align: center; padding: 2rem;">           
-            <p style="color: red; font-size: 1.1rem; margin-bottom: 1rem;">
-              Lien d'activation invalide ou manquant.
-            </p>
-            <p style="color: white; margin-bottom: 2rem;">
-              Vérifiez que vous avez bien copié le lien complet depuis votre email.
-            </p>
-            <div style="margin-top: 2rem;">
-              <a href="login.html" class="button-dark" style="display: inline-block; margin-right: 1rem;">
-                Aller à la connexion
-              </a>
-              <a href="register.html" class="button-white" style="display: inline-block;">
-                Créer un nouveau compte
-              </a>
-            </div>
-          </div>
-        `;
+  <div class="card card-brown" style="max-width: 400px; margin: 2rem auto; padding: 2rem; text-align: center;">
+    <p style="color: #ff4d4d; font-size: 1.1rem; font-weight: bold; margin-bottom: 1rem;">
+      Lien d'activation invalide ou manquant.
+    </p>
+    <p style="color: white; margin-bottom: 2rem;">
+      Vérifiez que vous avez bien copié le lien complet depuis votre email.
+    </p>
+    <div class="button-container" style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+      <a href="login.html" class="button-brown">Aller à la connexion</a>
+      <a href="register.html" class="button-white">Créer un nouveau compte</a>
+    </div>
+  </div>
+`;
       }
     </script>
   </body>
