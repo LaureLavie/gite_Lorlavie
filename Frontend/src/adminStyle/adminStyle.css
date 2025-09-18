@@ -7,8 +7,6 @@ body {
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  background: #000000;
-  color: #ffffff;
   font-family: "Montserrat", sans-serif;
   height: 90vh;
   width: 100%; }
@@ -18,7 +16,7 @@ h1 {
   color: #7a5c43;
   font-size: 3rem;
   font-weight: bold;
-  margin-top: 3rem;
+  padding-top: 3rem;
   text-align: center; }
 
 h2 {
@@ -242,6 +240,7 @@ h2 {
   background: none;
   border: none;
   color: #000000;
+  text-align: center;
   font-weight: bold;
   font-size: 1rem;
   border-radius: 50px;
@@ -367,8 +366,6 @@ body {
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  background: #000000;
-  color: #ffffff;
   font-family: "Montserrat", sans-serif;
   height: 90vh;
   width: 100%; }
@@ -378,7 +375,7 @@ h1 {
   color: #7a5c43;
   font-size: 3rem;
   font-weight: bold;
-  margin-top: 3rem;
+  padding-top: 3rem;
   text-align: center; }
 
 h2 {
@@ -602,6 +599,7 @@ h2 {
   background: none;
   border: none;
   color: #000000;
+  text-align: center;
   font-weight: bold;
   font-size: 1rem;
   border-radius: 50px;
@@ -727,8 +725,6 @@ body {
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  background: #000000;
-  color: #ffffff;
   font-family: "Montserrat", sans-serif;
   height: 90vh;
   width: 100%; }
@@ -738,7 +734,7 @@ h1 {
   color: #7a5c43;
   font-size: 3rem;
   font-weight: bold;
-  margin-top: 3rem;
+  padding-top: 3rem;
   text-align: center; }
 
 h2 {
@@ -775,7 +771,7 @@ h2 {
   justify-content: center;
   filter: brightness(1.2); }
 
-body, .container, .form-container, .card {
+body, .container, .card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -784,27 +780,27 @@ body, .container, .form-container, .card {
   width: 100vw;
   box-sizing: border-box; }
   @media (max-width: 320px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1rem;
       font-size: 1rem; } }
   @media (min-width: 500px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1.5rem;
       font-size: 1.1rem; } }
   @media (min-width: 900px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 900px;
       margin: 0 auto;
       font-size: 1.2rem;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 1200px;
       font-size: 1.3rem; } }
 
 h1, h2 {
   text-align: center;
-  margin: 1rem 0;
+  margin: 2rem;
   width: 100%; }
   @media (max-width: 320px) {
     h1, h2 {
@@ -816,7 +812,7 @@ h1, h2 {
     h1, h2 {
       font-size: 3rem; } }
 
-.form {
+.form, form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -825,15 +821,15 @@ h1, h2 {
   max-width: 350px;
   padding: 1rem; }
   @media (min-width: 500px) {
-    .form {
+    .form, form {
       max-width: 450px;
       padding: 1.5rem; } }
   @media (min-width: 900px) {
-    .form {
+    .form, form {
       max-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    .form {
+    .form, form {
       max-width: 800px; } }
 
 button, .button-dark, .button-brown, .button-green, .button-red, .button-white, .button-grey {
@@ -983,8 +979,6 @@ body {
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  background: #000000;
-  color: #ffffff;
   font-family: "Montserrat", sans-serif;
   height: 90vh;
   width: 100%; }
@@ -994,7 +988,7 @@ h1 {
   color: #7a5c43;
   font-size: 3rem;
   font-weight: bold;
-  margin-top: 3rem;
+  padding-top: 3rem;
   text-align: center; }
 
 h2 {
@@ -1031,7 +1025,7 @@ h2 {
   justify-content: center;
   filter: brightness(1.2); }
 
-body, .container, .form-container, .card {
+body, .container, .card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1040,27 +1034,27 @@ body, .container, .form-container, .card {
   width: 100vw;
   box-sizing: border-box; }
   @media (max-width: 320px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1rem;
       font-size: 1rem; } }
   @media (min-width: 500px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1.5rem;
       font-size: 1.1rem; } }
   @media (min-width: 900px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 900px;
       margin: 0 auto;
       font-size: 1.2rem;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 1200px;
       font-size: 1.3rem; } }
 
 h1, h2 {
   text-align: center;
-  margin: 1rem 0;
+  margin: 2rem;
   width: 100%; }
   @media (max-width: 320px) {
     h1, h2 {
@@ -1072,7 +1066,7 @@ h1, h2 {
     h1, h2 {
       font-size: 3rem; } }
 
-.form {
+.form, form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1081,15 +1075,15 @@ h1, h2 {
   max-width: 350px;
   padding: 1rem; }
   @media (min-width: 500px) {
-    .form {
+    .form, form {
       max-width: 450px;
       padding: 1.5rem; } }
   @media (min-width: 900px) {
-    .form {
+    .form, form {
       max-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    .form {
+    .form, form {
       max-width: 800px; } }
 
 button, .button-dark, .button-brown, .button-green, .button-red, .button-white, .button-grey {
@@ -1290,7 +1284,7 @@ body {
         .navbar__menu ul li a {
           font-size: 1.2rem; } }
 
-body, .container, .form-container, .card {
+body, .container, .card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1299,27 +1293,27 @@ body, .container, .form-container, .card {
   width: 100vw;
   box-sizing: border-box; }
   @media (max-width: 320px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1rem;
       font-size: 1rem; } }
   @media (min-width: 500px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1.5rem;
       font-size: 1.1rem; } }
   @media (min-width: 900px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 900px;
       margin: 0 auto;
       font-size: 1.2rem;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 1200px;
       font-size: 1.3rem; } }
 
 h1, h2 {
   text-align: center;
-  margin: 1rem 0;
+  margin: 2rem;
   width: 100%; }
   @media (max-width: 320px) {
     h1, h2 {
@@ -1331,7 +1325,7 @@ h1, h2 {
     h1, h2 {
       font-size: 3rem; } }
 
-.form {
+.form, form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1340,15 +1334,15 @@ h1, h2 {
   max-width: 350px;
   padding: 1rem; }
   @media (min-width: 500px) {
-    .form {
+    .form, form {
       max-width: 450px;
       padding: 1.5rem; } }
   @media (min-width: 900px) {
-    .form {
+    .form, form {
       max-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    .form {
+    .form, form {
       max-width: 800px; } }
 
 button, .button-dark, .button-brown, .button-green, .button-red, .button-white, .button-grey {
@@ -1664,8 +1658,6 @@ body {
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  background: #000000;
-  color: #ffffff;
   font-family: "Montserrat", sans-serif;
   height: 90vh;
   width: 100%; }
@@ -1675,7 +1667,7 @@ h1 {
   color: #7a5c43;
   font-size: 3rem;
   font-weight: bold;
-  margin-top: 3rem;
+  padding-top: 3rem;
   text-align: center; }
 
 h2 {
@@ -1712,7 +1704,7 @@ h2 {
   justify-content: center;
   filter: brightness(1.2); }
 
-body, .container, .form-container, .card {
+body, .container, .card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1721,27 +1713,27 @@ body, .container, .form-container, .card {
   width: 100vw;
   box-sizing: border-box; }
   @media (max-width: 320px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1rem;
       font-size: 1rem; } }
   @media (min-width: 500px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1.5rem;
       font-size: 1.1rem; } }
   @media (min-width: 900px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 900px;
       margin: 0 auto;
       font-size: 1.2rem;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 1200px;
       font-size: 1.3rem; } }
 
 h1, h2 {
   text-align: center;
-  margin: 1rem 0;
+  margin: 2rem;
   width: 100%; }
   @media (max-width: 320px) {
     h1, h2 {
@@ -1753,7 +1745,7 @@ h1, h2 {
     h1, h2 {
       font-size: 3rem; } }
 
-.form {
+.form, form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1762,15 +1754,15 @@ h1, h2 {
   max-width: 350px;
   padding: 1rem; }
   @media (min-width: 500px) {
-    .form {
+    .form, form {
       max-width: 450px;
       padding: 1.5rem; } }
   @media (min-width: 900px) {
-    .form {
+    .form, form {
       max-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    .form {
+    .form, form {
       max-width: 800px; } }
 
 button, .button-dark, .button-brown, .button-green, .button-red, .button-white, .button-grey {
@@ -1980,8 +1972,6 @@ body {
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  background: #000000;
-  color: #ffffff;
   font-family: "Montserrat", sans-serif;
   height: 90vh;
   width: 100%; }
@@ -1991,7 +1981,7 @@ h1 {
   color: #7a5c43;
   font-size: 3rem;
   font-weight: bold;
-  margin-top: 3rem;
+  padding-top: 3rem;
   text-align: center; }
 
 h2 {
@@ -2028,7 +2018,7 @@ h2 {
   justify-content: center;
   filter: brightness(1.2); }
 
-body, .container, .form-container, .card {
+body, .container, .card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2037,27 +2027,27 @@ body, .container, .form-container, .card {
   width: 100vw;
   box-sizing: border-box; }
   @media (max-width: 320px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1rem;
       font-size: 1rem; } }
   @media (min-width: 500px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1.5rem;
       font-size: 1.1rem; } }
   @media (min-width: 900px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 900px;
       margin: 0 auto;
       font-size: 1.2rem;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 1200px;
       font-size: 1.3rem; } }
 
 h1, h2 {
   text-align: center;
-  margin: 1rem 0;
+  margin: 2rem;
   width: 100%; }
   @media (max-width: 320px) {
     h1, h2 {
@@ -2069,7 +2059,7 @@ h1, h2 {
     h1, h2 {
       font-size: 3rem; } }
 
-.form {
+.form, form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2078,15 +2068,15 @@ h1, h2 {
   max-width: 350px;
   padding: 1rem; }
   @media (min-width: 500px) {
-    .form {
+    .form, form {
       max-width: 450px;
       padding: 1.5rem; } }
   @media (min-width: 900px) {
-    .form {
+    .form, form {
       max-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    .form {
+    .form, form {
       max-width: 800px; } }
 
 button, .button-dark, .button-brown, .button-green, .button-red, .button-white, .button-grey {
@@ -2227,7 +2217,7 @@ img, .logo, .vache, .marmotte, .montagne {
       .footer__infos, .footer__socials {
         width: 30%; } }
 
-body, .container, .form-container, .card {
+body, .container, .card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2236,27 +2226,27 @@ body, .container, .form-container, .card {
   width: 100vw;
   box-sizing: border-box; }
   @media (max-width: 320px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1rem;
       font-size: 1rem; } }
   @media (min-width: 500px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       padding: 1.5rem;
       font-size: 1.1rem; } }
   @media (min-width: 900px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 900px;
       margin: 0 auto;
       font-size: 1.2rem;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    body, .container, .form-container, .card {
+    body, .container, .card {
       max-width: 1200px;
       font-size: 1.3rem; } }
 
 h1, h2 {
   text-align: center;
-  margin: 1rem 0;
+  margin: 2rem;
   width: 100%; }
   @media (max-width: 320px) {
     h1, h2 {
@@ -2268,7 +2258,7 @@ h1, h2 {
     h1, h2 {
       font-size: 3rem; } }
 
-.form {
+.form, form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2277,15 +2267,15 @@ h1, h2 {
   max-width: 350px;
   padding: 1rem; }
   @media (min-width: 500px) {
-    .form {
+    .form, form {
       max-width: 450px;
       padding: 1.5rem; } }
   @media (min-width: 900px) {
-    .form {
+    .form, form {
       max-width: 600px;
       padding: 2rem; } }
   @media (min-width: 1200px) {
-    .form {
+    .form, form {
       max-width: 800px; } }
 
 button, .button-dark, .button-brown, .button-green, .button-red, .button-white, .button-grey {
@@ -2338,7 +2328,17 @@ img, .logo, .vache, .marmotte, .montagne {
     .card {
       max-width: 800px; } }
 
-.form {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  background: #000000;
+  color: #ffffff;
+  padding-top: 3rem; }
+
+.form, form, .date-container {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -2355,34 +2355,6 @@ a {
   font-weight: bold; }
   a:hover {
     text-decoration: underline; }
-
-.form-container {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  width: 100%;
-  gap: 1rem;
-  padding: 2rem; }
-
-.date-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-  padding: 1rem;
-  gap: 1rem;
-  background: #7a5c43;
-  border-radius: 50px;
-  margin: 0; }
-  .date-container label {
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 0;
-    font-size: 1rem; }
 
 input[type="email"],
 input[type="text"],
@@ -2419,7 +2391,6 @@ input[type="checkbox"] {
   border-radius: 50px;
   accent-color: #7a5c43; }
 
-.date-container,
 .message-container {
   display: flex;
   flex-direction: row;
@@ -2431,7 +2402,6 @@ input[type="checkbox"] {
   background: #7a5c43;
   border-radius: 50px;
   margin: 0; }
-  .date-container label,
   .message-container label {
     font-weight: bold;
     color: #000000;
@@ -2466,18 +2436,18 @@ input[type="checkbox"] {
     color: #000000;
     margin: 0 2rem; }
 
-.option {
+.option, .number-person {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
   gap: 1rem; }
-  .option label {
+  .option label, .number-person label {
     font-weight: bold;
     color: #000000;
     margin-bottom: 0;
     font-size: 1rem; }
-  .option button {
+  .option button, .number-person button {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -2489,10 +2459,10 @@ input[type="checkbox"] {
     cursor: pointer;
     box-shadow: 4px 4px 0 #b7b7a4;
     transition: background 0.2s; }
-    .option button:hover {
+    .option button:hover, .number-person button:hover {
       background: #858585;
       color: #000000; }
-  .option span {
+  .option span, .number-person span {
     font-size: 1.3rem;
     font-weight: bold;
     color: #7a5c43;

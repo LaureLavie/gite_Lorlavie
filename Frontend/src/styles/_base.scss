@@ -10,8 +10,6 @@ body {
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  background: $noir;
-  color: $blanc;
   font-family: $font-main;
   height: 90vh;
   width: 100%;
@@ -22,7 +20,7 @@ h1 {
   color: $brun-boise;
   font-size: 3rem;
   font-weight: bold;
-  margin-top: 3rem;
+  padding-top: 3rem;
   text-align: center;
 }
 

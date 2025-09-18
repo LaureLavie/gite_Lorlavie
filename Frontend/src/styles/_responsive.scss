@@ -1,4 +1,4 @@
-body, .container, .form-container, .card { 
+body, .container, .card { 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,14 +29,14 @@ body, .container, .form-container, .card {
 
 h1, h2 {
   text-align: center;
-  margin: 1rem 0;
+  margin: 2rem;
   width: 100%;
   @include mobile-xs { font-size: 2rem; }
   @include mobile-sm { font-size: 2.5rem; }
   @include tablet-desktop { font-size: 3rem; }
 }
 
-.form {
+.form, form {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Informations du Gîte</title>
+    <title>Modification des Informations</title>
     <link rel="stylesheet" href="../../src/adminStyle/adminStyle.css" />
     <script type="module" src="../../script.js" defer></script>
     <link
@@ -17,28 +17,27 @@
   </head>
   <body>
     <div id="navbar"></div>
-    <h1>Modification des Informations du Gîte</h1>
-
-    <form class="modification-form">
-      <div class="card__badge">Grille tarifaire</div>
-      <div class="number-person">
-        <label for="max-personnes">Nombre maximum de personnes</label>
-        <button class="button-brown" id="decrease-personnes" type="button">-</button>
-        <span id="max-personnes">6</span>
-        <input type="hidden" id="max-personnes-input" value="6" min="1" max="8" />
-        <button class="button-brown" id="increase-personnes" type="button">+</button>
-      </div>
-      <div class="tarifs-section">
-        <label>Tarifs par nombre de personnes :</label>
-        <div id="tarifs-list">
-          <!-- Les inputs seront générés par JS -->
+    <form class="form">
+      <h1>Modification des Informations du Gîte</h1>
+        <div class="card__badge">Grille tarifaire</div>
+        <div class="number-person">
+          <label for="max-personnes">Nombre maximum de personnes</label>
+          <button class="button-brown" id="decrease-personnes" type="button">-</button>
+          <span id="max-personnes">6</span>
+          <input type="hidden" id="max-personnes-input" value="6" min="1" max="8" />
+          <button class="button-brown" id="increase-personnes" type="button">+</button>
         </div>
-      </div>
-      <div class="options-section">
-        <label>Options du gîte :</label>
-        <div id="options-list">
-          <!-- Les options seront générées par JS -->
+        <div class="tarifs-section">
+          <label>Tarifs par nombre de personnes :</label>
+          <div id="tarifs-list">
+            <!-- Les inputs seront générés par JS -->
+          </div>
         </div>
+        <div class="options-section">
+          <label>Options du gîte :</label>
+          <div id="options-list">
+            <!-- Les options seront générées par JS -->
+          </div>
           <div class="button-container">
             <button type="button" id="del-option" class="button-red">
               Supprimer une option
@@ -63,6 +62,7 @@
       class="vache"
     />
     </div>
+  </form>
     <div id="footer"></div>
   </body>
 </html>

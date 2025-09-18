@@ -8,7 +8,19 @@
 @import "../styles/footer";
 @import "../styles/responsive";
 
-.form {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background: $noir;
+  color: $blanc;
+  padding-top: 3rem;
+}
+
+.form, form, .date-container {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -25,36 +37,6 @@ a {
   font-weight: bold;
   &:hover {
     text-decoration: underline;
-  }
-}
-
-.form-container{
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  width: 100%;
-  gap: 1rem;
-  padding: 2rem; 
-}
-.date-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-  padding: 1rem;
-  gap: 1rem;
-  background: $brun-boise;
-  border-radius: $radius;
-  margin: 0;
-  label {
-    font-weight: bold;
-    color: $blanc;
-    margin-bottom: 0;
-    font-size: 1rem;
   }
 }
 
@@ -96,7 +78,6 @@ input[type="checkbox"] {
   accent-color: $brun-boise;
 }
 
-.date-container,
 .message-container {
   display: flex;
   flex-direction: row;
@@ -148,7 +129,7 @@ p{
 }
 }
   
-.option {
+.option, .number-person {
   display: flex;
   align-items: center;
   justify-content: center;
