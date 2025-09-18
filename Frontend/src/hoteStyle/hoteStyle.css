@@ -1136,7 +1136,7 @@ input[type="checkbox"] {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   padding: 1rem;
   gap: 1rem;
   background: #7a5c43;

@@ -1,4 +1,4 @@
-import { API_BACK } from "./config.js";
+import API_BACK from "./config.js";
 
 // Helper pour afficher les messages
 function showMessage(div, msg, type = "error") {

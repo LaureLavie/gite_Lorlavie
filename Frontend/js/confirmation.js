@@ -1,4 +1,4 @@
-import { API_BACK } from "./config.js";
+import API_BACK from "./config.js";
 const urlParams = new URLSearchParams(window.location.search);
 const reservationId = urlParams.get("id");
 

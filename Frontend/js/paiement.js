@@ -1,4 +1,4 @@
-import { API_BACK } from "./config.js";
+import API_BACK from "./config.js";
 const errorDiv = adminForm.querySelector(".errorDiv");
 const successDiv = adminForm.querySelector(".successDiv");
 
