@@ -31,7 +31,13 @@ export function renderReservations(reservations) {
         <div class="card__row"><span>Nombre de nuits:</span> <strong>${r.nombreNuits}</strong></div>
         <div class="card__row"><span>Nombre de personnes:</span> <strong>${r.nombrePersonnes}</strong></div>
         <div class="card__row"><span>Nombre de personnes supplémentaires:</span> <strong>${r.personnesSupplementaires}</strong></div>
-        <div class="card__row"><span>Options:</span> <strong>${r.options ? JSON.stringify(r.options) : ""}</strong></div>
+        <div class="card__row">
+  <span>Option ménage:</span>
+  <strong>${r.options?.menage ? "Oui" : "Non"}</strong>
+</div>
+${r.options?.commentaires
+  ? `<div class="card__row"><span>Commentaire:</span> <strong>${r.options.commentaires}</strong></div>`
+  : ""}
         <div class="card__row"><span>Montant total:</span> <strong>${r.prixTotal} €</strong></div>
         <div class="card__row"><span>Statut:</span> <strong>${r.statut}</strong></div>
       </div>
