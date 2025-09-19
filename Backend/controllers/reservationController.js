@@ -2,24 +2,11 @@
  * Contrôleur Reservation
  * Gère tout le cycle de vie des réservations avec la nouvelle logique métier
  */
-
+import { calculPrixReservation } from "../middlewares/calculReservation.js";
 import Reservation from "../models/reservation.js";
 import Client from "../models/client.js";
 import CalendrierStat from "../models/calendrier.js";
 import { sendMail, htmlReservationEnAttente } from "../middlewares/mail.js";
-
-/**
- * Calcule le prix total d'une réservation
- */
-function calculerPrix(nombrePersonnes, nuits, personnesSupplementaires = 0, options = {}) {
-  const tarifs = [65, 75, 85, 95, 105, 115]; // Prix par nombre de personnes (1 à 6)
-  let prixTotal = tarifs[nombrePersonnes - 1] * nuits; // Prix de base
-
-  if (options.menage) prixTotal += 30; // Option ménage
-  prixTotal += personnesSupplementaires * 30; // Personnes supplémentaires
-
-  return prixTotal;
-}
 
 export const createReservation = async (req, res) => {
   try {
@@ -70,7 +57,7 @@ export const createReservation = async (req, res) => {
 
     // Calculer le prix total (utilisation de la fonction utilitaire)
     const nuits = Math.ceil((depart - arrivee) / (1000 * 60 * 60 * 24));
-    const prixTotal = calculerPrix(nombrePersonnes, nuits, personnesSupplementaires, options);
+    const prixTotal = calculPrixReservation(nombrePersonnes, nuits, personnesSupplementaires, options);
 
     // Créer le client
     const newClient = await Client.create(client);
@@ -129,7 +116,7 @@ export const createReservation = async (req, res) => {
 export const validerReservation = async (req, res) => {
   try {
     const { id } = req.params;
-    const { modificationsAdmin } = req.body;
+    const modificationsAdmin = req.body?.modificationsAdmin;
 
     const reservation = await Reservation.findById(id).populate("client");
     if (!reservation) {
@@ -309,7 +296,7 @@ export const modifierReservation = async (req, res) => {
       const depart = new Date(reservation.dateDepart);
       const nuits = Math.ceil((depart - arrivee) / (1000 * 60 * 60 * 24));
 
-      reservation.prixTotal = calculerPrix(
+      reservation.prixTotal = calculPrixReservation(
         reservation.nombrePersonnes,
         nuits,
         reservation.personnesSupplementaires,

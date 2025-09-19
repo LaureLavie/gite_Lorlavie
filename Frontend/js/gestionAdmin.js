@@ -51,8 +51,8 @@ function listingAdmins(admins) {
         </button>
       </div>
       <div class="card__content">
-        <div class="card__row"><span>Nom :</span> <strong>${admin.surname}</strong></div>
-        <div class="card__row"><span>Prénom :</span> <strong>${admin.name}</strong></div>
+        <div class="card__row"><span>Nom :</span> <strong>${admin.name}</strong></div>
+        <div class="card__row"><span>Prénom :</span> <strong>${admin.surname}</strong></div>
         <div class="card__row"><span>Email :</span> <strong>${admin.email}</strong></div>
       </div>
     </div>

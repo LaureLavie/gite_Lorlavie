@@ -6,7 +6,6 @@ import { HoteFooter } from "./js/hoteFooter.js";
 import { Carroussel } from "./js/carroussel.js";
 import { Calendrier } from "./js/calendrier.js";
 import { Reservation } from "./js/reservation.js";
-import {showMessage} from "./js/config.js";
 
 // Initialisation des composants au chargement de la page
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,7 +22,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Navbar admin
   Navbar();
   // Footer admin
-  Footer();   
- // Show Message
- showMessage();
+  Footer();  
 });

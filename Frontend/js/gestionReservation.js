@@ -1,8 +1,10 @@
-const reservationsListDiv = document.getElementById("reservations-list");
+import { calculPrixReservation } from "../js/calculPrix.js";
+
+const reservationListDiv = document.getElementById("reservation-list");
 const messageDiv = document.getElementById("message");
 
-// Récupérer la liste des réservations
-async function fetchReservations() {
+// Récupérer et afficher la liste
+export async function fetchReservations() {
   try {
     const res = await fetch("http://localhost:3000/api/reservations");
     const reservations = await res.json();
@@ -13,89 +15,201 @@ async function fetchReservations() {
   }
 }
 
-// Affichage dynamique des réservations
-function renderReservations(reservations) {
-  reservationsListDiv.innerHTML = reservations.map(r => `
-    <div class="card card--white">
+// Affichage des cartes + gestion CRUD inline
+export function renderReservations(reservations) {
+  reservationListDiv.innerHTML = reservations.map(r => `
+    <div class="card card--white" data-id="${r._id}">
       <div class="card__badge">${r.client?.surname || ""} ${r.client?.name || ""}</div>
       <div class="card__icons">
-        <button class="icon-modif" title="Modifier" data-id="${r._id}">
-          <i class="fa fa-pen"></i>
-        </button>
-        <button class="icon-delete" title="Supprimer" data-id="${r._id}">
-          <i class="fa fa-trash"></i>
-        </button>
+        <button class="icon-modif" title="Modifier" data-id="${r._id}"><i class="fa fa-pen"></i></button>
+        <button class="icon-delete" title="Supprimer" data-id="${r._id}"><i class="fa fa-trash"></i></button>
         ${r.statut === "En Attente" ? `<button class="icon-valid" title="Valider" data-id="${r._id}"><i class="fa fa-check"></i></button>` : ""}
       </div>
       <div class="card__content">
         <div class="card__row"><span>Date d'arrivée:</span> <strong>${r.dateArrivee?.slice(0,10)}</strong></div>
         <div class="card__row"><span>Date de départ:</span> <strong>${r.dateDepart?.slice(0,10)}</strong></div>
+        <div class="card__row"><span>Nombre de nuits:</span> <strong>${r.nombreNuits}</strong></div>
         <div class="card__row"><span>Nombre de personnes:</span> <strong>${r.nombrePersonnes}</strong></div>
+        <div class="card__row"><span>Nombre de personnes supplémentaires:</span> <strong>${r.personnesSupplementaires}</strong></div>
+        <div class="card__row"><span>Options:</span> <strong>${r.options ? JSON.stringify(r.options) : ""}</strong></div>
         <div class="card__row"><span>Montant total:</span> <strong>${r.prixTotal} €</strong></div>
         <div class="card__row"><span>Statut:</span> <strong>${r.statut}</strong></div>
       </div>
+      <div class="edit-div" id="edit-${r._id}" style="display:none;"></div>
     </div>
   `).join('');
 
-   // Redirection sur clic de la carte
-   reservationsListDiv.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", (e) => {
-      // Évite le clic sur les boutons d'action
-      if (e.target.closest("button")) return;
-      window.location.href = `modificationReservation.html?id=${card.dataset.id}`;
-    });
-  });
-
-
   // Listeners CRUD
-  reservationsListDiv.querySelectorAll(".icon-modif").forEach(btn => {
-    btn.addEventListener("click", (e) =>  window.location.href = `modificationReservation.html?id=${btn.dataset.id}`
-  )});
-  reservationsListDiv.querySelectorAll(".icon-delete").forEach(btn => {
-    btn.addEventListener("click", (e) => window.location.href = `modificationReservation.html?id=${btn.dataset.id}&action=supprimer`);
+  reservationListDiv.querySelectorAll(".icon-modif").forEach(btn => {
+    btn.addEventListener("click", (e) => showEditDiv(btn.dataset.id, "modifier"));
   });
-  reservationsListDiv.querySelectorAll(".icon-valid").forEach(btn => {
-    btn.addEventListener("click", (e) => window.location.href = `modificationReservation.html?id=${btn.dataset.id}&action=valider`);
+  reservationListDiv.querySelectorAll(".icon-delete").forEach(btn => {
+    btn.addEventListener("click", (e) => showEditDiv(btn.dataset.id, "supprimer"));
+  });
+  reservationListDiv.querySelectorAll(".icon-valid").forEach(btn => {
+    btn.addEventListener("click", (e) => showEditDiv(btn.dataset.id, "valider"));
   });
 }
 
-// Modifier une réservation
-function editReservation(id) {
-  window.location.href = `modificationReservation.html?id=${id}`;
-}
+// Affiche la div d'édition sous la carte concernée
+export async function showEditDiv(id, action) {
+  // Récupère la réservation
+  const res = await fetch(`http://localhost:3000/api/reservations/${id}`);
+  const r = await res.json();
+  const editDiv = document.getElementById(`edit-${id}`);
 
-// Supprimer une réservation
-async function deleteReservation(id) {
-  window.location.href = `modificationReservation.html?id=${id}&action=supprimer`;
-  if (!confirm("Supprimer cette réservation ?")) return;
-  try {
-    const res = await fetch(`http://localhost:3000/api/reservations/${id}`, {
-      method: "DELETE"
-    });
-    const result = await res.json();
-    messageDiv.textContent = result.message || "Réservation supprimée";
-    messageDiv.style.display = "block";
-    fetchReservations();
-  } catch (err) {
-    messageDiv.textContent = "Erreur lors de la suppression";
-    messageDiv.style.display = "block";
+  // Calcul dynamique du montant
+  function calcMontant() {
+    const dateArrivee = editDiv.querySelector("#edit-date-arrivee").value;
+    const dateDepart = editDiv.querySelector("#edit-date-depart").value;
+    const nbPersonnes = parseInt(editDiv.querySelector("#edit-personnes").value, 10) || 1;
+    const supPersonnes = parseInt(editDiv.querySelector("#edit-sup-personnes").value, 10) || 0;
+    const menage = editDiv.querySelector("#edit-menage").checked;
+    let nuits = 1;
+    if (dateArrivee && dateDepart) {
+      nuits = (new Date(dateDepart) - new Date(dateArrivee)) / (1000*60*60*24);
+      nuits = nuits > 0 ? nuits : 1;
+    }
+    return calculPrixReservation(nbPersonnes, nuits, supPersonnes, { menage });
   }
-}
 
-// Valider une réservation
-async function validateReservation(id) {
-  window.location.href = `modificationReservation.html?id=${id}&action=valider`;
-  try {
-    const res = await fetch(`http://localhost:3000/api/reservations/${id}/valider`, {
-      method: "POST"
+  // Génère le formulaire selon l'action
+  editDiv.innerHTML = `
+    <form class="form-edit">
+      <label>Date d'arrivée</label>
+      <input type="date" id="edit-date-arrivee" value="${r.dateArrivee?.slice(0,10) || ""}" ${action !== "modifier" ? "disabled" : ""}/>
+      <label>Date de départ</label>
+      <input type="date" id="edit-date-depart" value="${r.dateDepart?.slice(0,10) || ""}" ${action !== "modifier" ? "disabled" : ""}/>
+      <label>Nombre de personnes</label>
+      <input type="number" id="edit-personnes" value="${r.nombrePersonnes}" min="1" max="6" ${action !== "modifier" ? "disabled" : ""}/>
+      <label>Personnes supplémentaires</label>
+      <input type="number" id="edit-sup-personnes" value="${r.personnesSupplementaires || 0}" min="0" max="2" ${action !== "modifier" ? "disabled" : ""}/>
+      <label>
+        <input type="checkbox" id="edit-menage" ${r.options?.menage ? "checked" : ""} ${action !== "modifier" ? "disabled" : ""}/> Ménage
+      </label>
+      <label>Commentaires</label>
+      <textarea id="edit-commentaires" ${action !== "modifier" ? "disabled" : ""}>${r.options?.commentaires || ""}</textarea>
+      <div class="card__row"><span>Montant total:</span> <strong id="edit-montant">${r.prixTotal} €</strong></div>
+      <div class="button-container">
+        ${action === "modifier" ? `<button type="submit" class="button-green">Valider la modification</button>` : ""}
+        ${action === "supprimer" ? `<button type="button" class="button-red" id="btn-supprimer">Confirmer la suppression</button>` : ""}
+        ${action === "valider" ? `<button type="button" class="button-green" id="btn-valider">Confirmer la validation</button>` : ""}
+        <button type="button" class="button-grey" id="btn-annuler">Annuler</button>
+      </div>
+      <div class="successDiv" id="edit-success" style="display:none;"></div>
+      <div class="errorDiv" id="edit-error" style="display:none;"></div>
+    </form>
+  `;
+  editDiv.style.display = "block";
+
+  // Recalcul du montant en live
+  if (action === "modifier") {
+    ["#edit-date-arrivee", "#edit-date-depart", "#edit-personnes", "#edit-sup-personnes", "#edit-menage"].forEach(sel => {
+      editDiv.querySelector(sel).addEventListener("input", () => {
+        editDiv.querySelector("#edit-montant").textContent = calcMontant() + " €";
+      });
     });
-    const result = await res.json();
-    messageDiv.textContent = result.message || "Réservation validée";
-    messageDiv.style.display = "block";
-    fetchReservations();
-  } catch (err) {
-    messageDiv.textContent = "Erreur lors de la validation";
-    messageDiv.style.display = "block";
+  }
+
+  // Handler annuler
+  editDiv.querySelector("#btn-annuler").onclick = () => {
+    editDiv.style.display = "none";
+  };
+
+  // Handler modification
+  if (action === "modifier") {
+    editDiv.querySelector("form.form-edit").onsubmit = async (e) => {
+      e.preventDefault();
+      const data = {
+        dateArrivee: editDiv.querySelector("#edit-date-arrivee").value,
+        dateDepart: editDiv.querySelector("#edit-date-depart").value,
+        nombrePersonnes: parseInt(editDiv.querySelector("#edit-personnes").value, 10),
+        personnesSupplementaires: parseInt(editDiv.querySelector("#edit-sup-personnes").value, 10),
+        options: {
+          menage: editDiv.querySelector("#edit-menage").checked,
+          commentaires: editDiv.querySelector("#edit-commentaires").value
+        },
+        prixTotal: calcMontant()
+      };
+      try {
+        const res = await fetch(`http://localhost:3000/api/reservations/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (res.ok) {
+          editDiv.querySelector("#edit-success").textContent = "Réservation modifiée avec succès.";
+          editDiv.querySelector("#edit-success").style.display = "block";
+          editDiv.querySelector("#edit-error").style.display = "none";
+          setTimeout(() => {
+            editDiv.style.display = "none";
+            fetchReservations();
+          }, 1200);
+        } else {
+          editDiv.querySelector("#edit-error").textContent = result.error || "Erreur lors de la modification.";
+          editDiv.querySelector("#edit-error").style.display = "block";
+        }
+      } catch (err) {
+        editDiv.querySelector("#edit-error").textContent = "Erreur serveur.";
+        editDiv.querySelector("#edit-error").style.display = "block";
+      }
+    };
+  }
+
+  // Handler suppression
+  if (action === "supprimer") {
+    editDiv.querySelector("#btn-supprimer").onclick = async () => {
+      if (!confirm("Supprimer cette réservation ?")) return;
+      try {
+        const res = await fetch(`http://localhost:3000/api/reservations/${id}`, {
+          method: "DELETE"
+        });
+        const result = await res.json();
+        if (res.ok) {
+          editDiv.querySelector("#edit-success").textContent = "Réservation supprimée.";
+          editDiv.querySelector("#edit-success").style.display = "block";
+          editDiv.querySelector("#edit-error").style.display = "none";
+          setTimeout(() => {
+            editDiv.style.display = "none";
+            fetchReservations();
+          }, 1200);
+        } else {
+          editDiv.querySelector("#edit-error").textContent = result.error || "Erreur lors de la suppression.";
+          editDiv.querySelector("#edit-error").style.display = "block";
+        }
+      } catch (err) {
+        editDiv.querySelector("#edit-error").textContent = "Erreur serveur.";
+        editDiv.querySelector("#edit-error").style.display = "block";
+      }
+    };
+  }
+
+  // Handler validation
+  if (action === "valider") {
+    editDiv.querySelector("#btn-valider").onclick = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/api/reservations/${id}/valider`, {
+          method: "POST"
+        });
+        const result = await res.json();
+        if (res.ok) {
+          editDiv.querySelector("#edit-success").textContent = "Réservation validée et mail envoyé.";
+          editDiv.querySelector("#edit-success").style.display = "block";
+          editDiv.querySelector("#edit-error").style.display = "none";
+          setTimeout(() => {
+            editDiv.style.display = "none";
+            fetchReservations();
+          }, 1200);
+        } else {
+          editDiv.querySelector("#edit-error").textContent = result.error || "Erreur lors de la validation.";
+          editDiv.querySelector("#edit-error").style.display = "block";
+        }
+      } catch (err) {
+        editDiv.querySelector("#edit-error").textContent = "Erreur serveur.";
+        editDiv.querySelector("#edit-error").style.display = "block";
+      }
+    };
   }
 }
 

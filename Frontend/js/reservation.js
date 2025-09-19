@@ -1,3 +1,5 @@
+import { calculPrixReservation } from "../js/calculPrix.js";
+
 export function Reservation() {
   const arriveeInput = document.getElementById("reservation-date-arrivee");
   const departInput = document.getElementById("reservation-date-depart");
@@ -110,12 +112,12 @@ export function Reservation() {
   // Calcul du montant
   function updateMontant() {
     const nuits = updateNuits();
-    let baseTarif = tarifs[personnes - 1] || tarifs[0];
-    let montant = baseTarif * nuits;
-
-    if (menageCheckbox.checked) montant += 30;
-    montant += supPersonnes * 30;
-
+    const montant = calculPrixReservation(
+      personnes,
+      nuits,
+      supPersonnes,
+      { menage: menageCheckbox.checked }
+    );
     montantSpan.textContent = montant + "€";
   }
 
