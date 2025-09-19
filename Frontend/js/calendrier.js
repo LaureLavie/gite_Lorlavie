@@ -19,7 +19,13 @@ const monthNames = [
   "Décembre",
 ];
 
-export function Calendrier() {
+async function fetchCalendrier() {
+  const res = await fetch(`http://localhost:3000/api/calendrier/${currentYear}/${currentMonth + 1}`);
+  return await res.json();
+}
+
+
+export async function CalendrierAdmin() {
 
   const calendarMonth = document.getElementById("calendar-month");
   const calendarDates = document.getElementById("calendar-dates");
@@ -27,6 +33,14 @@ export function Calendrier() {
 
   calendarMonth.textContent = `${monthNames[currentMonth]} ${currentYear}`;
 
+  // Fetch statuts
+  const calendrier = await fetchCalendrier();
+  dateStatus = {};
+  Object.entries(calendrier).forEach(([date, info]) => {
+    dateStatus[date] = info.statut;
+  });
+
+  // Génère le calendrier
   const firstDay = new Date(currentYear, currentMonth, 1).getDay(); // 0=dimanche
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   calendarDates.innerHTML = "";
@@ -58,7 +72,7 @@ export function Calendrier() {
       currentMonth = 11;
       currentYear--;
     }
-    Calendrier();
+    CalendrierAdmin();
   };
   document.getElementById("next-month").onclick = () => {
     currentMonth++;
@@ -66,7 +80,7 @@ export function Calendrier() {
       currentMonth = 0;
       currentYear++;
     }
-    Calendrier();
+    CalendrierAdmin();
   };
   document.querySelectorAll(".status-btn").forEach((btn) => {
     btn.onclick = () => {
@@ -77,11 +91,29 @@ export function Calendrier() {
       btn.classList.add("active");
     };
   });
-  document.getElementById("calendar-dates").onclick = (e) => {
+   // Modification des dates
+   calendarDates.onclick = (e) => {
     if (e.target.classList.contains("calendar-date")) {
       const dateKey = e.target.dataset.date;
       dateStatus[dateKey] = selectedStatus;
-      Calendrier();
+      CalendrierAdmin();
     }
   };
-}
+  };
+  // Envoi des modifications
+  document.querySelector(".button-green").onclick = async () => {
+    const updates = Object.entries(dateStatus).map(([date, statut]) => ({ date, statut }));
+    await fetch("http://localhost:3000/api/calendrier/dates", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ dates: updates })
+    });
+    alert("Calendrier mis à jour !");
+    CalendrierAdmin();
+  };
+
+
+// Initialisation
+document.addEventListener("DOMContentLoaded", () => {
+  CalendrierAdmin();
+});
