@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modification des Réservations</title>
+    <title>Modification de la Réservation</title>
     <link rel="stylesheet" href="../../src/adminStyle/adminStyle.css" />
     <script type="module" src="../../script.js" defer></script>
+    <script type="module" src="../../js/modificationReservation.js" defer></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -18,73 +19,58 @@
   <body>
     <div id="navbar"></div>
     <form class="form">
-    <h1>Modification des Réservations</h1>
+    <h1>Modification de la Réservation</h1>
       <div class="card card--white">
-          <div class="card__badge">Ibanez Txumin</div>
+          <div class="card__badge">${reservation.clientName}</div>
           <div class="date-container">
             <label for="reservation-date-arrivee">Date d'arrivée:</label>
-            <input
-              type="date"
-              id="reservation-date-arrivee"
-              name="dateArrivee"
-              required
-            />
+            <span id="reservation-date-arrivee">${reservation.dateArrivee}</span>
             <label for="reservation-date-depart">Date de départ:</label>
-            <input
-              type="date"
-              id="reservation-date-depart"
-              name="dateDepart
-              required
-            />
-          </div>  
+            <span id="reservation-date-depart">${reservation.dateDepart}</span>
+            </div>
           <div class="option">
             <label>Nombre de nuits</label>
-            <span id="nuits">1</span>
+            <span id="nuits">${reservation.nuits}</span>
           </div>
           <div class="option">
             <label>Nombre de personnes</label>
             <button type="button" id="personnes-moins">−</button>
-            <span id="personnes">1</span>
+            <span id="personnes">${reservation.personnes}</span>
             <button type="button" id="personnes-plus">+</button>
           </div>
           <div class="option">
             <label>Nombre de personnes supplémentaires</label>
             <button type="button" id="sup-moins">−</button>
-            <span id="sup-personnes">0</span>
+            <span id="sup-personnes">${reservation.supPersonnes}</span>
             <button type="button" id="sup-plus">+</button>
-            <span>30€/pers</span>
+
           </div>
-  
+
           <div class="option">
             <label>Options supplémentaires :</label>
-            
-              <input type="checkbox" id="option-menage" />
+                        <input type="checkbox" id="option-menage" />
               <label for="option-menage">Ménage 20€</label>
             
           </div>
   
           <div class="amount-final">
             <label>Montant</label>
-            <span id="montant">65€</span>
+            <span id="montant">${reservation.montant}€</span>
           </div>
   
           <div class="message-container">
-            <label for="message">Mesage de l'hôte</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="3"
-              placeholder="Bonjour, je suis intéressé par votre logement"
-            ></textarea>
+            <label for="message">Message de l'hôte</label>
+            <span id="message">${reservation.message}</span>
           </div>
           </div>  
       </form>
 
     <div class="button-container">
-      <button class="button-red">Supprimer</button>
-      <button class="button-brown">Annuler</button>
-      <button class="button-green">Valider</button>
+      <button type="button" class="button-red" id="delete-btn">Supprimer</button>
+      <button type="button" class="button-brown" id="cancel-btn">Annuler</button>
+      <button type="submit" class="button-green" id="validate-btn">Valider</button>
     </div>
+    <div id="message" class="successDiv" style="display:none;"></div>
     <div class="img_bottom">
       <img
         src="../../img/dessin vache blanc.webp"

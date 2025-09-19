@@ -6,8 +6,8 @@
   border-radius: $radius;
   box-shadow: 6px 6px 0 $noir;
   padding: 2rem;
-  margin: 3rem;
-  gap: 1.5rem;
+  margin: 2rem;
+  gap: 2rem;
   width: 90%;
   position: relative;
   font-family: $font-main;
@@ -21,6 +21,7 @@
     background: $gris-perle;
     color: $noir;
     box-shadow: 8px 8px 0 $brun-boise;
+    gap: 2rem;
     .card__badge {
       background: $brun-boise;
       color: $blanc;
@@ -34,6 +35,7 @@
   &--brown {
     background: $brun-boise;
     color: $blanc;
+    gap: 2rem;
     .card__badge {
       background: $gris-perle;
       color: $noir;

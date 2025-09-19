@@ -6,6 +6,7 @@
     <title>Réservations</title>
     <link rel="stylesheet" href="../../src/adminStyle/adminStyle.css" />
     <script type="module" src="../../script.js" defer></script>
+    <script type="module" src="../../js/gestionReservation.js" defer></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -20,65 +21,9 @@
     <form class="form">
 
     <h1>Réservations</h1>
-    <div class="card card--brown">
-      <div class="card__badge">Ibanez Txumin</div>
-      <div class="card__content">
-        <div class="card__row">
-          <span>Date d'arrivée:</span> <strong>23/02/2026</strong>
-        </div>
-        <div class="card__row">
-          <span>Nombre de nuitées:</span> <strong>4</strong>
-        </div>
-        <div class="card__row">
-          <span>Nombre de personnes:</span> <strong>3</strong>
-        </div>
-        <div class="card__row">
-          <span>Montant total:</span> <strong>380 €</strong>
-        </div>
-        <div class="card__row">
-          <span>Mode de Paiement :</span> <strong> En ligne </strong>
-        </div>
-      </div>
-    </div>
+    <div id="message" class="successDiv" style="display:none;"></div>
+    <div id="reservations-list" class="admins-grid" style="gap:2rem;"></div>
 
-    <div class="button-container">
-      <a class="button-red" href="modificationReservation.html">Annuler</a>
-      <a class="button-brown" href="modificationReservation.html">Modifier</a>
-      <a class="button-green" href="modificationReservation.html">Confirmer</a>
-    </div>
-
-    <div class="card card--white">
-      <div class="card__badge">Wayne Bruce</div>
-      <div class="card__icons">
-        <a
-          href="../administrateur/modificationReservation.html"
-          class="icon-modif"
-          title="Modifier"
-        >
-          <i class="fa fa-pen"></i>
-        </a>
-        <a href="#" class="icon-mail" title="Envoyer un mail">
-          <i class="fa fa-envelope"></i>
-        </a>
-      </div>
-      <div class="card__content">
-        <div class="card__row">
-          <span>Date d'arrivée:</span> <strong>12/01/2026</strong>
-        </div>
-        <div class="card__row">
-          <span>Nombre de nuitées:</span> <strong>1</strong>
-        </div>
-        <div class="card__row">
-          <span>Nombre de personnes:</span> <strong>6</strong>
-        </div>
-        <div class="card__row">
-          <span>Montant total:</span> <strong>380 €</strong>
-        </div>
-        <div class="card__row">
-          <span>Mode de Paiement :</span> <strong> Espèce </strong>
-        </div>
-      </div>
-    </div>
     <div class="img_bottom">
       <img
         src="../../img/dessin marmotte blanc.webp"
