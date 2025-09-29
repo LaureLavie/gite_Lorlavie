@@ -22,5 +22,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Navbar admin
   Navbar();
   // Footer admin
-  Footer();  
+  Footer();
 });

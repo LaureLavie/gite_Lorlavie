@@ -1,6 +1,7 @@
-@import "variables";
-@import "base";
-@import "responsive";
+@use "variables" as *;
+@use "mixins" as *;
+@use "base" as *;
+@use "responsive" as *;
 
 .navbar {
   position: fixed;
@@ -17,7 +18,7 @@
   &__logo img {
     background: $noir;
     border-radius: 50%;
-    width:30%;
+    width: 30%;
     display: block;
   }
 
@@ -106,7 +107,7 @@ body {
   justify-content: space-between;
   padding: 0.5rem 1rem;
   z-index: 1000;
- 
+
   @include mobile-xs {
     height: 3rem;
     padding: 0.2rem 0.5rem;
@@ -126,31 +127,54 @@ body {
 
   &__logo img {
     width: 2.5rem;
-    @include mobile-xs { width: 2rem; }
-    @include tablet-desktop { width: 3.5rem; }
+    @include mobile-xs {
+      width: 2rem;
+    }
+    @include tablet-desktop {
+      width: 3.5rem;
+    }
   }
 
   &__burger {
     padding: 0.7rem;
-    @include mobile-xs { padding: 0.3rem; }
-    @include tablet-desktop { padding: 1.2rem; }
+    @include mobile-xs {
+      padding: 0.3rem;
+    }
+    @include tablet-desktop {
+      padding: 1.2rem;
+    }
     span {
       width: 22px;
       height: 3px;
-      @include mobile-xs { width: 16px; height: 2px; }
-      @include tablet-desktop { width: 28px; height: 4px; }
+      @include mobile-xs {
+        width: 16px;
+        height: 2px;
+      }
+      @include tablet-desktop {
+        width: 28px;
+        height: 4px;
+      }
     }
   }
 
   &__menu {
     width: 90vw;
     padding: 1rem;
-    @include mobile-xs { padding: 0.5rem; }
-    @include tablet-desktop { width: 60vw; padding: 2rem; }
+    @include mobile-xs {
+      padding: 0.5rem;
+    }
+    @include tablet-desktop {
+      width: 60vw;
+      padding: 2rem;
+    }
     ul li a {
       font-size: 1rem;
-      @include mobile-xs { font-size: 0.9rem; }
-      @include tablet-desktop { font-size: 1.2rem; }
+      @include mobile-xs {
+        font-size: 0.9rem;
+      }
+      @include tablet-desktop {
+        font-size: 1.2rem;
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulaire de Paiement</title>
+    <title>Finaliser votre Réservation</title>
     <link rel="stylesheet" href="../../src/hoteStyle/hoteStyle.css" />
     <script type="module" src="../../script.js" defer></script>
     <link
@@ -17,107 +17,112 @@
   </head>
   <body>
     <div id="hoteNavbar"></div>
-    <h1>Formulaire de Paiement</h1>
+    <h1>Finaliser votre Réservation</h1>
 
-      <form class="form">
-        <input
-          type="text"
-          id="nom"
-          name="hoteNom"
-          placeholder="*Votre Nom :"
-          required
-        />
-        <input
-          type="text"
-          id="prenom"
-          name="hotePrenom"
-          placeholder="*Votre Prénom :"
-          required
-        />
-        <input
-          type="text"
-          id="adresse"
-          name="hoteAdresse"
-          placeholder="*Votre Adresse :"
-          required
-        />
-        <input
-          type="text"
-          id="codePostal"
-          name="hoteCodePostal"
-          placeholder="*Votre Code Postal :"
-          required
-        />
-        <input
-          type="text"
-          id="ville"
-          name="hoteVille"
-          placeholder="*Votre Ville :"
-          required
-        />
-        <input
-          type="text"
-          id="pays"
-          name="hotePays"
-          placeholder="*Votre Pays :"
-          required
-        />
-        <input
-          type="tel"
-          id="telephone"
-          name="hoteTelephone"
-          placeholder="*Votre Numéro de Téléphone :"
-          required
-        />
-        <input
-          type="email"
-          id="email"
-          name="hoteEmail"
-          placeholder="*Votre Email :"
-          required
-        />
-        <div class="rgpd-container">
-          <input type="checkbox" id="rgpd" name="hoteRgpd" required />
-          <p>
-            En cochant cette case, vous acceptez notre politique de
-            confidentialité. Vos données personnelles seront traitées
-            conformément à cette politique.
-          </p>
-        </div>
-      </form>
-      
-      <div class="switch-container">
-        <img
+    <form class="form" id="admin-form">
+      <input
+        type="text"
+        id="nom"
+        name="hoteNom"
+        placeholder="*Votre Nom :"
+        required
+      />
+      <input
+        type="text"
+        id="prenom"
+        name="hotePrenom"
+        placeholder="*Votre Prénom :"
+        required
+      />
+      <input
+        type="text"
+        id="adresse"
+        name="hoteAdresse"
+        placeholder="*Votre Adresse :"
+        required
+      />
+      <input
+        type="text"
+        id="codePostal"
+        name="hoteCodePostal"
+        placeholder="*Votre Code Postal :"
+        required
+      />
+      <input
+        type="text"
+        id="ville"
+        name="hoteVille"
+        placeholder="*Votre Ville :"
+        required
+      />
+      <input
+        type="text"
+        id="pays"
+        name="hotePays"
+        placeholder="*Votre Pays :"
+        required
+      />
+      <input
+        type="tel"
+        id="telephone"
+        name="hoteTelephone"
+        placeholder="*Votre Numéro de Téléphone :"
+        required
+      />
+      <input
+        type="email"
+        id="email"
+        name="hoteEmail"
+        placeholder="*Votre Email :"
+        required
+      />
+      <div class="rgpd-container">
+        <input type="checkbox" id="rgpd" name="hoteRgpd" required />
+        <p>
+          <strong>*J'accepte la politique de confidentialité</strong><br />
+          En cochant cette case, j'accepte que mes données personnelles soient
+          collectées et traitées conformément au RGPD pour le traitement de ma
+          réservation. Je peux exercer mes droits d'accès, de rectification et
+          de suppression à tout moment.
+        </p>
+      </div>
+    </form>
+
+    <div class="switch-container">
+      <img
         src="../../img/dessin marmotte noir.webp"
         alt="Marmotte"
         class="marmotte-icon"
-        />
-        <h2 class="switch-title">Mode de paiement</h2>
-        <div class="switch-options" id="mode-paiement">
-          <btn class="switch-btn">en ligne</btn>
-          <btn class="switch-btn">especes</btn>
-          <btn class="switch-btn">carte</btn>
-        </div>
-        <div class="amount-final">
-          <label>Montant</label>
-          <span id="montant">65€</span>
-        </div>
+      />
+      <h2 class="switch-title">Mode de paiement</h2>
+      <div class="switch-options" id="mode-paiement">
+        <btn class="switch-btn">en ligne</btn>
+        <btn class="switch-btn">especes</btn>
+        <btn class="switch-btn">carte</btn>
       </div>
-      <div class="successDiv" style="display: none"></div>
-      <div class="errorDiv" style="display: none"></div>
-    
-      <div class="text-container">
-        <h2>Informations Importantes</h2>
-        <p>Pas de paiement en ligne au moment de la réservation</p>
-        <p>Le propriétaire vous communiquera les modalités de paiement.</p>
-        <p>Une confirmation vous sera envoyée par mail une fois votre réservation validée.</p>
+      <div class="amount-final">
+        <label>Montant</label>
+        <span id="montant">65€</span>
       </div>
+    </div>
+    <div class="successDiv" style="display: none"></div>
+    <div class="errorDiv" style="display: none"></div>
 
-      <div class="button-container">
-        <button class="button-brown">Annuler</button>
-        <button class="button-green">Valider</button>
-      </div>
-    
+    <div class="text-container">
+      <h2>Informations Importantes</h2>
+      <p>Pas de paiement en ligne au moment de la réservation</p>
+      <p>Le propriétaire vous communiquera les modalités de paiement.</p>
+      <p>
+        Une confirmation vous sera envoyée par mail une fois votre réservation
+        validée.
+      </p>
+    </div>
+
+    <div class="button-container">
+      <button class="button-brown">Annuler</button>
+      <button class="button-green" type="submit">Valider</button>
+    </div>
+
     <div id="hoteFooter"></div>
     <script type="module" src="../../js/paiement.js"></script>
   </body>

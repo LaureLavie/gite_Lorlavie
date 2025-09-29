@@ -1,16 +1,17 @@
-@import "variables";
-@import "base";
-@import "responsive";
+@use "variables" as *;
+@use "mixins" as *;
+@use "base" as *;
+@use "responsive" as *;
 
 .footer {
   display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   color: $blanc;
   width: 100vw;
   padding: 1rem;
-  margin:0;
+  margin: 0;
   font-family: $font-main;
 
   .footer-container {
@@ -23,82 +24,88 @@
     margin: 0;
     gap: 1rem;
   }
-    &__socials {
-      gap: 2rem;
-      display: flex;
-      flex-direction:row;
-      align-items: center;
-      justify-content: center;
-      width: 40%;
-      .footer__icon {
-        color: $brun-boise;
-        font-size: 1rem;
-        transition: color 0.2s;
-        &:hover {
-          color: $blanc;
-        }
-      }
-    }
-    &__logo{
-      width: 40%;
-    }
-        &__logo img {
-      width: 3rem;
-      filter: brightness(1.2);
-    }
-        &__infos {
-      color: $gris-perle;
+  &__socials {
+    gap: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    .footer__icon {
+      color: $brun-boise;
       font-size: 1rem;
-      text-align: center;
-      line-height: 1rem;
-      width: 20%;
-      .footer__mail {
+      transition: color 0.2s;
+      &:hover {
         color: $blanc;
-        text-decoration: none;
-        margin-top: 0.5rem;
-        font-weight: bold;
       }
     }
   }
-
-
-  .footer {
-    width: 100vw;
-    padding: 1rem;
+  &__logo {
+    width: 40%;
+  }
+  &__logo img {
+    width: 3rem;
+    filter: brightness(1.2);
+  }
+  &__infos {
+    color: $gris-perle;
     font-size: 1rem;
-  
+    text-align: center;
+    line-height: 1rem;
+    width: 20%;
+    .footer__mail {
+      color: $blanc;
+      text-decoration: none;
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.footer {
+  width: 100vw;
+  padding: 1rem;
+  font-size: 1rem;
+
+  @include mobile-xs {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+  }
+  @include tablet-desktop {
+    font-size: 1.1rem;
+    padding: 2rem 0;
+  }
+  @include desktop-lg {
+    font-size: 1.2rem;
+    padding: 2.5rem 0;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 0.5rem;
+    @include tablet-desktop {
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+
+  &__logo img {
+    width: 2.5rem;
     @include mobile-xs {
-      font-size: 0.9rem;
-      padding: 0.5rem 0;
+      width: 2rem;
     }
     @include tablet-desktop {
-      font-size: 1.1rem;
-      padding: 2rem 0;
-    }
-    @include desktop-lg {
-      font-size: 1.2rem;
-      padding: 2.5rem 0;
-    }
-  
-    .footer-container {
-      flex-direction: column;
-      gap: 0.5rem;
-      @include tablet-desktop {
-        flex-direction: row;
-        gap: 2rem;
-      }
-    }
-  
-    &__logo img {
-      width: 2.5rem;
-      @include mobile-xs { width: 2rem; }
-      @include tablet-desktop { width: 3.5rem; }
-    }
-  
-    &__infos, &__socials {
-      width: 100%;
-      text-align: center;
-      margin: 0.5rem 0;
-      @include tablet-desktop { width: 30%; }
+      width: 3.5rem;
     }
   }
+
+  &__infos,
+  &__socials {
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem 0;
+    @include tablet-desktop {
+      width: 30%;
+    }
+  }
+}

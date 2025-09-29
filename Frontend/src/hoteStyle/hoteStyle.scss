@@ -1,12 +1,12 @@
-@import "../styles/variables";
-@import "../styles/hoteBase";
-@import "../styles/mixins";
-@import "../styles/button";
-@import "../styles/card";
-@import "../styles/calendar";
-@import "../styles/hoteFooter";
-@import "../styles/hoteNavbar";
-@import "../styles/responsive";
+@use "../styles/variables" as *;
+@use "../styles/hoteBase" as *;
+@use "../styles/mixins" as *;
+@use "../styles/button" as *;
+@use "../styles/card" as *;
+@use "../styles/calendar" as *;
+@use "../styles/hoteFooter" as *;
+@use "../styles/hoteNavbar" as *;
+@use "../styles/responsive" as *;
 
 * {
   box-sizing: border-box;
@@ -82,7 +82,7 @@ h2 {
 .prev,
 .next {
   position: absolute;
-    top: 50%;
+  top: 50%;
   transform: translateY(-50%);
   font-size: 2rem;
   font-weight: bold;
@@ -100,7 +100,7 @@ h2 {
 
 input[type="text"],
 input[type="tel"],
-input[type="email"], 
+input[type="email"],
 input[type="date"],
 textarea {
   width: 100%;
@@ -111,9 +111,9 @@ textarea {
   border-bottom: 1px solid $gris;
   font-family: $font-main;
   font-size: 1.1rem;
-  gap:1rem;
+  gap: 1rem;
   color: $noir;
-  margin:0;
+  margin: 0;
   &::placeholder {
     color: $noir;
     opacity: 0.9;
@@ -145,7 +145,7 @@ input[type="checkbox"] {
     margin-bottom: 0;
     font-size: 1rem;
   }
-  }
+}
 
 .rgpd-container {
   display: flex;
@@ -165,21 +165,21 @@ input[type="checkbox"] {
 }
 
 .date-container,
-.text-container{
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-width: 100%;
-gap: 1rem;
-margin: 2rem;
-p{
-  font-size: 1rem;
-  text-align: center;
-  color: $noir;
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+  margin: 2rem;
+  p {
+    font-size: 1rem;
+    text-align: center;
+    color: $noir;
+  }
 }
-}
-  
+
 .option {
   display: flex;
   align-items: center;
@@ -212,7 +212,7 @@ p{
     }
   }
   span {
-    font-size: 1.3rem;    
+    font-size: 1.3rem;
     font-weight: bold;
     color: $brun-boise;
     min-width: 2rem;
@@ -242,13 +242,18 @@ p{
 
 .marmotte-icon {
   position: relative;
-  width: 30%;
+  width: 20%;
   top: 0;
   right: 0;
   filter: brightness(1.2);
 }
 
-.img_bottom, .logo img, .logo, .vache, .marmotte, .montagne {
+.img_bottom,
+.logo img,
+.logo,
+.vache,
+.marmotte,
+.montagne {
   display: flex;
   align-items: center;
   justify-content: center;

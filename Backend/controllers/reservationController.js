@@ -5,8 +5,15 @@
 import { calculPrixReservation } from "../middlewares/calculReservation.js";
 import Reservation from "../models/reservation.js";
 import Client from "../models/client.js";
-import CalendrierStat from "../models/calendrier.js";
-import { sendMail, htmlReservationEnAttente } from "../middlewares/mail.js";
+import * as CalendrierService from "../services/calendrierService.js";
+import * as ReservationService from "../services/reservationService.js";
+import {
+  sendMail,
+  htmlReservationEnAttente,
+  htmlReservationConfirmee,
+  htmlReservationModifiee,
+  htmlReservationRefusee,
+} from "../middlewares/mail.js";
 
 export const createReservation = async (req, res) => {
   try {
@@ -17,7 +24,7 @@ export const createReservation = async (req, res) => {
       nombrePersonnes,
       personnesSupplementaires = 0,
       options = {},
-      modePaiement
+      modePaiement,
     } = req.body;
 
     // Validation des champs obligatoires
@@ -28,7 +35,7 @@ export const createReservation = async (req, res) => {
       !client.email ||
       !dateArrivee ||
       !dateDepart ||
-      !nombrePersonnes 
+      !nombrePersonnes
     ) {
       return res.status(400).json({
         error: "Tous les champs requis doivent être renseignés",
@@ -45,7 +52,7 @@ export const createReservation = async (req, res) => {
     }
 
     // Vérifier disponibilité des dates
-    const disponible = await CalendrierStat.verifierDisponibilite(
+    const disponible = await CalendrierService.verifierDisponibilite(
       dateArrivee,
       dateDepart
     );
@@ -56,8 +63,16 @@ export const createReservation = async (req, res) => {
     }
 
     // Calculer le prix total (utilisation de la fonction utilitaire)
-    const nuits = Math.ceil((depart - arrivee) / (1000 * 60 * 60 * 24));
-    const prixTotal = calculPrixReservation(nombrePersonnes, nuits, personnesSupplementaires, options);
+    const nuits = ReservationService.calculerNombreNuits(
+      dateArrivee,
+      dateDepart
+    );
+    const prixTotal = calculPrixReservation(
+      nombrePersonnes,
+      nuits,
+      personnesSupplementaires,
+      options
+    );
 
     // Créer le client
     const newClient = await Client.create(client);
@@ -76,7 +91,7 @@ export const createReservation = async (req, res) => {
     });
 
     // Bloquer temporairement les dates dans le calendrier
-    await CalendrierStat.bloquerPeriode(
+    await CalendrierService.bloquerPeriode(
       dateArrivee,
       dateDepart,
       reservation._id
@@ -93,7 +108,7 @@ export const createReservation = async (req, res) => {
     res.status(201).json({
       message:
         "Réservation créée avec succès. Un email de confirmation vous a été envoyé.",
-      reservation: {        
+      reservation: {
         statut: reservation.statut,
         prixTotal: reservation.prixTotal,
       },
@@ -138,15 +153,11 @@ export const validerReservation = async (req, res) => {
     await reservation.save();
 
     // Les dates sont déjà bloquées, juste confirmer le statut
-    await CalendrierStat.updateMany(
-      {
-        date: {
-          $gte: reservation.dateArrivee,
-          $lt: reservation.dateDepart,
-        },
-        reservationId: reservation._id,
-      },
-      { statut: "reserve" }
+    // Confirmer le blocage des dates : utiliser le service Calendrier
+    await CalendrierService.bloquerPeriode(
+      reservation.dateArrivee,
+      reservation.dateDepart,
+      reservation._id
     );
 
     // Envoyer email de confirmation
@@ -190,7 +201,7 @@ export const refuserReservation = async (req, res) => {
     await reservation.save();
 
     // Libérer les dates dans le calendrier
-    await CalendrierStat.libererPeriode(
+    await CalendrierService.libererPeriode(
       reservation.dateArrivee,
       reservation.dateDepart
     );
@@ -234,7 +245,7 @@ export const modifierReservation = async (req, res) => {
       return res.status(404).json({ error: "Réservation non trouvée" });
     }
 
-    if (!reservation.peutEtreModifiee()) {
+    if (!ReservationService.peutEtreModifiee(reservation)) {
       return res.status(400).json({
         error: "Cette réservation ne peut plus être modifiée",
       });
@@ -248,20 +259,20 @@ export const modifierReservation = async (req, res) => {
         modifications.dateDepart || reservation.dateDepart;
 
       // Libérer les anciennes dates
-      await CalendrierStat.libererPeriode(
+      await CalendrierService.libererPeriode(
         reservation.dateArrivee,
         reservation.dateDepart
       );
 
       // Vérifier disponibilité nouvelles dates
-      const disponible = await CalendrierStat.verifierDisponibilite(
+      const disponible = await CalendrierService.verifierDisponibilite(
         nouvelleDateArrivee,
         nouvelleDateDepart
       );
 
       if (!disponible) {
         // Rebloquer les anciennes dates si les nouvelles ne sont pas dispo
-        await CalendrierStat.bloquerPeriode(
+        await CalendrierService.bloquerPeriode(
           reservation.dateArrivee,
           reservation.dateDepart,
           reservation._id
@@ -273,7 +284,7 @@ export const modifierReservation = async (req, res) => {
       }
 
       // Bloquer les nouvelles dates
-      await CalendrierStat.bloquerPeriode(
+      await CalendrierService.bloquerPeriode(
         nouvelleDateArrivee,
         nouvelleDateDepart,
         reservation._id
@@ -370,7 +381,7 @@ export const deleteReservation = async (req, res) => {
     }
 
     // Libérer les dates
-    await CalendrierStat.libererPeriode(
+    await CalendrierService.libererPeriode(
       reservation.dateArrivee,
       reservation.dateDepart
     );

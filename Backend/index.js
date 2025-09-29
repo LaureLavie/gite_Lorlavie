@@ -14,7 +14,7 @@ import cors from "cors";
 // Chargement des variables d'environnement (.env)
 dotenv.config();
 
-// Import des routeurs 
+// Import des routeurs
 import reservationRouter from "./routes/reservationRoute.js";
 import clientRouter from "./routes/clientRoute.js";
 import authRouter from "./routes/authRoute.js";
@@ -30,17 +30,21 @@ app.use(express.json());
 const allowedOrigins = [
   "https://gite-lorlavie.onrender.com",
   "http://localhost:5503",
-  "http://127.0.0.1:5503"
+  "http://127.0.0.1:5503",
+  "http://127.0.0.1:5500",
+  "http://localhost:5500",
 ];
-app.use(cors({
-  origin: function(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  }
-}));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 
 app.use((req, res, next) => {
   res.setHeader(
@@ -51,7 +55,7 @@ app.use((req, res, next) => {
 });
 
 // Définition des routes principales de l'API
-app.use("/api/calendrier",calendrierRouter)//gestion du calendrier
+app.use("/api/calendrier", calendrierRouter); //gestion du calendrier
 app.use("/api/reservations", reservationRouter); // Gestion des réservations
 app.use("/api/clients", clientRouter); // Gestion des clients
 app.use("/api/auth", authRouter); // Authentification admin
