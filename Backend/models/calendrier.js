@@ -39,77 +39,8 @@ const CalendrierStatSchema = new mongoose.Schema({
 // Index pour optimiser les requêtes par date
 CalendrierStatSchema.index({ statut: 1, date: 1 });
 
-// Méthodes statiques utiles
-CalendrierStatSchema.statics.getDatesDisponibles = async function (
-  dateDebut,
-  dateFin
-) {
-  const dates = await this.find({
-    date: { $gte: dateDebut, $lte: dateFin },
-    statut: { $ne: "disponible" },
-  });
-
-  // Retourne les dates NON disponibles
-  return dates.map((d) => d.date);
-};
-
-CalendrierStatSchema.statics.verifierDisponibilite = async function (
-  dateArrivee,
-  dateDepart
-) {
-  const debut = new Date(dateArrivee);
-  const fin = new Date(dateDepart);
-
-  // Vérifier qu'aucune date dans la période n'est bloquée ou réservée
-  const datesOccupees = await this.find({
-    date: { $gte: debut, $lt: fin }, // $lt car la date de départ n'est pas incluse
-    statut: { $in: ["reserve", "bloque"] },
-  });
-
-  return datesOccupees.length === 0;
-};
-
-CalendrierStatSchema.statics.bloquerPeriode = async function (
-  dateDebut,
-  dateFin,
-  reservationId = null
-) {
-  const debut = new Date(dateDebut);
-  const fin = new Date(dateFin);
-  const statut = reservationId ? "reserve" : "bloque";
-
-  const dates = [];
-  for (let d = new Date(debut); d < fin; d.setDate(d.getDate() + 1)) {
-    dates.push({
-      date: new Date(d),
-      statut: statut,
-      ...(reservationId && { reservationId: reservationId }),
-    });
-  }
-
-  // Upsert : met à jour si existe, créé sinon
-  await Promise.all(
-    dates.map((dateObj) =>
-      this.findOneAndUpdate({ date: dateObj.date }, dateObj, { upsert: true })
-    )
-  );
-};
-
-CalendrierStatSchema.statics.libererPeriode = async function (
-  dateDebut,
-  dateFin
-) {
-  await this.updateMany(
-    {
-      date: { $gte: new Date(dateDebut), $lt: new Date(dateFin) },
-    },
-    {
-      $set: {
-        statut: "disponible",
-        $unset: { reservationId: "", notes: "" },
-      },
-    }
-  );
-};
+// NOTE: Les méthodes statiques qui effectuent des requêtes et upserts ont été
+// déplacées vers Backend/services/calendrierService.js pour séparer la logique
+// métier de la définition du schema et faciliter les tests.
 
 export default mongoose.model("CalendrierStat", CalendrierStatSchema);

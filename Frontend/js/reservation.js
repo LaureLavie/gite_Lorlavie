@@ -1,4 +1,4 @@
-import { calculPrixReservation } from "../js/calculPrix.js";
+import { calculPrixReservation } from "./calculPrix.js";
 
 export function Reservation() {
   const arriveeInput = document.getElementById("reservation-date-arrivee");
@@ -12,7 +12,6 @@ export function Reservation() {
   const supMoinsBtn = document.getElementById("sup-moins");
   const supPlusBtn = document.getElementById("sup-plus");
   const supPersonnesSpan = document.getElementById("sup-personnes");
-
 
   if (
     !arriveeInput ||
@@ -30,26 +29,61 @@ export function Reservation() {
     return;
   }
 
-  // Tarifs par nombre de personnes
-  const tarifs = [65, 75, 85, 95, 105, 115];
-
   // Initialisation des dates
-  const today = new Date().toISOString().split("T")[0];
-  arriveeInput.min = today;
-  departInput.min = today;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayStr = today.toISOString().split("T")[0];
+  arriveeInput.min = todayStr;
+  departInput.min = todayStr;
 
-  // Met à jour la date de départ minimum quand la date d'arrivée change
-  arriveeInput.addEventListener("change", () => {
-    departInput.min = arriveeInput.value;
-    // Si la date de départ est avant la date d'arrivée, on la corrige
-    if (departInput.value < arriveeInput.value) {
-      departInput.value = arriveeInput.value;
+  // Vérification de la disponibilité des dates
+  async function verifierDisponibilite(dateArrivee, dateDepart) {
+    try {
+      const res = await fetch("http://localhost:3000/api/calendrier/verifier", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dateArrivee, dateDepart }),
+      });
+      const data = await res.json();
+      return data.disponible;
+    } catch (error) {
+      console.error("Erreur vérification:", error);
+      return false;
     }
+  }
+
+  // Mise à jour date de départ minimum
+  arriveeInput.addEventListener("change", async () => {
+    const arrivee = new Date(arriveeInput.value);
+    arrivee.setDate(arrivee.getDate() + 1);
+    departInput.min = arrivee.toISOString().split("T")[0];
+
+    if (departInput.value && departInput.value <= arriveeInput.value) {
+      departInput.value = "";
+    }
+
     updateNuits();
     updateMontant();
   });
 
-  departInput.addEventListener("change", () => {
+  departInput.addEventListener("change", async () => {
+    if (arriveeInput.value && departInput.value) {
+      const errorDiv = document.querySelector(".errorDiv");
+      const disponible = await verifierDisponibilite(
+        arriveeInput.value,
+        departInput.value
+      );
+
+      if (!disponible) {
+        errorDiv.textContent =
+          "Les dates sélectionnées ne sont pas disponibles. Veuillez en choisir d'autres.";
+        errorDiv.style.display = "block";
+        departInput.value = "";
+        return;
+      } else {
+        errorDiv.style.display = "none";
+      }
+    }
     updateNuits();
     updateMontant();
   });
@@ -58,15 +92,14 @@ export function Reservation() {
   let personnes = 1;
   moinsBtn.addEventListener("click", () => {
     if (personnes > 1) {
-      // minimum 1
       personnes--;
       personnesSpan.textContent = personnes;
       updateMontant();
     }
   });
+
   plusBtn.addEventListener("click", () => {
     if (personnes < 6) {
-      // maximum 6
       personnes++;
       personnesSpan.textContent = personnes;
       updateMontant();
@@ -74,8 +107,7 @@ export function Reservation() {
   });
 
   // Gestion des personnes supplémentaires
-  let supPersonnes = 0; // personnes supplémentaires (max 2)
-
+  let supPersonnes = 0;
   supMoinsBtn.addEventListener("click", () => {
     if (supPersonnes > 0) {
       supPersonnes--;
@@ -83,6 +115,7 @@ export function Reservation() {
       updateMontant();
     }
   });
+
   supPlusBtn.addEventListener("click", () => {
     if (supPersonnes < 2 && personnes + supPersonnes < 8) {
       supPersonnes++;
@@ -112,12 +145,9 @@ export function Reservation() {
   // Calcul du montant
   function updateMontant() {
     const nuits = updateNuits();
-    const montant = calculPrixReservation(
-      personnes,
-      nuits,
-      supPersonnes,
-      { menage: menageCheckbox.checked }
-    );
+    const montant = calculPrixReservation(personnes, nuits, supPersonnes, {
+      menage: menageCheckbox.checked,
+    });
     montantSpan.textContent = montant + "€";
   }
 
@@ -128,10 +158,35 @@ export function Reservation() {
   // Handler du submit du formulaire
   const form = document.querySelector("form.form");
   if (form) {
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      // Récupère les valeurs au moment du submit
+      const errorDiv = document.querySelector(".errorDiv");
+      const successDiv = document.querySelector(".successDiv");
+
+      // Validation des dates
+      if (!arriveeInput.value || !departInput.value) {
+        errorDiv.textContent =
+          "Veuillez sélectionner vos dates d'arrivée et de départ.";
+        errorDiv.style.display = "block";
+        successDiv.style.display = "none";
+        return;
+      }
+
+      // Vérification finale de la disponibilité
+      const disponible = await verifierDisponibilite(
+        arriveeInput.value,
+        departInput.value
+      );
+      if (!disponible) {
+        errorDiv.textContent =
+          "Les dates sélectionnées ne sont plus disponibles. Veuillez en choisir d'autres.";
+        errorDiv.style.display = "block";
+        successDiv.style.display = "none";
+        return;
+      }
+
+      // Création de l'objet réservation
       const reservation = {
         dateArrivee: arriveeInput.value,
         dateDepart: departInput.value,
@@ -139,17 +194,16 @@ export function Reservation() {
         personnesSupplementaires: parseInt(supPersonnesSpan.textContent, 10),
         options: {
           menage: menageCheckbox.checked,
-          commentaires: document.getElementById("message").value ||""
+          commentaires: document.getElementById("message")?.value || "",
         },
-        prixTotal: parseInt(montantSpan.textContent,10) 
+        prixTotal: parseInt(montantSpan.textContent, 10),
       };
 
-      // Stocke la réservation dans le localStorage
+      // Stockage dans localStorage
       localStorage.setItem("reservationEnCours", JSON.stringify(reservation));
 
-      // Redirige vers la page de paiement
+      // Redirection vers la page de paiement
       window.location.href = "modePaiement.html";
-      });
-    }
+    });
+  }
 }
-

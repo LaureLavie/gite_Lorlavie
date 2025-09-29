@@ -1,8 +1,7 @@
-// Génère le calendrier
-let currentMonth = 0; // Janvier (0 = janvier, 11 = décembre)
-let currentYear = 2026;
-let selectedStatus = "dispo"; // Statut sélectionné par défaut
-let dateStatus = {}; // Stocke le statut de chaque date (ex: "2026-01-15": "reserve")
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
+let selectedStatus = "disponible";
+let dateStatus = {};
 
 const monthNames = [
   "Janvier",
@@ -20,28 +19,36 @@ const monthNames = [
 ];
 
 async function fetchCalendrier() {
-  const res = await fetch(`http://localhost:3000/api/calendrier/${currentYear}/${currentMonth + 1}`);
-  return await res.json();
+  try {
+    const res = await fetch(
+      `http://localhost:3000/api/calendrier/${currentYear}/${currentMonth + 1}`
+    );
+    const data = await res.json();
+    return data.calendrier || [];
+  } catch (error) {
+    console.error("Erreur lors de la récupération du calendrier:", error);
+    return [];
+  }
 }
 
-
 export async function CalendrierAdmin() {
-
   const calendarMonth = document.getElementById("calendar-month");
   const calendarDates = document.getElementById("calendar-dates");
-  if (!calendarMonth || !calendarDates) return; // Stop si la page n'a pas le calendrier
+  if (!calendarMonth || !calendarDates) return;
 
   calendarMonth.textContent = `${monthNames[currentMonth]} ${currentYear}`;
 
-  // Fetch statuts
+  // Récupération des statuts
   const calendrier = await fetchCalendrier();
   dateStatus = {};
-  Object.entries(calendrier).forEach(([date, info]) => {
-    dateStatus[date] = info.statut;
+
+  calendrier.forEach((day) => {
+    const dateKey = day.date.split("T")[0];
+    dateStatus[dateKey] = day.statut;
   });
 
-  // Génère le calendrier
-  const firstDay = new Date(currentYear, currentMonth, 1).getDay(); // 0=dimanche
+  // Génération du calendrier
+  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   calendarDates.innerHTML = "";
 
@@ -55,17 +62,18 @@ export async function CalendrierAdmin() {
       2,
       "0"
     )}-${String(d).padStart(2, "0")}`;
-    // Si le statut n'est pas défini, on met "dispo" par défaut
-    if (typeof dateStatus[dateKey] === "undefined") {
-      dateStatus[dateKey] = "dispo";
-    }
-    const status = dateStatus[dateKey];
+    const status = dateStatus[dateKey] || "disponible";
+
+    let cssClass = "disponible";
+    if (status === "reserve") cssClass = "reserve";
+    else if (status === "bloque") cssClass = "ferme";
+
     calendarDates.innerHTML += `
-      <div class="calendar-date ${status}" data-date="${dateKey}">${d}</div>
+      <div class="calendar-date ${cssClass}" data-date="${dateKey}">${d}</div>
     `;
   }
 
-  // Listeners
+  // Navigation mois
   document.getElementById("prev-month").onclick = () => {
     currentMonth--;
     if (currentMonth < 0) {
@@ -74,6 +82,7 @@ export async function CalendrierAdmin() {
     }
     CalendrierAdmin();
   };
+
   document.getElementById("next-month").onclick = () => {
     currentMonth++;
     if (currentMonth > 11) {
@@ -82,6 +91,8 @@ export async function CalendrierAdmin() {
     }
     CalendrierAdmin();
   };
+
+  // Sélection du statut
   document.querySelectorAll(".status-btn").forEach((btn) => {
     btn.onclick = () => {
       selectedStatus = btn.dataset.status;
@@ -91,29 +102,72 @@ export async function CalendrierAdmin() {
       btn.classList.add("active");
     };
   });
-   // Modification des dates
-   calendarDates.onclick = (e) => {
+
+  // Modification des dates au clic
+  calendarDates.onclick = (e) => {
     if (e.target.classList.contains("calendar-date")) {
       const dateKey = e.target.dataset.date;
-      dateStatus[dateKey] = selectedStatus;
-      CalendrierAdmin();
+
+      // Conversion des statuts pour l'API
+      let apiStatus = selectedStatus;
+      if (selectedStatus === "ferme") apiStatus = "bloque";
+
+      dateStatus[dateKey] = apiStatus;
+
+      // Mise à jour visuelle immédiate
+      e.target.className = "calendar-date";
+      if (apiStatus === "disponible") e.target.classList.add("disponible");
+      else if (apiStatus === "reserve") e.target.classList.add("reserve");
+      else if (apiStatus === "bloque") e.target.classList.add("ferme");
     }
   };
-  };
-  // Envoi des modifications
-  document.querySelector(".button-green").onclick = async () => {
-    const updates = Object.entries(dateStatus).map(([date, statut]) => ({ date, statut }));
-    await fetch("http://localhost:3000/api/calendrier/dates", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ dates: updates })
-    });
-    alert("Calendrier mis à jour !");
-    CalendrierAdmin();
-  };
+}
 
-
-// Initialisation
+// Validation et envoi des modifications
 document.addEventListener("DOMContentLoaded", () => {
   CalendrierAdmin();
+
+  const validateBtn = document.querySelector(".button-green");
+  if (validateBtn) {
+    validateBtn.onclick = async () => {
+      try {
+        const dates = Object.keys(dateStatus);
+        const token = localStorage.getItem("adminToken");
+
+        // Envoi des modifications au serveur
+        const res = await fetch("http://localhost:3000/api/calendrier/dates", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            dates: dates,
+            statut: dateStatus[dates[0]], // À améliorer pour gérer plusieurs statuts
+          }),
+        });
+
+        if (res.ok) {
+          alert("Calendrier mis à jour avec succès !");
+          await CalendrierAdmin();
+        } else {
+          const error = await res.json();
+          alert(
+            "Erreur lors de la mise à jour : " +
+              (error.error || "Erreur inconnue")
+          );
+        }
+      } catch (error) {
+        console.error("Erreur:", error);
+        alert("Erreur de connexion au serveur");
+      }
+    };
+  }
+
+  const cancelBtn = document.querySelector(".button-brown");
+  if (cancelBtn) {
+    cancelBtn.onclick = () => {
+      CalendrierAdmin();
+    };
+  }
 });

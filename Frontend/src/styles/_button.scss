@@ -1,11 +1,12 @@
-@import "variables";
-@import "mixins";
+@use "sass:color";
+@use "variables" as *;
+@use "mixins" as *;
 
 .button-dark {
   @include button-base;
   background: $brun-boise;
   color: $blanc;
-  &:hover{
+  &:hover {
     background: $gris-perle;
     color: $noir;
     outline: none;
@@ -16,8 +17,8 @@
   @include button-base;
   background: $gris-perle;
   color: $noir;
-  &:hover{
-    background: darken($gris-perle, 20%);
+  &:hover {
+    background: color.adjust($gris-perle, $lightness: -20%);
     color: $blanc;
     outline: none;
   }
@@ -27,8 +28,8 @@
   @include button-base;
   background: $vert;
   color: $blanc;
-  &:hover{
-    background: darken($vert, 10%);
+  &:hover {
+    background: color.adjust($vert, $lightness: -10%);
     color: $blanc;
     outline: none;
   }
@@ -38,8 +39,8 @@
   @include button-base;
   background: $brun-boise;
   color: $blanc;
-  &:hover{
-    background: darken($brun-boise, 10%);
+  &:hover {
+    background: color.adjust($brun-boise, $lightness: -10%);
     color: $blanc;
     outline: none;
   }
@@ -49,8 +50,8 @@
   @include button-base;
   background: $rouge;
   color: $blanc;
-  &:hover{
-    background: darken($rouge, 10%);
+  &:hover {
+    background: color.adjust($rouge, $lightness: -10%);
     color: $blanc;
     outline: none;
   }
@@ -61,7 +62,7 @@
   background: $gris;
   color: $blanc;
   &:hover {
-    background: darken($gris, 20%);
+    background: color.adjust($gris, $lightness: -20%);
     color: $blanc;
     outline: none;
   }
@@ -79,17 +80,17 @@
 
 .switch-container {
   border-radius: $radius;
-  width: 30%;
+  width: 100%;
   padding: 1.5rem;
   box-shadow: $shadow;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin:0;
+  margin: 0;
 }
 
 .switch-header {
-  width:100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,7 +138,7 @@
     color: $noir;
   }
 }
-.switch-btn.active{
+.switch-btn.active {
   background: $brun-boise;
   color: $blanc;
 }

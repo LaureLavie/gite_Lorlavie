@@ -51,17 +51,4 @@ const ReservationSchema = new mongoose.Schema({
   dateModification: { type: Date }, // Dernière modification
 });
 
-
-// Méthode pour calculer le nombre de nuits
-ReservationSchema.methods.getNombreNuits = function () {
-  const arrivee = new Date(this.dateArrivee);
-  const depart = new Date(this.dateDepart);
-  return Math.ceil((depart - arrivee) / (1000 * 60 * 60 * 24));
-};
-
-// Méthode pour vérifier si la réservation peut être modifiée
-ReservationSchema.methods.peutEtreModifiee = function () {
-  return this.statut === "En Attente" || this.statut === "Confirmee";
-};
-
 export default mongoose.model("Reservation", ReservationSchema);

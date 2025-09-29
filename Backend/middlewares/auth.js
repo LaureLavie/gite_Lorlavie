@@ -1,15 +1,5 @@
 import jwt from "jsonwebtoken";
 
-/**
- * Middleware d'authentification pour les routes administrateur
- * - Vérifie la présence et la validité du token JWT dans l'en-tête Authorization
- * - Si le token est valide, ajoute les infos admin à la requête et passe au middleware suivant
- * - Sinon, bloque l'accès et retourne une erreur claire
- *
- * Sécurité :
- * - Protège toutes les routes sensibles (CRUD admin, validation avis, etc.)
- * - Conforme aux recommandations OWASP et RGPD
- */
 export const verifyAdmin = (req, res, next) => {
   // Récupération du token JWT dans l'en-tête Authorization (format "Bearer <token>")
   const token = req.headers.authorization?.split(" ")[1];

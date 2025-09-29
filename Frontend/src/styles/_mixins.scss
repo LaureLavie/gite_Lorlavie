@@ -1,3 +1,37 @@
+/*
+  _mixins.scss
+
+  Définitions et utilitaires SCSS réutilisables (mixins).
+
+  Qu'est-ce qu'un "mixin" ?
+  - En Sass, un mixin est un bloc de styles réutilisable que l'on peut "inclure"
+    à différents endroits du code via la directive `@include`.
+  - Contrairement à une simple classe CSS, un mixin permet d'insérer
+    dynamiquement un ensemble de déclarations (par exemple des règles de
+    layout, des media queries, des vendor prefixes, etc.) directement dans
+    le sélecteur qui l'utilise. On peut aussi passer des arguments au mixin.
+
+  Pourquoi utiliser des mixins ?
+  - Réduction de la duplication : on écrit une fois un groupe de règles et
+    on le réutilise partout (DRY).
+  - Cohérence visuelle : en centralisant des règles communes (boutons,
+    breakpoints, shadows), on facilite la maintenance et les modifications
+    globales.
+  - Encapsulation des patterns : les media queries ou combinaisons
+    complexes sont encapsulées et restent lisibles dans le fichier appelant.
+
+  Ici, nous fournissons :
+  - `button-base` : le style standard pour les boutons du site.
+  - des mixins de responsive (`mobile-xs`, `mobile-sm`, `tablet-desktop`,
+    `desktop-lg`) pour appliquer du contenu conditionnel selon les
+    breakpoints définis dans `_variables.scss`.
+
+  Remarque : les variables nécessaires sont importées via `@use "variables" as *;`
+  pour garder la compatibilité avec le reste du code (migration minimale).
+*/
+
+@use "variables" as *;
+
 @mixin button-base {
   display: flex;
   align-items: center;
@@ -17,14 +51,33 @@
 }
 
 @mixin mobile-xs {
-  @media (max-width: #{$breakpoint-xs}) { @content; }
+  @media (max-width: #{$breakpoint-xs}) {
+    & {
+      @content;
+    }
+  }
 }
+
 @mixin mobile-sm {
-  @media (min-width: #{$breakpoint-sm}) { @content; }
+  @media (min-width: #{$breakpoint-sm}) {
+    & {
+      @content;
+    }
+  }
 }
+
 @mixin tablet-desktop {
-  @media (min-width: #{$breakpoint-md}) { @content; }
+  @media (min-width: #{$breakpoint-md}) {
+    & {
+      @content;
+    }
+  }
 }
+
 @mixin desktop-lg {
-  @media (min-width: #{$breakpoint-lg}) { @content; }
+  @media (min-width: #{$breakpoint-lg}) {
+    & {
+      @content;
+    }
+  }
 }
