@@ -79,18 +79,11 @@ Le serveur démarre sur `http://localhost:3000`
 
 ### 5. Lancer le Frontend
 
-Option 1 - Live Server (VS Code) :
+Option - Live Server (VS Code) :
 
 ```bash
 cd Frontend
 # Clic droit sur index.html → "Open with Live Server"
-```
-
-Option 2 - Serveur Python :
-
-```bash
-cd Frontend
-python -m http.server 5503
 ```
 
 Accéder à : `http://localhost:5503`
@@ -186,40 +179,9 @@ const tarifMenage = 30; // Coût du service ménage
 
 ## 🧪 Tests
 
-### Tester l'API avec curl
+### Tester l'API avec Insomnia
 
 ```bash
-# Vérifier disponibilité
-curl -X POST http://localhost:3000/api/calendrier/verifier \
-  -H "Content-Type: application/json" \
-  -d '{"dateArrivee":"2025-10-01","dateDepart":"2025-10-05"}'
-
-# Créer une réservation
-curl -X POST http://localhost:3000/api/reservations \
-  -H "Content-Type: application/json" \
-  -d '{
-    "client": {
-      "name": "Test",
-      "surname": "Utilisateur",
-      "email": "test@example.com",
-      "telephone": "0612345678",
-      "adresseComplete": {
-        "adresse": "123 Rue Test",
-        "ville": "Ville",
-        "codePostal": "12345",
-        "pays": "France"
-      }
-    },
-    "dateArrivee": "2025-10-01",
-    "dateDepart": "2025-10-05",
-    "nombrePersonnes": 2,
-    "personnesSupplementaires": 0,
-    "options": {"menage": false},
-    "prixTotal": 300,
-    "modePaiement": "carte"
-  }'
-```
-
 ---
 
 ## 📝 Création du premier admin
@@ -242,15 +204,6 @@ curl -X POST http://localhost:3000/api/reservations \
 - ✅ Validation des données côté serveur
 - ✅ Sanitisation des entrées
 - ✅ Headers de sécurité
-
-### À faire en production
-
-- [ ] Activer HTTPS
-- [ ] Configurer un reverse proxy (Nginx)
-- [ ] Limiter le rate limiting
-- [ ] Configurer les logs de sécurité
-- [ ] Sauvegardes automatiques de la base de données
-- [ ] Monitoring serveur (Uptime, performances)
 
 ---
 
@@ -372,6 +325,8 @@ const allowedOrigins = [
   "https://gite-lorlavie.onrender.com",
   "http://localhost:5503",
   "http://127.0.0.1:5503",
+  "http://localhost:5500",
+  "http://127.0.0.1:5500",
   "http://votre-nouvelle-url", // Ajouter ici
 ];
 ```
@@ -559,11 +514,12 @@ Start Command: cd Backend && npm start
 Environment Variables: Ajouter toutes les variables du .env
 ```
 
-### Netlify/Vercel (Frontend)
+### Render (Frontend)
 
 ```bash
-# 1. Connecter votre repo
-# 2. Configuration :
+# 1. Connecter votre repo GitHub
+# 2. Créer un nouveau Static Service
+# 3. Configuration :
 Build Command: # Aucune
 Publish Directory: Frontend
 ```
@@ -588,10 +544,8 @@ NODE_ENV=production
 
 - [ ] Paiement en ligne intégré (Stripe)
 - [ ] Multi-gîtes (gestion de plusieurs propriétés)
-- [ ] Tableau de bord statistiques
 - [ ] Export PDF des réservations
 - [ ] Système d'avis clients
-- [ ] Application mobile (React Native)
 - [ ] Chat en direct
 - [ ] Multilingue (FR/EN/ES)
 
@@ -655,7 +609,6 @@ cd Backend && npm install && cp .env.example .env
 # Éditer .env avec vos valeurs
 npm start &
 cd ../Frontend
-python -m http.server 5503
 ```
 
 Ouvrir : http://localhost:5500
