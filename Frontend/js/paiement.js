@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+import { API_URL } from "./config.js";
 
 const form = document.querySelector("form.form");
 const errorDiv = document.querySelector(".errorDiv");
@@ -127,7 +126,7 @@ if (form) {
 
     // Envoi au serveur
     try {
-      const res = await fetch(`${process.env.API_URL}/api/reservations`, {
+      const res = await fetch(`${API_URL}/api/reservations`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reservation),

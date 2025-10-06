@@ -379,7 +379,7 @@ h2 {
 }
 .card__badge {
   position: absolute;
-  top: -1.2rem;
+  top: 1.7em;
   left: 50%;
   transform: translateX(-50%);
   background: #b7b7a4;
@@ -387,13 +387,13 @@ h2 {
   font-weight: bold;
   font-size: 1.1rem;
   border-radius: 50px;
-  padding: 0.4rem 2rem;
   box-shadow: 2px 2px 0 #b7b7a4;
   text-align: center;
   z-index: 2;
 }
 .card__content {
   width: 100%;
+  top: 2rem;
   text-align: left;
   font-size: 1rem;
   color: #000000;
@@ -1200,7 +1200,7 @@ body {
   background: #7c1818;
   color: #ffffff;
 }
-.calendar-date.dispo {
+.calendar-date.disponible {
   background: #218c1e;
   color: #ffffff;
 }
@@ -1304,7 +1304,7 @@ body {
 .calendar-status .status-flag.status-reserve {
   background: #7c1818;
 }
-.calendar-status .status-flag.status-dispo {
+.calendar-status .status-flag.status-disponible {
   background: #218c1e;
 }
 .calendar-status .status-flag.status-ferme {

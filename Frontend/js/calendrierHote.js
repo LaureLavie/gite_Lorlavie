@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+import { API_URL } from "./config.js";
 
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
@@ -22,7 +21,7 @@ const monthNames = [
 async function fetchCalendrier() {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/api/calendrier/${currentYear}/${currentMonth + 1}`
+      `${API_URL}/api/calendrier/${currentYear}/${currentMonth + 1}`
     );
     const data = await res.json();
     return data.calendrier || [];

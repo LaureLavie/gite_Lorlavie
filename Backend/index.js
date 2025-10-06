@@ -1,17 +1,8 @@
-/**
- * Point d'entrée principal du backend Gîte Lorlavie
- * - Initialise le serveur Express
- * - Configure la connexion à MongoDB
- * - Charge les routes principales de l'API
- * - Applique les middlewares de sécurité et de gestion des données
- */
-
 import express from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import cors from "cors";
 
-// Chargement des variables d'environnement (.env)
+import dotenv from "dotenv";
 dotenv.config();
 
 // Import des routeurs
@@ -27,9 +18,22 @@ const app = express();
 app.use(express.json());
 
 // Middleware CORS pour sécuriser les échanges entre frontend et backend
+const allowedOrigins = [
+  "http://127.0.0.1:5500", // Live Server local
+  "http://localhost:5500", // Variante locale
+  "https://gite-lorlavie.onrender.com", // Frontend déployé
+];
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: function (origin, callback) {
+      // Autorise les requêtes sans origin (ex: Postman) ou si l'origine est dans la liste
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );

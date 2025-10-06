@@ -1,6 +1,6 @@
-import { showMessage } from "../js/config.js";
-import dotenv from "dotenv";
-dotenv.config();
+import { API_URL } from "./config.js";
+import { showMessage } from "./config.js";
+
 // Déconnexion admin
 export function Logout() {
   const logoutBtn = document.getElementById("logout-btn");
@@ -9,7 +9,7 @@ export function Logout() {
       e.preventDefault();
       const logoutMsg = document.getElementById("logout-message");
       try {
-        await fetch(`${process.env.API_URL}/api/auth/logout`, {
+        await fetch(`${API_URL}/api/auth/logout`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

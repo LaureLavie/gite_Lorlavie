@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+import { API_URL } from "./config.js";
 
 const adminForm = document.getElementById("admin-form");
 const adminsListDiv = document.getElementById("admins-list");
@@ -29,7 +28,7 @@ cancelBtn.addEventListener("click", (e) => {
 async function fetchAdmins() {
   const token = localStorage.getItem("adminToken");
   try {
-    const res = await fetch(`${process.env.API_URL}/api/auth/`, {
+    const res = await fetch(`${API_URL}/api/auth/`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const admins = await res.json();
@@ -94,7 +93,7 @@ async function editAdminForm(id) {
   editingAdminId = id;
   const token = localStorage.getItem("adminToken");
   try {
-    const res = await fetch(`${process.env.API_URL}/api/auth/${id}`, {
+    const res = await fetch(`${API_URL}/api/auth/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     const admin = await res.json();
@@ -131,7 +130,7 @@ adminForm.addEventListener("submit", async (e) => {
     let res, result;
     if (!editingAdminId) {
       // Ajout
-      res = await fetch(`${process.env.API_URL}/api/auth/`, {
+      res = await fetch(`${API_URL}/api/auth/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -141,7 +140,7 @@ adminForm.addEventListener("submit", async (e) => {
       });
     } else {
       // Modification
-      res = await fetch(`${process.env.API_URL}/api/auth/${editingAdminId}`, {
+      res = await fetch(`${API_URL}/api/auth/${editingAdminId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -178,7 +177,7 @@ async function deleteAdmin(id) {
   if (!confirm("Supprimer cet administrateur ?")) return;
   const token = localStorage.getItem("adminToken");
   try {
-    const res = await fetch(`${process.env.API_URL}/api/auth/${id}`, {
+    const res = await fetch(`${API_URL}/api/auth/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });

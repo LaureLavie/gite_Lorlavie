@@ -1,6 +1,5 @@
 import { calculPrixReservation } from "./calculPrix.js";
-import dotenv from "dotenv";
-dotenv.config();
+import { API_URL } from "./config.js";
 
 export function Reservation() {
   const arriveeInput = document.getElementById("reservation-date-arrivee");
@@ -41,14 +40,11 @@ export function Reservation() {
   // Vérification de la disponibilité des dates
   async function verifierDisponibilite(dateArrivee, dateDepart) {
     try {
-      const res = await fetch(
-        `${process.env.API_URL}/api/calendrier/verifier`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ dateArrivee, dateDepart }),
-        }
-      );
+      const res = await fetch(`${API_URL}/api/calendrier/verifier`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dateArrivee, dateDepart }),
+      });
       const data = await res.json();
       return data.disponible;
     } catch (error) {

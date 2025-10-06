@@ -1,4 +1,5 @@
 // Importation des composants JS
+
 import { Navbar } from "./js/navbar.js";
 import { Footer } from "./js/footer.js";
 import { HoteNavbar } from "./js/hoteNavbar.js";

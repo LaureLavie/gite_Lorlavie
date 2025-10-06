@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+import { API_URL } from "./config.js";
 
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
@@ -24,7 +23,7 @@ const monthNames = [
 async function fetchCalendrier() {
   try {
     const res = await fetch(
-      `${process.env.API_URL}/api/calendrier/${currentYear}/${currentMonth + 1}`
+      `${API_URL}/api/calendrier/${currentYear}/${currentMonth + 1}`
     );
     const data = await res.json();
     return data.calendrier || [];
@@ -134,24 +133,36 @@ document.addEventListener("DOMContentLoaded", () => {
   if (validateBtn) {
     validateBtn.onclick = async () => {
       try {
-        const dates = Object.keys(dateStatus);
+        // Construit le tableau attendu par l'API
+        const datesPayload = Object.entries(dateStatus).map(
+          ([date, statut]) => ({
+            date,
+            statut,
+          })
+        );
         const token = localStorage.getItem("adminToken");
 
         // Envoi des modifications au serveur
-        const res = await fetch(`${process.env.API_URL}/api/calendrier/dates`, {
+        const res = await fetch(`${API_URL}/api/calendrier/dates`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            dates: dates,
-            statut: dateStatus[dates[0]], // À améliorer pour gérer plusieurs statuts
+            dates: datesPayload,
           }),
         });
 
         if (res.ok) {
           alert("Calendrier mis à jour avec succès !");
+          // Affiche les dates fermées
+          const datesFermees = datesPayload
+            .filter((d) => d.statut === "bloque")
+            .map((d) => d.date);
+          if (datesFermees.length > 0) {
+            alert("Dates fermées par l'admin :\n" + datesFermees.join("\n"));
+          }
           await CalendrierAdmin();
         } else {
           const error = await res.json();

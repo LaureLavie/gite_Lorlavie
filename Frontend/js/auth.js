@@ -1,7 +1,8 @@
-import { showMessage } from "../js/config.js";
+import { showMessage, API_URL } from "./config.js";
 
 // Connexion admin
 const loginForm = document.getElementById("login-form");
+console.log(loginForm);
 if (loginForm) {
   const errorDiv = loginForm.querySelector(".error-message");
   const successDiv = loginForm.querySelector(".successDiv");
@@ -15,12 +16,13 @@ if (loginForm) {
       return;
     }
     try {
-      const res = await fetch(`${process.env.API_URL}/api/auth/login`, {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
+      console.log(data);
       if (res.ok && data.token) {
         localStorage.setItem("adminToken", data.token);
         localStorage.setItem("adminData", JSON.stringify(data.admin));
@@ -28,6 +30,7 @@ if (loginForm) {
         showMessage(successDiv, "Connexion réussie", "success");
         setTimeout(() => (window.location.href = "dashboard.html"), 1000);
       } else {
+        console.error(data);
         showMessage(
           errorDiv,
           data.error || data.message || "Email ou mot de passe incorrect."

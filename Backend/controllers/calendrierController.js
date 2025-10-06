@@ -123,8 +123,8 @@ export const verifierDisponibilite = async (req, res) => {
  */
 export const updateStatusDates = async (req, res) => {
   try {
-    const { dates, statut, notes } = req.body;
-    const adminName = req.user?.name || "Admin"; // Assuming auth middleware provides user info
+    const { dates, notes } = req.body;
+    const adminName = req.user?.name || "Admin";
 
     if (!dates || !Array.isArray(dates) || dates.length === 0) {
       return res.status(400).json({
@@ -132,18 +132,13 @@ export const updateStatusDates = async (req, res) => {
       });
     }
 
-    if (!["disponible", "bloque"].includes(statut)) {
-      return res.status(400).json({
-        error: "Statut invalide. Utilisez 'disponible' ou 'bloque'",
-      });
-    }
-
     const updates = [];
-    for (const dateStr of dates) {
-      const date = new Date(dateStr);
+    for (const item of dates) {
+      if (!item.date || !item.statut) continue;
+      const date = new Date(item.date);
+      const statut = item.statut;
 
       if (statut === "disponible") {
-        // Libérer la date
         updates.push(
           CalendrierStat.findOneAndUpdate(
             { date },
@@ -156,8 +151,10 @@ export const updateStatusDates = async (req, res) => {
             { upsert: true }
           )
         );
-      } else {
-        // Bloquer la date
+      } else if (statut === "reserve") {
+        // Ne pas permettre de réserver manuellement ici (optionnel)
+        continue;
+      } else if (statut === "ferme" || statut === "bloque") {
         updates.push(
           CalendrierStat.findOneAndUpdate(
             { date },
@@ -178,7 +175,6 @@ export const updateStatusDates = async (req, res) => {
 
     res.json({
       message: `${dates.length} date(s) mise(s) à jour avec succès`,
-      statut,
       datesModifiees: dates,
     });
   } catch (error) {

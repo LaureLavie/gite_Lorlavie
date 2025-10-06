@@ -172,7 +172,7 @@
     background: $rouge;
     color: $blanc;
   }
-  &.dispo {
+  &.disponible {
     background: $vert;
     color: $blanc;
   }
@@ -259,7 +259,7 @@
     &.status-reserve {
       background: $rouge;
     }
-    &.status-dispo {
+    &.status-disponible {
       background: $vert;
     }
     &.status-ferme {

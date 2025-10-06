@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+import { API_URL } from "./config.js";
 import { calculPrixReservation } from "../js/calculPrix.js";
 
 const reservationListDiv = document.getElementById("reservation-list");
@@ -8,7 +7,7 @@ const messageDiv = document.getElementById("message");
 // Récupérer et afficher la liste
 export async function fetchReservations() {
   try {
-    const res = await fetch(`${process.env.API_URL}/api/reservations`);
+    const res = await fetch(`${API_URL}/api/reservations`);
     const reservations = await res.json();
     renderReservations(reservations);
   } catch (error) {
@@ -100,7 +99,7 @@ ${
 // Affiche la div d'édition sous la carte concernée
 export async function showEditDiv(id, action) {
   // Récupère la réservation
-  const res = await fetch(`${process.env.API_URL}/api/reservations/${id}`);
+  const res = await fetch(`${API_URL}/api/reservations/${id}`);
   const r = await res.json();
   const editDiv = document.getElementById(`edit-${id}`);
 
@@ -220,14 +219,11 @@ export async function showEditDiv(id, action) {
         prixTotal: calcMontant(),
       };
       try {
-        const res = await fetch(
-          `${process.env.API_URL}/api/reservations/${id}`,
-          {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-          }
-        );
+        const res = await fetch(`${API_URL}/api/reservations/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
         const result = await res.json();
         if (res.ok) {
           editDiv.querySelector("#edit-success").textContent =
@@ -255,12 +251,9 @@ export async function showEditDiv(id, action) {
     editDiv.querySelector("#btn-supprimer").onclick = async () => {
       if (!confirm("Supprimer cette réservation ?")) return;
       try {
-        const res = await fetch(
-          `${process.env.API_URL}/api/reservations/${id}`,
-          {
-            method: "DELETE",
-          }
-        );
+        const res = await fetch(`${API_URL}/api/reservations/${id}`, {
+          method: "DELETE",
+        });
         const result = await res.json();
         if (res.ok) {
           editDiv.querySelector("#edit-success").textContent =
@@ -287,12 +280,9 @@ export async function showEditDiv(id, action) {
   if (action === "valider") {
     editDiv.querySelector("#btn-valider").onclick = async () => {
       try {
-        const res = await fetch(
-          `${process.env.API_URL}/api/reservations/${id}/valider`,
-          {
-            method: "POST",
-          }
-        );
+        const res = await fetch(`${API_URL}/api/reservations/${id}/valider`, {
+          method: "POST",
+        });
         const result = await res.json();
         if (res.ok) {
           editDiv.querySelector("#edit-success").textContent =

@@ -27,13 +27,14 @@
       </div>
     </div>
     <script>
+      import { API_URL, showMessage } from "../../js/config.js";
       // Récupère le token dans l'URL
       const params = new URLSearchParams(window.location.search);
       const token = params.get("token");
       const messageDiv = document.getElementById("activation-message");
 
       if (token) {
-        fetch(`${process.env.API_URL}/api/auth/activate/${token}`)
+        fetch(`${API_URL}/api/auth/activate/${token}`)
           .then((res) => res.json())
           .then((data) => {
             if (

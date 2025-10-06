@@ -27,7 +27,6 @@ const CalendrierStatSchema = new mongoose.Schema({
       return this.statut === "reserve";
     },
   },
-
   // Notes administratives (pourquoi bloquée, etc.)
   notes: { type: String },
 
@@ -39,8 +38,5 @@ const CalendrierStatSchema = new mongoose.Schema({
 // Index pour optimiser les requêtes par date
 CalendrierStatSchema.index({ statut: 1, date: 1 });
 
-// NOTE: Les méthodes statiques qui effectuent des requêtes et upserts ont été
-// déplacées vers Backend/services/calendrierService.js pour séparer la logique
-// métier de la définition du schema et faciliter les tests.
 
 export default mongoose.model("CalendrierStat", CalendrierStatSchema);
