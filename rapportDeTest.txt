@@ -1,0 +1,71 @@
+🧪 Rapport de Test – Gîte Lorlavie
+
+1. Pré-requis
+- Node.js installé
+- MongoDB opérationnel
+- Fichier .env correctement rempli
+- Backend lancé (npm start)
+- Frontend accessible (Live Server ou Render)
+
+2. Tests Fonctionnels
+2.1. Visiteur
+- Consultation calendrier ✅OK => Affichage statuts corrects
+- Vérification disponibilité ✅OK => Dates bloquées/refusées
+- Calcul automatique du prix ✅OK => Prix affiché selon options
+- Formulaire réservation ✅OK => Données envoyées au back
+- Confirmation email ❌Non => Email non reçu
+- RGPD (case à cocher) ✅OK => Validation obligatoire
+- Formulaire contact ❌Non => Email non reçu, message non affiché
+
+2.2. Administrateur
+- Connexion admin ✅OK => JWT généré, accès sécurisé
+- Validation/réfus réservation ✅OK => Statut mis à jour, email
+- Modification réservation ✅OK => Prix recalculé, email
+- Blocage de dates ✅OK => Dates affichées en jaune
+- Gestion calendrier ✅OK => Lecture/écriture OK
+- Envoi d’emails automatiques ❌Non => Email non reçu par le client
+
+3. Tests Techniques
+- API REST (Insomnia) ✅OK => Toutes les routes testées
+- CORS ✅OK => Front/back communiquent
+- Sécurité JWT ✅OK => Accès admin protégé
+- Hashage des mots de passe ✅OK => Vérifié en base
+- Envoi d’emails (Nodemailer) ✅OK => Gmail configuré
+- Formulaire Contact ❌Non => Problème de serveur/ route
+- Stockage MongoDB ✅OK => Données bien enregistrées
+
+4. Scénarios Utilisateurs
+Réservation standard :
+- Sélection de dates disponibles
+- Remplissage formulaire
+- Validation RGPD
+- Confirmation email non reçue
+- Admin valide → email de confirmation non envoyé
+Blocage de dates :
+- Admin connecte
+- Sélectionne "Fermé"
+- Valide → dates affichées en jaune
+Contact :
+- Visiteur envoie un message
+- Email non reçu par l’admin
+- Message de succès non affiché
+
+5. Erreurs rencontrées et solutions
+
+CORS Error => Ajout de l’origine dans backend
+409 Conflict réservation => Affichage message, choix autres dates
+Email non envoyé => Vérification routes/ API_URL
+Données non affichées => Correction des IDs dans le HTML
+
+6. Recommandations
+- Tester chaque fonctionnalité après modification
+- Vérifier les emails dans le dossier spam
+- Utiliser Insomnia pour tester les routes API
+- Bien remplir le fichier .env avant lancement
+
+7. Conclusion
+Toutes les fonctionnalités principales ont été testées et validées (sauf les mails du formulaire de contact et de confirmation de réservation).
+Le système n’est pas encore prêt pour la mise en production et l’utilisation par les clients et l’administrateur.
+
+Rapport réalisé le 06/10/2025 – Gîte Lorlavie
+
