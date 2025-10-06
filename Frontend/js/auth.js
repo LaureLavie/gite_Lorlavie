@@ -1,6 +1,3 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 import { showMessage } from "../js/config.js";
 
 // Connexion admin
