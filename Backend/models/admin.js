@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 
-/**
- * Modèle Administrateur
- * - Gère les comptes admin du site
- * - Sécurité : mot de passe stocké en hash
- * - Conforme RGPD : aucune donnée sensible en clair
- */
+
 const AdminSchema = new mongoose.Schema(
   {
     name: { type: String, required: true }, // Nom de l'administrateur

@@ -1,8 +1,3 @@
-/**
- * Routeur Client
- * - Gère toutes les opérations CRUD pour les clients
- * - Conforme au cahier des charges : clarté, organisation MVC
- */
 
 import express from "express";
 import { getClients, getClientById, 

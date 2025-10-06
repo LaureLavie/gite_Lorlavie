@@ -1,7 +1,3 @@
-/**
- * Contrôleur Reservation
- * Gère tout le cycle de vie des réservations avec la nouvelle logique métier
- */
 import { calculPrixReservation } from "../middlewares/calculReservation.js";
 import Reservation from "../models/reservation.js";
 import Client from "../models/client.js";
@@ -62,7 +58,7 @@ export const createReservation = async (req, res) => {
       });
     }
 
-    // Calculer le prix total (utilisation de la fonction utilitaire)
+    // Calculer le prix total
     const nuits = ReservationService.calculerNombreNuits(
       dateArrivee,
       dateDepart
@@ -122,12 +118,7 @@ export const createReservation = async (req, res) => {
   }
 };
 
-/**
- * Valider une réservation (admin)
- * 1. Changer statut à "Confirmee"
- * 2. Confirmer le blocage des dates
- * 3. Envoyer email de confirmation
- */
+//Valider une réservation (admin)
 export const validerReservation = async (req, res) => {
   try {
     const { id } = req.params;
@@ -153,7 +144,6 @@ export const validerReservation = async (req, res) => {
     await reservation.save();
 
     // Les dates sont déjà bloquées, juste confirmer le statut
-    // Confirmer le blocage des dates : utiliser le service Calendrier
     await CalendrierService.bloquerPeriode(
       reservation.dateArrivee,
       reservation.dateDepart,
@@ -178,12 +168,7 @@ export const validerReservation = async (req, res) => {
   }
 };
 
-/**
- * Refuser une réservation (admin)
- * 1. Changer statut à "Refusee"
- * 2. Libérer les dates
- * 3. Envoyer email de refus
- */
+//réfuser une réservation (admin)
 export const refuserReservation = async (req, res) => {
   try {
     const { id } = req.params;
@@ -228,13 +213,7 @@ export const refuserReservation = async (req, res) => {
   }
 };
 
-/**
- * Modifier une réservation (admin)
- * 1. Vérifier nouvelles dates si modifiées
- * 2. Mettre à jour calendrier
- * 3. Recalculer prix si nécessaire
- * 4. Envoyer email de modification
- */
+//Modifier une réservation (admin)
 export const modifierReservation = async (req, res) => {
   try {
     const { id } = req.params;
@@ -335,9 +314,7 @@ export const modifierReservation = async (req, res) => {
   }
 };
 
-/**
- * Récupérer toutes les réservations (admin)
- */
+// Récupérer toutes les réservations (admin)
 export const getReservations = async (req, res) => {
   try {
     const { statut } = req.query;
@@ -353,9 +330,7 @@ export const getReservations = async (req, res) => {
   }
 };
 
-/**
- * Récupérer une réservation par ID
- */
+//récupérer une réservation par son id (admin)
 export const getReservationById = async (req, res) => {
   try {
     const reservation = await Reservation.findById(req.params.id).populate(
@@ -370,9 +345,7 @@ export const getReservationById = async (req, res) => {
   }
 };
 
-/**
- * Supprimer une réservation (admin)
- */
+//Supprimer une réservation (admin)
 export const deleteReservation = async (req, res) => {
   try {
     const reservation = await Reservation.findById(req.params.id);

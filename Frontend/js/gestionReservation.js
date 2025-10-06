@@ -306,6 +306,11 @@ export async function showEditDiv(id, action) {
   }
 }
 export const validerReservation = async (req, res) => {
+  fetch(`${API_URL}/api/reservations/${id}/valider`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ statut: "validee" }),
+  });
   try {
     const { id } = req.params;
     const modificationsAdmin = req.body?.modificationsAdmin;

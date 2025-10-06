@@ -1,9 +1,7 @@
 import CalendrierStat from "../models/calendrier.js";
 import * as CalendrierService from "../services/calendrierService.js";
 
-/**
- * Génère un calendrier de base avec toutes les dates du mois en "disponible"
- */
+//Génération du calendrier
 export function calendrierBase(dateDebut, dateFin) {
   const calendrier = {};
   for (let d = new Date(dateDebut); d <= dateFin; d.setDate(d.getDate() + 1)) {
@@ -18,9 +16,7 @@ export function calendrierBase(dateDebut, dateFin) {
   return calendrier;
 }
 
-/**
- * Récupérer le statut du calendrier pour une période (admin et visiteurs)
- */
+// Récupérer le statut du calendrier pour une période (admin et visiteurs)
 export const getCalendrierStat = async (req, res) => {
   try {
     const { annee, mois } = req.params;
@@ -64,9 +60,7 @@ export const getCalendrierStat = async (req, res) => {
   }
 };
 
-/**
- * Vérifier la disponibilité d'une période (pour les visiteurs)
- */
+//Vérification de la disponibilité d'une période (pour les visiteurs)
 export const verifierDisponibilite = async (req, res) => {
   try {
     const { dateArrivee, dateDepart } = req.body;
@@ -118,9 +112,7 @@ export const verifierDisponibilite = async (req, res) => {
   }
 };
 
-/**
- * Mettre à jour le statut de dates spécifiques (admin uniquement)
- */
+//mettre a jour les dates spécifiques (admin uniquement)
 export const updateStatusDates = async (req, res) => {
   try {
     const { dates, notes } = req.body;
@@ -183,9 +175,7 @@ export const updateStatusDates = async (req, res) => {
   }
 };
 
-/**
- * Bloquer une période complète (admin)
- */
+//Bloquer une période complète (admin)
 export const bloquerPeriode = async (req, res) => {
   try {
     const { dateDebut, dateFin, notes } = req.body;
@@ -228,14 +218,12 @@ export const bloquerPeriode = async (req, res) => {
     }
 
     // Utiliser le service pour bloquer la période (upserts internes)
-    // Le service peut retourner un tableau des dates créées/modifiées.
     const resultat = await CalendrierService.bloquerPeriode(debut, fin, null, {
       notes,
       modifiePar: adminName,
     });
 
-    // Déterminer le nombre de jours bloqués : soit à partir du retour du service,
-    // soit en calculant localement la différence entre fin et debut.
+    // Déterminer le nombre de jours bloqués
     let nombreJours;
     if (Array.isArray(resultat)) {
       nombreJours = resultat.length;
@@ -253,9 +241,7 @@ export const bloquerPeriode = async (req, res) => {
   }
 };
 
-/**
- * Récupérer les dates disponibles pour un mois donné (optimisé pour le frontend)
- */
+// Récupérer les dates disponibles pour un mois donné
 export const getDatesDisponibles = async (req, res) => {
   try {
     const { annee, mois } = req.params;
@@ -264,7 +250,7 @@ export const getDatesDisponibles = async (req, res) => {
     const dateFinExclusive = new Date(dateFin);
     dateFinExclusive.setDate(dateFinExclusive.getDate() + 1);
 
-    // Récupérer seulement les dates NON disponibles via le modèle (service retourne les dates si besoin)
+    // Récupérer seulement les dates NON disponibles
     const datesOccupees = await CalendrierStat.find({
       date: { $gte: dateDebut, $lt: dateFinExclusive },
       statut: { $ne: "disponible" },

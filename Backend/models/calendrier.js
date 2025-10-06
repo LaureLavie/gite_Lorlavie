@@ -1,11 +1,5 @@
 import mongoose from "mongoose";
 
-/**
- * Modèle CalendrierStat
- * - Gère les statuts de chaque date du calendrier
- * - Permet à l'admin de bloquer des dates
- * - Lie les dates réservées aux réservations
- */
 const CalendrierStatSchema = new mongoose.Schema({
   date: {
     type: Date,
@@ -37,6 +31,5 @@ const CalendrierStatSchema = new mongoose.Schema({
 
 // Index pour optimiser les requêtes par date
 CalendrierStatSchema.index({ statut: 1, date: 1 });
-
 
 export default mongoose.model("CalendrierStat", CalendrierStatSchema);

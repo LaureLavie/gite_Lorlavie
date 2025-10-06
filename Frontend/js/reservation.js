@@ -199,7 +199,7 @@ export function Reservation() {
         },
         prixTotal: parseInt(montantSpan.textContent, 10),
       };
-
+      console.log("Réservation enregistrée :", reservation);
       // Stockage dans localStorage
       localStorage.setItem("reservationEnCours", JSON.stringify(reservation));
 

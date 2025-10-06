@@ -1,6 +1,6 @@
 # 🏡 Gîte Lorlavie - Système de Réservation
 
-Système complet de gestion de réservations pour gîte avec calendrier synchronisé en temps réel.
+Système de gestion de réservations pour gîte avec calendrier synchronisé en temps réel.
 
 ## ✨ Fonctionnalités
 
@@ -181,7 +181,7 @@ const tarifMenage = 30; // Coût du service ménage
 
 ### Tester l'API avec Insomnia
 
-```bash
+````bash
 ---
 
 ## 📝 Création du premier admin
@@ -225,7 +225,7 @@ const tarifMenage = 30; // Coût du service ménage
   createdAt: Date,
   updatedAt: Date
 }
-```
+````
 
 #### `clients`
 

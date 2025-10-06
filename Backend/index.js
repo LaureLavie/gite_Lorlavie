@@ -10,6 +10,7 @@ import reservationRouter from "./routes/reservationRoute.js";
 import clientRouter from "./routes/clientRoute.js";
 import authRouter from "./routes/authRoute.js";
 import calendrierRouter from "./routes/calendrierRoute.js";
+import contactRouter from "./routes/contactRoute.js";
 
 // Initialisation de l'application Express
 const app = express();
@@ -19,15 +20,14 @@ app.use(express.json());
 
 // Middleware CORS pour sécuriser les échanges entre frontend et backend
 const allowedOrigins = [
-  "http://127.0.0.1:5500", // Live Server local
-  "http://localhost:5500", // Variante locale
-  "https://gite-lorlavie.onrender.com", // Frontend déployé
+  "http://127.0.0.1:5500",
+  "http://localhost:5500",
+  "https://gite-lorlavie.onrender.com",
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Autorise les requêtes sans origin (ex: Postman) ou si l'origine est dans la liste
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -46,13 +46,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// Définition des routes principales de l'API
 app.use("/api/calendrier", calendrierRouter); //gestion du calendrier
 app.use("/api/reservations", reservationRouter); // Gestion des réservations
 app.use("/api/clients", clientRouter); // Gestion des clients
 app.use("/api/auth", authRouter); // Authentification admin
+app.use("/api/contact", contactRouter); // Gestion des contacts
 
-// Connexion à la base MongoDB (sécurisée via .env)
 mongoose
   .connect(process.env.MONGODB_URI, {})
   .then(() => console.log("Connecté à MongoDB"))
@@ -60,7 +59,7 @@ mongoose
     console.error("Erreur lors de la connexion à MongoDB");
   });
 
-// Lancement du serveur sur le port défini dans .env
+// Lancement du serveur
 app.listen(process.env.PORT, () =>
   console.log(`Le serveur tourne sur le port ${process.env.PORT}`)
 );

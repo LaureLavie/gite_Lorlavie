@@ -9,9 +9,9 @@ export const verifyAdmin = (req, res, next) => {
   try {
     // Vérification et décodage du token avec la clé secrète
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    // Ajout des infos admin à la requête pour usage ultérieur
+
     req.admin = decoded;
-    next(); // Passage au middleware suivant
+    next();
   } catch (error) {
     res.status(403).json({ error: "Token invalide" });
   }

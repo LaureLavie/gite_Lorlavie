@@ -1,10 +1,5 @@
 import mongoose from "mongoose";
 
-/**
- * Modèle Reservation unifié
- * - Remplace les anciens modèles Reservation et ConfirmReservation
- * - Gère tout le cycle de vie d'une réservation
- */
 const ReservationSchema = new mongoose.Schema({
   client: {
     type: mongoose.Schema.Types.ObjectId,

@@ -20,6 +20,17 @@
     <h1>Finaliser votre Réservation</h1>
 
     <form class="form" id="admin-form">
+      <div>
+        <strong>Date d'arrivée :</strong> <span id="date-arrivee"></span><br />
+        <strong>Date de départ :</strong> <span id="date-depart"></span><br />
+        <strong>Nombre de personnes :</strong>
+        <span id="nombre-personnes"></span><br />
+        <strong>Personnes supplémentaires :</strong>
+        <span id="personnes-supp"></span><br />
+        <strong>Options :</strong><br />
+        <span id="options"></span><br />
+        <strong>Prix total :</strong> <span id="montant-total"></span>
+      </div>
       <input
         type="text"
         id="nom"
@@ -86,42 +97,38 @@
           de suppression à tout moment.
         </p>
       </div>
+
+      <div class="switch-container">
+        <img
+          src="../../img/dessin marmotte noir.webp"
+          alt="Marmotte"
+          class="marmotte-icon"
+        />
+        <h2 class="switch-title">Mode de paiement</h2>
+        <div class="switch-options" id="mode-paiement">
+          <btn class="switch-btn">en ligne</btn>
+          <btn class="switch-btn">especes</btn>
+          <btn class="switch-btn">carte</btn>
+        </div>
+      </div>
+      <div class="successDiv" style="display: none"></div>
+      <div class="errorDiv" style="display: none"></div>
+
+      <div class="text-container">
+        <h2>Informations Importantes</h2>
+        <p>Pas de paiement en ligne au moment de la réservation</p>
+        <p>Le propriétaire vous communiquera les modalités de paiement.</p>
+        <p>
+          Une confirmation vous sera envoyée par mail une fois votre réservation
+          validée.
+        </p>
+      </div>
+
+      <div class="button-container">
+        <button class="button-brown">Annuler</button>
+        <button class="button-green" type="submit">Valider</button>
+      </div>
     </form>
-
-    <div class="switch-container">
-      <img
-        src="../../img/dessin marmotte noir.webp"
-        alt="Marmotte"
-        class="marmotte-icon"
-      />
-      <h2 class="switch-title">Mode de paiement</h2>
-      <div class="switch-options" id="mode-paiement">
-        <btn class="switch-btn">en ligne</btn>
-        <btn class="switch-btn">especes</btn>
-        <btn class="switch-btn">carte</btn>
-      </div>
-      <div class="amount-final">
-        <label>Montant</label>
-        <span id="montant">65€</span>
-      </div>
-    </div>
-    <div class="successDiv" style="display: none"></div>
-    <div class="errorDiv" style="display: none"></div>
-
-    <div class="text-container">
-      <h2>Informations Importantes</h2>
-      <p>Pas de paiement en ligne au moment de la réservation</p>
-      <p>Le propriétaire vous communiquera les modalités de paiement.</p>
-      <p>
-        Une confirmation vous sera envoyée par mail une fois votre réservation
-        validée.
-      </p>
-    </div>
-
-    <div class="button-container">
-      <button class="button-brown">Annuler</button>
-      <button class="button-green" type="submit">Valider</button>
-    </div>
 
     <div id="hoteFooter"></div>
     <script type="module" src="../../js/paiement.js"></script>

@@ -198,3 +198,15 @@ export const htmlReservationModifiee = (reservation, client) => {
     </html>
   `;
 };
+
+// Préparation du contenu HTML pour le mail Contact
+export const sendContactMail = async (nom, prenom, message) => {
+  const html = `
+    <h2>Nouveau message de contact</h2>
+    <p><strong>Nom :</strong> ${nom}</p>
+    <p><strong>Prénom :</strong> ${prenom}</p>
+    <p><strong>Message :</strong><br>${message}</p>
+    <p>Reçu le : ${new Date().toLocaleString("fr-FR")}</p>
+  `;
+  await sendMail(process.env.EMAIL_USER, "Nouveau message de contact", html);
+};

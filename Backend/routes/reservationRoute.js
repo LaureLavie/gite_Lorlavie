@@ -1,8 +1,3 @@
-/**
- * Routeur Réservation
- * - Gère toutes les opérations CRUD pour les réservations
- */
-
 import express from "express";
 import {
   createReservation,

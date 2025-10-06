@@ -1,9 +1,6 @@
 import Client from "../models/client.js";
 
-/**
- * Récupérer tous les clients
- * - Utilisé pour l'interface d'administration
- */
+//récupérer tous les clients
 export const getClients = async (req, res) => {
   try {
     const clients = await Client.find();
@@ -13,10 +10,7 @@ export const getClients = async (req, res) => {
   }
 };
 
-/**
- * Récupérer un client par ID
- * - Permet d'afficher les détails d'un client
- */
+//Récupérer un client par son ID
 export const getClientById = async (req, res) => {
   try {
     const client = await Client.findById(req.params.id);
@@ -40,11 +34,10 @@ export const createClient = async (req, res) => {
 // Modifier un client existant
 export const updateClient = async (req, res) => {
   try {
-    const client = await Client.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
+    const client = await Client.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
     if (!client) return res.status(404).json({ error: "Client non trouvé" });
     res.json(client);
   } catch (error) {

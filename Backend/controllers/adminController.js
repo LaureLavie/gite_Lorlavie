@@ -8,12 +8,7 @@ import {
   htmlResetPassword,
 } from "../middlewares/mail.js";
 
-/**
- * Inscription d'un nouvel administrateur
- * - Hash du mot de passe avec bcrypt (12 rounds)
- * - Création en base MongoDB
- * - Retourne l'admin créé (sans le hash)
- */
+//Inscription d'un nouvel administrateur (auto-inscription)
 export const registerAdmin = async (req, res) => {
   try {
     // Validation basique des champs
@@ -23,7 +18,7 @@ export const registerAdmin = async (req, res) => {
         message: "veuillez entrer votre nom, prénom, mail et mot de passe",
       });
     }
-//vérifie si l'admin existe ou pas encore
+    //vérifie si l'admin existe ou pas encore
     const existingAdmin = await Admin.findOne({ email });
     if (existingAdmin) {
       return res.status(400).json({
@@ -67,9 +62,7 @@ export const registerAdmin = async (req, res) => {
   }
 };
 
-/**
- * Active le compte utilisateur via le token reçu par mail
- */
+//Activation du compte Admin via le token envoyé par mail
 export const activateAccount = async (req, res) => {
   try {
     const { token } = req.params;
@@ -154,11 +147,7 @@ export const resetPassword = async (req, res) => {
   }
 };
 
-/**
- * Connexion administrateur -
- * - Vérifie email et mot de passe
- * - Génère un token JWT sécurisé
- */
+//Connexion Administrateur
 export const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -174,7 +163,9 @@ export const loginAdmin = async (req, res) => {
     }
 
     if (!admin.isVerified) {
-      return res.status(403).json({ error: "Compte non activé. Vérifiez vos emails." });
+      return res
+        .status(403)
+        .json({ error: "Compte non activé. Vérifiez vos emails." });
     }
 
     const valid = await bcrypt.compare(password, admin.password);
@@ -222,10 +213,7 @@ export const logoutAdmin = async (req, res) => {
   }
 };
 
-/**
- * Récupérer tous les administrateurs
- * - Pour interface de gestion
- */
+//Recupérer tous les administrateurs
 export const getAdmins = async (req, res) => {
   try {
     const admins = await Admin.find({}, { password: 0 }); // On masque le hash
@@ -235,9 +223,7 @@ export const getAdmins = async (req, res) => {
   }
 };
 
-/**
- * Récupérer un administrateur par ID
- */
+//Récupérer un admin par son ID
 export const getAdminById = async (req, res) => {
   try {
     const admin = await Admin.findById(req.params.id, { password: 0 });
@@ -251,7 +237,6 @@ export const getAdminById = async (req, res) => {
 
 export const createAdmin = async (req, res) => {
   try {
-    // Validation basique des champs
     const { name, surname, email, password } = req.body;
     if (!name || !surname || !email || !password) {
       return res.status(400).json({
@@ -266,41 +251,38 @@ export const createAdmin = async (req, res) => {
         message: "Un administrateur avec cet email existe déjà",
       });
     }
-// Hash du mot de passe
-const hashedPassword = await bcrypt.hash(password, 12);
+    // Hash du mot de passe
+    const hashedPassword = await bcrypt.hash(password, 12);
 
-// Création de l'admin directement activé (pas d'email d'activation)
-const newAdmin = await Admin.create({
-  name,
-  surname,
-  email,
-  password: hashedPassword,
-  role: "admin",
-  isVerified: true, // Directement vérifié car créé par un admin
-});
+    // Création de l'admin directement activé (pas d'email d'activation)
+    const newAdmin = await Admin.create({
+      name,
+      surname,
+      email,
+      password: hashedPassword,
+      role: "admin",
+      isVerified: true, // Directement vérifié car créé par un admin
+    });
 
-// Retourner l'admin créé (sans le mot de passe)
-res.status(201).json({
-  message: "Administrateur créé avec succès",
-  admin: {
-    id: newAdmin._id,
-    name: newAdmin.name,
-    surname: newAdmin.surname,
-    email: newAdmin.email,
-    isVerified: newAdmin.isVerified,
-    createdAt: newAdmin.createdAt,
-  },
-});
-} catch (error) {
-console.error("Create admin error:", error);
-res.status(500).json({ message: "Erreur interne du serveur" });
-}
+    // Retourner l'admin créé (sans le mot de passe)
+    res.status(201).json({
+      message: "Administrateur créé avec succès",
+      admin: {
+        id: newAdmin._id,
+        name: newAdmin.name,
+        surname: newAdmin.surname,
+        email: newAdmin.email,
+        isVerified: newAdmin.isVerified,
+        createdAt: newAdmin.createdAt,
+      },
+    });
+  } catch (error) {
+    console.error("Create admin error:", error);
+    res.status(500).json({ message: "Erreur interne du serveur" });
+  }
 };
 
-/**
- * Modifier un administrateur
- * - Si mot de passe modifié, on le hash
- */
+//Modifier un administrateur
 export const updateAdmin = async (req, res) => {
   try {
     const update = { ...req.body };

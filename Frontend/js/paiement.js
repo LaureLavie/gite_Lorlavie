@@ -28,12 +28,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const reservation = JSON.parse(
     localStorage.getItem("reservationEnCours") || "{}"
   );
-  if (reservation.prixTotal) {
-    const montantDisplay = document.getElementById("montant-total");
-    if (montantDisplay) {
-      montantDisplay.textContent = reservation.prixTotal + "€";
-    }
-  }
+  console.log("Réservation récupérée :", reservation);
+
+  document.getElementById("date-arrivee").textContent =
+    reservation.dateArrivee || "";
+  document.getElementById("date-depart").textContent =
+    reservation.dateDepart || "";
+  document.getElementById("nombre-personnes").textContent =
+    reservation.nombrePersonnes || "";
+  document.getElementById("personnes-supp").textContent =
+    reservation.personnesSupplementaires || "";
+  document.getElementById("options").textContent = reservation.options
+    ? `Ménage: ${reservation.options.menage ? "Oui" : "Non"}, Commentaires: ${
+        reservation.options.commentaires || ""
+      }`
+    : "";
+  document.getElementById("montant-total").textContent = reservation.prixTotal
+    ? reservation.prixTotal + "€"
+    : "";
 });
 
 // Soumission du formulaire
@@ -131,8 +143,11 @@ if (form) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reservation),
       });
-
       const result = await res.json();
+      console.log("Réponse serveur:", result);
+      setTimeout(() => {
+        window.location.href = "confirmation.html";
+      }, 1500);
 
       if (res.ok) {
         // Succès
@@ -141,11 +156,10 @@ if (form) {
           "Réservation envoyée avec succès ! Redirection...";
         successDiv.style.display = "block";
         errorDiv.style.display = "none";
-
-        // Redirection vers la page de confirmation
-        setTimeout(() => {
-          window.location.href = "confirmation.html";
-        }, 1500);
+        localStorage.setItem(
+          "reservationConfirmee",
+          JSON.stringify(reservation)
+        );
       } else {
         errorDiv.textContent =
           result.error ||
