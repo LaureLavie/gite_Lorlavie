@@ -23,7 +23,7 @@
       </div>
       <h1>Activation de votre compte</h1>
       <div class="form">
-      <div id="activation-message" class="message-container"></div>
+        <div id="activation-message" class="message-container"></div>
       </div>
     </div>
     <script>
@@ -33,7 +33,7 @@
       const messageDiv = document.getElementById("activation-message");
 
       if (token) {
-        fetch(`http://localhost:3000/api/auth/activate/${token}`)
+        fetch(`${process.env.API_URL}/api/auth/activate/${token}`)
           .then((res) => res.json())
           .then((data) => {
             if (
@@ -52,7 +52,6 @@
     </div>
   </div>
 `;
-
             } else {
               messageDiv.innerHTML = `
   <div class="card card-brown" style="min-width: 320px; margin: 2rem auto; padding: 2rem; text-align: center;">

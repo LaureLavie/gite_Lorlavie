@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 const adminForm = document.getElementById("admin-form");
 const adminsListDiv = document.getElementById("admins-list");
 const cancelBtn = document.getElementById("cancel-btn");
@@ -26,8 +29,8 @@ cancelBtn.addEventListener("click", (e) => {
 async function fetchAdmins() {
   const token = localStorage.getItem("adminToken");
   try {
-    const res = await fetch(`http://localhost:3000/api/auth/`, {
-      headers: { Authorization: `Bearer ${token}` }
+    const res = await fetch(`${process.env.API_URL}/api/auth/`, {
+      headers: { Authorization: `Bearer ${token}` },
     });
     const admins = await res.json();
     listingAdmins(admins);
@@ -39,7 +42,9 @@ async function fetchAdmins() {
 
 // Affichage dynamique des admins
 function listingAdmins(admins) {
-  adminsListDiv.innerHTML = admins.map(admin => `
+  adminsListDiv.innerHTML = admins
+    .map(
+      (admin) => `
     <div class="card card--white">
       <div class="card__badge">${admin.surname.toUpperCase()}</div>
       <div class="card__icons">
@@ -51,18 +56,26 @@ function listingAdmins(admins) {
         </button>
       </div>
       <div class="card__content">
-        <div class="card__row"><span>Nom :</span> <strong>${admin.name}</strong></div>
-        <div class="card__row"><span>Prénom :</span> <strong>${admin.surname}</strong></div>
-        <div class="card__row"><span>Email :</span> <strong>${admin.email}</strong></div>
+        <div class="card__row"><span>Nom :</span> <strong>${
+          admin.name
+        }</strong></div>
+        <div class="card__row"><span>Prénom :</span> <strong>${
+          admin.surname
+        }</strong></div>
+        <div class="card__row"><span>Email :</span> <strong>${
+          admin.email
+        }</strong></div>
       </div>
     </div>
-  `).join('');
+  `
+    )
+    .join("");
 
   // Ajoute les listeners pour modifier et supprimer
-  adminsListDiv.querySelectorAll(".icon-modif").forEach(btn => {
+  adminsListDiv.querySelectorAll(".icon-modif").forEach((btn) => {
     btn.addEventListener("click", () => editAdminForm(btn.dataset.id));
   });
-  adminsListDiv.querySelectorAll(".icon-delete").forEach(btn => {
+  adminsListDiv.querySelectorAll(".icon-delete").forEach((btn) => {
     btn.addEventListener("click", () => deleteAdmin(btn.dataset.id));
   });
 }
@@ -81,8 +94,8 @@ async function editAdminForm(id) {
   editingAdminId = id;
   const token = localStorage.getItem("adminToken");
   try {
-    const res = await fetch(`http://localhost:3000/api/auth/${id}`, {
-      headers: { Authorization: `Bearer ${token}` }
+    const res = await fetch(`${process.env.API_URL}/api/auth/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
     });
     const admin = await res.json();
     adminForm.name.value = admin.name;
@@ -94,7 +107,8 @@ async function editAdminForm(id) {
     successDiv.style.display = "none";
     errorDiv.style.display = "none";
   } catch (err) {
-    errorDiv.textContent = "Erreur lors de la récupération de l'administrateur.";
+    errorDiv.textContent =
+      "Erreur lors de la récupération de l'administrateur.";
     errorDiv.style.display = "block";
   }
 }
@@ -106,7 +120,7 @@ adminForm.addEventListener("submit", async (e) => {
   const data = {
     name: adminForm.name.value,
     surname: adminForm.surname.value,
-    email: adminForm.email.value
+    email: adminForm.email.value,
   };
   // On ajoute le mot de passe uniquement à la création ou si modifié
   if (!editingAdminId && adminForm.password.value) {
@@ -117,35 +131,38 @@ adminForm.addEventListener("submit", async (e) => {
     let res, result;
     if (!editingAdminId) {
       // Ajout
-      res = await fetch(`http://localhost:3000/api/auth/`, {
+      res = await fetch(`${process.env.API_URL}/api/auth/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });
     } else {
       // Modification
-      res = await fetch(`http://localhost:3000/api/auth/${editingAdminId}`, {
+      res = await fetch(`${process.env.API_URL}/api/auth/${editingAdminId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });
     }
     result = await res.json();
     if (res.ok) {
-      successDiv.textContent = editingAdminId ? "Administrateur modifié" : "Administrateur ajouté";
+      successDiv.textContent = editingAdminId
+        ? "Administrateur modifié"
+        : "Administrateur ajouté";
       successDiv.style.display = "block";
       errorDiv.style.display = "none";
       adminForm.style.display = "none";
       resetForm();
       fetchAdmins();
     } else {
-      errorDiv.textContent = result.error || result.message || "Erreur lors de l'opération";
+      errorDiv.textContent =
+        result.error || result.message || "Erreur lors de l'opération";
       errorDiv.style.display = "block";
       successDiv.style.display = "none";
     }
@@ -161,9 +178,9 @@ async function deleteAdmin(id) {
   if (!confirm("Supprimer cet administrateur ?")) return;
   const token = localStorage.getItem("adminToken");
   try {
-    const res = await fetch(`http://localhost:3000/api/auth/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/api/auth/${id}`, {
       method: "DELETE",
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
     });
     const result = await res.json();
     if (res.ok) {
@@ -173,7 +190,8 @@ async function deleteAdmin(id) {
       fetchAdmins();
       resetForm();
     } else {
-      errorDiv.textContent = result.error || result.message || "Erreur lors de la suppression";
+      errorDiv.textContent =
+        result.error || result.message || "Erreur lors de la suppression";
       errorDiv.style.display = "block";
       successDiv.style.display = "none";
     }

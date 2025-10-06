@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 let selectedStatus = "disponible";
@@ -21,7 +24,7 @@ const monthNames = [
 async function fetchCalendrier() {
   try {
     const res = await fetch(
-      `http://localhost:3000/api/calendrier/${currentYear}/${currentMonth + 1}`
+      `${process.env.API_URL}/api/calendrier/${currentYear}/${currentMonth + 1}`
     );
     const data = await res.json();
     return data.calendrier || [];
@@ -135,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const token = localStorage.getItem("adminToken");
 
         // Envoi des modifications au serveur
-        const res = await fetch("http://localhost:3000/api/calendrier/dates", {
+        const res = await fetch(`${process.env.API_URL}/api/calendrier/dates`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

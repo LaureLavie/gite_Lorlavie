@@ -3,6 +3,7 @@
     "sass": "^1.91.0"
   },
   "dependencies": {
+    "dotenv": "^17.2.3",
     "install": "^0.13.0"
   }
 }

@@ -1,4 +1,7 @@
-import {showMessage} from "../js/config.js";
+import dotenv from "dotenv";
+dotenv.config();
+
+import { showMessage } from "../js/config.js";
 
 // Connexion admin
 const loginForm = document.getElementById("login-form");
@@ -15,7 +18,7 @@ if (loginForm) {
       return;
     }
     try {
-      const res = await fetch(`http://localhost:3000/api/auth/login`, {
+      const res = await fetch(`${process.env.API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -26,9 +29,12 @@ if (loginForm) {
         localStorage.setItem("adminData", JSON.stringify(data.admin));
         errorDiv.style.display = "none";
         showMessage(successDiv, "Connexion réussie", "success");
-        setTimeout(() => window.location.href = "dashboard.html", 1000);
+        setTimeout(() => (window.location.href = "dashboard.html"), 1000);
       } else {
-        showMessage(errorDiv, data.error || data.message || "Email ou mot de passe incorrect.");
+        showMessage(
+          errorDiv,
+          data.error || data.message || "Email ou mot de passe incorrect."
+        );
         successDiv.style.display = "none";
       }
     } catch (err) {
@@ -37,8 +43,6 @@ if (loginForm) {
     }
   });
 }
-
-
 
 // Inscription admin
 const registerForm = document.getElementById("register-form");
@@ -56,7 +60,7 @@ if (registerForm) {
       return;
     }
     try {
-      const res = await fetch(`http://localhost:3000/api/auth/register`, {
+      const res = await fetch(`${process.env.API_URL}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, surname, email, password }),
@@ -64,10 +68,17 @@ if (registerForm) {
       const data = await res.json();
       if (res.ok && data.admin) {
         errorDiv.style.display = "none";
-        showMessage(successDiv, "Inscription réussie. Vérifiez votre mail, un lien d'activation vous a été envoyé.", "success");
-        setTimeout(() => window.location.href = "login.html", 3000);
+        showMessage(
+          successDiv,
+          "Inscription réussie. Vérifiez votre mail, un lien d'activation vous a été envoyé.",
+          "success"
+        );
+        setTimeout(() => (window.location.href = "login.html"), 3000);
       } else {
-        showMessage(errorDiv, data.message || data.error || "Erreur lors de l'inscription.");
+        showMessage(
+          errorDiv,
+          data.message || data.error || "Erreur lors de l'inscription."
+        );
       }
     } catch (err) {
       showMessage(errorDiv, "Erreur de connexion au serveur.");
