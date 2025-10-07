@@ -1,9 +1,8 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-
-import dotenv from "dotenv";
-dotenv.config();
 
 // Import des routeurs
 import reservationRouter from "./routes/reservationRoute.js";
@@ -22,6 +21,8 @@ app.use(express.json());
 const allowedOrigins = [
   "http://127.0.0.1:5500",
   "http://localhost:5500",
+  "http://127.0.0.1:5503",
+  "http://localhost:5503",
   "https://gite-lorlavie.onrender.com",
 ];
 

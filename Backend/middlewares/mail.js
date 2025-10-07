@@ -1,4 +1,6 @@
 import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+dotenv.config();
 
 const EMAIL_STYLE = `
   font-family: Montserrat, sans-serif;
@@ -7,15 +9,15 @@ const EMAIL_STYLE = `
   padding: 1rem;
   background: #7a5c43;
   `;
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 // Fonction utilitaire pour envoyer un email via le service Gmail, avec authentification par variables d'environnement.
 export const sendMail = async (to, subject, html) => {
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to,
@@ -199,14 +201,37 @@ export const htmlReservationModifiee = (reservation, client) => {
   `;
 };
 
-// Préparation du contenu HTML pour le mail Contact
-export const sendContactMail = async (nom, prenom, message) => {
-  const html = `
-    <h2>Nouveau message de contact</h2>
-    <p><strong>Nom :</strong> ${nom}</p>
-    <p><strong>Prénom :</strong> ${prenom}</p>
-    <p><strong>Message :</strong><br>${message}</p>
-    <p>Reçu le : ${new Date().toLocaleString("fr-FR")}</p>
-  `;
-  await sendMail(process.env.EMAIL_USER, "Nouveau message de contact", html);
-};
+// Fonction pour envoyer le mail de contact
+export async function sendContactMail(nom, mail, message) {
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER,
+    subject: `Nouveau message de contact - ${nom}`,
+    html: `
+      <!DOCTYPE html>
+      <html lang="fr">
+        <head>
+          <meta charset="UTF-8" />
+          <title>Nouveau message de contact</title>
+        </head>
+        <body style="${EMAIL_STYLE}">
+          <h2>Nouveau message de contact</h2>
+          <div style="background: white; padding: 2rem; margin: 2rem auto; max-width: 500px; border-radius: 10px; color: black;">
+            <p><strong>Nom :</strong> ${nom}</p>
+            <p><strong>Email :</strong> ${mail}</p>
+            <p><strong>Message :</strong></p>
+            <p style="text-align: left; padding: 1rem; background: #f5f5f5; border-radius: 5px;">${message}</p>
+          </div>
+        </body>
+      </html>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log("Email de contact envoyé avec succès");
+  } catch (error) {
+    console.error("Erreur lors de l'envoi de l'email de contact:", error);
+    throw error;
+  }
+}
