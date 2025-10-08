@@ -29,6 +29,3 @@ document.addEventListener("DOMContentLoaded", () => {
       reservation.modePaiement || "-";
   }
 });
-
-// Redirection
-window.location.href = "confirmation.html";
