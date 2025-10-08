@@ -3,7 +3,6 @@
 import { Navbar } from "./js/navbar.js";
 import { Footer } from "./js/footer.js";
 import { HoteNavbar } from "./js/hoteNavbar.js";
-import { HoteFooter } from "./js/hoteFooter.js";
 import { Carroussel } from "./js/carroussel.js";
 import { CalendrierClient } from "./js/calendrierHote.js";
 import { Reservation } from "./js/reservation.js";
@@ -12,8 +11,6 @@ import { Reservation } from "./js/reservation.js";
 document.addEventListener("DOMContentLoaded", () => {
   // Navbar visiteur
   HoteNavbar();
-  // Footer visiteur
-  HoteFooter();
   // Carroussel
   Carroussel();
   // Calendrier
@@ -22,6 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   Reservation();
   // Navbar admin
   Navbar();
-  // Footer admin
+  // Footer admin/visiteur
   Footer();
 });
