@@ -47,9 +47,7 @@ export function renderReservations(reservations) {
           0,
           10
         )}</strong></div>
-        <div class="card__row"><span>Nombre de nuits:</span> <strong>${
-          r.nombreNuits
-        }</strong></div>
+        
         <div class="card__row"><span>Nombre de personnes:</span> <strong>${
           r.nombrePersonnes
         }</strong></div>
@@ -93,6 +91,9 @@ ${
     btn.addEventListener("click", (e) =>
       showEditDiv(btn.dataset.id, "valider")
     );
+  });
+  reservationListDiv.querySelectorAll(".icon-refuse").forEach((btn) => {
+    btn.addEventListener("click", () => showEditDiv(btn.dataset.id, "refuser"));
   });
 }
 

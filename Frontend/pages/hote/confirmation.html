@@ -19,37 +19,49 @@
 
   <body>
     <div id="hoteNavbar"></div>
-    <h1>Votre Confirmation de Réservation</h1>
+    <h1>Demande de Réservation envoyée</h1>
     <form class="form">
+      <p>
+        Merci pour votre demande de réservation.<br />
+        Votre demande a bien été enregistrée et est en attente de validation.
+        <br /><br />
+        Vous recevrez un email de confirmation dès que votre réservation sera
+        validée par le propriétaire.
+      </p>
       <div class="card card--brown">
-        <div class="card__badge">${name} ${surname}</div>
+        <div class="card__badge">Récapitulatif de votre réservation</div>
         <div class="card__content">
           <div class="card__row">
-            <span>Date d'arrivée:</span> <strong>${dateArrivee}</strong>
+            <span>Nom :</span> <strong id="client-name"></strong>
           </div>
           <div class="card__row">
-            <span>Date de départ:</span>
-            <strong>${dateDepart}</strong>
+            <span>Date d'arrivée:</span> <strong id="date-arrivee"></strong>
           </div>
           <div class="card__row">
-            <span>Nombre de nuitées:</span> <strong>${numberOfNights}</strong>
+            <span id="date-depart">Date de départ:</span>
+            <strong id="date-depart"></strong>
+          </div>
+          <div class="card__row">
+            <span>Nombre de nuitées:</span>
+            <span id="nombre-nuitees"><strong></strong></span>
           </div>
           <div class="card__row">
             <span>Nombre de personnes:</span>
-            <strong>${nombrePersonnes}</strong>
+            <span id="nombre-personnes"><strong></strong></span>
           </div>
           <div class="card__row">
             <span>Nombre de personnes supplémentaires:</span>
-            <strong>${personnesSupplementaires}</strong>
+            <strong id="personnes-supp"></strong>
           </div>
           <div class="card__row">
-            <span>Montant total:</span> <strong>${prixTotal}</strong>
+            <span>Montant total:</span> <strong id="montant-total"></strong>
           </div>
           <div class="card__row">
-            <span>Mode de Paiement :</span> <strong>${modePaiement}</strong>
+            <span>Mode de Paiement :</span> <strong id="mode-paiement"></strong>
           </div>
           <div class="card__row">
-            <span>Statut de la réservation :</span> <strong>${statut}</strong>
+            <span>Statut de la réservation :</span>
+            <strong id="statut"></strong>
           </div>
         </div>
       </div>

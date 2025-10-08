@@ -9,6 +9,7 @@ import {
   htmlReservationConfirmee,
   htmlReservationModifiee,
   htmlReservationRefusee,
+  htmlNouvelleReservationAdmin,
 } from "../middlewares/mail.js";
 
 export const createReservation = async (req, res) => {
@@ -93,7 +94,7 @@ export const createReservation = async (req, res) => {
       reservation._id
     );
 
-    // Envoyer email de confirmation temporaire
+    // Envoyer email de confirmation temporaire au client
     const html = htmlReservationEnAttente(reservation, newClient);
     await sendMail(
       newClient.email,
@@ -109,6 +110,15 @@ export const createReservation = async (req, res) => {
         prixTotal: reservation.prixTotal,
       },
     });
+
+    // Envoyer email à l'ADMIN
+    const htmlAdmin = htmlNouvelleReservationAdmin(reservation, newClient);
+    await sendMail(
+      process.env.EMAIL_USER,
+      `Nouvelle réservation - ${newClient.surname} ${newClient.name}`,
+      htmlAdmin
+    );
+    console.log("Email envoyé à l'admin");
   } catch (error) {
     console.error("Erreur lors de la création de la réservation:", error);
     res.status(500).json({

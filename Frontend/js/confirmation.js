@@ -1,16 +1,34 @@
-import { API_URL } from "./config.js";
-
 document.addEventListener("DOMContentLoaded", () => {
+  // Récupération de la réservation confirmée
   const reservation = JSON.parse(
     localStorage.getItem("reservationConfirmee") || "{}"
   );
 
-  // Remplir les champs dynamiquement
-  document.querySelector(".card__badge").textContent = `${
-    reservation.client?.name || ""
-  } ${reservation.client?.surname || ""}`;
-  document.querySelector(".card__row strong:nth-child(2)").textContent =
-    reservation.dateArrivee || "";
-  document.querySelector(".card__row strong:nth-child(4)").textContent =
-    reservation.dateDepart || "";
+  if (reservation && reservation.client) {
+    // Affichage des informations
+    document.getElementById("client-name").textContent =
+      `${reservation.client.surname} ${reservation.client.name}` || "Client";
+
+    document.getElementById("date-arrivee").textContent =
+      new Date(reservation.dateArrivee).toLocaleDateString("fr-FR") || "-";
+
+    document.getElementById("date-depart").textContent =
+      new Date(reservation.dateDepart).toLocaleDateString("fr-FR") || "-";
+
+    document.getElementById("nombre-personnes").textContent =
+      reservation.nombrePersonnes || "-";
+
+    document.getElementById("personnes-supp").textContent =
+      reservation.personnesSupplementaires || "0";
+
+    document.getElementById("montant-total").textContent = reservation.prixTotal
+      ? `${reservation.prixTotal} €`
+      : "-";
+
+    document.getElementById("mode-paiement").textContent =
+      reservation.modePaiement || "-";
+  }
 });
+
+// Redirection
+window.location.href = "confirmation.html";

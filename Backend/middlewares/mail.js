@@ -9,15 +9,16 @@ const EMAIL_STYLE = `
   padding: 1rem;
   background: #7a5c43;
   `;
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+
 // Fonction utilitaire pour envoyer un email via le service Gmail, avec authentification par variables d'environnement.
 export const sendMail = async (to, subject, html) => {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to,
@@ -62,6 +63,62 @@ export const htmlResetPassword = (surname, link) => {
         <p>Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien ci-dessous :</p>
         <a href="${link}" style="background-color: #EAE7DD; color: black; padding: 1rem; text-decoration: none; border-radius: 50px; display: inline-block; margin: 2rem;">Réinitialiser mon mot de passe</a>
         <p>Si vous n'avez pas demandé cette réinitialisation, vous pouvez ignorer ce message.</p>
+      </body>
+    </html>
+  `;
+};
+// Fonction pour notifier l'admin d'une nouvelle réservation
+export const htmlNouvelleReservationAdmin = (reservation, client) => {
+  return `
+    <!DOCTYPE html>
+    <html lang="fr">
+      <head>
+        <meta charset="UTF-8" />
+        <title>Nouvelle réservation à valider</title>
+      </head>
+      <body style="${EMAIL_STYLE}">
+        <h2>🔔 Nouvelle demande de réservation</h2>
+        <div style="background: white; padding: 2rem; margin: 2rem auto; max-width: 500px; border-radius: 10px; color: black;">
+          <h3 style="color: #7a5c43; text-align: center;">Informations client</h3>
+          <p><strong>Nom :</strong> ${client.name}</p>
+          <p><strong>Prénom :</strong> ${client.surname}</p>
+          <p><strong>Email :</strong> ${client.email}</p>
+          <p><strong>Téléphone :</strong> ${client.telephone}</p>
+          <p><strong>Adresse :</strong> ${client.adresseComplete.adresse}, ${
+    client.adresseComplete.codePostal
+  } ${client.adresseComplete.ville}, ${client.adresseComplete.pays}</p>
+          
+          <h3 style="color: #7a5c43; text-align: center; margin-top: 2rem;">Détails de la réservation</h3>
+          <p><strong>Date d'arrivée :</strong> ${new Date(
+            reservation.dateArrivee
+          ).toLocaleDateString("fr-FR")}</p>
+          <p><strong>Date de départ :</strong> ${new Date(
+            reservation.dateDepart
+          ).toLocaleDateString("fr-FR")}</p>
+          <p><strong>Nombre de personnes :</strong> ${
+            reservation.nombrePersonnes
+          }</p>
+          <p><strong>Personnes supplémentaires :</strong> ${
+            reservation.personnesSupplementaires || 0
+          }</p>
+          <p><strong>Ménage :</strong> ${
+            reservation.options?.menage ? "Oui" : "Non"
+          }</p>
+          ${
+            reservation.options?.commentaires
+              ? `<p><strong>Commentaires :</strong> ${reservation.options.commentaires}</p>`
+              : ""
+          }
+          <p><strong>Prix total :</strong> ${reservation.prixTotal} €</p>
+          <p><strong>Mode de paiement :</strong> ${reservation.modePaiement}</p>
+        </div>
+        <p style="text-align: center; margin-top: 2rem;">
+          <a href="${
+            process.env.CLIENT_URL
+          }/admin/reservation.html" style="background-color: #7a5c43; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 5px; display: inline-block;">
+            Gérer les réservations
+          </a>
+        </p>
       </body>
     </html>
   `;
@@ -203,6 +260,13 @@ export const htmlReservationModifiee = (reservation, client) => {
 
 // Fonction pour envoyer le mail de contact
 export async function sendContactMail(nom, mail, message) {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,

@@ -145,9 +145,6 @@ if (form) {
       });
       const result = await res.json();
       console.log("Réponse serveur:", result);
-      setTimeout(() => {
-        window.location.href = "confirmation.html";
-      }, 1500);
 
       if (res.ok) {
         // Succès
@@ -160,6 +157,9 @@ if (form) {
           "reservationConfirmee",
           JSON.stringify(reservation)
         );
+        setTimeout(() => {
+          window.location.href = "confirmation.html";
+        }, 1500);
       } else {
         errorDiv.textContent =
           result.error ||
